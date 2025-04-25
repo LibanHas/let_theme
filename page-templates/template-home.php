@@ -7,39 +7,34 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<!-- 🔹 Full-width hero section (outside Bootstrap container) -->
+
 <div class="idea-svg-container">
-  <img src="<?php echo get_template_directory_uri(); ?>/images/ideas-figure.png" class="base-image" alt="Ideas figure" />
-
-  <svg class="idea-lines" width="500" height="500" viewBox="0 0 500 500">
-    <!-- Line 1 -->
-    <path d="M250,300 L260,260 L300,200" class="idea-line delay-1 duration-med" />
-    <image
-		href="<?php echo get_template_directory_uri(); ?>/images/icon-lightbulb.png"
-		x="292" y="192" width="16" height="16"
-		class="idea-icon delay-icon-1"
-		/>
-
-    <!-- Line 2 -->
-    <path d="M250,300 L240,250 L180,180" class="idea-line delay-2 duration-slow" />
-    <circle cx="180" cy="180" r="6" class="idea-icon delay-icon-2" />
-
-    <!-- Line 3 -->
-    <path d="M250,300 L270,280 L330,250" class="idea-line delay-3 duration-fast" />
-    <circle cx="330" cy="250" r="6" class="idea-icon delay-icon-3" />
-
-    <!-- Line 4 -->
-    <path d="M250,300 L230,270 L160,240" class="idea-line delay-4 duration-very-slow" />
-    <circle cx="160" cy="240" r="6" class="idea-icon delay-icon-4" />
-
-    <!-- Line 5 -->
-    <path d="M250,300 L250,260 L250,190" class="idea-line delay-5 duration-med" />
-    <circle cx="250" cy="190" r="6" class="idea-icon delay-icon-5" />
+  <!-- Base image swapped to ideas-figure.svg -->
+  <img src="<?php echo get_template_directory_uri(); ?>/images/ideas-figure.svg" alt="Ideas Figure" class="base-image" />
+  <!-- Extended, kinked lines radiating upward or horizontally -->
+  <svg class="idea-lines" width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
+    <!-- Line 1: Far up-left (~1200px) -->
+    <path d="M952.5,180 L820,40 L0,0" class="idea-line delay-1 duration-very-slow" />
+    <!-- Line 2: Up-left (~1160px) -->
+    <path d="M952.5,180 L880,60 L0,60" class="idea-line delay-2 duration-slow" />
+    <!-- Line 3: Straight up then far left (~1130px) -->
+    <path d="M952.5,180 L952.5,0 L0,0" class="idea-line delay-3 duration-fast" />
+    <!-- Line 4: Up-right (~1040px) -->
+    <path d="M952.5,180 L1020,60 L1920,60" class="idea-line delay-4 duration-med" />
+    <!-- Line 5: Far up-right (~1035px) -->
+    <path d="M952.5,180 L1080,40 L1920,40" class="idea-line delay-5 duration-slow" />
+    <!-- Line 6: Horizontal-left then up-left (~1130px) -->
+    <path d="M952.5,180 L820,180 L820,0 L0,0" class="idea-line delay-6 duration-slow" />
+    <!-- Line 7: Horizontal-right then up-right (~1150px) -->
+    <path d="M952.5,180 L1080,180 L1080,0 L1920,0" class="idea-line delay-7 duration-med" />
+    <!-- Line 8: Slight up-left then far left (~1150px) -->
+    <path d="M952.5,180 L900,120 L900,0 L0,0" class="idea-line delay-8 duration-med" />
+    <!-- Line 9: Slight up-right then far right (~1170px) -->
+    <path d="M952.5,180 L1005,120 L1005,0 L1920,0" class="idea-line delay-9 duration-med" />
+    <!-- Line 10: Gentle horizontal-left then up-left (~1130px) -->
+    <path d="M952.5,180 L800,180 L800,0 L0,0" class="idea-line delay-10 duration-fast" />
   </svg>
 </div>
-
-
-
 
 
 <!-- 🔹 Full-width tagline (outside container) -->
@@ -71,23 +66,72 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div><!-- #homepage-wrapper -->
 
 <!-- 🔹 Learning-centered section -->
-<section class="learning-centered-section">
+<section class="learning-centered-section mb-25">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <div class="text-content-wrapper">
           <h2 class="section-heading">学習者中心</h2>
           <p class="section-text">
-            LET研究室では、いつでもどこでも学べる教育を支援するために、<br>
+            LET研究室では、いつでもどこでも学べる教育を支援するために、
             学習者中心のツールを設計し、学生が最適なタイミングと場所で学べるようサポートしています。
           </p>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-5 offset-md-1">
         <img src="<?php echo get_template_directory_uri(); ?>/images/learning-centered.png" alt="学習者中心イラスト" class="img-fluid">
       </div>
     </div>
   </div>
 </section>
+
+<!-- 🔹 Learning-centered section -->
+<section class="learning-centered-section ">
+  <div class="container">
+    <div class="row align-items-center justify-content-around">
+      <div class="col-md-5">
+	  <img src="<?php echo get_template_directory_uri(); ?>/images/graph.png" alt="学習者中心イラスト" class="img-fluid">
+      </div>
+      <div class="col-md-5 offset-md-1">
+	  <div class="text-content-wrapper">
+          <h2 class="section-heading">データ駆動型</h2>
+          <p class="section-text">
+		    教育ビッグデータとラーニングアナリティクスを活用することで、個別最適化されたデータ駆動型の学習体験を実現しています。
+          </p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-intro py-4">
+  <div class="container text-center">
+    <h2 class="section-heading mb-3">LEAFシステムの全体像</h3>
+    <p class="section-text">
+      ここまでで「LETの役割」を大まかにご説明しました。<br>
+      この動画では、それらを支えるLEAFシステムの仕組みをご覧いただけます。
+    </p>
+  </div>
+</section>
+<section class="video-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe
+            class="embed-responsive-item"
+            src="https://www.youtube.com/embed/UaFCPePgc54?start=1"
+            title="YouTube video player"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <?php get_footer(); ?>
