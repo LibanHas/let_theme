@@ -59,4 +59,54 @@ function enqueue_custom_scripts() {
    // wp_enqueue_style('custom-hamburger-style', get_template_directory_uri() . '/css/hamburger-style.css');
 }
 
+function register_member_post_type() {
+    register_post_type('member',
+        array(
+            'labels' => array(
+                'name' => __('Members'),
+                'singular_name' => __('Member'),
+                'add_new' => __('Add New Member'),
+                'add_new_item' => __('Add New Member'),
+                'edit_item' => __('Edit Member'),
+                'new_item' => __('New Member'),
+                'view_item' => __('View Member'),
+                'search_items' => __('Search Members'),
+                'not_found' => __('No members found'),
+                'not_found_in_trash' => __('No members found in Trash'),
+                'all_items' => __('All Members'),
+            ),
+            'public' => true,
+            'has_archive' => false,
+            'rewrite' => array('slug' => 'member'),
+            'supports' => array('title', 'editor', 'thumbnail'),
+            'menu_position' => 5,
+            'menu_icon' => 'dashicons-groups',
+            'show_in_rest' => true,
+            'taxonomies' => array('member_group'),
+        )
+    );
+}
+add_action('init', 'register_member_post_type');
+
+
+function register_member_group_taxonomy() {
+	register_taxonomy('member_group', 'member', array(
+		'labels' => array(
+			'name' => 'メンバー区分',
+			'singular_name' => 'メンバー区分',
+		),
+		'public' => true,
+		'hierarchical' => true, // ✅ Change this to true
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'show_in_rest' => true,
+		'rewrite' => array('slug' => 'member-group'),
+	));
+}
+
+
+add_action('init', 'register_member_group_taxonomy');
+
+  
+
 add_action('wp_enqueue_scripts', 'enqueue_custom_scripts');
