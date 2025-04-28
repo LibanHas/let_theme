@@ -9,105 +9,151 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 <div class="idea-svg-container">
-  <!-- Base image swapped to ideas-figure.svg -->
-  <img src="<?php echo get_template_directory_uri(); ?>/images/ideas-figure.svg" alt="Ideas Figure" class="base-image" />
-  <!-- Extended, kinked lines radiating upward or horizontally -->
+  
+ 
   <svg class="idea-lines" width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
-    <!-- Line 1: Far up-left (~1200px) -->
+    
     <path d="M952.5,180 L820,40 L0,0" class="idea-line delay-1 duration-very-slow" />
-    <!-- Line 2: Up-left (~1160px) -->
+   
     <path d="M952.5,180 L880,60 L0,60" class="idea-line delay-2 duration-slow" />
-    <!-- Line 3: Straight up then far left (~1130px) -->
     <path d="M952.5,180 L952.5,0 L0,0" class="idea-line delay-3 duration-fast" />
-    <!-- Line 4: Up-right (~1040px) -->
     <path d="M952.5,180 L1020,60 L1920,60" class="idea-line delay-4 duration-med" />
-    <!-- Line 5: Far up-right (~1035px) -->
     <path d="M952.5,180 L1080,40 L1920,40" class="idea-line delay-5 duration-slow" />
-    <!-- Line 6: Horizontal-left then up-left (~1130px) -->
     <path d="M952.5,180 L820,180 L820,0 L0,0" class="idea-line delay-6 duration-slow" />
-    <!-- Line 7: Horizontal-right then up-right (~1150px) -->
     <path d="M952.5,180 L1080,180 L1080,0 L1920,0" class="idea-line delay-7 duration-med" />
-    <!-- Line 8: Slight up-left then far left (~1150px) -->
     <path d="M952.5,180 L900,120 L900,0 L0,0" class="idea-line delay-8 duration-med" />
-    <!-- Line 9: Slight up-right then far right (~1170px) -->
     <path d="M952.5,180 L1005,120 L1005,0 L1920,0" class="idea-line delay-9 duration-med" />
-    <!-- Line 10: Gentle horizontal-left then up-left (~1130px) -->
     <path d="M952.5,180 L800,180 L800,0 L0,0" class="idea-line delay-10 duration-fast" />
   </svg>
-</div>
+</div> 
 
 
 <!-- 🔹 Full-width tagline (outside container) -->
-<h1 class="tagline">
+ <h1 class="tagline">
     未来の教育をデザインする<br>
     LETでの研究を始めよう
-</h1>
+</h1> 
+
+<section class="test-reveal-section">
+  <p class="quote-heading">
+    <span class="split-line">これはテストのテキストです。</span>
+  </p>
+</section>
 
 
-<!-- 🔹 Bootstrap container for main content -->
-<div class="wrapper" id="homepage-wrapper">
-  <div class="container" id="content">
-    <div class="row">
-      <div class="col-md-12 content-area" id="primary">
-        <main class="site-main" id="main" role="main">
 
-          <!-- LET intro content -->
-          <h2 class="LET_heading">LETについて</h2>
-          <p class="content-block">
-            私たちは京都大学の研究チームです。テクノロジーやデータを活用して、より良い学びを実現する方法を探求しています。
-            デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。
-            私たちの研究は、実際の教室や学生とともに行われており、現場で得られた知見をもとに、先生の授業や学生の学びをサポートしています。
-          </p>
+<section class="about-let">
+  <div data-anim-trigger="">
+    <div class="anim-scroll-background">
+      <div class="anim-scroll-background__img-wrapper">
+	  <div class="image-snippet image-snippet__fill image-snippet__fill--desktop image-snippet__fill--tablet image-snippet__fill--mobile"
+     style="--aspect-ratio: 1440 / 1100; --aspect-ratio-tablet: 1440 / 1100; --aspect-ratio-mobile: 1440 / 1100;">
+  
+  <img class="image-snippet__img image-snippet__img--fill image-snippet__img--desktop"
+       src="<?php echo get_template_directory_uri(); ?>/images/lab-image.jpeg"
+       alt="LET Lab background" loading="lazy">
+</div>
 
-        </main>
-      </div><!-- #primary -->
-    </div><!-- .row -->
-  </div><!-- #content -->
-</div><!-- #homepage-wrapper -->
+      </div>
+
+      <div class="about-let-inner">
+        <p data-anim="text-color-fill" style="--text-color: #fcf7e6;" class="quote-heading heading-1">
+          <div class="split-line">私たちは京都大学の研究チームです。</div>
+          <div class="split-line">テクノロジーやデータを活用して、より良い学びを実現する方法を探求しています。</div>
+          <div class="split-line">デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。</div>
+          <div class="split-line">実際の教室や学生とともに研究を行い、先生の授業や学生の学びをサポートしています。</div>
+        </p>
+
+        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline">
+          <span>LETについてもっと知る</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- 🔹 Learning-centered section -->
 <section class="learning-centered-section mb-25">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col-md-5">
-        <div class="text-content-wrapper">
-          <h2 class="section-heading">学習者中心</h2>
-          <p class="section-text">
-            LET研究室では、いつでもどこでも学べる教育を支援するために、
-            学習者中心のツールを設計し、学生が最適なタイミングと場所で学べるようサポートしています。
-          </p>
-        </div>
-      </div>
-      <div class="col-md-5 offset-md-1">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/learning-centered.png" alt="学習者中心イラスト" class="img-fluid">
-      </div>
+      
+      <!-- Text block floats upward with sticky+pause -->
+<div class="col-md-5">
+  <div class="sticky-section">
+    <div class="sticky-content">
+      <h2 class="section-heading">学習者中心</h2>
+      <p class="section-text">
+        LET研究室では、いつでもどこでも学べる教育を支援するために、
+        学習者中心のツールを設計し、学生が最適なタイミングと場所で学べるようサポートしています。
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Image floats downward with fade-in -->
+<div class="col-md-5 offset-md-1">
+  <div class="float-wrapper sticky-section">
+	<div class="sticky-content">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/learning-centered.png" 
+     alt="学習者中心イラスト" 
+     class="img-fluid scroll-float fade-in-on-scroll"  
+     data-speed="0.3">
+
+  </div>
+</div>
+</div>
+
     </div>
   </div>
 </section>
 
-<!-- 🔹 Learning-centered section -->
-<section class="learning-centered-section ">
+
+
+<!-- 🔹 Data-driven section -->
+<section class="learning-centered-section">
   <div class="container">
     <div class="row align-items-center justify-content-around">
+
+      <!-- Image fades in and stays -->
       <div class="col-md-5">
-	  <img src="<?php echo get_template_directory_uri(); ?>/images/graph.png" alt="学習者中心イラスト" class="img-fluid">
-      </div>
-      <div class="col-md-5 offset-md-1">
-	  <div class="text-content-wrapper">
-          <h2 class="section-heading">データ駆動型</h2>
-          <p class="section-text">
-		    教育ビッグデータとラーニングアナリティクスを活用することで、個別最適化されたデータ駆動型の学習体験を実現しています。
-          </p>
+        <div class="float-wrapper sticky-section">
+          <div class="sticky-content">
+		  <img 
+  src="<?php echo get_template_directory_uri(); ?>/images/graph.png"
+  alt="データ駆動型イラスト"
+  class="img-fluid scroll-float fade-in-on-scroll"
+  data-speed="-0.2">
+
+          </div>
         </div>
-        
       </div>
+
+      <!-- Text scrolls upward and locks -->
+      <div class="col-md-5 offset-md-1">
+  <div class="float-wrapper sticky-section">
+    <div class="sticky-content">
+      <div class="text-content-wrapper scroll-float fade-in-on-scroll"
+           data-speed="-0.2">
+        <h2 class="section-heading">データ駆動型</h2>
+        <p class="section-text">
+          教育ビッグデータとラーニングアナリティクスを活用することで、個別最適化されたデータ駆動型の学習体験を実現しています。
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     </div>
   </div>
 </section>
 
-<section class="video-intro py-4">
+
+ <section class="video-intro py-4">
   <div class="container text-center">
-    <h2 class="section-heading mb-3">LEAFシステムの全体像</h3>
+    <h2 class="section-heading mb-3">LEAFシステムの全体像</h2>
     <p class="section-text">
       ここまでで「LETの役割」を大まかにご説明しました。<br>
       この動画では、それらを支えるLEAFシステムの仕組みをご覧いただけます。
@@ -131,7 +177,31 @@ $container = get_theme_mod( 'understrap_container_type' );
       </div>
     </div>
   </div>
-</section>
+</section> 
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  function revealLine() {
+    const line = document.querySelector('.split-line');
+    if (!line) return;
+
+    const rect = line.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    const progress = 1 - Math.min(Math.max((rect.top + rect.height / 2) / windowHeight, 0), 1);
+    const revealPercent = Math.floor(progress * 100);
+
+	line.style.backgroundImage = `linear-gradient(to right, #fcf7e6 ${safePercent}%, transparent ${safePercent}%)`;
+}
+
+  revealLine();
+  window.addEventListener('scroll', revealLine);
+  window.addEventListener('resize', revealLine);
+});
+</script>
+
+
+
 
 
 <?php get_footer(); ?>
