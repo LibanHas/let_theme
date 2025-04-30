@@ -34,13 +34,6 @@ $container = get_theme_mod( 'understrap_container_type' );
     LETでの研究を始めよう
 </h1> 
 
-<section class="test-reveal-section">
-  <p class="quote-heading">
-    <span class="split-line">これはテストのテキストです。</span>
-  </p>
-</section>
-
-
 
 <section class="about-let">
   <div data-anim-trigger="">
@@ -57,12 +50,14 @@ $container = get_theme_mod( 'understrap_container_type' );
       </div>
 
       <div class="about-let-inner">
-        <p data-anim="text-color-fill" style="--text-color: #fcf7e6;" class="quote-heading heading-1">
-          <div class="split-line">私たちは京都大学の研究チームです。</div>
-          <div class="split-line">テクノロジーやデータを活用して、より良い学びを実現する方法を探求しています。</div>
-          <div class="split-line">デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。</div>
-          <div class="split-line">実際の教室や学生とともに研究を行い、先生の授業や学生の学びをサポートしています。</div>
-        </p>
+      <div class="quote-heading">
+  <div class="split-line">LET研究室では、より良い学びを支える</div>
+  <div class="split-line">研究をしています。現場と連携し、教育</div>
+  <div class="split-line">データとテクノロジーを活用したツール</div>
+  <div class="split-line">を開発しています。</div>
+</div>
+
+
 
         <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline">
           <span>LETについてもっと知る</span>
@@ -176,29 +171,225 @@ $container = get_theme_mod( 'understrap_container_type' );
         </div>
       </div>
     </div>
-  </div>
+    <div class="text-center mt-4">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>LETについてもっと知る</span>
+      </a>
+    </div>
+  </div> 
 </section> 
 
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  function revealLine() {
-    const line = document.querySelector('.split-line');
-    if (!line) return;
 
-    const rect = line.getBoundingClientRect();
-    const windowHeight = window.innerHeight;
+<section class="our-tools-section">
+  <div class="container">
+  <h2 class="section-title">Our Tools</h2>
+  <h3 class="section-title section-title--sub">ツール</h3>
 
-    const progress = 1 - Math.min(Math.max((rect.top + rect.height / 2) / windowHeight, 0), 1);
-    const revealPercent = Math.floor(progress * 100);
 
-	line.style.backgroundImage = `linear-gradient(to right, #fcf7e6 ${safePercent}%, transparent ${safePercent}%)`;
-}
+    <div class="tool-item">
+      <div class="tool-logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/bookroll-icon.png" alt="BookRoll Logo">
+      </div>
+      <div class="tool-description">
+        <p>
+          BookRollは、双方向型の教材を配信・記録できるデジタルプラットフォームで、
+          個別最適化されたデータ駆動型の学びを実現します。
+        </p>
+      </div>
+      <div class="tool-button">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+          <span>Bookrollの詳細へ</span>
+        </a>
+      </div>
+    </div>
 
-  revealLine();
-  window.addEventListener('scroll', revealLine);
-  window.addEventListener('resize', revealLine);
-});
-</script>
+    <hr class="tool-divider">
+
+    <div class="tool-item">
+      <div class="tool-logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/logpalette-icon.png" alt="LogPalette Logo">
+      </div>
+      <div class="tool-description">
+        <p>
+          LogPaletteは、学習者の教材とのやり取りを可視化するラーニングアナリティクスツールで、
+          学習者と教育者の双方に気づきを提供します。
+        </p>
+      </div>
+      <div class="tool-button">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+          <span>LogPaletteの詳細へ</span>
+        </a>
+      </div>
+    </div>
+    <hr class="tool-divider">
+  </div>
+</section>
+
+
+<section class="news-section py-5">
+  <div class="container">
+    <div class="news-header">
+      <h2 class="section-title">News</h2>
+      <h3 class="section-title section-title--sub">ニュース</h3>
+    </div>
+      <div class="text-right mt-4">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>ニュース一覧</span>
+      </a>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2025.02.17</div>
+      <div class="news-tag tag-event">イベント</div>
+      <div class="news-summary">
+        <p>名古屋大学MDS教育推進室第2回講演会（緒方教授講演）</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2024.10.19-20</div>
+      <div class="news-tag tag-symposium">シンポジウム</div>
+      <div class="news-summary">
+        <p>教育データ利活用合同シンポジウム開催報告</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2025.01.11</div>
+      <div class="news-tag tag-symposium">シンポジウム</div>
+      <div class="news-summary">
+        <p>ESD Symposium</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2024.10.01</div>
+      <div class="news-tag tag-notice">お知らせ</div>
+      <div class="news-summary">
+        <p>新しいメンバーが加わりました！</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2024.09.24-26</div>
+      <div class="news-tag tag-research">研究発表</div>
+      <div class="news-summary">
+        <p>緒方研究室中間発表会を行いました。</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2024.08.01</div>
+      <div class="news-tag tag-event">イベント</div>
+      <div class="news-summary">
+        <p>1EdTech Japan Conference 2024（緒方教授・特別講演）</p>
+      </div>
+    </div>
+
+    <hr class="news-divider">
+
+    <div class="news-item">
+      <div class="news-date">2023.11.17</div>
+      <div class="news-tag tag-event">イベント</div>
+      <div class="news-summary">
+        <p>兵庫県議会・文教常任委員会 (緒方教授講演)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="projects-section">
+  <div class="container">
+    <h2 class="section-title">Projects</h2>
+    <h3 class="section-title section-title--sub">プロジェクト</h3>
+    <div class="projects-content">
+      <div class="projects-text">
+        <p class="projects-description">
+          私たちのプロジェクトは、最先端のツールやシステムの開発を通じて、教育の未来を切り拓くことに取り組んでいます。
+          AIを活用した学習支援から革新的なデータ分析まで、次世代の教室にふさわしい学習体験を創造しています。
+        </p>
+      </div>
+      <div class="projects-grid">
+        <div class="project-card"></div>
+        <div class="project-card"></div>
+        <div class="project-card"></div>
+        <div class="project-card"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="members-section">
+  <div class="container members-wrapper">
+    <div class="members-content">
+      <h2 class="section-title">Members</h2>
+      <h3 class="section-title section-title--sub">メンバー</h3>
+      <p class="members-description">
+        私たちのメンバーは、世界中から集まった多様でフレンドリーな研究者・教育者・イノベーターの集まりです。
+        教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
+      </p>
+      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>See All Members</span>
+      </a>
+    </div>
+
+    <div class="members-image">
+      <div class="image-placeholder"></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container cta-wrapper">
+    
+    <div class="cta-image">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/logpalette-mascot.png" alt="Mascot Robot">
+    </div>
+
+    <div class="cta-content">
+      <h2 class="cta-title">メンバー募集に興味がありますか？</h2>
+      <p class="cta-text">
+        私たちは、教育技術の発展に情熱を注ぐ研究者や学生の参加をいつでも歓迎しています。<br>
+        私たちのミッションに共感してくださる方はもちろん、「ちょっと見てみたい」という方も大歓迎です。<br>
+        ぜひお気軽にご連絡ください！
+      </p>
+
+      <div class="cta-buttons">
+      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>訪問予約をする</span>
+      </a>
+      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>チームに参加する</span>
+      </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
 
 
 

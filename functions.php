@@ -49,14 +49,19 @@ foreach ( $understrap_includes as $file ) {
  */
 function enqueue_custom_theme_scripts() {
 	// Custom main theme style
-	wp_enqueue_style('theme-style', get_template_directory_uri() . '/dist/css/style.css', array(), null, 'all');
+	wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), null, 'all');
+
 
 	// Hamburger menu script
 	wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), null, true);
 
 	// Scroll animation script
-	wp_enqueue_script('float-animation', get_template_directory_uri() . '/js/animations.js', array(), null, true);
+	wp_enqueue_script('animations', get_template_directory_uri() . '/js/animations.js', array(), null, true);
+
+	// ✅ Tagline animation script (move it here)
+	wp_enqueue_script('tagline-test', get_template_directory_uri() . '/js/tagline-test.js', array(), null, true);
 }
+
 add_action('wp_enqueue_scripts', 'enqueue_custom_theme_scripts');
 
 /**
@@ -109,3 +114,22 @@ function register_member_group_taxonomy() {
 	));
 }
 add_action('init', 'register_member_group_taxonomy');
+
+function enqueue_aos_scripts() {
+    // AOS CSS
+    wp_enqueue_style( 'aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4' );
+
+    // AOS JS
+    wp_enqueue_script( 'aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true );
+
+    // Initialize AOS
+	wp_add_inline_script('aos-script', 'AOS.init({
+		duration: 800,
+		easing: "ease-out-back",
+		once: true
+	  });');
+	  
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_aos_scripts' );
+
+
