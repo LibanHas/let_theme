@@ -18,7 +18,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         <main class="site-main" id="main">
         <section class="join-hero">
             <div class="container">
-                <h1 class="join-title">LETで一緒に研究しませんか？</h1>
+                <h1 class="join-title">一緒に研究しませんか？</h1>
                 <div class="join-description">
                 <p>
                     緒方研究室（LET Lab）は、教育と学習の未来を切り拓く情報技術を研究する京都大学の研究室です。<br>
@@ -189,6 +189,21 @@ $container = get_theme_mod( 'understrap_container_type' );
 
   <div id="stepsContainer" class="steps-grid"></div>
 </section>
+<section class="scroll-hero">
+  <div class="scroll-hero__bg-wrapper">
+  <img src="http://localhost/let/www/wp-content/themes/let_theme/images/kyoto-bg.jpeg" class="scroll-hero__bg" data-anim="scroll-background" data-anim-distance="200">
+
+  </div>
+  <div class="scroll-hero__content">
+    <h2 class="heading-1">研究の第一歩を、緒方研究室で</h2>
+    <a href="/visit" class="btn btn--secondary-outline"><span>見学を予約する</span></a>
+  </div>
+</section>
+
+
+
+
+
 
         </main>
     </div>

@@ -161,42 +161,51 @@ document.addEventListener('DOMContentLoaded', function () {
       };
       
   
-    const applicantType = document.getElementById('applicantType');
-    const entryTerm = document.getElementById('entryTerm');
-    const stepsContainer = document.getElementById('stepsContainer');
-  
-    function renderSteps() {
-      const type = applicantType.value;
-      const term = entryTerm.value;
-      const steps = stepsData[type]?.[term] || [];
-  
-      stepsContainer.innerHTML = '';
-  
-      steps.forEach(step => {
-        const stepEl = document.createElement('div');
-        stepEl.className = 'step-box';
-        stepEl.innerHTML = `
-          <div class="step-left ${step.number === '06' ? 'highlight' : ''}">
-            <div class="step-label">STEP</div>
-            <div class="step-number">${step.number}</div>
-            <div class="step-caret"></div>
-          </div>
-          <div class="step-right">
-            <div class="step-meta">📌 ${step.period}</div>
-            <div class="step-title-icon">
-              <img src="/wp-content/themes/let_theme/images/icons/${step.icon}" alt="" class="step-icon">
-              <h4>${step.title}</h4>
+      const applicantType = document.getElementById('applicantType');
+      const entryTerm = document.getElementById('entryTerm');
+      const stepsContainer = document.getElementById('stepsContainer');
+      
+      function renderSteps() {
+        const type = applicantType.value;
+        const term = entryTerm.value;
+        const steps = stepsData[type]?.[term] || [];
+      
+        stepsContainer.innerHTML = '';
+      
+        const stepColors = ['#B8D9EC', '#A0CFF2', '#7ABDE8', '#4CA3D9', '#368FCF'];
+      
+        steps.forEach((step, index) => {
+          const isLast = index === steps.length - 1;
+          const color = isLast ? '#F49C5B' : stepColors[index] || '#F49C5B';
+      
+          const stepEl = document.createElement('div');
+          stepEl.className = 'step-box';
+          stepEl.style.animationDelay = `${index * 100}ms`;
+      
+          stepEl.innerHTML = `
+            <div class="step-left" style="--step-color: ${color}">
+              <div class="step-label">STEP</div>
+              <div class="step-number">${step.number}</div>
+              <div class="step-caret"></div>
             </div>
-            <p>${step.description}</p>
-          </div>
-        `;
-        stepsContainer.appendChild(stepEl);
-      });
-    }
-  
-    applicantType.addEventListener('change', renderSteps);
-    entryTerm.addEventListener('change', renderSteps);
-  
-    renderSteps(); // Initial load
-  });
-  
+            <div class="step-right">
+              <div class="step-meta">📌 ${step.period}</div>
+              <div class="step-title-icon">
+                <img src="/wp-content/themes/let_theme/images/icons/${step.icon}" alt="" class="step-icon">
+                <h4>${step.title}</h4>
+              </div>
+              <p>${step.description}</p>
+            </div>
+          `;
+      
+          stepsContainer.appendChild(stepEl);
+        });
+      }
+      
+      // attach event listeners
+      applicantType.addEventListener('change', renderSteps);
+      entryTerm.addEventListener('change', renderSteps);
+      
+      // render default selection
+      renderSteps();
+    });

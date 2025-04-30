@@ -185,4 +185,30 @@ function animateScrollFloat() {
 
 requestAnimationFrame(animateScrollFloat);
 
+const scrollBgImages = document.querySelectorAll('[data-anim="scroll-background"]');
+
+function animateScrollBackground() {
+  const scrollY = window.scrollY;
+
+  scrollBgImages.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Only animate if in viewport
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const speed = parseFloat(img.dataset.animDistance) || 200;
+      const distance = (windowHeight - rect.top) / windowHeight; // 0 (top) to 1 (bottom)
+      const eased = Math.max(0, Math.min(distance, 1));
+      const offset = eased * speed;
+
+      img.style.transform = `translate3d(0, ${-offset}px, 0)`;
+    }
+  });
+
+  requestAnimationFrame(animateScrollBackground);
+}
+
+requestAnimationFrame(animateScrollBackground);
+
+
 });

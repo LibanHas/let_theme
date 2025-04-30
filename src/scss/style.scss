@@ -1398,7 +1398,7 @@ body {
                 width: 1.75rem;
                 height: 1.75rem;
                 background-color: #8b4f1f;
-                background-image: url('/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');
+                background-image: url('/let/www/wp-content/themes/let_theme/images/icon-tick.svg');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 60%;
@@ -1474,7 +1474,6 @@ body {
       
       .admission-flow {
         padding: 2rem 1rem;
-       // max-width: 800px;
         margin: auto;
       
         .selectors {
@@ -1503,19 +1502,20 @@ body {
           box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       
           .step-left {
+            --step-color: #51a7dc; // default fallback
             width: 150px;
-            height: 150px; // ✅ force it square
-            flex-shrink: 0; // ✅ prevent it from shrinking
+            height: 150px;
+            flex-shrink: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: #51a7dc;
+            background: var(--step-color); // dynamically set in JS
             color: white;
             position: relative;
-            padding: 0; // remove vertical padding
-          
+            padding: 0;
+      
             .step-label {
               font-size: 2rem;
               font-family: 'Nunito Sans', sans-serif;
@@ -1523,14 +1523,14 @@ body {
               letter-spacing: 0.2em;
               margin-top: 1.25rem;
             }
-          
+      
             .step-number {
               font-size: 4rem;
               font-weight: bold;
               margin-top: -1rem;
               letter-spacing: 0.7rem;
             }
-          
+      
             .step-caret {
               content: '';
               position: absolute;
@@ -1541,18 +1541,9 @@ body {
               height: 0;
               border-left: 15px solid transparent;
               border-right: 15px solid transparent;
-              border-top: 20px solid #51a7dc;
-            }
-          
-            &.highlight {
-              background: #d87e3d;
-          
-              .step-caret {
-                border-top-color: #d87e3d;
-              }
+              border-top: 20px solid var(--step-color);
             }
           }
-          
       
           .step-right {
             flex: 1;
@@ -1589,4 +1580,102 @@ body {
           }
         }
       }
+      
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      .admission-flow .step-box {
+        animation: fadeInUp 0.5s ease both;
+      }
+      
+      .joinus-cta {
+        position: relative;
+        overflow: hidden;
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 4rem 1rem;
+        background-color: #f6f2eb;
+      
+        .joinus-cta__inner {
+          position: relative;
+          z-index: 2;
+          color: #2e1c0e;
+      
+          .split-line {
+            display: inline-block;
+            background-clip: text;
+            -webkit-background-clip: text;
+            background-size: 200% 100%;
+            background-repeat: no-repeat;
+            background-position-x: 0%;
+            transition: background-image 0.3s ease;
+            color: rgba(252, 247, 230, 0.2); // faint text color before reveal
+          }
+          
+      
+          .btn {
+            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+          }
+        }
+      
+        .joinus-cta__bg {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background-image: url('/let/www/wp-content/themes/let_theme/images/kyoto-bg.jpeg');
+          background-size: cover;
+          background-position: center;
+          opacity: 0.15;
+          pointer-events: none;
+        }
+        
+      }
+
+      .scroll-hero {
+        position: relative;
+        height: 60vh; /* Crop height */
+        overflow: hidden;
+      
+        &__bg-wrapper {
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          overflow: hidden;
+        }
+      
+        &__bg {
+          display: block;
+          width: 100%;
+          height: 100%;           /* Make the image stretch vertically */
+          object-fit: cover;      /* Ensure it fills the box without distortion */
+          transform: translate3d(0, 0, 0);
+          will-change: transform;
+        }
+      
+        &__content {
+          position: relative;
+          z-index: 1;
+          padding: 2rem;
+          text-align: center;
+          color: white;
+        }
+      }
+      
+      
+      
+      
+      
       
