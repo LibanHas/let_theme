@@ -51,16 +51,19 @@ function enqueue_custom_theme_scripts() {
 	// Custom main theme style
 	wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), null, 'all');
 
-
 	// Hamburger menu script
 	wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), null, true);
 
 	// Scroll animation script
 	wp_enqueue_script('animations', get_template_directory_uri() . '/js/animations.js', array(), null, true);
 
-	// ✅ Tagline animation script (move it here)
+	// Tagline animation script
 	wp_enqueue_script('tagline-test', get_template_directory_uri() . '/js/tagline-test.js', array(), null, true);
+
+	// ✅ Admissions steps interaction
+	wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
 }
+
 
 add_action('wp_enqueue_scripts', 'enqueue_custom_theme_scripts');
 
@@ -130,6 +133,8 @@ function enqueue_aos_scripts() {
 	  });');
 	  
 }
+
+
 add_action( 'wp_enqueue_scripts', 'enqueue_aos_scripts' );
 
 

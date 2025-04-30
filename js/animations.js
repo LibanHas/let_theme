@@ -131,4 +131,58 @@ document.addEventListener('DOMContentLoaded', () => {
 
     splitTargets.forEach(el => observer.observe(el));
   }
+
+  // ==============================
+  // Generic [data-anim] in-view trigger
+  // ==============================
+  const dataAnimEls = document.querySelectorAll('[data-anim]');
+
+  if (dataAnimEls.length) {
+    const animObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    dataAnimEls.forEach(el => animObserver.observe(el));
+  }
+
+  // ==============================
+// Enhanced scroll-float with drift
+// ==============================
+const scrollFloatElements = document.querySelectorAll('.scroll-float');
+const floatState = [];
+
+scrollFloatElements.forEach(el => {
+  floatState.push({
+    el,
+    currentY: 0,
+    targetY: 0,
+    speed: parseFloat(el.dataset.speed) || 0.1,
+  });
+});
+
+function animateScrollFloat() {
+  const scrollY = window.scrollY;
+  const windowHeight = window.innerHeight;
+
+  floatState.forEach(obj => {
+    const rect = obj.el.getBoundingClientRect();
+    const centerOffset = (rect.top + rect.height / 2) - (windowHeight / 2);
+    obj.targetY = centerOffset * obj.speed;
+
+    // Drift easing: closer to 0.1 = slower, more "lag"
+    obj.currentY += (obj.targetY - obj.currentY) * 0.08;
+
+    obj.el.style.transform = `translateY(${obj.currentY}px)`;
+  });
+
+  requestAnimationFrame(animateScrollFloat);
+}
+
+requestAnimationFrame(animateScrollFloat);
+
 });

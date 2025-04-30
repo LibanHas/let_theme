@@ -30,7 +30,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                             </p>
                             </div>
                             <div class="col-md-6 about-hero-image">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/about-hero.jpg" alt="LET Lab team" class="img-fluid rounded-3">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/about-hero.png" alt="LET Lab team" class="img-fluid rounded-3">
                             </div>
                         </div>
                     </section>
@@ -226,49 +226,134 @@ $container = get_theme_mod( 'understrap_container_type' );
                         </section>
 
                         <section class="voices-section">
-                            <div class="container">
-                                <h2 class="section-title">学生の声</h2>
-                                <p class="section-intro">
-                                LETラボでの研究生活はどんな感じ？<br>
-                                世界中から集まったメンバーとともに、アイデアを共有し、課題を一緒に解決しながら、テクノロジーが学びをどう深められるかを探究しています。<br>
-                                ここでは、2名のラボメンバーの声をご紹介します。
-                                </p>
+                        <div class="container">
+                            <h2 class="section-title">学生の声</h2>
+                            <p class="section-intro">
+                            LETラボでの研究生活はどんな感じ？<br>
+                            世界中から集まったメンバーとともに、アイデアを共有し、課題を一緒に解決しながら、テクノロジーが学びをどう深められるかを探究しています。<br>
+                            ここでは、2名のラボメンバーの声をご紹介します。
+                            </p>
 
-                                <!-- Voice 1 -->
-                                <div class="row align-items-center voice-block mb-5">
-                                <div class="col-md-6 text-center">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/images/student_date.jpg" alt="伊達 初音" class="founder-photo img-fluid rounded-3">
-                                    <p class="founder-caption mt-3">伊達 初音（修士2年生）</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="founder-quote-box">
-                                    <span class="quote-icon">“</span>
-                                    <p class="founder-quote-text">
-                                        文化や学問的背景の異なる人々との協働を通じて、教育に対する自分の視野が広がりました。
-                                    </p>
-                                    </div>
-                                </div>
-                                </div>
+                           <!-- Voice 1 -->
+<div class="row align-items-center voice-block mb-5">
+  
+  <!-- Image scrolls UP -->
+   <div class="col-md-6 text-center">
+  <div class="scroll-float" data-speed="-0.05">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/ichidate-san-profile.jpg" alt="伊達 初音" class="founder-photo img-fluid rounded-3">
+    </div>
+    <div class="student-title">
+        <h3 class="student-name">伊達　初音</h3>
+        <p class="student-role">修士2年生</p>
+    </div>
 
-                                <!-- Voice 2 -->
-                                <div class="row align-items-center voice-block mb-5 flex-md-row-reverse">
-                                <div class="col-md-6 text-center">
-                                    <img src="<?php echo get_template_directory_uri(); ?>/images/student_steve.jpg" alt="スティーブ・ウーラストン" class="founder-photo img-fluid rounded-3">
-                                    <p class="founder-caption mt-3">スティーブ・ウーラストン（博士後期課程2年）</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="founder-quote-box">
-                                    <span class="quote-icon">“</span>
-                                    <p class="founder-quote-text">
-                                        LETラボでは、実際の教育現場と結びついた研究に取り組むことができ、自分の研究が社会とつながっているという実感を持てます。
-                                    </p>
-                                    </div>
-                                </div>
-                                </div>
-                                </div>
-                            </section>
+  </div>
+
+  <!-- Quote scrolls DOWN -->
+  <div class="col-md-6 scroll-float" data-speed="0.05">
+    <div class="founder-quote-box">
+      <span class="quote-icon">“</span>
+      <p class="founder-quote-text">
+        文化や学問的背景の異なる人々との協働を通じて、教育に対する自分の視野が広がりました。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Centered Intro Paragraph -->
+<div class="row justify-content-center mb-300">
+  <div class="col-md-10 text-center">
+  <p class="founder-intro mt-3">
+    <strong>緒方研究室での研究生活は、どのような経験ですか？</strong><br>
+毎週のゼミでは、自分の研究だけでなく他のメンバーの発表を通じて多様な視点を得られます。和気あいあいとした雰囲気の中でも、意見交換は非常に活発で、常に刺激を受けています。
+<br>
+<strong>国際的な研究環境で学ぶことで、どのような影響を受けましたか？</strong><br>
+英語で議論する機会が多く、自分の考えを明確に伝える力が鍛えられました。また、異なる教育文化に触れることで、自分の研究テーマにも新しい観点が加わりました。
+<br>
+<strong>教育工学という分野において、緒方研究室だからこそできた学びは何ですか？</strong><br>
+実際の授業現場とつながっているところが大きいです。自分の研究がどのように教育に役立つのかを常に意識しながら進めることができました。
+    </p>
+  </div>
+</div>
 
 
+                          <!-- Voice 2 -->
+<div class="row align-items-center voice-block mb-5 flex-md-row-reverse">
+
+<!-- Image scrolls UP -->
+<div class="col-md-6 text-center">
+  <div class="scroll-float" data-speed="-0.05">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/steve-portrait.jpg" alt="スティーブ・ウーラストン" class="founder-photo img-fluid rounded-3">
+  </div>
+  <div class="student-title">
+      <h3 class="student-name">スティーブ・ウーラストン</h3>
+      <p class="student-role">博士課程2年</p>
+  </div>
+</div>
+
+  <!-- Quote -->
+  <div class="col-md-6 scroll-float" data-speed="0.05">
+    <div class="founder-quote-box">
+      <span class="quote-icon">“</span>
+      <p class="founder-quote-text">
+        LETラボでは、実際の教育現場と結びついた研究に取り組むことができ、自分の研究が社会とつながっているという実感を持てます。
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Centered Intro Paragraph -->
+<div class="row justify-content-center mb-300">
+  <div class="col-md-10 text-center">
+  <p class="founder-intro mt-3">
+    <strong>緒方研究室での研究生活は、どのような経験ですか？</strong><br>
+毎週のゼミでは、自分の研究だけでなく他のメンバーの発表を通じて多様な視点を得られます。和気あいあいとした雰囲気の中でも、意見交換は非常に活発で、常に刺激を受けています。
+<br>
+<strong>国際的な研究環境で学ぶことで、どのような影響を受けましたか？</strong><br>
+英語で議論する機会が多く、自分の考えを明確に伝える力が鍛えられました。また、異なる教育文化に触れることで、自分の研究テーマにも新しい観点が加わりました。
+<br>
+<strong>教育工学という分野において、緒方研究室だからこそできた学びは何ですか？</strong><br>
+実際の授業現場とつながっているところが大きいです。自分の研究がどのように教育に役立つのかを常に意識しながら進めることができました。
+    </p>
+  </div>
+  <div class="text-center mt-5">
+  <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+    <span>メンバー紹介を見る</span>
+  </a>
+</div>
+</div>
+
+                        </section>
+
+
+                        <section class="cta-section">
+  <div class="container cta-wrapper">
+    
+    <div class="cta-image">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/logpalette-mascot.png" alt="Mascot Robot">
+    </div>
+
+    <div class="cta-content">
+      <h2 class="cta-title">メンバー募集に興味がありますか？</h2>
+      <p class="cta-text">
+        私たちは、教育技術の発展に情熱を注ぐ研究者や学生の参加をいつでも歓迎しています。<br>
+        私たちのミッションに共感してくださる方はもちろん、「ちょっと見てみたい」という方も大歓迎です。<br>
+        ぜひお気軽にご連絡ください！
+      </p>
+
+      <div class="cta-buttons">
+      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>訪問予約をする</span>
+      </a>
+      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <span>チームに参加する</span>
+      </a>
+
+      </div>
+    </div>
+
+  </div>
+</section>
     
 
 
