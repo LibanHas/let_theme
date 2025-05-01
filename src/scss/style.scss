@@ -764,7 +764,7 @@ body {
 .about-hero {
   padding: 100px 0;
   .about-hero-title {
-    font-size: 60px;
+    font-size: 2.8rem;
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 25px;
@@ -785,7 +785,7 @@ body {
 }
 
 .timeline-section{
-  margin-top: 30rem;
+
 }
 .timeline-wrapper {
   position: relative;
@@ -858,13 +858,13 @@ body {
 
 
 .tagline-anim-wrapper {
-  position: relative;
-  width: fit-content;
-  margin: 30rem auto 0 auto;
-  overflow: visible; // ✅ allow characters to animate into view
-  height: auto;      // ✅ allow full text height
+  margin-top:10rem;
+  margin-bottom:5rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: visible;
 }
-
 
 .tagline-split {
   position: relative;
@@ -875,6 +875,7 @@ body {
   color: #222;
   height: 1em;
 }
+
 
 .split-char {
   display: inline-block;
