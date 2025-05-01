@@ -1048,7 +1048,7 @@ body {
     .student-name {
       font-size: 2rem;
       font-weight: 700;
-      color: #b4ada0; // soft gray
+      color: #7c4a21; // soft gray
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
     }
@@ -1056,7 +1056,7 @@ body {
     .student-role {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #b4ada0;
+      color: #7c4a21;
     }
   }
 
@@ -1086,9 +1086,40 @@ body {
     line-height: 1.8;
     white-space: pre-line;
   }
+  .voice-qa-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
   
-
-
+    .qa-block {
+      max-width: 900px;
+      width: 100%;
+      padding: 0 1.5rem;
+      text-align: left;
+  
+      .qa-item {
+        margin-bottom: 3rem;
+  
+        p {
+          line-height: 1.8;
+          margin-bottom: 1rem;
+        }
+  
+        .question {
+          font-weight: bold;
+          font-size: 1.15rem;
+          margin-bottom: 0.5rem;
+          color: #333;
+        }
+      }
+    }
+  }
+  
+  .founder-subtitle {
+    color: #666; // Improved contrast for better readability
+  }
+  
   [data-anim="scroll-slide"],
   [data-anim="fade-in-slide-up"] {
     opacity: 0;
@@ -1811,6 +1842,123 @@ body {
         color: #000;
         opacity: 1;
         font-weight: 700;
+      }
+      
+      
+      // Publications page
+      body.page-publications-scrollfix {
+        overflow-y: scroll;
+      }
+      
+      .page-hero-publications {
+        position: relative;
+        padding: 100px 0 80px;
+        margin-bottom: 40px;
+        overflow: hidden;
+      }
+      
+      .page-hero-publications::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: 
+          linear-gradient(rgba(253, 246, 236, 0.88), rgba(253, 246, 236, 0.88)),
+          url('../images/members-hero-banner.jpeg') center/cover no-repeat;
+      
+        -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+        mask-image: linear-gradient(to right, transparent, black 40%);
+        -webkit-mask-size: 100% 100%;
+        mask-size: 100% 100%;
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+      
+        z-index: 0;
+      }
+      
+      .page-hero-publications .hero-content {
+        position: relative;
+        z-index: 1; /* Pulls text above the masked background */
+      }
+      
+      .hero-title {
+        font-size: 52px;
+        font-weight: 700;
+        color: #1f1f1f; /* Clean dark text */
+        text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+      }
+      
+      .accordion-section {
+        max-width: 1000px; // or 1100px, adjust to taste
+        width: 100%;
+        margin: 0 auto;
+        padding: 2rem 1rem; // optional: adds breathing room
+      }
+      
+      
+      .accordion-item {
+        background-color: transparent; /* parent is transparent */
+        border-radius: 20px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+      }
+      
+      
+      .accordion-header {
+        background-color: #ec7823;
+        color: white;
+        font-weight: 300;
+        font-family: 'Ubuntu Sans', sans-serif;
+        padding: 1rem 1.5rem;
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+      }
+      
+      
+      .accordion-header:focus {
+        outline: none;
+      }
+      
+      .accordion-icon {
+        font-size: 1.5rem;
+      }
+      
+      .accordion-panel {
+        background-color: white;
+        color: #333;
+        padding: 0 1.5rem;
+        height: 0;
+        overflow: hidden;
+        transition: height 0.4s ease, padding 0.4s ease;
+        border-top: 2px solid #ec7823;
+        border-radius: 0 0 20px 20px;
+      }
+      .accordion-panel.open {
+        padding: 1rem 1.5rem;
+      }
+      
+      
+      .accordion-panel.open {
+        /* height will be controlled by JS */
+        padding: 1rem 1.5rem;
+      }
+      
+      
+      
+      .accordion-panel ol {
+        margin-left: 1rem; 
+        padding-left: 1.2rem;
+        line-height: 1.6;
+        max-width: 65ch;
+        li {
+            margin-bottom: 1rem;
+        }
       }
       
       

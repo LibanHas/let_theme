@@ -2,7 +2,7 @@
 /**
  * UnderStrap functions and definitions
  *
- * @package Understrap
+ * @package UnderStrap
  */
 
 // Exit if accessed directly.
@@ -13,20 +13,20 @@ $understrap_inc_dir = 'inc';
 
 // Array of files to include.
 $understrap_includes = array(
-	'/theme-settings.php',                  // Initialize theme default settings.
-	'/setup.php',                           // Theme setup and custom theme supports.
-	'/widgets.php',                         // Register widget area.
-	'/enqueue.php',                         // Enqueue scripts and styles.
-	'/template-tags.php',                   // Custom template tags for this theme.
-	'/pagination.php',                      // Custom pagination for this theme.
-	'/hooks.php',                           // Custom hooks.
-	'/extras.php',                          // Custom functions that act independently of the theme templates.
-	'/customizer.php',                      // Customizer additions.
-	'/custom-comments.php',                 // Custom Comments file.
-	'/class-wp-bootstrap-navwalker.php',    // Load custom WordPress nav walker.
-	'/editor.php',                          // Load Editor functions.
-	'/block-editor.php',                    // Load Block Editor functions.
-	'/deprecated.php',                      // Load deprecated functions.
+	'/theme-settings.php',
+	'/setup.php',
+	'/widgets.php',
+	'/enqueue.php',
+	'/template-tags.php',
+	'/pagination.php',
+	'/hooks.php',
+	'/extras.php',
+	'/customizer.php',
+	'/custom-comments.php',
+	'/class-wp-bootstrap-navwalker.php',
+	'/editor.php',
+	'/block-editor.php',
+	'/deprecated.php',
 );
 
 // Load WooCommerce functions if WooCommerce is activated.
@@ -60,15 +60,16 @@ function enqueue_custom_theme_scripts() {
 	// Tagline animation script
 	wp_enqueue_script('tagline-test', get_template_directory_uri() . '/js/tagline-test.js', array(), null, true);
 
-	// ✅ Admissions steps interaction
+	// Admissions steps interaction
 	wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
+
+	// Accordion interaction script
+	wp_enqueue_script('accordion', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
 
 	// Swiper styles and scripts
 	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
 	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 }
-
-
 add_action('wp_enqueue_scripts', 'enqueue_custom_theme_scripts');
 
 /**
@@ -123,28 +124,25 @@ function register_member_group_taxonomy() {
 add_action('init', 'register_member_group_taxonomy');
 
 function enqueue_aos_scripts() {
-    // AOS CSS
-    wp_enqueue_style( 'aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4' );
+	wp_enqueue_style('aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
+	wp_enqueue_script('aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
 
-    // AOS JS
-    wp_enqueue_script( 'aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true );
-
-    // Initialize AOS
 	wp_add_inline_script('aos-script', 'AOS.init({
 		duration: 800,
 		easing: "ease-out-back",
 		once: true
-	  });');
-	  
+	});');
 }
+add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
 
-register_nav_menus(
-    array(
-        'primary' => __('Primary Menu', 'understrap'),
-    )
-);
+register_nav_menus(array(
+	'primary' => __('Primary Menu', 'understrap'),
+));
 
-add_action( 'wp_enqueue_scripts', 'enqueue_aos_scripts' );
-
-
-
+function add_publications_body_class( $classes ) {
+    if ( is_page_template( 'page-templates/page-publications.php' ) ) {
+        $classes[] = 'page-publications-scrollfix';
+    }
+    return $classes;
+}
+add_filter( 'body_class', 'add_publications_body_class' );

@@ -43,6 +43,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php // Closing div#page from header.php. ?>
 </div><!-- #page -->
+<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/accordion.js"></script>
 
 <?php wp_footer(); ?>
 
