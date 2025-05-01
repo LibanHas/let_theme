@@ -35,46 +35,40 @@ $container = get_theme_mod( 'understrap_container_type' );
 </h1> 
 
 
-<section class="about-let">
-  <div data-anim-trigger="">
-    <div class="anim-scroll-background">
-      <div class="anim-scroll-background__img-wrapper">
-	  <div class="image-snippet image-snippet__fill image-snippet__fill--desktop image-snippet__fill--tablet image-snippet__fill--mobile"
-     style="--aspect-ratio: 1440 / 1100; --aspect-ratio-tablet: 1440 / 1100; --aspect-ratio-mobile: 1440 / 1100;">
-  
-  <img class="image-snippet__img image-snippet__img--fill image-snippet__img--desktop"
-       src="<?php echo get_template_directory_uri(); ?>/images/lab-image.jpeg"
-       alt="LET Lab background" loading="lazy">
-</div>
-
+  <section class="about-let section-spacing">
+    <div data-anim-trigger="">
+      <div class="anim-scroll-background">
+        <div class="anim-scroll-background__img-wrapper">
+	        <div class="image-snippet image-snippet__fill image-snippet__fill--desktop image-snippet__fill--tablet image-snippet__fill--mobile"
+                style="--aspect-ratio: 1440 / 1100; --aspect-ratio-tablet: 1440 / 1100; --aspect-ratio-mobile: 1440 / 1100;">
+              <img class="image-snippet__img image-snippet__img--fill image-snippet__img--desktop"
+              src="<?php echo get_template_directory_uri(); ?>/images/center-image.jpg"
+              alt="LET Lab background" loading="lazy">
+          </div>
       </div>
-
       <div class="about-let-inner">
       <div class="quote-heading">
-  <div class="split-line">LET研究室では、より良い学びを支える</div>
-  <div class="split-line">研究をしています。現場と連携し、教育</div>
-  <div class="split-line">データとテクノロジーを活用したツール</div>
-  <div class="split-line">を開発しています。</div>
-</div>
-
-
-
-        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline">
-          <span>LETについてもっと知る</span>
-        </a>
+      <div class="split-line">緒方研究室では、より良い学びを支える</div>
+      <div class="split-line">研究をしています。現場と連携し、教育</div>
+      <div class="split-line">データとテクノロジーを活用したツール</div>
+      <div class="split-line">を開発しています。</div>
       </div>
-    </div>
-  </div>
-</section>
+              <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline">
+              <span>LETについてもっと知る</span>
+            </a>
+          </div>
+        </div>
+      </div>
+  </section>
 
 
 <!-- 🔹 Learning-centered section -->
-<section class="learning-centered-section mb-25">
+<section class="learning-centered-section section-spacing">
   <div class="container">
     <div class="row align-items-center">
       
       <!-- Text block floats upward with sticky+pause -->
-<div class="col-md-5">
+  <div class="col-md-5">
   <div class="sticky-section">
     <div class="sticky-content">
       <h2 class="section-heading">学習者中心</h2>
@@ -107,7 +101,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 <!-- 🔹 Data-driven section -->
-<section class="learning-centered-section">
+<section class="learning-centered-section section-spacing">
   <div class="container">
     <div class="row align-items-center justify-content-around">
 
@@ -119,7 +113,7 @@ $container = get_theme_mod( 'understrap_container_type' );
   src="<?php echo get_template_directory_uri(); ?>/images/graph.png"
   alt="データ駆動型イラスト"
   class="img-fluid scroll-float fade-in-on-scroll"
-  data-speed="-0.2">
+  data-speed="-0.05">
 
           </div>
         </div>
@@ -130,7 +124,7 @@ $container = get_theme_mod( 'understrap_container_type' );
   <div class="float-wrapper sticky-section">
     <div class="sticky-content">
       <div class="text-content-wrapper scroll-float fade-in-on-scroll"
-           data-speed="-0.2">
+           data-speed="-0.05">
         <h2 class="section-heading">データ駆動型</h2>
         <p class="section-text">
           教育ビッグデータとラーニングアナリティクスを活用することで、個別最適化されたデータ駆動型の学習体験を実現しています。
@@ -146,7 +140,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 
 
- <section class="video-intro py-4">
+ <section class="video-intro section-spacing py-4">
   <div class="container text-center">
     <h2 class="section-heading mb-3">LEAFシステムの全体像</h2>
     <p class="section-text">
@@ -155,7 +149,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     </p>
   </div>
 </section>
-<section class="video-section py-5">
+<section class="video-section section-spacing">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -180,7 +174,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section> 
 
 
-<section class="our-tools-section">
+<section class="our-tools-section section-spacing">
   <div class="container">
   <h2 class="section-title">Our Tools</h2>
   <h3 class="section-title section-title--sub">ツール</h3>
@@ -226,7 +220,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 
 
-<section class="news-section py-5">
+<section class="news-section section-spacing">
   <div class="container">
     <div class="news-header">
       <h2 class="section-title">News</h2>
@@ -311,7 +305,7 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </section>
 
-<section class="projects-section">
+<section class="projects-section section-spacing">
   <div class="container">
     <h2 class="section-title">Projects</h2>
     <h3 class="section-title section-title--sub">プロジェクト</h3>
@@ -335,7 +329,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 
-<section class="members-section">
+<section class="members-section section-spacing">
   <div class="container members-wrapper">
     <div class="members-content">
       <h2 class="section-title">Members</h2>

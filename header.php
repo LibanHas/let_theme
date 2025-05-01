@@ -32,16 +32,22 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 	<!-- ******************* The Navbar Area ******************* -->
 	<header id="wrapper-navbar">
 		<!-- Logo -->
-		 <div class="menubar">
-		<div class="logo-container">
-			<a href="<?php echo home_url(); ?>">
-				<img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
-			</a>
+		<div class="menubar">
+			<div class="logo-container">
+				<a href="<?php echo home_url(); ?>">
+					<img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
+				</a>
+				<h2 class="lab-name">
+				Learning & Educational Technologies Research Unit
+			</h2>
+			<div class="kyodai-logo-container">
+    <a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
+    </a>
+  </div>
+			</div>	
 		</div>
-					<h2 class="lab-name">
-    				Learning & Educational Technologies Research Unit
-					</h2>
-					</div>
+
 		<!-- Hamburger Menu -->
 		<div class="hamburger-menu">
 			<button id="hamburger-toggle" class="hamburger-icon">
@@ -53,9 +59,26 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
 		<!-- Side Menu (hidden by default) -->
 		<div id="side-menu" class="side-menu">
-			<nav class="menu-nav">
-				<!-- <?php wp_nav_menu(array('theme_location' => 'primary')); ?> -->
-			</nav>
+		<?php
+$locations = get_nav_menu_locations();
+$menu_id = $locations['primary'] ?? null;
+$menu = $menu_id ? wp_get_nav_menu_items($menu_id) : [];
+
+if ($menu) :
+?>
+  <div class="page-menu">
+  <?php foreach ($menu as $menu_item): ?>
+    <a href="<?php echo esc_url($menu_item->url); ?>"
+       class="page-menu__link<?php echo ($menu_item->object_id == get_queried_object_id()) ? ' page-menu__link--current' : ''; ?>">
+      <?php echo esc_html($menu_item->title); ?>
+    </a>
+  <?php endforeach; ?>
+</div>
+  </div>
+<?php else: ?>
+  <p style="color: red; padding: 1rem;">⚠️ Menu not found or empty.</p>
+<?php endif; ?>
+
 		</div>
 
 	</header><!-- #wrapper-navbar -->

@@ -1,6 +1,24 @@
 console.log('animations.js started');
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // =================================
+  // menubar underline stretch on scroll
+  // =================================
+  const menubar = document.querySelector('.menubar');
+
+  function handleMenubarScroll() {
+    if (window.scrollY > 50) {
+      menubar.classList.add('scrolled');
+    } else {
+      menubar.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleMenubarScroll);
+  handleMenubarScroll(); // run on load too
+
+  
   // ==============================
   // scroll-float and fade-in logic
   // ==============================

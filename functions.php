@@ -62,6 +62,10 @@ function enqueue_custom_theme_scripts() {
 
 	// ✅ Admissions steps interaction
 	wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
+
+	// Swiper styles and scripts
+	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 }
 
 
@@ -134,7 +138,13 @@ function enqueue_aos_scripts() {
 	  
 }
 
+register_nav_menus(
+    array(
+        'primary' => __('Primary Menu', 'understrap'),
+    )
+);
 
 add_action( 'wp_enqueue_scripts', 'enqueue_aos_scripts' );
+
 
 
