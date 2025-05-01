@@ -244,7 +244,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     <img src="<?php echo get_template_directory_uri(); ?>/images/ichidate-san-profile.jpg" alt="伊達 初音" class="founder-photo img-fluid rounded-3">
     </div>
     <div class="student-title">
-        <h3 class="student-name">伊達　初音</h3>
+        <h3 class="student-name">一伊建　初音</h3>
         <p class="student-role">修士2年生</p>
     </div>
 
@@ -263,19 +263,24 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <!-- Centered Intro Paragraph -->
 <div class="row justify-content-center mb-300">
-  <div class="col-md-10 text-center">
-  <p class="founder-intro mt-3">
-    <strong>緒方研究室での研究生活は、どのような経験ですか？</strong><br>
-毎週のゼミでは、自分の研究だけでなく他のメンバーの発表を通じて多様な視点を得られます。和気あいあいとした雰囲気の中でも、意見交換は非常に活発で、常に刺激を受けています。
-<br>
-<strong>国際的な研究環境で学ぶことで、どのような影響を受けましたか？</strong><br>
-英語で議論する機会が多く、自分の考えを明確に伝える力が鍛えられました。また、異なる教育文化に触れることで、自分の研究テーマにも新しい観点が加わりました。
-<br>
-<strong>教育工学という分野において、緒方研究室だからこそできた学びは何ですか？</strong><br>
-実際の授業現場とつながっているところが大きいです。自分の研究がどのように教育に役立つのかを常に意識しながら進めることができました。
-    </p>
+  <div class="col-md-10 text-left qa-block">
+    <div class="qa-item">
+      <p class="question">緒方研究室での研究生活は、どのような経験ですか？</p>
+      <p>研究室では、ゼミ等の発表やディスカッションを通じて、自分の研究を深めたり他の人の視点を取り入れたりする機会が多くあります。先生方や先輩方にも気軽に質問や相談ができる環境で、研究室が一体となって、熱意を持って研究に取り組んでいると感じます。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="question">国際的な研究環境で学ぶことで、どのような影響を受けましたか？</p>
+      <p>はじめは、学生を専業として進学した日本人学生が少数派であることにとても驚きました。さまざまなバックグラウンドを持つ方と話す中で、「授業での参加の仕方」や「学びへの姿勢」に国や文化の違いがあることに気づき、非常に刺激を受けています。英語・日本語の両方でのコミュニケーションが求められる環境の中で、英語は「学ぶべきもの」から「使うための道具」へと意識が変わりました。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="question">教育工学という分野において、緒方研究室だからこそできた学びは何ですか？</p>
+      <p>緒方研究室では、研究だけでなく「人との関わり方」も大切な学びの一つだと実感しています。実際の教育現場で日常的に使われるシステムを研究・開発・実証を行うので、さまざまな立場の方と関わる機会があります。開発者、現場の先生方、生徒、それぞれのニーズや制約を理解し、調整しながら研究を進めることが求められます。こうした経験を通して、単なる技術開発にとどまらず、実社会に根ざした研究のあり方を学んでいます。</p>
+    </div>
   </div>
 </div>
+
 
 
                           <!-- Voice 2 -->
