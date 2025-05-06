@@ -1231,8 +1231,66 @@ body {
 
 
 
+// Research page
 
+h1, h2 {
+  font-family: 'Playfair Display', serif;
+  color: #2E2E2E;
+}
 
+.hero {
+  padding: 100px 20px 60px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-size: 2.8rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+}
+
+.intro {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.image img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+ul {
+  padding-left: 1.2em;
+  list-style: none;
+}
+
+ul li::before {
+  content: "• ";
+  color: #CAB196;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 
 // Members page
 
