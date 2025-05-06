@@ -8,9 +8,11 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 
-<div class="idea-svg-container">
+<!--<div class="idea-svg-container">
   
- 
+
+
+  
   <svg class="idea-lines" width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
     
     <path d="M952.5,180 L820,40 L0,0" class="idea-line delay-1 duration-very-slow" />
@@ -25,14 +27,29 @@ $container = get_theme_mod( 'understrap_container_type' );
     <path d="M952.5,180 L1005,120 L1005,0 L1920,0" class="idea-line delay-9 duration-med" />
     <path d="M952.5,180 L800,180 L800,0 L0,0" class="idea-line delay-10 duration-fast" />
   </svg>
-</div> 
+</div>  -->
 
 
 <!-- 🔹 Full-width tagline (outside container) -->
- <h1 class="tagline">
-    未来の教育をデザインする<br>
-    LETでの研究を始めよう
-</h1> 
+<section class="hero-section">
+  <div class="hero-container">
+    
+    <!-- Image Left -->
+    <div class="hero-image">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/home-hero-image.png" alt="Hero Image">
+    </div>
+
+    <!-- Text Right -->
+    <div class="hero-text">
+      <h1 class="tagline">
+        エビデンスに基づく<br>
+        確かな教育を求めて
+      </h1>
+    </div>
+
+  </div>
+</section>
+
 
 
   <section class="about-let section-spacing">
@@ -191,7 +208,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--secondary-outline btn--secondary-outline-dark">
           <span>Bookrollの詳細へ</span>
         </a>
       </div>
@@ -210,9 +227,9 @@ $container = get_theme_mod( 'understrap_container_type' );
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
-          <span>LogPaletteの詳細へ</span>
-        </a>
+      <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--secondary-outline btn--secondary-outline-dark">
+    <span>LogPaletteの詳細へ</span>
+    </a>
       </div>
     </div>
     <hr class="tool-divider">
@@ -317,10 +334,18 @@ $container = get_theme_mod( 'understrap_container_type' );
         </p>
       </div>
       <div class="projects-grid">
-        <div class="project-card"></div>
-        <div class="project-card"></div>
-        <div class="project-card"></div>
-        <div class="project-card"></div>
+        <div class="project-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/NEDO-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
+        </div>
+        <div class="project-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/big-data-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
+        </div>
+        <div class="project-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/digital-haishin-project-image.jpg" alt="LET Lab team" class="img-fluid rounded-3">
+        </div>
+        <div class="project-card">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/ebpm-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
+        </div>
       </div>
     </div>
   </div>
@@ -339,12 +364,14 @@ $container = get_theme_mod( 'understrap_container_type' );
         教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
       </p>
       <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
-        <span>See All Members</span>
+        <span>メンバー紹介を見る</span>
       </a>
     </div>
 
     <div class="members-image">
-      <div class="image-placeholder"></div>
+      <div class="image-placeholder">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/members-image.jpg" alt="Mascot Robot">
+      </div>
     </div>
   </div>
 </section>

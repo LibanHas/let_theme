@@ -186,12 +186,14 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="step-left" style="--step-color: ${color}">
               <div class="step-label">STEP</div>
               <div class="step-number">${step.number}</div>
-              <div class="step-caret"></div>
+              ${!isLast ? '<div class="step-caret"></div>' : ''}
             </div>
             <div class="step-right">
               <div class="step-meta">📌 ${step.period}</div>
               <div class="step-title-icon">
-                <img src="/wp-content/themes/let_theme/images/icons/${step.icon}" alt="" class="step-icon">
+                <div class="step-icon-wrapper">
+                <img src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/${step.icon}" alt="" class="step-icon">
+                </div>
                 <h4>${step.title}</h4>
               </div>
               <p>${step.description}</p>

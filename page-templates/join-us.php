@@ -16,23 +16,27 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="wrapper" id="join-us-wrapper">
     <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
         <main class="site-main" id="main">
-        <section class="join-hero">
-            <div class="container">
-                <h1 class="join-title">一緒に研究しませんか？</h1>
-                <div class="join-description">
-                <p>
-                    緒方研究室（LET Lab）は、教育と学習の未来を切り拓く情報技術を研究する京都大学の研究室です。<br>
-                    国内外から多様な背景を持つ学生や研究者が集まり、最先端の教育データサイエンスや教育テクノロジーの研究に日々取り組んでいます。
-                </p>
-                <p>
-                    LET Labは、意欲的で創造力豊かな大学院生（修士課程・博士課程）を常に募集しています。<br>
-                    あなたのアイデアと好奇心を、実際の教育現場で役立つ研究に生かしませんか？
-                </p>
-                </div>
-            </div>
-        </section>
+        <section class="join-hero content-block">
+  <div class="container">
+    <div class="section-divider"></div>
 
-        <section class="join-profile">
+    <h1 class="join-title">一緒に研究しませんか？</h1>
+
+    <div class="join-description">
+      <p class="split-line">
+        緒方研究室（LET Lab）は、教育と学習の未来を切り拓く情報技術を研究する京都大学の研究室です。<br>
+        国内外から多様な背景を持つ学生や研究者が集まり、最先端の教育データサイエンスや教育テクノロジーの研究に日々取り組んでいます。
+      </p>
+      <p class="split-line">
+        LET Labは、意欲的で創造力豊かな大学院生（修士課程・博士課程）を常に募集しています。<br>
+        あなたのアイデアと好奇心を、実際の教育現場で役立つ研究に生かしませんか？
+      </p>
+    </div>
+  </div>
+</section>
+
+
+        <section class="join-profile content-block">
             <div class="container">
                 <h2 class="section-heading">求める学生像</h2>
                 <p class="section-intro">
@@ -67,7 +71,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 </p>
             </div>
         </section>
-        <section class="skills-section">
+        <section class="skills-section content-block">
         <div class="container">
             <h2 class="section-heading">緒方研究室で学べること</h2>
             <p class="section-intro">
@@ -143,7 +147,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         </div>
 </section>
-<section class="application-prep-section">
+<section class="application-prep-section content-block">
             <div class="container">
                 <h2 class="section-title">応募準備の方法</h2>
                 <p class="intro">
@@ -172,7 +176,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             </div>
         </section>
 
-        <section class="admission-flow">
+        <section class="admission-flow content-block">
   <div class="selectors">
     <select id="applicantType">
       <option value="master">修士</option>
@@ -191,7 +195,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </section>
 <section class="scroll-hero">
   <div class="scroll-hero__bg-wrapper">
-  <img src="http://localhost/let/www/wp-content/themes/let_theme/images/kyoto-bg.jpeg" class="scroll-hero__bg" data-anim="scroll-background" data-anim-distance="200">
+  <img src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/kyoto.jpeg" class="scroll-hero__bg" data-anim="scroll-background" data-anim-distance="200">
 
   </div>
   <div class="scroll-hero__content">

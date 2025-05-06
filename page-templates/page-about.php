@@ -144,7 +144,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
                     <!-- Main Content Section -->
-                    <section class="about-content section-spacing">
+                    <section class="about-content section-spacing content-block">
                         <?php
                         while ( have_posts() ) :
                             the_post();
@@ -153,7 +153,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                         ?>
                     </section>
 
-                    <section class="approach-section container">
+                    <section class="approach-section container content-block">
                         <h2 class="section-title">私たちのアプローチ</h2>
                         <p class="section-intro">
                         緒方研究室では、「見えなかった学び」を可視化することで、教育を直感や経験に頼るものから、データとエビデンスに基づくものへと転換することを目指しています。従来、学習者の理解度やつまずきは教師の勘に委ねられてきました。しかし私たちは、テクノロジーとラーニングアナリティクスを活用することで、学習の過程そのものを記録・分析し、目に見える形で捉え直すことを可能にしています。</p>
@@ -161,7 +161,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                         <p class="section-intro">このようなアプローチは、次の4つのステップからなる開発サイクルで支えられています。まず、教育現場の課題に応じた設計・開発を行い、それを授業に導入。そこで得られる学習ログや行動データを収集・分析し、見えてきた課題や成果をもとに振り返りと改善を重ねていきます。この循環を繰り返すことで、教育の質を継続的に高め、学習者一人ひとりに最適な学びの支援を届けることが可能になります。</p>
 
 
-                        <section class="founder-quote-section container">
+                        <section class="founder-quote-section container content-block">
                             <div class="row">
                                 
                                 <!-- Left: Image -->
@@ -226,7 +226,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                         </div>
                         </section>
 
-                        <section class="voices-section">
+                        <section class="voices-section content-block">
                         <div class="container">
                             <h2 class="section-title">学生の声</h2>
                             <p class="section-intro">
@@ -292,7 +292,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     <img src="<?php echo get_template_directory_uri(); ?>/images/steve-portrait.jpg" alt="スティーブ・ウーラストン" class="founder-photo img-fluid rounded-3">
   </div>
   <div class="student-title">
-      <h3 class="student-name">スティーブ・ウーラストン</h3>
+      <h3 class="student-name">スティーブ・ウラストン</h3>
       <p class="student-role">博士課程2年</p>
   </div>
 </div>
@@ -308,33 +308,32 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </div>
 
+
 <!-- Centered Intro Paragraph -->
 <div class="row justify-content-center mb-300">
-  <div class="col-md-10 text-center">
-  <p class="founder-intro mt-3">
-    <strong>緒方研究室での研究生活は、どのような経験ですか？</strong><br>
-毎週のゼミでは、自分の研究だけでなく他のメンバーの発表を通じて多様な視点を得られます。和気あいあいとした雰囲気の中でも、意見交換は非常に活発で、常に刺激を受けています。
-<br>
-<strong>国際的な研究環境で学ぶことで、どのような影響を受けましたか？</strong><br>
-英語で議論する機会が多く、自分の考えを明確に伝える力が鍛えられました。また、異なる教育文化に触れることで、自分の研究テーマにも新しい観点が加わりました。
-<br>
-<strong>教育工学という分野において、緒方研究室だからこそできた学びは何ですか？</strong><br>
-実際の授業現場とつながっているところが大きいです。自分の研究がどのように教育に役立つのかを常に意識しながら進めることができました。
-    </p>
+  <div class="col-md-10 text-left qa-block">
+    <div class="qa-item">
+      <p class="question">緒方研究室に入ろうと思ったきっかけは何ですか？</p>
+      <p>ニュージーランドで教育工学を学んでいたときに、学習ログを活用した研究に興味を持ちました。その中で、BookRollやLogPaletteなどのツールを活用して教育現場で実証的な研究を行っている緒方研究室を知り、「ここでなら自分の研究を深められる」と思って志望しました。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="question">ここで研究目標を達成するために、どのようなサポートを受けましたか？</p>
+      <p>先生方からの丁寧な指導に加えて、週ごとのゼミでフィードバックをもらえる環境がとてもありがたいです。また、同じように留学生として頑張っている仲間がいるので、精神的にも支えられています。英語・日本語の両方で情報が得られるのも大きな助けになっています。</p>
+    </div>
+
+    <div class="qa-item">
+      <p class="question">これから緒方研究室に入ろうとしている人に、どんなメッセージがありますか？</p>
+      <p>国際的な環境で、自分のペースで研究を進めたい人にはとてもおすすめの研究室です。教育現場とつながりながら実践的な研究ができるので、理論と現場を結びつけたい人には特に合っていると思います。日本語が完璧でなくても、安心して参加できる雰囲気がありますよ。</p>
+    </div>
   </div>
-  <div class="text-center mt-5">
-  <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
-    <span>メンバー紹介を見る</span>
-  </a>
-</div>
 </div>
 
                         </section>
 
 
-                        <section class="cta-section">
+  <section class="cta-section">
   <div class="container cta-wrapper">
-    
     <div class="cta-image">
       <img src="<?php echo get_template_directory_uri(); ?>/images/logpalette-mascot.png" alt="Mascot Robot">
     </div>

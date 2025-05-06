@@ -23,19 +23,20 @@ $container = get_theme_mod( 'understrap_container_type' );
   <div class="container">
     <div class="custom-footer__top">
       <h2 class="custom-footer__heading">
-        「見えなかった学び」が見える。京都から世界へ。
+	  学びの可視化から、教育の未来へ。
       </h2>
-      <div class="custom-footer__newsletter">
-        <p class="lead">研究情報を受け取る</p>
-        <p>BookRollやLogPaletteなど、教育を支える私たちの研究や学校との連携、最新の取り組みについてお知らせします。</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="メールアドレスを入力してください" required>
-          <button type="submit">
-            <span class="visually-hidden">送信</span>
-            &rarr;
-          </button>
-        </form>
-      </div>
+      <div class="custom-footer__contact">
+  <p class="lead">研究室に関心がありますか？</p>
+  <p>
+    私たちの研究やツールにご興味のある方、<br>
+    見学を希望される方、<br class="hide-on-mobile">
+    または入学・共同研究をご検討中の方は、ぜひお気軽にご連絡ください。
+  </p>
+  <a href="/contact" class="btn btn--secondary-outline btn--secondary-outline-dark">
+    <span>お問い合わせ</span>
+  </a>
+</div>
+
     </div>
     <hr class="custom-footer__divider">
     <div class="custom-footer__bottom">
