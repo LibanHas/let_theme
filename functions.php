@@ -146,3 +146,26 @@ function add_publications_body_class( $classes ) {
     return $classes;
 }
 add_filter( 'body_class', 'add_publications_body_class' );
+
+
+function register_news_post_type() {
+    register_post_type('news', array(
+        'labels' => array(
+            'name' => 'News',
+            'singular_name' => 'News Item',
+            'add_new_item' => 'Add New News Item',
+            'edit_item' => 'Edit News Item',
+            'new_item' => 'New News Item',
+            'view_item' => 'View News Item',
+            'search_items' => 'Search News',
+        ),
+        'public' => true,
+        'has_archive' => true,
+        'rewrite' => array('slug' => 'news'),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-megaphone',
+        'supports' => array('title'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_news_post_type');

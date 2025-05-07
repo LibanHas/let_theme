@@ -121,6 +121,26 @@ body {
   }
 }
 
+.tag-event {
+    background-color: #f4a261; // soft orange
+  }
+  
+  .tag-symposium {
+    background-color: #2a9d8f; // soft blue-green
+  }
+  
+  .tag-notice {
+    background-color: #90be6d; // soft green
+  }
+  
+  .tag-research {
+    background-color: #9b5de5; // soft purple
+  }
+
+  
+  // 
+
+
 .hero-section {
     background-color: #fdf8ec;
     height: 100vh; /* Full screen height */
@@ -625,21 +645,7 @@ body {
       color: #ffffff;
     }
     
-    .tag-event {
-      background-color: #f4a261; // soft orange
-    }
     
-    .tag-symposium {
-      background-color: #2a9d8f; // soft blue-green
-    }
-    
-    .tag-notice {
-      background-color: #90be6d; // soft green
-    }
-    
-    .tag-research {
-      background-color: #9b5de5; // soft purple
-    }
     
   
     .news-summary {
@@ -1229,14 +1235,140 @@ body {
   }
   
 
+// News page
+.news-section {
+    padding: 60px 0;
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+  }
+  
+  .news-section h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  .news-section .subheading {
+    font-size: 1.1rem;
+    color: #9b8d7a;
+    margin-bottom: 2em;
+  }
+  
+  .news-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .news-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 1em 0;
+    flex-wrap: wrap;
+  }
+  
+  .news-date {
+    width: 100px;
+    font-weight: bold;
+    color: #7b715f;
+  }
+  
+  .news-badge {
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    min-width: 70px;
+    text-align: center;
+  }
+  
+  /* Example color mapping */
+  .news-badge.イベント { background-color: #f59539; }
+  .news-badge.シンポジウム { background-color: #3fa99b; }
+  .news-badge.お知らせ { background-color: #a3c26f; }
+  .news-badge.研究発表 { background-color: #b283e4; }
+  
+  .news-title {
+    flex: 1;
+    min-width: 200px;
+    color: #4a3e2a;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 40px;
+  }
+  
+  .pagination .page-numbers {
+    display: inline-block;
+    margin: 0 4px;
+    padding: 8px 12px;
+    background-color: #e3deaa;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  
+  .pagination .current {
+    background-color: #954205;
+    color: #fff;
+  }
+  
 
+  // News page - single
+
+  .news-single {
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+  
+      .news-date {
+        font-size: 1rem;
+        color: #555;
+      }
+  
+      .news-tag {
+        font-size: 0.85rem;
+        padding: 0.4em 1em;
+        border-radius: 20px;
+        background-color: #ccc; // Will be overridden by class
+        color: #fff;
+      }
+    }
+  
+    .news-title {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1f1f1f;
+      margin-bottom: 2rem;
+    }
+  
+    .news-image {
+      text-align: center;
+      margin: 2rem 0;
+  
+      img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+    }
+  
+    .news-content {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+  }
+  
 
 // Research page
 
-h1, h2 {
-  font-family: 'Playfair Display', serif;
-  color: #2E2E2E;
-}
+
 
 .hero {
   padding: 100px 20px 60px;
