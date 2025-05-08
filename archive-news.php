@@ -53,7 +53,8 @@ $news_query = new WP_Query([
     <?php
     if ($news_query->have_posts()) :
       while ($news_query->have_posts()) : $news_query->the_post();
-        $date = get_field('news_date');
+      $date_raw = get_field('news_date');
+      $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';      
         $category = get_field('category');
         $description = get_field('news_description');
 

@@ -1235,9 +1235,8 @@ body {
   }
   
 
-// News page
+// News archive page
 .news-section {
-    padding: 60px 0;
     background-color: #fdf8ed;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
@@ -1320,7 +1319,24 @@ body {
 
   // News page - single
 
+
   .news-single {
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+  
+    // .section-title {
+    //   font-size: 2rem;
+    //   font-weight: bold;
+    //   margin-bottom: 1rem;
+    // }
+  
+    // .section-title--sub {
+    //   font-size: 1.1rem;
+    //   color: #9b8d7a;
+    //   margin-bottom: 2.5rem;
+    // }
+  
     .news-meta {
       display: flex;
       align-items: center;
@@ -1328,21 +1344,29 @@ body {
       margin-bottom: 1.5rem;
   
       .news-date {
-        font-size: 1rem;
-        color: #555;
+        width: 100px;
+        font-weight: bold;
+        color: #7b715f;
       }
   
-      .news-tag {
+      .news-badge {
+        padding: 4px 10px;
+        border-radius: 8px;
         font-size: 0.85rem;
-        padding: 0.4em 1em;
-        border-radius: 20px;
-        background-color: #ccc; // Will be overridden by class
-        color: #fff;
+        font-weight: bold;
+        color: white;
+        min-width: 70px;
+        text-align: center;
+  
+        &.event { background-color: #f59539; }
+        &.symposium { background-color: #3fa99b; }
+        &.notice { background-color: #a3c26f; }
+        &.presentation { background-color: #b283e4; }
       }
     }
   
     .news-title {
-      font-size: 2rem;
+      font-size: 1.8rem;
       font-weight: bold;
       color: #1f1f1f;
       margin-bottom: 2rem;
@@ -1362,10 +1386,195 @@ body {
       font-size: 1rem;
       line-height: 1.8;
       color: #333;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      text-align: justify;
     }
   }
   
+  
 
+
+  // Events Archive
+
+  .events-archive {
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+  
+    // .section-title {
+    //   font-size: 2rem;
+    //   font-weight: bold;
+    //   margin-bottom: 1rem;
+    // }
+  
+    .section-title--sub {
+      font-size: 1.1rem;
+      color: #9b8d7a;
+      margin-bottom: 2.5rem;
+    }
+  
+    .event-divider {
+      border: none;
+      border-top: 1px solid #e0d5c2;
+      margin: 2rem 0;
+    }
+  
+    .event-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      padding: 1rem 0;
+    }
+  
+    .event-date {
+      width: 100px;
+      font-weight: bold;
+      color: #7b715f;
+    }
+  
+    .event-badge {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #fff;
+      min-width: 70px;
+      text-align: center;
+  
+      &.online {
+        background-color: #f59539;
+      }
+      &.in_person {
+        background-color: #3fa99b;
+      }
+      &.hybrid {
+        background-color: #a3c26f;
+      }
+    }
+  
+    .event-summary {
+      flex: 1;
+      min-width: 200px;
+  
+      .event-title-link {
+        color: #4a3e2a;
+        text-decoration: none;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+  
+      .event-time {
+        margin-top: 0.25rem;
+        font-size: 0.9rem;
+        color: #7b715f;
+      }
+    }
+  
+    .pagination {
+      text-align: center;
+      margin-top: 40px;
+  
+      .page-numbers {
+        display: inline-block;
+        margin: 0 4px;
+        padding: 8px 12px;
+        background-color: #e3deaa;
+        color: #333;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 4px;
+  
+        &.current {
+          background-color: #954205;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  // Event single
+
+  .event-single {
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+  
+    // .section-title {
+    //   font-size: 2rem;
+    //   font-weight: bold;
+    //   margin-bottom: 1rem;
+    // }
+  
+    .section-title--sub {
+      font-size: 1.1rem;
+      color: #9b8d7a;
+      margin-bottom: 2.5rem;
+    }
+    .event-icon {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 1.5rem;
+      
+        img {
+          width: 1.5rem;     // Adjust this value as needed
+          height: auto;
+          display: inline-block;
+          vertical-align: middle;
+        }
+      }
+      
+    .event-meta {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+  
+      div {
+        margin-bottom: 0.5rem;
+        color: #7b715f;
+      }
+    }
+
+    .event-meta-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        .event-meta-text{
+            font-weight: 600;
+        }
+    }
+  
+    .event-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: #1f1f1f;
+    }
+  
+    .event-image {
+      text-align: center;
+      margin: 2rem 0;
+  
+      img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+    }
+  
+    .event-body {
+      max-width: 800px;
+      margin-left:0;
+      margin-right: 0;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+  }
+  
 // Research page
 
 

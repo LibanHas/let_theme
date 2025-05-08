@@ -169,3 +169,28 @@ function register_news_post_type() {
     ));
 }
 add_action('init', 'register_news_post_type');
+
+
+function register_custom_post_type_event() {
+	register_post_type('event', [
+	  'labels' => [
+		'name' => 'Events',
+		'singular_name' => 'Event',
+		'add_new_item' => 'Add New Event',
+		'edit_item' => 'Edit Event',
+		'new_item' => 'New Event',
+		'view_item' => 'View Event',
+		'search_items' => 'Search Events',
+		'not_found' => 'No events found',
+		'not_found_in_trash' => 'No events found in trash'
+	  ],
+	  'public' => true,
+	  'has_archive' => true,
+	  'rewrite' => ['slug' => 'events'],
+	  'menu_icon' => 'dashicons-calendar-alt',
+	  'supports' => ['title', 'editor', 'thumbnail'],
+	  'show_in_rest' => true,
+	]);
+  }
+  add_action('init', 'register_custom_post_type_event');
+  
