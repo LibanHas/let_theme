@@ -18,7 +18,7 @@ $wrapper_id = 'full-width-page-wrapper';
 <section class="page-hero-members">
   <div class="<?php echo esc_attr( $container ); ?>">
     <div class="hero-content">
-      <h1 class="hero-title"><?php the_title(); ?></h1>
+      <h1 class="page-title"><?php the_title(); ?></h1>
     </div>
   </div>
 </section>

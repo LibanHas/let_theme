@@ -34,7 +34,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <!-- Section header -->
                 <div class="news-header">
       <h2 class="section-title">News</h2>
-      <h3 class="section-title section-title--sub">ニュース</h3>
+      <h3 class="news-section subheading">ニュース</h3>
     </div>
                 <!-- Meta: Date + Badge -->
                 <div class="news-meta">

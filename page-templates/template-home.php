@@ -8,26 +8,115 @@ $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
 
-<!--<div class="idea-svg-container">
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
+<script src="<?php echo get_template_directory_uri(); ?>/js/let_logo_points.js"></script>
 
 
-  
-  <svg class="idea-lines" width="100%" height="100%" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet">
-    
-    <path d="M952.5,180 L820,40 L0,0" class="idea-line delay-1 duration-very-slow" />
-   
-    <path d="M952.5,180 L880,60 L0,60" class="idea-line delay-2 duration-slow" />
-    <path d="M952.5,180 L952.5,0 L0,0" class="idea-line delay-3 duration-fast" />
-    <path d="M952.5,180 L1020,60 L1920,60" class="idea-line delay-4 duration-med" />
-    <path d="M952.5,180 L1080,40 L1920,40" class="idea-line delay-5 duration-slow" />
-    <path d="M952.5,180 L820,180 L820,0 L0,0" class="idea-line delay-6 duration-slow" />
-    <path d="M952.5,180 L1080,180 L1080,0 L1920,0" class="idea-line delay-7 duration-med" />
-    <path d="M952.5,180 L900,120 L900,0 L0,0" class="idea-line delay-8 duration-med" />
-    <path d="M952.5,180 L1005,120 L1005,0 L1920,0" class="idea-line delay-9 duration-med" />
-    <path d="M952.5,180 L800,180 L800,0 L0,0" class="idea-line delay-10 duration-fast" />
-  </svg>
-</div>  -->
+<script>
+  let img;
+  let particles = [];
+  let revealIndex = 0;
+  let centerX, centerY;
+
+  function preload() {
+    img = loadImage("<?php echo get_template_directory_uri(); ?>/images/let_logo_letters.png");
+  }
+
+  function setup() {
+    const container = document.getElementById("let-logo-particles");
+    const canvasWidth = container.offsetWidth;
+    const canvasHeight = container.offsetHeight;
+
+    console.log("Canvas container width:", canvasWidth);
+    console.log("Canvas container height:", canvasHeight);
+
+    let canvas = createCanvas(canvasWidth, canvasHeight);
+    canvas.parent("let-logo-particles");
+    pixelDensity(1);
+
+    centerX = width / 2;
+    centerY = height / 2;
+
+    img.resize(250, 0); // Must match displayed logo
+    img.loadPixels();
+
+    let offsetX = (width / 2) - (img.width / 2);
+    let offsetY = (height / 2) - (img.height / 2);
+
+    for (let x = 0; x < img.width; x++) {
+      for (let y = 0; y < img.height; y++) {
+        let index = (x + y * img.width) * 4;
+        let r = img.pixels[index];
+        let g = img.pixels[index + 1];
+        let b = img.pixels[index + 2];
+        let alpha = img.pixels[index + 3];
+
+        if (r < 50 && g < 50 && b < 50 && alpha > 128) {
+          let tx = offsetX + x;
+          let ty = offsetY + y;
+          let angle = random(TWO_PI);
+          let radius = random(width * 0.7, width * 1.1);
+          let sx = centerX + cos(angle) * radius;
+          let sy = centerY + sin(angle) * radius;
+          particles.push(new Particle(sx, sy, tx, ty));
+        }
+      }
+    }
+
+    console.log("particles created:", particles.length);
+  }
+
+  function draw() {
+    background('#FCF7EA');
+
+    for (let i = 0; i < min(particles.length, revealIndex); i++) {
+      particles[i].update();
+      particles[i].show();
+    }
+
+    if (revealIndex < particles.length) {
+      revealIndex += 150;
+    }
+
+    let allSettled = particles.every(p =>
+      dist(p.pos.x, p.pos.y, p.target.x, p.target.y) < 1
+    );
+
+    if (allSettled && !window.logoShown) {
+      setTimeout(() => {
+        document.getElementById('let-logo-static').style.opacity = 1;
+        document.getElementById('let-logo-particles').style.opacity = 0;
+      }, 500);
+      window.logoShown = true;
+    }
+  }
+
+  class Particle {
+    constructor(sx, sy, tx, ty) {
+      this.pos = createVector(sx, sy);
+      this.target = createVector(tx, ty);
+      this.r = random(1.4, 2.2);
+      this.alpha = 0;
+    }
+
+    update() {
+      this.pos.x = lerp(this.pos.x, this.target.x, 0.07);
+      this.pos.y = lerp(this.pos.y, this.target.y, 0.07);
+      this.alpha = min(this.alpha + 10, 255);
+    }
+
+    show() {
+      noStroke();
+      fill(168, 107, 122, this.alpha);
+      ellipse(this.pos.x, this.pos.y, this.r * 2);
+    }
+  }
+</script>
+
+
+
+
 
 
 <!-- 🔹 Full-width tagline (outside container) -->
@@ -35,8 +124,31 @@ $container = get_theme_mod( 'understrap_container_type' );
   <div class="hero-container">
     
     <!-- Image Left -->
-    <div class="hero-image">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/home-hero-image.png" alt="Hero Image">
+   <!-- Image Left -->
+<div class="hero-image">
+  <div id="let-logo-particles-wrapper" style="position: relative; width: 100%; height: 420px;">
+    <div id="let-logo-particles" style="width: 500px; height: 500px;"></div>
+
+    <!-- ✅ Place the test <img> right here -->
+    <img
+  id="let-logo-static"
+  src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/let_logo.png"
+  style="
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    opacity: 0; /* start hidden */
+    transition: opacity 1s ease;
+    z-index: 10;
+  "
+/>
+
+  </div>
+</div>
+
+
     </div>
 
     <!-- Text Right -->
@@ -183,7 +295,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       </div>
     </div>
     <div class="text-center mt-4">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
         <span>LETについてもっと知る</span>
       </a>
     </div>
@@ -208,7 +320,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--cta">
           <span>Bookrollの詳細へ</span>
         </a>
       </div>
@@ -227,7 +339,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         </p>
       </div>
       <div class="tool-button">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--cta">
     <span>LogPaletteの詳細へ</span>
     </a>
       </div>
@@ -244,7 +356,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       <h3 class="section-title section-title--sub">ニュース</h3>
     </div>
       <div class="text-right mt-4">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="news/" class="btn btn--cta">
         <span>ニュース一覧</span>
       </a>
     </div>
@@ -322,34 +434,47 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </section>
 
-<section class="projects-section section-spacing">
+<section class="research-teaser-section section-spacing">
   <div class="container">
-    <h2 class="section-title">Projects</h2>
-    <h3 class="section-title section-title--sub">プロジェクト</h3>
-    <div class="projects-content">
-      <div class="projects-text">
+    <div class="row align-items-start">
+      <!-- Left: Text + Button -->
+      <div class="col-md-5">
+        <h2 class="section-title">Research</h2>
+        <h3 class="section-title section-title--sub">研究</h3>
         <p class="projects-description">
-          私たちのプロジェクトは、最先端のツールやシステムの開発を通じて、教育の未来を切り拓くことに取り組んでいます。
-          AIを活用した学習支援から革新的なデータ分析まで、次世代の教室にふさわしい学習体験を創造しています。
+          LET研究室では、学習ログの可視化やAIを活用した学習支援などを通じて、
+          一人ひとりに最適化された学びの実現に取り組んでいます。<br>
+          現場との連携を通して開発したツールや実践事例の一部をご紹介します。
         </p>
+        <div class="mt-4">
+          <a href="research/" class="btn btn--cta">
+            <span>研究ページを見る</span>
+          </a>
+        </div>
       </div>
-      <div class="projects-grid">
-        <div class="project-card">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/NEDO-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
-        </div>
-        <div class="project-card">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/big-data-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
-        </div>
-        <div class="project-card">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/digital-haishin-project-image.jpg" alt="LET Lab team" class="img-fluid rounded-3">
-        </div>
-        <div class="project-card">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/ebpm-project-image.png" alt="LET Lab team" class="img-fluid rounded-3">
+
+      <!-- Right: Image Grid -->
+      <div class="col-md-7">
+        <div class="row g-3">
+          <div class="col-6">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/NEDO-project-image.png" alt="Project 1" class="img-fluid rounded-3 shadow-sm">
+          </div>
+          <div class="col-6">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/big-data-project-image.png" alt="Project 2" class="img-fluid rounded-3 shadow-sm">
+          </div>
+          <div class="col-6">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/digital-haishin-project-image.jpg" alt="Project 3" class="img-fluid rounded-3 shadow-sm">
+          </div>
+          <div class="col-6">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/ebpm-project-image.png" alt="Project 4" class="img-fluid rounded-3 shadow-sm">
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 
 
 
@@ -363,7 +488,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         私たちのメンバーは、世界中から集まった多様でフレンドリーな研究者・教育者・イノベーターの集まりです。
         教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
       </p>
-      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a href="members/" class="btn btn--cta">
         <span>メンバー紹介を見る</span>
       </a>
     </div>
@@ -392,10 +517,10 @@ $container = get_theme_mod( 'understrap_container_type' );
       </p>
 
       <div class="cta-buttons">
-      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a href="join-us/" class="btn btn--cta">
         <span>訪問予約をする</span>
       </a>
-      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a href="join-us/" class="btn btn--cta">
         <span>チームに参加する</span>
       </a>
 

@@ -1,12 +1,151 @@
 @import "~bootstrap/scss/bootstrap";
 
+// 🎨 LET Lab Color System
+
+$color-text-body:   #4A2F1B;   // Main body text on light backgrounds (like #FCF7EA)
+$color-heading:     #7C4A21;   // Section titles and headings
+$color-accent:      #E47C1C;   // Buttons, interactive elements
+$color-bg-soft:     #FCF7EA;   // Main section background (beige)
+$color-overlay:     rgba(0, 0, 0, 0.3); // Image overlay
+
+$color-text-light:  #FCF7E6;   // Text on dark backgrounds or buttons
+$color-tag-orange:  #F4A261;
+$color-tag-green:   #90BE6D;
+$color-tag-blue:    #2A9D8F;
+$color-tag-purple:  #9B5DE5;
+
+
+//Global styles
+
+.page-title {
+    font-size: 3rem;        // Bigger than section titles
+    font-weight: 800;
+    color: $color-heading;
+    text-align: left;
+    margin-bottom: 3rem;
+    font-family: 'Ubuntu Sans', sans-serif;
+  
+    @media (max-width: 768px) {
+      font-size: 2.2rem;
+    }
+  }
+  
+.section-spacing {
+    padding-top: var(--section-spacing-top, 8rem);
+    padding-bottom: var(--section-spacing-bottom, 8rem);
+  
+    @media (max-width: 768px) {
+      padding-top: var(--section-spacing-top-sm, 4rem);
+      padding-bottom: var(--section-spacing-bottom-sm, 4rem);
+    }
+  }
+
+
+  
+.section-title {
+  text-align: left;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #7c4a21;
+  margin-bottom: 2rem;
+
+  &--sub {
+    font-size: 1.5rem;
+    margin-top: -1rem;
+    font-weight: normal; // optional if you want the sub to be lighter
+  }
+}
+
+.tag-event {
+    background-color: #f4a261; // soft orange
+  }
+  
+  .tag-symposium {
+    background-color: #2a9d8f; // soft blue-green
+  }
+  
+  .tag-notice {
+    background-color: #90be6d; // soft green
+  }
+  
+  .tag-research {
+    background-color: #9b5de5; // soft purple
+  }
+
+  .btn {
+    position: relative;
+    display: inline-block;
+    margin-top: 125px;
+    padding: 0.9em 2em;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    border-radius: 45px;
+    background: transparent;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    z-index: 0;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    color: currentColor;
+  
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -1%;
+      width: 102%;
+      height: 100%;
+      background-color: currentColor;
+      border-radius: 45px;
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.75s ease-in-out;
+      z-index: 1;
+      pointer-events: none;
+    }
+  
+    &:hover:after,
+    &:focus:after {
+      transform: scaleY(1);
+    }
+  
+    span {
+      position: relative;
+      z-index: 2;
+      mix-blend-mode: difference;
+    }
+  }
+  
+  .btn.btn--cta {
+    color: $color-accent !important;
+    border-color: $color-accent !important;
+  
+    &:after {
+      background-color: $color-accent;
+    }
+  
+    span {
+      color: $color-accent;
+      mix-blend-mode: difference;
+    }
+  }
+  
+  
+  
+  
 
 // Header
 // Your main CSS styles
 body {
-    font-family: "Montserrat", sans-serif;
-    background-color: #FCF7EA;
-}
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: $color-text-body;
+    font-size: 1rem;
+    line-height: 1.8;
+    background-color: $color-bg-soft;
+  }
+  
 
 // Additional SCSS styles for the theme
 
@@ -96,48 +235,7 @@ body {
 
 // Home page
 
-//Global styles
-.section-spacing {
-    padding-top: var(--section-spacing-top, 8rem);
-    padding-bottom: var(--section-spacing-bottom, 8rem);
-  
-    @media (max-width: 768px) {
-      padding-top: var(--section-spacing-top-sm, 4rem);
-      padding-bottom: var(--section-spacing-bottom-sm, 4rem);
-    }
-  }
-  
-.section-title {
-  text-align: left;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #7c4a21;
-  margin-bottom: 2rem;
 
-  &--sub {
-    font-size: 1.5rem;
-    margin-top: -1rem;
-    font-weight: normal; // optional if you want the sub to be lighter
-  }
-}
-
-.tag-event {
-    background-color: #f4a261; // soft orange
-  }
-  
-  .tag-symposium {
-    background-color: #2a9d8f; // soft blue-green
-  }
-  
-  .tag-notice {
-    background-color: #90be6d; // soft green
-  }
-  
-  .tag-research {
-    background-color: #9b5de5; // soft purple
-  }
-
-  
   // 
 
 
@@ -157,27 +255,78 @@ body {
     //max-width: 1200px;
     margin: 0 auto;
     gap: 3rem;
-    flex-wrap: wrap;
     padding: 2rem;
     height: 100%;
   }
   
   .hero-image {
-    flex: 1 1 50%;
+    flex: 0 0 auto;
     min-width: 280px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 500px;
+    width: 500px;
+    position: relative;
+  }
   
-    img {
-      width: 100%;
+  #let-logo-particles-wrapper {
+    position: relative;
+  width: 100%;
+  height: 500px;
+  margin-left: 340px; // ✅ shift right as needed
+  }
+//   #let-logo-static {
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     width: 250px;
+//     opacity: 1;
+//     z-index: 10;
+//   }
+  
+  #let-logo-particles {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 500px;
+    display: block; // ✅ this is the important fix
+  
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(252, 247, 234, 0) 60%,
+        rgba(252, 247, 234, 1) 100%
+      );
+      pointer-events: none;
+    }
+  
+    canvas {
+      display: block !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      position: relative !important;
+      left: 0 !important;
+      transform: none !important;
+      max-width: 100%;
+      width: 100% !important;
+      height: 100% !important;
       height: auto;
-      border-radius: 12px;
-      object-fit: cover;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
   }
   
+  
+  
+  
   .hero-text {
-    flex: 1 1 45%;
-    text-align: left;
+    flex: 0 0 55%;
+    text-align: center;
   
     .tagline {
         font-size: 3.5rem;
@@ -440,20 +589,6 @@ body {
     }
   }
   
-  
-
-  .btn--secondary-outline-dark {
-    color: #E47C1C; // darker text
-    border-color: #E47C1C;
-  
-    &:after {
-      background-color: #E47C1C; // darker hover background
-    }
-  
-    span {
-      color: #E47C1C;
-    }
-  }
   
   
   
@@ -872,17 +1007,18 @@ body {
 .about-hero {
   padding: 100px 0;
   .about-hero-title {
+    @extend .section-title; 
     font-size: 2.8rem;
-    font-weight: 700;
+    font-weight: bold;
     line-height: 1.1;
     margin-bottom: 25px;
-    color: #121212;
+    color: $color-heading;
   }
 
   .about-hero-subtitle {
     font-size: 18px;
     line-height: 1.5;
-    color: #444;
+    color: $color-text-body;
   }
 
   .about-hero-image img {
@@ -899,7 +1035,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 120px 0;
-  overflow-x: auto;
+  overflow-x: hidden;
 
   .timeline-line {
     position: absolute;
@@ -938,7 +1074,7 @@ body {
       width: 100%;
       left: 50%;
       transform: translateX(-50%);
-      color: #333;
+      color: $color-text-body;
 
       .timeline-date {
         font-size: 13px;
@@ -1005,7 +1141,7 @@ body {
 
   .founder-caption {
     font-size: 16px;
-    color: #444;
+    color: $color-text-body;
   }
 
   .founder-quote-box {
@@ -1065,7 +1201,7 @@ body {
   }
 
   .approach-card {
-    background-color: #fdf6db;
+    background-color: lighten($color-bg-soft, 2%);
     padding: 2rem;
     border-radius: 12px;
     max-width: 280px;
@@ -1079,13 +1215,13 @@ body {
 
     h3 {
       font-size: 1.25rem;
-      color: #7c4a21;
+      color: $color-heading;
       margin-top: 1rem;
     }
 
     p {
       font-size: 0.95rem;
-      color: #333;
+      color: $color-text-body;
       margin-top: 0.5rem;
       line-height: 1.6;
     }
@@ -1111,7 +1247,7 @@ body {
 .voices-section {
     margin-top: 12rem;
     padding: 6rem 0;
-    background-color: #fdf8ec;
+    background-color: $color-bg-soft;
   }
   
   .section-intro {
@@ -1141,7 +1277,7 @@ body {
   .founder-intro {
     text-align: left;
     font-size: 1rem;
-    color: #444;
+    color: $color-text-body;
     line-height: 1.8;
     max-width: 90%;
     margin: 0.5rem auto 0;
@@ -1154,7 +1290,7 @@ body {
     .student-name {
       font-size: 2rem;
       font-weight: 700;
-      color: #7c4a21; // soft gray
+      color: $color-heading; 
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
     }
@@ -1162,7 +1298,7 @@ body {
     .student-role {
       font-size: 1.25rem;
       font-weight: 600;
-      color: #7c4a21;
+      color: $color-heading;
     }
   }
 
@@ -1212,7 +1348,7 @@ body {
           font-weight: bold;
           font-size: 1.15rem;
           margin-bottom: 0.5rem;
-          color: #333;
+          color: $color-text-body;
         }
       }
     }
@@ -1222,23 +1358,13 @@ body {
     color: #666; // Improved contrast for better readability
   }
   
-  [data-anim="scroll-slide"],
-  [data-anim="fade-in-slide-up"] {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
   
-    &.in-view {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+  
   
 
 // News archive page
 .news-section {
-    background-color: #fdf8ed;
-    font-family: 'Ubuntu Sans', sans-serif;
+    background-color:  $color-bg-soft;
     color: #4a3e2a;
   }
   
@@ -1337,6 +1463,12 @@ body {
     //   margin-bottom: 2.5rem;
     // }
   
+    .news-section .subheading {
+        font-size: 1.1rem;
+        color: #9b8d7a;
+        margin-bottom: 2em;
+      }
+
     .news-meta {
       display: flex;
       align-items: center;
@@ -1656,21 +1788,10 @@ ul li::before {
 }
 
 .page-hero-members::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: 
-    linear-gradient(rgba(253, 246, 236, 0.88), rgba(253, 246, 236, 0.88)),
-    url('../images/members-hero-banner.jpeg') center/cover no-repeat;
-
-  -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
-  mask-image: linear-gradient(to right, transparent, black 40%);
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-
-  z-index: 0;
+    .page-hero-members::before {
+        display: none;
+      }
+      
 }
 
 .page-hero-members .hero-content {
@@ -1678,12 +1799,7 @@ ul li::before {
   z-index: 1; /* Pulls text above the masked background */
 }
 
-.hero-title {
-  font-size: 52px;
-  font-weight: 700;
-  color: #1f1f1f; /* Clean dark text */
-  text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-}
+  
 
 .wp-block-buttons {
   display: flex;
@@ -1714,6 +1830,15 @@ ul li::before {
   font-weight: 300;
   margin-bottom: 2rem;
 }
+
+.subheading-line {
+    width: 100%;
+    height: 1px;
+    background-color: $color-text-body;
+    margin: 0.5rem 0 2rem;
+    border-radius: 2px;
+  }
+  
 
   
 .p-member-list__thumbnail {
@@ -1832,7 +1957,7 @@ ul li::before {
     .section-intro {
       font-size: 1.05rem;
       margin-bottom: 2.5rem;
-      color: #333;
+      color: $color-text-body;
     }
   
     .profile-list {

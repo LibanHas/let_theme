@@ -47,7 +47,7 @@ $news_query = new WP_Query([
   <div class="container">
     <div class="news-header">
       <h2 class="section-title">News</h2>
-      <h3 class="section-title section-title--sub">ニュース</h3>
+      <h3 class="news-section subheading">ニュース</h3>
     </div>
 
     <?php

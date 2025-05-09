@@ -217,16 +217,13 @@ $container = get_theme_mod( 'understrap_container_type' );
                         </div>
 
                         <div class="approach-buttons">
-                            <a href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" target="_blank" class="btn btn--secondary-outline btn--secondary-outline-dark">
-                            <span>BookRollについて詳しく</span>
-                            </a>
-                            <a href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" target="_blank" class="btn btn--secondary-outline btn--secondary-outline-dark">
-                            <span>LogPaletteについて詳しく</span>
-                            </a>
+                        <a href="research/" class="btn btn--cta">
+                          <span>研究内容を見る</span>
+                        </a>
                         </div>
                         </section>
 
-                        <section class="voices-section content-block">
+                        <section class="voices-section section-spacing content-block">
                         <div class="container">
                             <h2 class="section-title">学生の声</h2>
                             <p class="section-intro">
@@ -347,10 +344,10 @@ $container = get_theme_mod( 'understrap_container_type' );
       </p>
 
       <div class="cta-buttons">
-      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a href="join-us/" class="btn btn--cta">
         <span>訪問予約をする</span>
       </a>
-      <a href="/members" class="btn btn--secondary-outline btn--secondary-outline-dark">
+      <a href="join-us/" class="btn btn--cta">
         <span>チームに参加する</span>
       </a>
 
