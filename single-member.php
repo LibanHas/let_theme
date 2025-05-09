@@ -13,15 +13,12 @@ $container = get_theme_mod('understrap_container_type');
   <!-- Cover Section with fallback image -->
   <section class="member-cover alignfull">
     <div class="cover-inner <?php echo esc_attr($container); ?>">
-      <h2 class="page-title text-center">Members</h2>
-      <p class="page-subtitle text-center">メンバー</p>
+      <h2 class="page-title">Members</h2>
+      <p class="page-subtitle">メンバー</p>
     </div>
   </section>
 
-  <!-- Breadcrumbs -->
-  <div class="breadcrumb container">
-    <a href="/">Home</a> / <a href="/members">Members</a> / <?php the_title(); ?>
-  </div>
+
 
   <!-- Member Info Section -->
   <div class="container member-info">

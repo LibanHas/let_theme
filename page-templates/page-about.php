@@ -36,7 +36,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                     </section>
 
                     <section class="timeline-section container section-spacing">
-                        <h2 class="timeline-title section-title">緒方研究室の歩み</h2>
+                        <h2 class="section-title">緒方研究室の歩み</h2>
 
                         <div class="timeline-wrapper">
                             <div class="timeline-line"></div>

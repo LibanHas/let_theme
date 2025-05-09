@@ -46,7 +46,6 @@ $color-tag-purple:  #9B5DE5;
   text-align: left;
   font-size: 2.5rem;
   font-weight: bold;
-  color: #7c4a21;
   margin-bottom: 2rem;
 
   &--sub {
@@ -599,8 +598,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     line-height: 2;
-    color: #555;
-    font-family: 'Ubuntu Sans', sans-serif;
   }
   
 
@@ -1007,12 +1004,10 @@ body {
 .about-hero {
   padding: 100px 0;
   .about-hero-title {
-    @extend .section-title; 
     font-size: 2.8rem;
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 25px;
-    color: $color-heading;
   }
 
   .about-hero-subtitle {
@@ -1188,7 +1183,6 @@ body {
 
   .section-intro {
     font-size: 1.1rem;
-    color: #555;
     margin-bottom: 3rem;
   }
 
@@ -1865,6 +1859,49 @@ ul li::before {
   margin-top: 2px;
 }
 
+// Single member
+
+
+.member-info {
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+  
+  .member-name {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #4a3e2a;
+  }
+  
+  .member-position {
+    font-size: 1.1rem;
+    color: #5e4a2e;
+    margin-bottom: 20px;
+  }
+  
+  .member-section {
+    margin-bottom: 60px;
+  }
+  
+  
+  .member-profile-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    color: #3d372e;
+    line-height: 1.8;
+  }
+  
+  .member-profile-list li {
+    margin-bottom: 10px;
+  }
+  
+  .member-profile-list strong {
+    color: #6c4f28;
+  }
+  
 
 // Join us
 
