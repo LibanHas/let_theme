@@ -133,33 +133,16 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 <section class="hero-section">
   <div class="hero-container">
     
-    <!-- Image Left -->
-   <!-- Image Left -->
-<div class="hero-image">
-  <div id="let-logo-particles-wrapper" style="position: relative; width: 100%; height: 420px;">
-    <div id="let-logo-particles" style="width: 500px; height: 500px;"></div>
-
-    <!-- ✅ Place the test <img> right here -->
-    <img
-  id="let-logo-static"
-  src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg"
-  style="
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 450px;
-    opacity: 0; /* start hidden */
-    transition: opacity 1s ease;
-    z-index: 10;
-  "
-/>
-
-  </div>
-</div>
-
-
+    <!-- Left: Static Logo -->
+    <div class="hero-image">
+      <img 
+        src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg" 
+        alt="LET Lab Logo" 
+        class="hero-logo fade-in"
+      />
     </div>
+
+
 
     <!-- Text Right -->
     <div class="hero-text">
