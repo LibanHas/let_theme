@@ -10,9 +10,14 @@
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
+$tick_url = str_replace(["\r", "\n"], '', get_template_directory_uri() . '/images/icon-tick.svg');
+
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
-
+<script>
+  const themeBaseUrl = "<?php echo esc_url( get_template_directory_uri() ); ?>";
+</script>
 <div class="wrapper" id="join-us-wrapper">
     <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
         <main class="site-main" id="main">
@@ -88,10 +93,18 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
   <hr>
 </div>
+<pre>
+<?php
+echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
+?>
+</pre>
   <ul>
-    <li><span class="tick"></span> 実践的な教育システムの設計方法</li>
-    <li><span class="tick"></span> インタフェース・ユーザエクスペリエンス（UX）設計</li>
-    <li><span class="tick"></span> 開発したシステムが実際の学校で使われる経験</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 実践的な教育システムの設計方法</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ インタフェース・ユーザエクスペリエンス（UX）設計</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 開発したシステムが実際の学校で使われる経験</li>
   </ul>
 </div>
 
@@ -106,9 +119,12 @@ $container = get_theme_mod( 'understrap_container_type' );
     <hr>
   </div>
   <ul>
-    <li><span class="tick"></span> 教育データの収集・分析技術</li>
-    <li><span class="tick"></span> データ可視化ツールを活用した情報提示技術</li>
-    <li><span class="tick"></span> 機械学習・AIを用いた教育支援手法</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 教育データの収集・分析技術</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+データ可視化ツールを活用した情報提示技術</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 機械学習・AIを用いた教育支援手法</li>
   </ul>
 </div>
 
@@ -122,9 +138,12 @@ $container = get_theme_mod( 'understrap_container_type' );
     <hr>
   </div>
   <ul>
-    <li><span class="tick"></span> Webプログラミング（PHP、Java、C、HTML5）</li>
-    <li><span class="tick"></span> iOS/Androidモバイルアプリ開発</li>
-    <li><span class="tick"></span> 実践的プロトタイプの制作技術</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ Webプログラミング（PHP、Java、C、HTML5）</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ iOS/Androidモバイルアプリ開発</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 実践的プロトタイプの制作技術</li>
   </ul>
 </div>
 
@@ -138,9 +157,12 @@ $container = get_theme_mod( 'understrap_container_type' );
     <hr>
   </div>
   <ul>
-    <li><span class="tick"></span> 論文執筆（日本語・英語）</li>
-    <li><span class="tick"></span> 学会・研究会でのプレゼンテーション力</li>
-    <li><span class="tick"></span> 国際的な共同研究・ディスカッションへの参加</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 論文執筆（日本語・英語）</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 学会・研究会でのプレゼンテーション力</li>
+    <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
+ 国際的な共同研究・ディスカッションへの参加</li>
   </ul>
 </div>
 
@@ -194,10 +216,9 @@ $container = get_theme_mod( 'understrap_container_type' );
   <div id="stepsContainer" class="steps-grid"></div>
 </section>
 <section class="scroll-hero">
-  <div class="scroll-hero__bg-wrapper">
-  <img src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/kyoto.jpeg" class="scroll-hero__bg" data-anim="scroll-background" data-anim-distance="200">
-
-  </div>
+<div class="scroll-hero__bg-wrapper">
+  <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto.jpeg" class="scroll-hero__bg" alt="Kyoto cityscape" data-anim="scroll-background" data-anim-distance="200">
+</div>
   <div class="scroll-hero__content">
     <h2 class="heading-1">研究の第一歩を、緒方研究室で</h2>
     <a href="/visit" class="btn btn--secondary-outline"><span>見学を予約する</span></a>

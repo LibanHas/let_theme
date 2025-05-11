@@ -136,8 +136,10 @@ function enqueue_aos_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
 
 register_nav_menus(array(
-	'primary' => __('Primary Menu', 'understrap'),
-));
+	'primary' => __('Side Menu', 'understrap'), // for your hamburger/side nav
+	'top'     => __('Top Menu', 'understrap'),  // for the few key links in the header
+  ));
+  
 
 function add_publications_body_class( $classes ) {
     if ( is_page_template( 'page-templates/page-publications.php' ) ) {

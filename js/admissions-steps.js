@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="step-meta">📌 ${step.period}</div>
               <div class="step-title-icon">
                 <div class="step-icon-wrapper">
-                <img src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/${step.icon}" alt="" class="step-icon">
+                <img src="${themeBaseUrl}/images/${step.icon}" alt="" class="step-icon">
                 </div>
                 <h4>${step.title}</h4>
               </div>

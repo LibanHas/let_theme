@@ -231,6 +231,40 @@ body {
     padding: 0.5rem;
 }
 
+// Navbar
+
+.main-menu-desktop {
+  display: flex;
+  gap: 2rem;
+  flex-direction:row;
+  align-items: center;
+  margin-left: auto;
+  padding-right: 2rem;
+}
+
+.nav{
+  margin-left: 350px;
+}
+
+.top-nav-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.top-nav-list li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.top-nav-list li a:hover {
+  color: #954205;
+}
+
 
 // Home page
 
@@ -1742,16 +1776,16 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-ul {
-  padding-left: 1.2em;
-  list-style: none;
-}
+// ul {
+//   padding-left: 1.2em;
+//   list-style: none;
+// }
 
-ul li::before {
-  content: "• ";
-  color: #CAB196;
-  font-weight: bold;
-}
+// ul li::before {
+//   content: "• ";
+//   color: #CAB196;
+//   font-weight: bold;
+// }
 
 @media (max-width: 768px) {
   .grid {
@@ -1886,6 +1920,15 @@ ul li::before {
   }
   
   
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4a3e2a;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e4d5bb;
+  padding-bottom: 6px;
+}
+
   .member-profile-list {
     list-style: none;
     padding: 0;
@@ -2136,7 +2179,6 @@ ul li::before {
                 width: 1.75rem;
                 height: 1.75rem;
                 background-color: #8b4f1f;
-                background-image: url('/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: 60%;
@@ -2468,7 +2510,6 @@ ul li::before {
         position: relative;
         display: flex;
         align-items: center;
-        justify-content: space-between;
         padding-bottom: 10px;
         cursor: pointer;
       }
@@ -2499,7 +2540,7 @@ ul li::before {
       .kyodai-logo-container {
         display: flex;
         align-items: center;
-        padding-left: 20px;
+        margin-left: 150px;
       }
       
       .kyodai-logo {

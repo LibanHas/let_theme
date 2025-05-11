@@ -45,7 +45,7 @@ $container = get_theme_mod('understrap_container_type');
   <!-- Profile and Research -->
   <div class="container member-details">
   <section class="member-section">
-  <h2 class="section-title">プロフィール</h2>
+  <h2 class="member-section-title">プロフィール</h2>
   <ul class="member-profile-list">
     <?php
     $fields = [

@@ -5,13 +5,23 @@
 defined( 'ABSPATH' ) || exit;
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
+
+
+// ✅ SAFELY ASSIGN THIS BEFORE ANY JS
+$logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters.png' );
 ?>
+
+<script>
+  window.logoImageUrl = "<?php echo esc_js($logo_image_url); ?>";
+</script>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
-<script src="<?php echo get_template_directory_uri(); ?>/js/let_logo_points.js"></script>
 
+
+  
 
 <script>
   let img;
@@ -20,7 +30,7 @@ $container = get_theme_mod( 'understrap_container_type' );
   let centerX, centerY;
 
   function preload() {
-    img = loadImage("<?php echo get_template_directory_uri(); ?>/images/let_logo_letters.png");
+    img = loadImage(logoImageUrl); 
   }
 
   function setup() {
@@ -108,7 +118,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
     show() {
       noStroke();
-      fill(168, 107, 122, this.alpha);
+      fill(149, 66, 5, this.alpha);
       ellipse(this.pos.x, this.pos.y, this.r * 2);
     }
   }
@@ -132,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
     <!-- ✅ Place the test <img> right here -->
     <img
   id="let-logo-static"
-  src="http://localhost/let_theme/www/wp-content/themes/let_theme/images/let_logo.png"
+  src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg"
   style="
     position: absolute;
     top: 50%;
@@ -456,16 +466,16 @@ $container = get_theme_mod( 'understrap_container_type' );
       <!-- Right: Image Grid -->
       <div class="col-md-7">
         <div class="row g-3">
-          <div class="col-6">
+          <div class="col-6 d-flex mb-5">
             <img src="<?php echo get_template_directory_uri(); ?>/images/NEDO-project-image.png" alt="Project 1" class="img-fluid rounded-3 shadow-sm">
           </div>
-          <div class="col-6">
+          <div class="col-6 d-flex mb-5">
             <img src="<?php echo get_template_directory_uri(); ?>/images/big-data-project-image.png" alt="Project 2" class="img-fluid rounded-3 shadow-sm">
           </div>
-          <div class="col-6">
+          <div class="col-6 d-flex mb-5">
             <img src="<?php echo get_template_directory_uri(); ?>/images/digital-haishin-project-image.jpg" alt="Project 3" class="img-fluid rounded-3 shadow-sm">
           </div>
-          <div class="col-6">
+          <div class="col-6 d-flex mb-5">
             <img src="<?php echo get_template_directory_uri(); ?>/images/ebpm-project-image.png" alt="Project 4" class="img-fluid rounded-3 shadow-sm">
           </div>
         </div>

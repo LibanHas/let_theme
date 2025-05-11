@@ -21,6 +21,11 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<style>
+  :root {
+    --tick-url: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');
+  }
+</style>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
 </head>
@@ -37,14 +42,27 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 				<a href="<?php echo home_url(); ?>">
 					<img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
 				</a>
+			</div>
+			<div>
 				<h2 class="lab-name">
 				Learning & Educational Technologies Research Unit
 			</h2>
+			</div>
 			<div class="kyodai-logo-container">
-    <a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
-    </a>
-  </div>
+    				<a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer">
+      					<img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
+    			</a>
+  			</div>
+			<div>
+  			<?php
+				wp_nav_menu([
+				'theme_location'  => 'top',
+				'container'       => 'nav',
+				'container_class' => 'top nav',
+				'menu_class'      => 'top-nav-list',
+				'fallback_cb'     => false,
+				]);
+				?>
 			</div>	
 		</div>
 
