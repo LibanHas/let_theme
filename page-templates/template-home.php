@@ -17,7 +17,8 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
+
+
 
 
 <section class="hero-section">
@@ -45,9 +46,73 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
         <a href="/about" class="btn btn-orange">LETについてもっと知る</a>
         <a href="/research" class="btn btn-outline-orange">研究を見る</a>
       </div>
+
+      <!-- Swiper Carousel -->
+      <div class="updates-carousel-wrapper">
+      <div class="swiper-container updates-carousel" style="margin-top: 2rem;">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/5/24 <span class="tag tag-news">ニュース</span></div>
+              <h3 class="update-title">社会情報コース入試説明会のお知らせ</h3>
+              <p class="update-text">博士課程・博士課程前期の入学を希望する方のための説明会を開催します。</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/5/18 <span class="tag tag-event">イベント</span></div>
+              <h3 class="update-title">教育データ活用授業研究ワークショップ</h3>
+              <p class="update-text">教育データを使った授業改善をテーマにしたワークショップを開催します。</p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/4/28 <span class="tag tag-news">ニュース</span></div>
+              <h3 class="update-title">BookRollの新バージョンを公開しました</h3>
+              <p class="update-text">ユーザーインターフェースの改善と分析機能の強化を含むアップデートを行いました。</p>
+            </div>
+          </div>
+
+          <!-- Slide 4 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/3/22 <span class="tag tag-event">イベント</span></div>
+              <h3 class="update-title">春季教育ICTフォーラム登壇のお知らせ</h3>
+              <p class="update-text">LETメンバーが教育ICTの未来について発表を行います（オンライン）。</p>
+            </div>
+          </div>
+
+          <!-- Slide 5 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/2/17 <span class="tag tag-event">イベント</span></div>
+              <h3 class="update-title">名古屋大学外来研究者講演会</h3>
+              <p class="update-text">研究者が名古屋大学にて講演を行います。教育データの利活用に関する内容です。</p>
+            </div>
+          </div>
+
+          <!-- Slide 6 -->
+          <div class="swiper-slide">
+            <div class="update-card">
+              <div class="update-date">2025/1/10 <span class="tag tag-news">ニュース</span></div>
+              <h3 class="update-title">LogPaletteがxAPI準拠に対応</h3>
+              <p class="update-text">LogPaletteが最新のxAPI仕様に準拠しました。学習ログの相互運用性が向上します。</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      </div>
     </div>
   </div>
 </section>
+
+
 
 
 
@@ -443,6 +508,34 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    new Swiper('.updates-carousel', {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      loop: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1440: {
+          slidesPerView: 3,
+        }
+      }
+    });
+  });
+</script>
 
 
 <?php get_footer(); ?>
