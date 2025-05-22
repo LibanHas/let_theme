@@ -20,140 +20,51 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
 
 
-
-  
-
-<script>
-  let img;
-  let particles = [];
-  let revealIndex = 0;
-  let centerX, centerY;
-
-  function preload() {
-    img = loadImage(logoImageUrl); 
-  }
-
-  function setup() {
-    const container = document.getElementById("let-logo-particles");
-    const canvasWidth = container.offsetWidth;
-    const canvasHeight = container.offsetHeight;
-
-    console.log("Canvas container width:", canvasWidth);
-    console.log("Canvas container height:", canvasHeight);
-
-    let canvas = createCanvas(canvasWidth, canvasHeight);
-    canvas.parent("let-logo-particles");
-    pixelDensity(1);
-
-    centerX = width / 2;
-    centerY = height / 2;
-
-    img.resize(250, 0); // Must match displayed logo
-    img.loadPixels();
-
-    let offsetX = (width / 2) - (img.width / 2);
-    let offsetY = (height / 2) - (img.height / 2);
-
-    for (let x = 0; x < img.width; x++) {
-      for (let y = 0; y < img.height; y++) {
-        let index = (x + y * img.width) * 4;
-        let r = img.pixels[index];
-        let g = img.pixels[index + 1];
-        let b = img.pixels[index + 2];
-        let alpha = img.pixels[index + 3];
-
-        if (r < 50 && g < 50 && b < 50 && alpha > 128) {
-          let tx = offsetX + x;
-          let ty = offsetY + y;
-          let angle = random(TWO_PI);
-          let radius = random(width * 0.7, width * 1.1);
-          let sx = centerX + cos(angle) * radius;
-          let sy = centerY + sin(angle) * radius;
-          particles.push(new Particle(sx, sy, tx, ty));
-        }
-      }
-    }
-
-    console.log("particles created:", particles.length);
-  }
-
-  function draw() {
-    background('#FCF7EA');
-
-    for (let i = 0; i < min(particles.length, revealIndex); i++) {
-      particles[i].update();
-      particles[i].show();
-    }
-
-    if (revealIndex < particles.length) {
-      revealIndex += 150;
-    }
-
-    let allSettled = particles.every(p =>
-      dist(p.pos.x, p.pos.y, p.target.x, p.target.y) < 1
-    );
-
-    if (allSettled && !window.logoShown) {
-      setTimeout(() => {
-        document.getElementById('let-logo-static').style.opacity = 1;
-        document.getElementById('let-logo-particles').style.opacity = 0;
-      }, 500);
-      window.logoShown = true;
-    }
-  }
-
-  class Particle {
-    constructor(sx, sy, tx, ty) {
-      this.pos = createVector(sx, sy);
-      this.target = createVector(tx, ty);
-      this.r = random(1.4, 2.2);
-      this.alpha = 0;
-    }
-
-    update() {
-      this.pos.x = lerp(this.pos.x, this.target.x, 0.07);
-      this.pos.y = lerp(this.pos.y, this.target.y, 0.07);
-      this.alpha = min(this.alpha + 10, 255);
-    }
-
-    show() {
-      noStroke();
-      fill(149, 66, 5, this.alpha);
-      ellipse(this.pos.x, this.pos.y, this.r * 2);
-    }
-  }
-</script>
-
-
-
-
-
-
-<!-- 🔹 Full-width tagline (outside container) -->
 <section class="hero-section">
-  <div class="hero-container">
-    
-    <!-- Left: Static Logo -->
-    <div class="hero-image">
+  <div class="hero-inner">
+    <!-- Left: Logo -->
+    <div class="hero-logo">
       <img 
-        src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg" 
-        alt="LET Lab Logo" 
-        class="hero-logo fade-in"
+        src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg"
+        alt="LET Lab Logo"
+        class="hero-logo-img fade-in-logo"
       />
     </div>
 
-
-
-    <!-- Text Right -->
-    <div class="hero-text">
-      <h1 class="tagline">
-        エビデンスに基づく<br>
-        確かな教育を求めて
+    <!-- Right: Tagline and Intro Text -->
+    <div class="hero-content">
+      <h1 class="hero-title">
+        エビデンスに基づく<br>確かな教育を求めて
       </h1>
-    </div>
+      <p class="hero-description">
+        <strong>LET（Learning and Educational Technologies Research Unit／緒方研究室）</strong>では、デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。<br>
+        私たちの研究は、実際の教室や学生とともに行われており、現場で得られた知見をもとに、先生の授業や学生の学びをサポートしています。
+      </p>
 
+      <div class="hero-buttons">
+        <a href="/about" class="btn btn-orange">LETについてもっと知る</a>
+        <a href="/research" class="btn btn-outline-orange">研究を見る</a>
+      </div>
+    </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
