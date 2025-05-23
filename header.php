@@ -36,44 +36,49 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
 	<!-- ******************* The Navbar Area ******************* -->
 	<header id="wrapper-navbar">
-		<!-- Logo -->
-		<div class="menubar">
-			<div class="logo-container">
-				<a href="<?php echo home_url(); ?>">
-					<img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
-				</a>
-			</div>
-			<div>
-				<h2 class="lab-name">
-				Learning & Educational Technologies Research Unit
-			</h2>
-			</div>
-			<div class="kyodai-logo-container">
-    				<a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer">
-      					<img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
-    			</a>
-  			</div>
-			<div>
-  			<?php
-				wp_nav_menu([
-				'theme_location'  => 'top',
-				'container'       => 'nav',
-				'container_class' => 'top nav',
-				'menu_class'      => 'top-nav-list',
-				'fallback_cb'     => false,
-				]);
-				?>
-			</div>	
-		</div>
+	<header class="navbar-header">
+  <div class="navbar-inner">
 
-		<!-- Hamburger Menu -->
-		<div class="hamburger-menu">
-			<button id="hamburger-toggle" class="hamburger-icon">
-				<span class="bar"></span>
-				<span class="bar"></span>
-				<span class="bar"></span>
-			</button>
-		</div>
+    <!-- Left: LET Logo + Text -->
+    <div class="navbar-left">
+      <a href="<?php echo home_url(); ?>" class="let-logo-wrapper">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
+        <div class="logo-name">
+		<em>Learning & Educational<br>
+          Technologies Research Unit</em>
+        </div>
+      </a>
+    </div>
+
+    <!-- Center: Nav Menu -->
+    <nav class="navbar-center">
+      <?php
+        wp_nav_menu([
+          'theme_location'  => 'top',
+          'container'       => false,
+          'menu_class'      => 'top-nav-list',
+          'fallback_cb'     => false,
+        ]);
+      ?>
+    </nav>
+
+    <!-- Right: Kyodai Logo + Hamburger -->
+    <div class="navbar-right">
+      <a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer" class="kyodai-logo-wrapper">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
+      </a>
+      <div class="hamburger-menu">
+        <button id="hamburger-toggle" class="hamburger-icon">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</header>
+
 
 		<!-- Side Menu (hidden by default) -->
 		<div id="side-menu" class="side-menu">

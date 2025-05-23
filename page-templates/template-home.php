@@ -39,240 +39,113 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
       </h1>
       <p class="hero-description">
         <strong>LET（Learning and Educational Technologies Research Unit／緒方研究室）</strong>では、デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。<br>
-        私たちの研究は、実際の教室や学生とともに行われており、現場で得られた知見をもとに、先生の授業や学生の学びをサポートしています。
       </p>
 
       <div class="hero-buttons">
-        <a href="/about" class="btn btn-orange">LETについてもっと知る</a>
-        <a href="/research" class="btn btn-outline-orange">研究を見る</a>
-      </div>
-
-      <!-- Swiper Carousel -->
-      <div class="updates-carousel-wrapper">
-      <div class="swiper-container updates-carousel" style="margin-top: 2rem;">
-        <div class="swiper-wrapper">
-          <!-- Slide 1 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/5/24 <span class="tag tag-news">ニュース</span></div>
-              <h3 class="update-title">社会情報コース入試説明会のお知らせ</h3>
-              <p class="update-text">博士課程・博士課程前期の入学を希望する方のための説明会を開催します。</p>
-            </div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/5/18 <span class="tag tag-event">イベント</span></div>
-              <h3 class="update-title">教育データ活用授業研究ワークショップ</h3>
-              <p class="update-text">教育データを使った授業改善をテーマにしたワークショップを開催します。</p>
-            </div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/4/28 <span class="tag tag-news">ニュース</span></div>
-              <h3 class="update-title">BookRollの新バージョンを公開しました</h3>
-              <p class="update-text">ユーザーインターフェースの改善と分析機能の強化を含むアップデートを行いました。</p>
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/3/22 <span class="tag tag-event">イベント</span></div>
-              <h3 class="update-title">春季教育ICTフォーラム登壇のお知らせ</h3>
-              <p class="update-text">LETメンバーが教育ICTの未来について発表を行います（オンライン）。</p>
-            </div>
-          </div>
-
-          <!-- Slide 5 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/2/17 <span class="tag tag-event">イベント</span></div>
-              <h3 class="update-title">名古屋大学外来研究者講演会</h3>
-              <p class="update-text">研究者が名古屋大学にて講演を行います。教育データの利活用に関する内容です。</p>
-            </div>
-          </div>
-
-          <!-- Slide 6 -->
-          <div class="swiper-slide">
-            <div class="update-card">
-              <div class="update-date">2025/1/10 <span class="tag tag-news">ニュース</span></div>
-              <h3 class="update-title">LogPaletteがxAPI準拠に対応</h3>
-              <p class="update-text">LogPaletteが最新のxAPI仕様に準拠しました。学習ログの相互運用性が向上します。</p>
-            </div>
-          </div>
+          <div class="text-center mt-4">
+          <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
+            <span>LETについてもっと知る</span>
+          </a>
         </div>
-        <div class="swiper-pagination"></div>
+            <div class="text-center mt-4">
+          <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
+            <span>研究を見る</span>
+          </a>
+        </div>
       </div>
-      </div>
-    </div>
   </div>
 </section>
 
+<div class="updates-carousel-wrapper">
+  <!-- Arrows -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
 
+  <div class="swiper updates-carousel">
+    <div class="swiper-wrapper">
+    <?php
+$args = [
+  'post_type' => ['news', 'event'],
+  'posts_per_page' => 10,
+  'meta_key' => 'update_date',
+  'orderby' => 'meta_value',
+  'order' => 'DESC',
+];
 
+$updates_query = new WP_Query($args);
 
+if ($updates_query->have_posts()) :
+  while ($updates_query->have_posts()) : $updates_query->the_post();
+    $post_type = get_post_type();
 
+    $update_date = get_field('update_date');
+    $formatted_date = '日付未定';
+    if ($update_date) {
+      $date_obj = DateTime::createFromFormat('Ymd', $update_date);
+      if ($date_obj) {
+        $formatted_date = $date_obj->format('Y/m/d');
+      }
+    }
 
+    $tag_value = '';
+    $tag_label = '';
+    $news_description = '';
 
+    if ($post_type === 'news') {
+      $tag_value = get_field('news_category') ?: 'notice';
+      $tag_label = [
+        'event' => 'イベント',
+        'symposium' => 'シンポジウム',
+        'notice' => 'お知らせ',
+        'presentation' => '研究発表'
+      ][$tag_value] ?? 'お知らせ';
 
+      $news_description = get_field('news_description') ?: '';
+    } elseif ($post_type === 'event') {
+      $tag_value = 'event';
+      $tag_label = 'イベント';
+      $news_description = get_field('event_title') ?: get_the_title();
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <section class="about-let section-spacing">
-    <div data-anim-trigger="">
-      <div class="anim-scroll-background">
-        <div class="anim-scroll-background__img-wrapper">
-	        <div class="image-snippet image-snippet__fill image-snippet__fill--desktop image-snippet__fill--tablet image-snippet__fill--mobile"
-                style="--aspect-ratio: 1440 / 1100; --aspect-ratio-tablet: 1440 / 1100; --aspect-ratio-mobile: 1440 / 1100;">
-              <img class="image-snippet__img image-snippet__img--fill image-snippet__img--desktop"
-              src="<?php echo get_template_directory_uri(); ?>/images/center-image.jpg"
-              alt="LET Lab background" loading="lazy">
-          </div>
-      </div>
-      <div class="about-let-inner">
-      <div class="quote-heading">
-      <div class="split-line">緒方研究室では、より良い学びを支える</div>
-      <div class="split-line">研究をしています。現場と連携し、教育</div>
-      <div class="split-line">データとテクノロジーを活用したツール</div>
-      <div class="split-line">を開発しています。</div>
-      </div>
-              <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--secondary-outline">
-              <span>LETについてもっと知る</span>
-            </a>
-          </div>
+    $tag_class = 'tag-' . esc_attr($tag_value);
+?>
+  <div class="swiper-slide">
+    <a href="<?php the_permalink(); ?>" class="update-card-link">
+      <div class="update-card">
+        <div class="update-date">
+          <?php echo esc_html($formatted_date); ?>
+          <span class="tag <?php echo esc_attr($tag_class); ?>">
+            <?php echo esc_html($tag_label); ?>
+          </span>
         </div>
-      </div>
-  </section>
-
-
-<!-- 🔹 Learning-centered section -->
-<section class="learning-centered-section section-spacing">
-  <div class="container">
-    <div class="row align-items-center">
-      
-      <!-- Text block floats upward with sticky+pause -->
-  <div class="col-md-5">
-  <div class="sticky-section">
-    <div class="sticky-content">
-      <h2 class="section-heading">学習者中心</h2>
-      <p class="section-text">
-        LET研究室では、いつでもどこでも学べる教育を支援するために、
-        学習者中心のツールを設計し、学生が最適なタイミングと場所で学べるようサポートしています。
-      </p>
-    </div>
-  </div>
-</div>
-
-
-    <!-- Image floats downward with fade-in -->
-<div class="col-md-5 offset-md-1">
-  <div class="float-wrapper sticky-section">
-	<div class="sticky-content">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/learning-centered.png" 
-     alt="学習者中心イラスト" 
-     class="img-fluid scroll-float fade-in-on-scroll"  
-     data-speed="0.3">
-
-  </div>
-</div>
-</div>
-
-    </div>
-  </div>
-</section>
-
-
-
-<!-- 🔹 Data-driven section -->
-<section class="learning-centered-section section-spacing">
-  <div class="container">
-    <div class="row align-items-center justify-content-around">
-
-      <!-- Image fades in and stays -->
-      <div class="col-md-5">
-        <div class="float-wrapper sticky-section">
-          <div class="sticky-content">
-		  <img 
-  src="<?php echo get_template_directory_uri(); ?>/images/graph.png"
-  alt="データ駆動型イラスト"
-  class="img-fluid scroll-float fade-in-on-scroll"
-  data-speed="-0.05">
-
-          </div>
-        </div>
-      </div>
-
-      <!-- Text scrolls upward and locks -->
-      <div class="col-md-5 offset-md-1">
-  <div class="float-wrapper sticky-section">
-    <div class="sticky-content">
-      <div class="text-content-wrapper scroll-float fade-in-on-scroll"
-           data-speed="-0.05">
-        <h2 class="section-heading">データ駆動型</h2>
-        <p class="section-text">
-          教育ビッグデータとラーニングアナリティクスを活用することで、個別最適化されたデータ駆動型の学習体験を実現しています。
+        <h3 class="update-title"><?php the_title(); ?></h3>
+        <p class="update-text">
+        <?php
+          $truncated_description = mb_strimwidth($news_description, 0, 70, '。。。');
+          echo esc_html($truncated_description);
+          ?>
         </p>
       </div>
+    </a>
+  </div>
+<?php
+  endwhile;
+  wp_reset_postdata();
+endif;
+?>
+      
     </div>
   </div>
+
+  <div class="swiper-pagination"></div>
 </div>
+<a href="#tools" class="scroll-indicator">
+  <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down">
+</a>
 
 
-    </div>
-  </div>
-</section>
 
-
- <section class="video-intro section-spacing py-4">
-  <div class="container text-center">
-    <h2 class="section-heading mb-3">LEAFシステムの全体像</h2>
-    <p class="section-text">
-      ここまでで「LETの役割」を大まかにご説明しました。<br>
-      この動画では、それらを支えるLEAFシステムの仕組みをご覧いただけます。
-    </p>
-  </div>
-</section>
-<section class="video-section section-spacing">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe
-            class="embed-responsive-item"
-            src="https://www.youtube.com/embed/UaFCPePgc54?start=1"
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            loading="lazy"
-          ></iframe>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-4">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
-        <span>LETについてもっと知る</span>
-      </a>
-    </div>
-  </div> 
-</section> 
-
-
-<section class="our-tools-section section-spacing">
+<section  id="tools" class="our-tools-section section-spacing">
   <div class="container">
   <h2 class="section-title">Our Tools</h2>
   <h3 class="section-title section-title--sub">ツール</h3>
@@ -324,84 +197,58 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
       <h2 class="section-title">News</h2>
       <h3 class="section-title section-title--sub">ニュース</h3>
     </div>
-      <div class="text-right mt-4">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="news/" class="btn btn--cta">
+
+    <div class="text-right mt-4">
+      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
         <span>ニュース一覧</span>
       </a>
     </div>
 
     <hr class="news-divider">
 
-    <div class="news-item">
-      <div class="news-date">2025.02.17</div>
-      <div class="news-tag tag-event">イベント</div>
-      <div class="news-summary">
-        <p>名古屋大学MDS教育推進室第2回講演会（緒方教授講演）</p>
-      </div>
+    <?php
+$news_query = new WP_Query([
+  'post_type' => 'news',
+  'posts_per_page' => 5,
+  'meta_key' => 'news_date',
+  'orderby' => 'meta_value',
+  'order' => 'DESC',
+]);
+
+if ($news_query->have_posts()) :
+  while ($news_query->have_posts()) : $news_query->the_post();
+    $news_date_raw = get_field('news_date'); // returns YYYYMMDD format
+    $news_date = DateTime::createFromFormat('Ymd', $news_date_raw);
+    $news_category_value = get_field('news_category'); // e.g. 'event'
+    $news_category_label = [
+      'event' => 'イベント',
+      'symposium' => 'シンポジウム',
+      'notice' => 'お知らせ',
+      'presentation' => '研究発表'
+    ][$news_category_value] ?? 'お知らせ';
+    $tag_class = 'tag-' . esc_attr($news_category_value);
+    $news_description = get_field('news_description');
+?>
+  <div class="news-item">
+    <div class="news-date"><?php echo $news_date ? esc_html($news_date->format('Y年n月j日')) : ''; ?></div>
+    <?php echo '<!-- Tag class: ' . $tag_class . ' -->'; ?>
+    <div class="news-tag <?php echo esc_attr($tag_class); ?>"><?php echo esc_html($news_category_label); ?></div>
+    <div class="news-summary">
+      <p><a href="<?php the_permalink(); ?>"><?php echo esc_html($news_description); ?></a></p>
     </div>
+  </div>
 
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2024.10.19-20</div>
-      <div class="news-tag tag-symposium">シンポジウム</div>
-      <div class="news-summary">
-        <p>教育データ利活用合同シンポジウム開催報告</p>
-      </div>
-    </div>
-
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2025.01.11</div>
-      <div class="news-tag tag-symposium">シンポジウム</div>
-      <div class="news-summary">
-        <p>ESD Symposium</p>
-      </div>
-    </div>
-
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2024.10.01</div>
-      <div class="news-tag tag-notice">お知らせ</div>
-      <div class="news-summary">
-        <p>新しいメンバーが加わりました！</p>
-      </div>
-    </div>
-
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2024.09.24-26</div>
-      <div class="news-tag tag-research">研究発表</div>
-      <div class="news-summary">
-        <p>緒方研究室中間発表会を行いました。</p>
-      </div>
-    </div>
-
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2024.08.01</div>
-      <div class="news-tag tag-event">イベント</div>
-      <div class="news-summary">
-        <p>1EdTech Japan Conference 2024（緒方教授・特別講演）</p>
-      </div>
-    </div>
-
-    <hr class="news-divider">
-
-    <div class="news-item">
-      <div class="news-date">2023.11.17</div>
-      <div class="news-tag tag-event">イベント</div>
-      <div class="news-summary">
-        <p>兵庫県議会・文教常任委員会 (緒方教授講演)</p>
-      </div>
-    </div>
-
+  <hr class="news-divider">
+<?php
+  endwhile;
+  wp_reset_postdata();
+else :
+?>
+  <p>まだニュースがありません。</p>
+<?php endif; ?>
   </div>
 </section>
+
 
 <section class="research-teaser-section section-spacing">
   <div class="container">
@@ -509,32 +356,33 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    new Swiper('.updates-carousel', {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      loop: true,
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      breakpoints: {
-        768: {
-          slidesPerView: 2,
-        },
-        1024: {
-          slidesPerView: 3,
-        },
-        1440: {
-          slidesPerView: 3,
-        }
-      }
-    });
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper('.updates-carousel', {
+    slidesPerView: 3,
+    spaceBetween: 12,
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    breakpoints: {
+      0: { slidesPerView: 1 },
+      768: { slidesPerView: 2 },
+      1280: { slidesPerView: 3 }
+    }
   });
+});
+
+
+
 </script>
 
 

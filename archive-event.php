@@ -82,7 +82,6 @@ $container = get_theme_mod( 'understrap_container_type' );
               <?php endif; ?>
             </div>
           </section>
-
         </main>
       </div>
     </div>

@@ -16,7 +16,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             <?php
               $date_raw = get_field('news_date');
               $date = $date_raw ? date('Y/m/d', strtotime($date_raw)) : '';
-              $category = get_field('category');
+              $category = get_field('news_category');
               $description = get_field('news_description');
 
               $category_labels = [

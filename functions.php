@@ -154,7 +154,7 @@ function register_news_post_type() {
     register_post_type('news', array(
         'labels' => array(
             'name' => 'News',
-            'singular_name' => 'News Item',
+            'singular_name' => 'News',
             'add_new_item' => 'Add New News Item',
             'edit_item' => 'Edit News Item',
             'new_item' => 'New News Item',
@@ -166,11 +166,25 @@ function register_news_post_type() {
         'rewrite' => array('slug' => 'news'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-megaphone',
-        'supports' => array('title'),
-        'show_in_rest' => true,
+        'supports' => array('title', 'excerpt', 'custom-fields'), // 🟢 Now supports excerpt & ACF
+        'show_in_rest' => true, // 🟢 Enables Gutenberg & REST support
     ));
 }
 add_action('init', 'register_news_post_type');
+
+
+function register_news_taxonomy() {
+    register_taxonomy('news_category', 'news', array(
+        'labels' => array(
+            'name' => 'News Categories',
+            'singular_name' => 'News Category',
+        ),
+        'hierarchical' => false,
+        'public' => true,
+        'show_in_rest' => true, // 🟢 Important for block editor
+    ));
+}
+add_action('init', 'register_news_taxonomy');
 
 
 function register_custom_post_type_event() {
@@ -203,3 +217,63 @@ function register_custom_post_type_event() {
   }
   add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
   
+  function sync_update_date_field($post_id) {
+	// Prevent infinite loop
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+	if (wp_is_post_revision($post_id)) return;
+  
+	$post_type = get_post_type($post_id);
+  
+	if ($post_type === 'news') {
+	  $news_date = get_field('news_date', $post_id);
+	  if ($news_date) {
+		update_field('update_date', $news_date, $post_id);
+	  }
+	} elseif ($post_type === 'events') {
+	  $event_date = get_field('event_date', $post_id);
+	  if ($event_date) {
+		update_field('update_date', $event_date, $post_id);
+	  }
+	}
+  }
+  add_action('acf/save_post', 'sync_update_date_field', 20);
+  
+  // Manual sync for existing news and event posts
+function manually_sync_update_dates() {
+    // Only allow admin users to run this
+    if (!is_admin() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    // Only run if explicitly triggered via URL
+    if (!isset($_GET['sync_updates']) || $_GET['sync_updates'] !== '1') {
+        return;
+    }
+
+    $query = new WP_Query([
+        'post_type' => ['news', 'event'],
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+    ]);
+
+    $synced = 0;
+
+    foreach ($query->posts as $post_id) {
+        $type = get_post_type($post_id);
+        if ($type === 'news') {
+            $d = get_field('news_date', $post_id);
+        } elseif ($type === 'event') {
+            $d = get_field('event_date', $post_id);
+        }
+
+        if ($d) {
+            update_field('update_date', $d, $post_id);
+            $synced++;
+        }
+    }
+
+    add_action('admin_notices', function () use ($synced) {
+        echo "<div class='notice notice-success is-dismissible'><p><strong>✅ Synced {$synced} posts.</strong></p></div>";
+    });
+}
+add_action('admin_init', 'manually_sync_update_dates');
