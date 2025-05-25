@@ -1,5 +1,10 @@
 @import "~bootstrap/scss/bootstrap";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 // 🎨 LET Lab Color System
 
 $color-text-body:   #4A2F1B;   // Main body text on light backgrounds (like #FCF7EA)
@@ -339,16 +344,17 @@ body {
 
 // Home page
 .hero-section {
-  min-height: 50vh;
-  max-height: 100vh; // ✅ Limit how tall it can go
-  overflow: hidden;  // Optional safeguard
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  min-height: 500px;
   display: flex;
-  align-items: center; /* vertical centering */
-  justify-content: center; /* optional: center horizontally */
-  padding: 4rem 1rem; /* avoid crowding top/bottom */
-  background: #fdf8ec; /* or your background color */
-  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
+
+
 
 
 .hero-inner {
@@ -358,6 +364,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   gap: 3rem;
+  height: 100%;
 }
 
 .hero-logo {
@@ -368,6 +375,7 @@ body {
 }
 
 .hero-logo-img {
+  display: block;
   width: 100%;
   height: auto;
   object-fit: contain;
