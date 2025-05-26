@@ -64,9 +64,11 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
     <!-- Right: Kyodai Logo + Hamburger -->
     <div class="navbar-right">
+	<div class="kyodai-logo-container">
       <a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer" class="kyodai-logo-wrapper">
         <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto-univ.png" alt="Kyoto University" class="kyodai-logo">
       </a>
+	  </div>
       <div class="hamburger-menu">
         <button id="hamburger-toggle" class="hamburger-icon">
           <span class="bar"></span>

@@ -2670,9 +2670,21 @@ body {
         position: relative;
         display: flex;
         align-items: center;
-        padding-bottom: 10px;
+        justify-content: space-between; /* distribute logo and menu button */
+        padding: 1rem 1.5rem;
         cursor: pointer;
+        flex-wrap: nowrap;
       }
+      
+      /* Responsive for mobile */
+      @media (max-width: 480px) {
+        .menubar {
+          padding: 1rem;
+          justify-content: space-between;
+          gap: 0.5rem;
+        }
+      }
+      
       
       /* Animated underline */
       .menubar::after {
@@ -2700,15 +2712,25 @@ body {
       .kyodai-logo-container {
         display: flex;
         align-items: center;
-        margin-left: 150px;
+  
+        @media (max-width: 480px) {
+          display: none;  
+      }
       }
       
       .kyodai-logo {
         height: 40px;
         width: auto;
+        
       }
       
-    
+      @media (max-width: 480px) {
+        .top-nav-list {
+          display: none;
+        }
+      }
+      
+      
       
       .header__content {
         position: relative;
