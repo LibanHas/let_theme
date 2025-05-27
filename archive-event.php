@@ -16,8 +16,8 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="container">
               <!-- Hero header -->
               <div class="events-header">
-                <h1 class="section-title">Events</h1>
-                <h3 class="section-title section-title--sub">イベント</h3>
+                <h1 class="page-title">Events</h1>
+                <h2 class="page-subtitle">イベント</h2>
               </div>
 
               <?php

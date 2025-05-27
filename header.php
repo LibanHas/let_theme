@@ -41,9 +41,11 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
     <!-- Left: LET Logo + Text -->
     <div class="navbar-left">
-      <a href="<?php echo home_url(); ?>" class="let-logo-wrapper">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
-        <div class="logo-name">
+		<div class="logo-container">
+      		<a href="<?php echo home_url(); ?>" class="let-logo-wrapper">
+        	<img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
+		</div>
+		<div class="logo-name">
 		<em>Learning & Educational<br>
           Technologies Research Unit</em>
         </div>

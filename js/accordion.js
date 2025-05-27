@@ -8,30 +8,18 @@ document.addEventListener("DOMContentLoaded", function () {
       const icon = this.querySelector(".accordion-icon");
       const isOpen = targetPanel.classList.contains("open");
 
-      // Close all panels
-      document.querySelectorAll(".accordion-panel").forEach(panel => {
-        panel.style.height = "0px";
-        panel.classList.remove("open");
-      });
-
-      document.querySelectorAll(".accordion-header").forEach(h => {
-        h.classList.remove("active");
-        h.querySelector(".accordion-icon").textContent = "+";
-      });
-
-      // Open the clicked one if it wasn't already open
-      if (!isOpen) {
+      if (isOpen) {
+        targetPanel.style.height = "0px";
+        targetPanel.classList.remove("open");
+        this.classList.remove("active");
+        icon.textContent = "+";
+      } else {
         targetPanel.classList.add("open");
-targetPanel.style.height = "auto"; // reset first
-const fullHeight = targetPanel.scrollHeight;
-
-targetPanel.style.height = "0px"; // reset to trigger transition
-// Force reflow
-void targetPanel.offsetWidth;
-
-targetPanel.style.height = fullHeight + "px";
-
-
+        targetPanel.style.height = "auto";
+        const fullHeight = targetPanel.scrollHeight;
+        targetPanel.style.height = "0px";
+        void targetPanel.offsetWidth;
+        targetPanel.style.height = fullHeight + "px";
         this.classList.add("active");
         icon.textContent = "×";
       }

@@ -43,11 +43,11 @@ $news_query = new WP_Query([
 ]);
 ?>
 
-        <section class="news-section section-spacing">
+        <section class="section-spacing">
   <div class="container">
     <div class="news-header">
-      <h2 class="section-title">News</h2>
-      <h3 class="news-section subheading">ニュース</h3>
+      <h1 class="page-title">News</h1>
+      <h2 class="page-subtitle">ニュース</h2>
     </div>
 
     <?php

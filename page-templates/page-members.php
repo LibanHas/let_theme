@@ -19,6 +19,7 @@ $wrapper_id = 'full-width-page-wrapper';
   <div class="<?php echo esc_attr( $container ); ?>">
     <div class="hero-content">
       <h1 class="page-title"><?php the_title(); ?></h1>
+      <h2 class="page-subtitle">メンバー</h2>
     </div>
   </div>
 </section>

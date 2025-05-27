@@ -63,7 +63,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 <section class="page-hero-publications">
   <div class="<?php echo esc_attr( $container ); ?>">
     <div class="hero-content">
-      <h1 class="hero-title"><?php the_title(); ?></h1>
+      <h1 class="pub-hero-title"><?php the_title(); ?></h1>
     </div>
   </div>
 </section>

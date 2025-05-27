@@ -42,17 +42,14 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
       </p>
 
       <div class="hero-buttons">
-          <div class="text-center mt-4">
-          <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
-            <span>LETについてもっと知る</span>
-          </a>
-        </div>
-            <div class="text-center mt-4">
-          <a data-anim-trigger-self="" data-anim="fade-in" href="/about" class="btn btn--cta">
-            <span>研究を見る</span>
-          </a>
-        </div>
-      </div>
+  <a data-anim-trigger-self data-anim="fade-in" href="/about" class="btn btn--cta">
+    <span>LETについてもっと知る</span>
+  </a>
+  <a data-anim-trigger-self data-anim="fade-in" href="/research" class="btn btn--cta">
+    <span>研究を見る</span>
+  </a>
+</div>
+
   </div>
 </section>
 
@@ -198,7 +195,7 @@ endif;
       <h3 class="section-title section-title--sub">ニュース</h3>
     </div>
 
-    <div class="text-right mt-4">
+    <div class="news-button-top">
       <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
         <span>ニュース一覧</span>
       </a>
@@ -247,22 +244,27 @@ else :
   <p>まだニュースがありません。</p>
 <?php endif; ?>
   </div>
+  <div class="news-button-bottom">
+      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
+        <span>ニュース一覧</span>
+      </a>
+    </div>
 </section>
 
 
 <section class="research-teaser-section section-spacing">
   <div class="container">
     <div class="row align-items-start">
-      <!-- Left: Text + Button -->
+      <!-- Left: Text + Desktop Button -->
       <div class="col-md-5">
         <h2 class="section-title">Research</h2>
         <h3 class="section-title section-title--sub">研究</h3>
-        <p class="projects-description">
+        <p class="research-description">
           LET研究室では、学習ログの可視化やAIを活用した学習支援などを通じて、
           一人ひとりに最適化された学びの実現に取り組んでいます。<br>
           現場との連携を通して開発したツールや実践事例の一部をご紹介します。
         </p>
-        <div class="mt-4">
+        <div class="research-button-top mt-4">
           <a href="research/" class="btn btn--cta">
             <span>研究ページを見る</span>
           </a>
@@ -273,22 +275,30 @@ else :
       <div class="col-md-7">
         <div class="row g-3">
           <div class="col-6 d-flex mb-5">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/NEDO-project-image.png" alt="Project 1" class="img-fluid rounded-3 shadow-sm">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/network.png" alt="Project 1" class="img-fluid rounded-3 shadow-sm">
           </div>
           <div class="col-6 d-flex mb-5">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/big-data-project-image.png" alt="Project 2" class="img-fluid rounded-3 shadow-sm">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/post-it.png" alt="Project 2" class="img-fluid rounded-3 shadow-sm">
           </div>
           <div class="col-6 d-flex mb-5">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/digital-haishin-project-image.jpg" alt="Project 3" class="img-fluid rounded-3 shadow-sm">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/lms.png" alt="Project 3" class="img-fluid rounded-3 shadow-sm">
           </div>
           <div class="col-6 d-flex mb-5">
-            <img src="<?php echo get_template_directory_uri(); ?>/images/ebpm-project-image.png" alt="Project 4" class="img-fluid rounded-3 shadow-sm">
+            <img src="<?php echo get_template_directory_uri(); ?>/images/classroom.jpg" alt="Project 4" class="img-fluid rounded-3 shadow-sm">
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Mobile-only Button -->
+    <div class="research-button-bottom mt-4">
+      <a href="research/" class="btn btn--cta">
+        <span>研究ページを見る</span>
+      </a>
+    </div>
   </div>
 </section>
+
 
 
 
@@ -304,18 +314,28 @@ else :
         私たちのメンバーは、世界中から集まった多様でフレンドリーな研究者・教育者・イノベーターの集まりです。
         教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
       </p>
-      <a href="members/" class="btn btn--cta">
-        <span>メンバー紹介を見る</span>
-      </a>
+      <div class="members-button-top mt-4">
+        <a href="members/" class="btn btn--cta">
+          <span>メンバー紹介を見る</span>
+        </a>
+      </div>
     </div>
 
     <div class="members-image">
       <div class="image-placeholder">
-      <img src="<?php echo get_template_directory_uri(); ?>/images/members-image.jpg" alt="Mascot Robot">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/members-image.jpg" alt="Mascot Robot">
       </div>
+    </div>
+
+    <!-- Mobile-only Button -->
+    <div class="members-button-bottom">
+      <a href="members/" class="btn btn--cta">
+        <span>メンバー紹介を見る</span>
+      </a>
     </div>
   </div>
 </section>
+
 
 <section class="cta-section">
   <div class="container cta-wrapper">
@@ -327,7 +347,7 @@ else :
     <div class="cta-content">
       <h2 class="cta-title">メンバー募集に興味がありますか？</h2>
       <p class="cta-text">
-        私たちは、教育技術の発展に情熱を注ぐ研究者や学生の参加をいつでも歓迎しています。<br>
+        私たちは、教育技術の発展に情熱を注ぐ研究者や学生の参加をいつでも歓迎しています。<br><br>
         私たちのミッションに共感してくださる方はもちろん、「ちょっと見てみたい」という方も大歓迎です。<br>
         ぜひお気軽にご連絡ください！
       </p>
@@ -337,7 +357,7 @@ else :
         <span>訪問予約をする</span>
       </a>
       <a href="join-us/" class="btn btn--cta">
-        <span>チームに参加する</span>
+        <span>申請する</span>
       </a>
 
       </div>
