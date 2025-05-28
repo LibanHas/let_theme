@@ -37,7 +37,7 @@ $color-tag-purple:  #9B5DE5;
   & + .page-subtitle {
     font-size: 24px;
     opacity: 0.5;
-    font-weight: normal;
+    font-weight: 600;
     margin-top: -1rem;
     margin-bottom: 2rem;
     color: $color-heading;
@@ -276,7 +276,135 @@ body {
   background-color: #000;
 }
 
+ // Menu bar
 
+ #wrapper-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #FCF7EA;
+ // box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+body {
+  padding-top: 100px; // adjust based on actual header height
+}
+.menubar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* distribute logo and menu button */
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  flex-wrap: nowrap;
+}
+
+/* Basic styling for dropdown */
+.menu-item-has-children {
+  position: relative;
+
+  ul.sub-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem); // space below parent
+    left: 0;
+    background: #fff7e6; // match your theme
+    padding: 0.5rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 180px;
+    z-index: 1000;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+
+    li {
+      padding: 0.5rem 1rem;
+      white-space: nowrap;
+
+      a {
+        color: $color-heading;
+        font-weight: normal;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &:hover > ul.sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+  .menubar {
+    padding: 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
+
+
+/* Animated underline */
+.menubar::after {
+  content: "";
+  position: absolute;
+  left: 25%; /* or adjust to align visually */
+  bottom: 0;
+  width: 100vw;
+  height: 1px;
+  background-color: black;
+  transform: translateX(-50%) scaleX(0.4); /* initial scale */
+  transform-origin: center;
+  transition: transform 0.6s ease;
+}
+
+.menubar:hover::after,
+.menubar.scrolled::after {
+transform: translateX(-50%) scaleX(2); /* full width */
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.kyodai-logo-container {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 480px) {
+    display: none;  
+}
+}
+
+.kyodai-logo {
+  height: 40px;
+  width: auto;
+  
+}
+
+@media (max-width: 480px) {
+  .top-nav-list {
+    display: none;
+  }
+}
+
+
+
+.header__content {
+  position: relative;
+  transition: all 0.3s ease;
+}
 /* Side Menu Styling */
 .side-menu {
     position: fixed;
@@ -679,25 +807,35 @@ body {
   }
 }
 
+/* Fallback: remove animation, show image */
+.no-anim {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+
+
 
 
 /* Buttons */
 .hero-buttons {
   margin-top: 2rem;
   display: flex;
-  gap: 0.25rem;
+  gap: 1.25rem;
   flex-wrap: wrap;
   justify-content: center;
 
   a.btn {
-    width: 260px;
+    width: 240px;
     text-align: center;
+    font-size: 16px;
+    padding: 0.75em 0.5em;
   }
 
   @media (max-width: 480px) {
     flex-direction: column;
     align-items: center;
-    gap: 0.25rem;
+    gap: 1.25rem;
   }
 }
 
@@ -826,53 +964,8 @@ body {
   }
   
 
-.learning-centered-section {
-    //background-color: #fdf7ec; // Match the beige tone
-    padding-top: 120px;
-    padding-bottom: 100px;
-  
-    .section-heading {
-      font-size: 48px;
-      font-weight: bold;
-      color: #d3b692; // Soft brown
-      margin-bottom: 20px;
-      font-family: 'Montserrat', sans-serif;
-    }
-  
-    .section-text {
-      font-size: 18px;
-      line-height: 2;
-      color: #253F79; // Dark bluish-gray
-    }
-  
-    img {
-      max-width: 100%;
-      height: auto;
-    }
-  }
-  
-  .section-heading {
-    font-size: 48px;
-    font-weight: bold;
-    color: #d3b692; // Soft brown
-    margin-bottom: 20px;
-    font-family: 'Montserrat', sans-serif;
-  }
 
-.lab-name {
-    margin-left: 20px;
-    font-size: 36px;
-    font-weight: 100; /* Numerical value for extra light weight */
-    font-style: italic; /* For italic style */
-    text-align: left;
-    font-family: 'Ubuntu Sans';
-}
 
-.lab-name span {
-    font-size: 36px; // Larger size for initials
-    font-weight: bold;
-    color: #333; // Darker color for contrast
-}
 .scroll-float {
     will-change: transform;
     // Remove transition here if you had one
@@ -2257,17 +2350,89 @@ body {
   max-width: 700px;
 }
 
+.work-section {
+  padding: 5rem 1rem;
+  background: #fff7e6;
+  text-align: center;
+
+  .section-header {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.5rem;
+      color: #4a2f1b;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #4a2f1b;
+    }
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); // <-- Force 2 per row
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr; // Stack on small screens
+    }
+  }
+  
+
+  .work-item {
+    background: #fef4e5;
+    border-radius: 1rem;
+    padding: 2rem 1rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    img {
+      width: 100%;
+      height: 200px; // or adjust to fit your design
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #4a2f1b;
+    }
+  }
+}
+
+
+
+
 // Members page
 
 /* Base style for filter buttons */
 .filter-button {
-  background-color: #FDF6DB;
-  border: 2px solid #E47C1C;
-  color: #E47C1C;
-  padding: 0.5em 1.2em;
+  background-color: #EED4BE;
+  border: 2px solid #EED4BE;
+  color: #4A2F1B;
+  padding: 0.5em 2.4em;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 15px;
+  border-radius: 30px;
   font-weight: 500;
   margin-right: 20px;
 }
@@ -2308,7 +2473,8 @@ body {
 
 /* Active filter button */
 .filter-button.active {
-  background-color: #E47C1C;
+  background-color: #FF9E62;
+  border: 2px solid #FF9E62;
   color: #FDF6DB;
 }
 
@@ -2957,108 +3123,26 @@ body {
       }
       
       
-    // Menu bar
-
-    #wrapper-navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-        background-color: #FCF7EA;
-       // box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      }
-      body {
-        padding-top: 100px; // adjust based on actual header height
-      }
-      .menubar {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* distribute logo and menu button */
-        padding: 1rem 1.5rem;
-        cursor: pointer;
-        flex-wrap: nowrap;
-      }
+   
       
-      /* Responsive for mobile */
-      @media (max-width: 480px) {
-        .menubar {
-          padding: 1rem;
-          justify-content: space-between;
-          gap: 0.5rem;
-        }
-      }
+      // /* The animated underline */
+      // .header__content::after {
+      //   content: "";
+      //   position: absolute;
+      //   left: 0;
+      //   right: 0;
+      //   bottom: 0; /* or slightly below for spacing: -2px */
+      //   height: 1px;
+      //   background-color: currentColor; /* or any color you like */
+      //   transform: scaleX(0);
+      //   transform-origin: center;
+      //   transition: transform 0.4s ease;
+      // }
       
-      
-      /* Animated underline */
-      .menubar::after {
-        content: "";
-        position: absolute;
-        left: 25%; /* or adjust to align visually */
-        bottom: 0;
-        width: 100vw;
-        height: 1px;
-        background-color: black;
-        transform: translateX(-50%) scaleX(0.4); /* initial scale */
-        transform-origin: center;
-        transition: transform 0.6s ease;
-      }
-      
-      .menubar:hover::after,
-    .menubar.scrolled::after {
-    transform: translateX(-50%) scaleX(2); /* full width */
-    }
-    .logo-container {
-        display: flex;
-        align-items: center;
-      }
-      
-      .kyodai-logo-container {
-        display: flex;
-        align-items: center;
-  
-        @media (max-width: 480px) {
-          display: none;  
-      }
-      }
-      
-      .kyodai-logo {
-        height: 40px;
-        width: auto;
-        
-      }
-      
-      @media (max-width: 480px) {
-        .top-nav-list {
-          display: none;
-        }
-      }
-      
-      
-      
-      .header__content {
-        position: relative;
-        transition: all 0.3s ease;
-      }
-      
-      /* The animated underline */
-      .header__content::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0; /* or slightly below for spacing: -2px */
-        height: 1px;
-        background-color: currentColor; /* or any color you like */
-        transform: scaleX(0);
-        transform-origin: center;
-        transition: transform 0.4s ease;
-      }
-      
-      /* Trigger on hover */
-      .header__content:hover::after {
-        transform: scaleX(1);
-      }
+      // /* Trigger on hover */
+      // .header__content:hover::after {
+      //   transform: scaleX(1);
+      // }
       
     .page-menu {
         display: flex;
@@ -3110,6 +3194,10 @@ body {
       
       
       // Publications page
+
+      .pub-section {
+        height: 100vw;
+      }
       body.page-publications-scrollfix {
         overflow-y: scroll;
       }
@@ -3168,13 +3256,13 @@ body {
       
       
       .accordion-header {
-        background-color: #ec7823;
-        color: white;
+        background-color: #F8DA9E;
+        color: 4A2F1B;
         font-weight: 300;
         font-family: 'Ubuntu Sans', sans-serif;
         padding: 1rem 1.5rem;
         font-size: 1.5rem;
-        border: none;
+        border: 2px;
         border-radius: 20px 20px 0 0;
         width: 100%;
         text-align: left;
@@ -3198,7 +3286,7 @@ body {
         height: 0;
         overflow: hidden;
         transition: height 0.4s ease, padding 0.4s ease;
-        border-top: 2px solid #ec7823;
+        border-top: 2px solid #F8DA9E;
         border-radius: 0 0 20px 20px;
       }
       .accordion-panel.open {

@@ -12,7 +12,6 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 
 $container = get_theme_mod( 'understrap_container_type' );
-$wrapper_id = 'full-width-page-wrapper';
 ?>
 <!-- HERO BANNER -->
 <section class="page-hero-members">

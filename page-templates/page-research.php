@@ -369,6 +369,36 @@ get_header();
 </section>
 
 
+<section class="work-section">
+  <div class="section-header">
+    <h2>Explore Our Work</h2>
+    <p>研究や活動の詳細をご覧ください。</p>
+  </div>
+  <div class="work-grid">
+    <a href="https://eds.let.media.kyoto-u.ac.jp/sip3/" class="work-item">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/sip3_hero_image.jpg" alt="Scroll Down">
+      <h3>SIP3</h3>
+      <div class="description">⽀援的な学習環境の構築と分析を⾏う研究プロジェクト</div>
+    </a>
+    <a href="publications/" class="work-item">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/publications_image.jpg" alt="Scroll Down">
+      <h3>Publications</h3>
+      <div class="description">国内外の学会・論⽂誌に掲載された研究成果⼀覧</div>
+    </a>
+    <a href="projects/" class="work-item">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/projects_image.png" alt="Scroll Down">
+      <h3>Projects</h3>
+      <div class="description">現在進⾏中および過去の教育⽀援プロジェクト</div>
+    </a>
+    <a href="grants/" class="work-item">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/grants_image.png" alt="Scroll Down">
+      <h3>Grants</h3>
+      <div class="description">これまでに採択された研究費・助成⾦の情報</div>
+    </a>
+  </div>
+</section>
+
+
 
 
 

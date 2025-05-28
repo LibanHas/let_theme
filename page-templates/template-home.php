@@ -374,7 +374,25 @@ else :
 
 
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const logo = document.querySelector('.fade-in-logo');
 
+  if (!logo) return;
+
+  let animationStarted = false;
+
+  logo.addEventListener('animationstart', () => {
+    animationStarted = true;
+  });
+
+  setTimeout(() => {
+    if (!animationStarted) {
+      logo.classList.add('no-anim');
+    }
+  }, 1000); // 1 second grace period
+});
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   new Swiper('.updates-carousel', {
