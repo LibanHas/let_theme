@@ -1,0 +1,11 @@
+# Node modules and build outputs
+node_modules/
+dist/
+css/
+*.log
+npm-debug.log*
+
+# OS or IDE stuff
+.DS_Store
+.idea/
+.vscode/
