@@ -1,11 +1,7 @@
-<<<<<<< HEAD
 @import "bootstrap/scss/bootstrap";
 
 
 
-=======
-@import "~bootstrap/scss/bootstrap";
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
 
 * {
   margin: 0;
@@ -59,11 +55,7 @@ $color-tag-purple:  #9B5DE5;
   
 .section-spacing {
     padding-top: var(--section-spacing-top, 8rem);
-<<<<<<< HEAD
     padding-bottom: var(--section-spacing-bottom, 4rem);
-=======
-    padding-bottom: var(--section-spacing-bottom, 8rem);
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
   
     @media (max-width: 768px) {
       padding-top: var(--section-spacing-top-sm, 4rem);
@@ -96,7 +88,6 @@ $color-tag-purple:  #9B5DE5;
   
   
 
-<<<<<<< HEAD
         .tag-symposium {
         background-color: #f4a261; // soft orange (was tag-event)
       }
@@ -138,23 +129,6 @@ $color-tag-purple:  #9B5DE5;
       }
 
 
-=======
-.tag-event {
-    background-color: #f4a261; // soft orange
-  }
-  
-  .tag-symposium {
-    background-color: #2a9d8f; // soft blue-green
-  }
-  
-  .tag-notice {
-    background-color: #90be6d; // soft green
-  }
-  
-  .tag-research {
-    background-color: #9b5de5; // soft purple
-  }
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
 
   .btn {
     width: 260px;
@@ -253,7 +227,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-}
+
 
 .navbar-left {
   display: flex;
@@ -304,7 +278,18 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  .language-switcher {
+    font-size: 0.9rem;
+
+    .lang-link {
+      &.active {
+        color: red;
+      }
+    }
+  }
 }
+
 
 .kyodai-logo {
   height: 40px;
@@ -330,6 +315,8 @@ body {
   height: 2px;
   background-color: #000;
 }
+}
+
 
  // Menu bar
 
@@ -1752,14 +1739,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
     color: #4a3e2a;
   }
   
-<<<<<<< HEAD
   
-=======
-  .news-section h1 {
-    font-size: 2rem;
-    font-weight: bold;
-  }
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
   
   .news-section .subheading {
     font-size: 1.1rem;
@@ -1797,15 +1777,6 @@ transform: translateX(-50%) scaleX(2); /* full width */
     text-align: center;
   }
   
-<<<<<<< HEAD
-
-=======
-  /* Example color mapping */
-  .news-badge.イベント { background-color: #f59539; }
-  .news-badge.シンポジウム { background-color: #3fa99b; }
-  .news-badge.お知らせ { background-color: #a3c26f; }
-  .news-badge.研究発表 { background-color: #b283e4; }
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
   
   .news-title {
     flex: 1;
@@ -1813,7 +1784,6 @@ transform: translateX(-50%) scaleX(2); /* full width */
     color: #4a3e2a;
   }
   
-<<<<<<< HEAD
   .custom-pagination {
   display: flex;
   justify-content: center;
@@ -1919,112 +1889,6 @@ transform: translateX(-50%) scaleX(2); /* full width */
 }
 
 
-=======
-  .pagination {
-    text-align: center;
-    margin-top: 40px;
-  }
-  
-  .pagination .page-numbers {
-    display: inline-block;
-    margin: 0 4px;
-    padding: 8px 12px;
-    background-color: #e3deaa;
-    color: #333;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 4px;
-  }
-  
-  .pagination .current {
-    background-color: #954205;
-    color: #fff;
-  }
-  
-
-  // News page - single
-
-
-  .news-single {
-    background-color: #fdf8ed;
-    font-family: 'Ubuntu Sans', sans-serif;
-    color: #4a3e2a;
-  
-    // .section-title {
-    //   font-size: 2rem;
-    //   font-weight: bold;
-    //   margin-bottom: 1rem;
-    // }
-  
-    // .section-title--sub {
-    //   font-size: 1.1rem;
-    //   color: #9b8d7a;
-    //   margin-bottom: 2.5rem;
-    // }
-  
-    .news-section .subheading {
-        font-size: 1.1rem;
-        color: #9b8d7a;
-        margin-bottom: 2em;
-      }
-
-    .news-meta {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-  
-      .news-date {
-        width: 100px;
-        font-weight: bold;
-        color: #7b715f;
-      }
-  
-      .news-badge {
-        padding: 4px 10px;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        font-weight: bold;
-        color: white;
-        min-width: 70px;
-        text-align: center;
-  
-        &.event { background-color: #f59539; }
-        &.symposium { background-color: #3fa99b; }
-        &.notice { background-color: #a3c26f; }
-        &.presentation { background-color: #b283e4; }
-      }
-    }
-  
-    .news-title {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #1f1f1f;
-      margin-bottom: 2rem;
-    }
-  
-    .news-image {
-      text-align: center;
-      margin: 2rem 0;
-  
-      img {
-        max-width: 100%;
-        border-radius: 8px;
-      }
-    }
-  
-    .news-content {
-      font-size: 1rem;
-      line-height: 1.8;
-      color: #333;
-      max-width: 100%;
-      margin-left: 0;
-      margin-right: 0;
-      text-align: justify;
-    }
-  }
-  
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
   
 
 
