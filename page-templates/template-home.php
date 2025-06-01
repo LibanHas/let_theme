@@ -64,12 +64,20 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 $args = [
   'post_type' => ['news', 'event'],
   'posts_per_page' => 10,
+<<<<<<< HEAD
   'orderby' => 'date',
   'order' => 'DESC',
 ];
 
 
 
+=======
+  'meta_key' => 'update_date',
+  'orderby' => 'meta_value',
+  'order' => 'DESC',
+];
+
+>>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
 $updates_query = new WP_Query($args);
 
 if ($updates_query->have_posts()) :
@@ -87,6 +95,7 @@ if ($updates_query->have_posts()) :
 
     $tag_value = '';
     $tag_label = '';
+<<<<<<< HEAD
     $description = '';
 
     if ($post_type === 'news') {
@@ -98,6 +107,24 @@ if ($updates_query->have_posts()) :
       $tag_value = 'event';
       $tag_label = 'イベント';
       $description = get_field('event_title') ?: get_the_title();
+=======
+    $news_description = '';
+
+    if ($post_type === 'news') {
+      $tag_value = get_field('news_category') ?: 'notice';
+      $tag_label = [
+        'event' => 'イベント',
+        'symposium' => 'シンポジウム',
+        'notice' => 'お知らせ',
+        'presentation' => '研究発表'
+      ][$tag_value] ?? 'お知らせ';
+
+      $news_description = get_field('news_description') ?: '';
+    } elseif ($post_type === 'event') {
+      $tag_value = 'event';
+      $tag_label = 'イベント';
+      $news_description = get_field('event_title') ?: get_the_title();
+>>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
     }
 
     $tag_class = 'tag-' . esc_attr($tag_value);
@@ -113,7 +140,14 @@ if ($updates_query->have_posts()) :
         </div>
         <h3 class="update-title"><?php the_title(); ?></h3>
         <p class="update-text">
+<<<<<<< HEAD
           <?php echo esc_html(mb_strimwidth($description, 0, 70, '...')); ?>
+=======
+        <?php
+          $truncated_description = mb_strimwidth($news_description, 0, 70, '。。。');
+          echo esc_html($truncated_description);
+          ?>
+>>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
         </p>
       </div>
     </a>
@@ -123,7 +157,10 @@ if ($updates_query->have_posts()) :
   wp_reset_postdata();
 endif;
 ?>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
       
     </div>
   </div>

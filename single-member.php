@@ -31,12 +31,9 @@ $container = get_theme_mod('understrap_container_type');
       <div class="col-md-8">
         <h1 class="member-name"><?php the_title(); ?></h1>
         <?php
-        $employment_title = get_field('employment_title');
         $student_level = get_field('student_level');
         $student_year = get_field('student_year');
-        if ($employment_title) {
-          echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
-        } elseif ($student_level && $student_year) {
+        if ($student_level && $student_year) {
           $label = $student_level === 'doctoral' ? '博士' : '修士';
           echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
         }

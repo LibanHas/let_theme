@@ -277,6 +277,7 @@ function manually_sync_update_dates() {
     });
 }
 add_action('admin_init', 'manually_sync_update_dates');
+<<<<<<< HEAD
 
 
 function sync_all_news_update_dates_once() {
@@ -308,3 +309,5 @@ function sync_all_news_update_dates_once() {
   set_transient('sync_news_update_dates_done', true, 12 * HOUR_IN_SECONDS);
 }
 add_action('admin_init', 'sync_all_news_update_dates_once');
+=======
+>>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
