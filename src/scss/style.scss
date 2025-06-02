@@ -2990,7 +2990,125 @@ transform: translateX(-50%) scaleX(2); /* full width */
   }
   
 
-  
+// Presentations page
+
+#page-presentations {
+  //max-width: 960px;
+  margin: 0 auto;
+  //padding: 3rem 1rem;
+
+  h1.presentation-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #5c2a1d;
+    margin-bottom: 0.5rem;
+  }
+
+  p.presentation-subtitle {
+    font-size: 1.25rem;
+    color: #9a6d45;
+    margin-bottom: 2rem;
+  }
+
+  blockquote.presentation-intro {
+    background-color: #f5f0e6;
+    padding: 1rem 1.25rem;
+    border-left: 4px solid #d4a373;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .presentation-video {
+    border-top: 1px solid #ccc;
+    padding-top: 2rem;
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #5c2a1d;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .video-embed.ratio-16x9 {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; // 16:9 aspect ratio
+  height: 0;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+  }
+
+  .presentation-section {
+  margin-bottom: 3rem;
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #5c2a1d;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 0.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .presentation-list {
+    list-style: none;
+    padding-left: 0;
+
+    .presentation-entry {
+      margin-bottom: 2rem;
+
+      .presentation-date {
+        font-size: 0.85rem;
+        color: #777;
+        font-weight: bold;
+        margin-bottom: 0.25rem;
+      }
+
+      .presentation-description {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 0.25rem;
+        line-height: 1.6;
+      }
+
+      .presentation-links a {
+        display: inline-block;
+        font-size: 0.85rem;
+        margin-right: 0.75rem;
+        color: #5c2a1d;
+        text-decoration: underline;
+
+        &:hover {
+          color: #9a6d45;
+        }
+      }
+    }
+  }
+}
+
+
+}
+
+
+
 
 // Join us
 
