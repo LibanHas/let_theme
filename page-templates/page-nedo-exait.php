@@ -14,7 +14,7 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<div class="wrapper project-wrapper" id="page-nedo-exait">
+<div class="wrapper project-page" id="page-nedo-exait">
 	<div class="<?php echo esc_attr( $container ); ?>" id="content">
 		<div class="row justify-content-center">
 			<div class="col-lg-10 content-area" id="primary">

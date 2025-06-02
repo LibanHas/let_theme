@@ -60,13 +60,13 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </div> -->
 <!-- HERO BANNER -->
-<section class="section-spacing pub-section">
+<section class="section-spacing">
   <div class="container">
     <div class="news-header">
       <h1 class="page-title"><?php the_title(); ?></h1>
       <h2 class="page-subtitle">出版</h2>
     </div>
-
+</section>
 <div class="accordion-section">
   <!-- Journal Papers -->
   <div class="accordion-item">
@@ -286,6 +286,6 @@ $container = get_theme_mod( 'understrap_container_type' );
     </div>
   </div>
 </div>
-</section>
+
 
 <?php get_footer(); ?>

@@ -254,6 +254,131 @@ $container = get_theme_mod( 'understrap_container_type' );
             </div>
             </li>
             </ul>
+            <h2 class="section-title">スライド</h2>
+            <ul class="presentation-list">
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                ラーニング・アナリティクス研究の最新動向（東北大学LARC講演資料）
+                </div>
+                <div class="presentation-links">
+                [<a href="/wp-content/uploads/2021/07/603b542fafc54003eb4a1a42bb92069f.pdf" target="_blank" rel="noopener">PDF</a>]
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                ⼤学全体でラーニングアナリティクスを始めるには？：教育データ利活⽤ポリシーの策定について
+                </div>
+                <div class="presentation-links">
+                [<a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2021/05/199d8cbdc595d5ed4e465cfcbc23d822.pdf" target="_blank" rel="noopener">PDF</a>]
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                ラーニングアナリティクスを始めるには
+                </div>
+                <div class="presentation-links">
+                [<a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/12/4c3c245d55730bbf4efb22c9775bfbb6.pdf" target="_blank" rel="noopener">PDF</a>]
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                教育データの利活用ーラーニングアナリティクスの研究
+                </div>
+                <div class="presentation-links">
+                [<a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/12/90199ebfc59dfe072a8616c1a6a9e882.pdf" target="_blank" rel="noopener">PDF</a>]
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                日本学術会議学習データ利活用に関する提言の説明
+                </div>
+                <div class="presentation-links">
+                [<a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/12/630592a7639bfdd240e9750526fb9640.pdf" target="_blank" rel="noopener">PDF</a>]
+                </div>
+            </li>
+            </ul>
+            <h2 class="section-title">LEAF関連資料</h2>
+            <h3>BookRoll</h3>
+            <ul class="presentation-list">
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                <strong>BookRollと音声録音を使ったオンデマンド（非同期）授業【教員用】</strong>の説明
+                </div>
+                <div class="presentation-links">
+                <a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/03/ccd3448eec5c49f158ebcb3fffd6b40c.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                <strong>BookRollと音声会話を使ったリアルタイム（同期）授業【教員用】</strong>の説明
+                </div>
+                <div class="presentation-links">
+                <a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/03/1e8fa04ba32712c24fb3d4ea6a298f12.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                <strong>BookRollと音声録音を使ったオンデマンド（非同期）授業【学生用】</strong>の説明
+                </div>
+                <div class="presentation-links">
+                <a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/04/149af0e5c66b7590da5a252051ec0d1c.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                <strong>BookRollと音声会話を使ったリアルタイム（同期）授業【学生用】</strong>の説明
+                </div>
+                <div class="presentation-links">
+                <a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2020/04/d39ff7b01926e349a888bc6980aa0a2b.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            </ul>
+            <h2 class="section-title">■ LEAF (Moodle, BookRoll, ログパレ(LogPalette))</h3>
+            <ul class="presentation-list">
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                LEAFを使った授業設計について（学校導入説明資料）
+                </div>
+                <div class="presentation-links">
+                <a href="https://www.let.media.kyoto-u.ac.jp/wp-content/uploads/2021/08/e6c1175746bfc3d93eedfa7990283ca5.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                LEAFの説明（アカウントを作成して試すことができます）：基本編
+                </div>
+                <div class="presentation-links">
+                <a href="https://youtu.be/tKTEsweCDEI" target="_blank" rel="noopener">[ビデオ映像]</a>
+                <a href="https://www.nii.ac.jp/event/upload/20200508-6_Ogata.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                LEAFの説明：応用編
+                </div>
+                <div class="presentation-links">
+                <a href="https://youtu.be/Pu-sqUrUVXE" target="_blank" rel="noopener">[ビデオ映像]</a>
+                <a href="https://www.nii.ac.jp/event/upload/20200515-6_Ogata.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            <li class="presentation-entry">
+                <div class="presentation-description">
+                高等学校（数学・英語）でのBookRollの活用事例
+                </div>
+                <div class="presentation-links">
+                <a href="https://youtu.be/ShE-_r4vL_0" target="_blank" rel="noopener">[ビデオ映像]</a>
+                <a href="https://www.nii.ac.jp/news/upload/20200410-6_Ogata.pdf" target="_blank" rel="noopener">[資料]</a>
+                </div>
+            </li>
+            </ul>
+            <h2 class="section-title">マニュアルなど</h3>
+            <p class="presentation-description">
+            BookRollについてのマニュアル等、もっと詳しく知りたい方は
+            <a href="https://eds.let.media.kyoto-u.ac.jp/previous/?page_id=3511" target="_blank" rel="noopener">こちら</a>をご覧ください。
+            </p>
+            <p class="presentation-description">
+            （FAQ・Moodle・BookRoll・ログパレ(LogPalette)の詳しい説明、マニュアルなどがご確認頂けます）
+            </p>
             </section>
 
         </main><!-- #main -->
