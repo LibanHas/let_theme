@@ -39,6 +39,7 @@ get_header();
 
 
 <section class="theme-section section-spacing research-accordion">
+<div class="theme-inner">
   <div class="container">
     <h2 class="section-heading">テーマ</h2>
 
@@ -58,12 +59,14 @@ get_header();
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-logs">
-  <h4>なぜ可視化するのか？</h4>
+    <div class="research-block">
+    <h4>なぜ可視化するのか？</h4>
   <p>
     学習ログとは、教材をどのように読んだか、どこに時間をかけたか、何に注目し、どんな疑問を持ったかを記録したデータです。<br>
     これまで見えなかった学びの過程を可視化することで、学習者自身の振り返りや、教師による指導の最適化を実現します。
   </p>
-
+  </div>
+  <div class="research-block">
   <h4>可視化される主なログ</h4>
   <table>
     <thead>
@@ -91,21 +94,25 @@ get_header();
       </tr>
     </tbody>
   </table>
-
+</div>
+  <div class="research-block">
   <h4>教師にとっての価値</h4>
   <ul>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 生徒のつまずき箇所を把握し、授業改善に活かす</li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> クラス全体の傾向と個別の違いを見比べて対応</li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 経験に基づいた指導を、**エビデンスで裏付ける**</li>
   </ul>
-
+  </div>
+  <div class="research-block">
   <h4>学習者にとっての価値</h4>
   <ul>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 自分の学習の進め方やクセを <strong>客観的に可視化</strong></li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> データを手がかりに、復習や振り返りができる</li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 「自分の学び方を知る」ことで、<strong>学習に自信</strong>が持てる</li>
   </ul>
-  <h4>実践例</h4>
+</div>
+<div class="research-block">
+<h4>実践例</h4>
 <div class="theme-example">
   <div class="theme-example__text">
     <p><strong>京都市立高校（英語授業）</strong></p>
@@ -114,12 +121,15 @@ get_header();
       授業中に<em>LogPalette</em>でこれらの情報を確認した教師は、多くの生徒が理解に苦しんでいる段落を即座に特定し、その場で授業内容を調整しました。
     </p>
   </div>
+  </div>
+  <div class="research-block">
   <blockquote class="theme-example__quote">
     <p>「これまで見えなかった“つまずき”が、授業中に可視化されることで、対応が変わった」</p>
     <cite>— 京都市立高校 英語科 教員</cite>
   </blockquote>
 </div>
-
+</div>
+<div class="research-block">
 <h4>関連プロジェクト・論文</h4>
 <ul class="theme-resources">
   <li>
@@ -130,10 +140,10 @@ get_header();
   </li>
   <li>
     【論文】Ogata et al. (2023). <em>Visualizing Learning Behavior for Adaptive Teaching.</em> LAK2023<br>
-    ※PDF
+    
   </li>
 </ul>
-
+</div>
 </div>
 
     <!-- 教育支援ツールの開発 -->
@@ -154,9 +164,9 @@ get_header();
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-tools">
-  <p>
+  <!-- <p>
     私たちは、教材配信、学習記録、可視化、分析などを支援するツールを設計・開発しています。単なるICT導入ではなく、授業の質を高め、学習者の理解と行動を支えるための実用的かつ持続可能な設計を目指しています。
-  </p>
+  </p> -->
 
   <h4>現場との協働による改良と検証</h4>
   <p>
@@ -165,7 +175,7 @@ get_header();
 
   <h4>主要なシステムとツール</h4>
   <p>実証研究と現場の協働から生まれた代表的なツールをご紹介します。</p>
-
+  <div class="research-block">
   <div class="our-tools-section">
     <div class="tool-item">
       <div class="tool-logo">
@@ -205,6 +215,7 @@ get_header();
     <hr class="tool-divider">
   </div>
 </div>
+</div>
     <!-- 学習者モデリング -->
     <div class="theme-card">
       <div class="theme-card__main accordion-header" data-target="theme-modeling">
@@ -221,31 +232,33 @@ get_header();
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-modeling">
-      <p>
+      <!-- <p>
         学習行動データをもとに、理解度や学習スタイルをモデリングします。<br>
         教師はフィードバックに活かし、学習者自身は振り返りに使えるように設計されています。
-      </p>
-
+      </p> -->
+      <div class="research-block">
       <h4>学習行動から“個別の学び方”を捉える</h4>
       <p>
         私たちは、教材配信、学習記録、可視化、分析などを支援するツールを設計・開発しています。
         単なるICT導入ではなく、授業の質を高め、学習者の理解と行動を支えるための実用的かつ持続可能な設計を目指しています。
       </p>
-
+      </div>
+      <div class="research-block">
       <h4>教師と学習者、両方への支援に活用</h4>
       <ul class="icon-list">
         <li><strong>教師：</strong> 学習者の理解状況に応じたフィードバックが可能</li>
         <li><strong>学習者：</strong> 自分の学習スタイルを客観的に振り返ることができる</li>
         <li><strong>システム：</strong> モデルに基づいて教材を自動推薦したり、再学習を促したりすることも</li>
       </ul>
-
+      </div>
+      <div class="research-block">
       <h4>モデリングは、他の研究テーマと連動</h4>
       <p>
         この技術は、「学習ログの可視化」「教育支援ツール」「xAPI連携」などのテーマと連携し、
         パーソナライズされた教育支援を実現する基盤になっています。
       </p>
     </div>
-
+    </div>
 
     <!-- xAPIと学習基盤の構築 -->
     <div class="theme-card">
@@ -259,22 +272,24 @@ get_header();
             学習活動を記録するための国際標準であるxAPIを活用し、ツールや環境を越えて学習ログを一元的に蓄積・活用できる教育基盤を構築しています。
           </p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <div class="accordion-icon plus-icon">
+          <span class="line horizontal"></span>
+          <span class="line vertical"></span>
+      </div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-xapi">
-  <p>
+  <!-- <p>
     複数のツールやシステムから学習ログを共通の形式で収集し、LRS（Learning Record Store）に蓄積。学校と研究者の双方にとって活用しやすい基盤を整備中です。
-  </p>
-
+  </p> -->
+  <div class="research-block">
   <h4>なぜ学習基盤の構築が重要なのか</h4>
   <p>
     学習活動は様々なツールや教室で行われますが、ログの記録方法が統一されていないと、データの活用や分析が難しくなります。<br>
     xAPIを活用することで、学習ログを共通の形式で記録・保存・共有できるようになり、授業改善・再学習・研究活用が可能になります。
   </p>
-
+  </div>
+  <div class="research-block">
   <h4>学習基盤の設計と運用</h4>
   <p>
     私たちは、BookRollやLogPaletteなどのツールをxAPIに対応させ、リアルタイムでログをLRS（Learning Record Store）に蓄積する仕組みを構築しています。
@@ -282,6 +297,7 @@ get_header();
   <p>
     また、複数校で共通のxAPIプロファイルを用いることで、学校を越えたログの比較・分析や、個別最適化された学習支援の実現にも取り組んでいます。
   </p>
+</div>
 </div>
 
 
@@ -301,24 +317,26 @@ get_header();
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-field">
-  <p>
+  <!-- <p>
     単なる実装にとどまらず、教師や生徒の声を取り入れながら継続的な改善と検証を行っています。<br>
     教室で生まれたフィードバックを研究に反映し、さらに教育現場に還元する「研究と実践の循環」を重視しています。
-  </p>
-
+  </p> -->
+  <div class="research-block">
   <h4>教室で、理論を確かめる</h4>
   <p>
     私たちは、ツールやモデルを学校現場で実際に活用しながら研究を進める「実証研究」に取り組んでいます。<br>
     単なるテスト導入ではなく、継続的に使用しながら改善と検証を繰り返すことで、理論と実践の往復を可能にします。
   </p>
-
+</div>
+<div class="research-block">
   <h4>どのような場面で行われているか？</h4>
   <ul>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>授業中の学習ログをもとに理解度や関心を分析</li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>学習後のメモやコメントを使ったリフレクション支援</li>
     <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>学期末の成績や発言データとの関連を検証</li>
   </ul>
-
+</div>
+<div class="research-block">
   <h4>現場と研究の両側面から</h4>
   <table>
     <thead>
@@ -338,7 +356,8 @@ get_header();
       </tr>
     </tbody>
   </table>
-
+</div>
+<div class="research-block">
   <h4>なぜ実証研究が重要か？</h4>
   <p>
     私たちは、「使いやすいツール」や「見えるデータ」の開発だけでなく、学校現場との協働を通じて実践に根ざしたエビデンスを蓄積し、それを次の研究と実装に活かす循環的なアプローチを大切にしています。
@@ -350,12 +369,14 @@ get_header();
     そのために、開発した仕組みを現場で使い、現場の声に耳を傾け、実際の授業で繰り返し検証します。<br>
     このような実証研究の積み重ねが、エビデンスに基づく教育支援を可能にし、ツール・データ・授業がつながる持続的な学びの基盤となっていきます。
   </p>
-
+</div>
+<div class="research-block">
   <blockquote class="field-quote">
     <p>「BookRollのメモを翌週の授業設計に使うようになりました」</p>
     <footer>— 高校英語科 教員</footer>
   </blockquote>
-
+</div>
+<div class="research-block">
   <h4>関連論文</h4>
   <ul>
     <li>
@@ -364,8 +385,9 @@ get_header();
     </li>
   </ul>
 </div>
-
+</div>
   </div>
+</div>
 </section>
 
 

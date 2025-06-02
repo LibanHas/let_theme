@@ -94,7 +94,7 @@ function register_member_post_type() {
 			'public' => true,
 			'has_archive' => false,
 			'rewrite' => array('slug' => 'member'),
-			'supports' => array('title', 'editor', 'thumbnail'),
+			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
 			'menu_position' => 5,
 			'menu_icon' => 'dashicons-groups',
 			'show_in_rest' => true,
@@ -277,37 +277,104 @@ function manually_sync_update_dates() {
     });
 }
 add_action('admin_init', 'manually_sync_update_dates');
-<<<<<<< HEAD
 
-
-function sync_all_news_update_dates_once() {
-  // Only run for admins on the backend
-  if (!is_admin() || !current_user_can('manage_options')) {
-    return;
-  }
-
-  // Only run once per session
-  if (get_transient('sync_news_update_dates_done')) {
-    return;
-  }
-
-  $news_posts = get_posts([
-    'post_type' => 'news',
-    'posts_per_page' => -1,
-    'post_status' => 'publish',
-    'fields' => 'ids'
-  ]);
-
-  foreach ($news_posts as $post_id) {
-    $news_date = get_field('news_date', $post_id);
-    if ($news_date) {
-      update_field('update_date', $news_date, $post_id);
+function set_new_member_menu_order( $post_id, $post, $update ) {
+    // Only target 'member' post type and on creation (not updates)
+    if ( $post->post_type !== 'member' || $update ) {
+        return;
     }
-  }
 
-  // Set a transient to avoid re-running
-  set_transient('sync_news_update_dates_done', true, 12 * HOUR_IN_SECONDS);
+    // Get the current highest menu_order
+    $max_order = get_posts([
+        'post_type'      => 'member',
+        'posts_per_page' => 1,
+        'orderby'        => 'menu_order',
+        'order'          => 'DESC',
+        'fields'         => 'ids',
+    ]);
+
+    $next_order = 0;
+    if (!empty($max_order)) {
+        $existing_post = get_post($max_order[0]);
+        $next_order = (int) $existing_post->menu_order + 1;
+    }
+
+    // Update this new post's menu_order
+    remove_action('save_post', 'set_new_member_menu_order', 10); // prevent infinite loop
+    wp_update_post([
+        'ID'         => $post_id,
+        'menu_order'=> $next_order,
+    ]);
+    add_action('save_post', 'set_new_member_menu_order', 10, 3);
 }
-add_action('admin_init', 'sync_all_news_update_dates_once');
-=======
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
+add_action('save_post', 'set_new_member_menu_order', 10, 3);
+
+// Add custom filter dropdown to admin list view for 'member' post type
+function add_member_type_admin_filter() {
+    global $typenow;
+    if ($typenow !== 'member') return;
+
+    $selected = $_GET['member_type'] ?? '';
+    $options = [
+        '' => 'すべてのメンバー種別',
+        'faculty' => 'faculty',
+        'student' => 'student',
+        'alumni'  => 'alumni',
+    ];
+
+    echo '<select name="member_type">';
+    foreach ($options as $value => $label) {
+        printf(
+            '<option value="%s"%s>%s</option>',
+            esc_attr($value),
+            selected($selected, $value, false),
+            esc_html($label)
+        );
+    }
+    echo '</select>';
+}
+add_action('restrict_manage_posts', 'add_member_type_admin_filter');
+
+
+// Add custom column
+function add_member_type_column($columns) {
+    $columns['member_type'] = 'メンバー区分';
+    return $columns;
+}
+add_filter('manage_member_posts_columns', 'add_member_type_column');
+
+// Populate custom column
+function show_member_type_column($column, $post_id) {
+    if ($column === 'member_type') {
+        $value = get_field('member_type', $post_id);
+        echo esc_html($value ? $value : '—');
+    }
+}
+add_action('manage_member_posts_custom_column', 'show_member_type_column', 10, 2);
+
+
+
+function filter_members_by_member_type($query) {
+    global $pagenow;
+
+    // Only modify in admin when editing the 'member' list
+    if (
+        is_admin() &&
+        $query->is_main_query() &&
+        $pagenow === 'edit.php' &&
+        isset($_GET['post_type']) &&
+        $_GET['post_type'] === 'member' &&
+        !empty($_GET['member_type'])
+    ) {
+        $query->set('meta_query', [
+            [
+                'key'     => 'member_type',
+                'value'   => sanitize_text_field($_GET['member_type']),
+                'compare' => '=',
+            ]
+        ]);
+    }
+}
+add_action('pre_get_posts', 'filter_members_by_member_type');
+
+
