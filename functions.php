@@ -312,7 +312,11 @@ add_action('save_post', 'set_new_member_menu_order', 10, 3);
 // Add custom filter dropdown to admin list view for 'member' post type
 function add_member_type_admin_filter() {
     global $typenow;
-    if ($typenow !== 'member') return;
+    if ($typenow === 'member') {
+        echo '';
+    } else {
+        return; // Exit if not on the member post type screen
+    }
 
     $selected = $_GET['member_type'] ?? '';
     $options = [

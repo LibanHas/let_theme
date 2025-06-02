@@ -268,10 +268,16 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+  @media(max-width: 480px){
+    display: none;
+  }
 }
 
 .top-nav-list li {
   font-size: 0.95rem;
+  a {
+    color: #4A2F1B;
+  }
 }
 
 .navbar-right {
@@ -280,11 +286,11 @@ body {
   gap: 1rem;
 
   .language-switcher {
-    font-size: 1.5rem;
-
+    font-size: 0.9rem;
+    margin-left: 1.5rem;
     .lang-link {
       &.active {
-        color: green;
+        color: #4A2F1B
       }
     }
   }
@@ -2521,6 +2527,227 @@ transform: translateX(-50%) scaleX(2); /* full width */
     }
   }
 }
+
+// Projects page
+
+
+.project-sections-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 2rem 0;
+
+  .project-hero-section {
+    padding-bottom: 1.5rem;
+  }
+}
+
+.project-hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+
+  .project-hero-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+
+    .project-hero-content {
+      h1.page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #5c2a1d;
+        margin-bottom: 0.5rem;
+      }
+
+      h2.page-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #9a6d45;
+        margin-bottom: 1rem;
+      }
+
+      .project-intro {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #333;
+      }
+    }
+
+    .project-hero-image {
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  .scroll-indicator {
+    display: block;
+    margin: 2rem auto 0;
+    width: 2rem;
+    height: auto;
+  }
+}
+
+.project-cards-section {
+  padding: 4rem 0;
+
+  .project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    }
+
+    img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #5c2a1d;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-meta {
+      font-size: 0.9rem;
+      color: #9a6d45;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #444;
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+  }
+}
+
+// NEDO Exait
+.breadcrumb {
+  background-color: #FCF7EA;
+  a {
+    margin: 0rem 0.5rem;
+  }
+}
+#page-nedo-exait {
+  .project-wrapper {
+    padding: 4rem 1rem;
+    background-color: #fdf8ee;
+  }
+
+  .project-entry {
+    max-width: 960px;
+    margin: 0 auto;
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: #9a9a9a;
+      margin-bottom: 2rem;
+
+      a {
+        color: #666;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .project-header {
+      margin-bottom: 2rem;
+
+      .project-title {
+        font-size: 2rem;
+        color: #5c2a1d;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+      }
+
+      .project-meta {
+        font-size: 0.95rem;
+        color: #8a6f4d;
+      }
+    }
+
+    .project-content {
+      p {
+        line-height: 1.8;
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+        margin: 3rem 0 1rem;
+        color: #5c2a1d;
+        border-left: 4px solid #d4a373;
+        padding-left: 0.75rem;
+      }
+
+      figure {
+        margin: 2rem 0;
+        text-align: center;
+          img {
+          max-width: 80%;   // Shrink slightly from 100%
+          width: auto;
+          height: auto;
+          border-radius: 0.5rem;
+          box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+        }
+
+        figcaption {
+          font-size: 0.9rem;
+          color: #777;
+          margin-top: 0.5rem;
+        }
+      }
+
+      ul {
+        padding-left: 1.5rem;
+        li {
+          margin-bottom: 0.75rem;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+}
+
+
+
 
 
 // Grants page

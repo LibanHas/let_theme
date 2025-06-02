@@ -64,20 +64,12 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 $args = [
   'post_type' => ['news', 'event'],
   'posts_per_page' => 10,
-<<<<<<< HEAD
   'orderby' => 'date',
   'order' => 'DESC',
 ];
 
 
 
-=======
-  'meta_key' => 'update_date',
-  'orderby' => 'meta_value',
-  'order' => 'DESC',
-];
-
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
 $updates_query = new WP_Query($args);
 
 if ($updates_query->have_posts()) :
@@ -95,7 +87,6 @@ if ($updates_query->have_posts()) :
 
     $tag_value = '';
     $tag_label = '';
-<<<<<<< HEAD
     $description = '';
 
     if ($post_type === 'news') {
@@ -107,24 +98,6 @@ if ($updates_query->have_posts()) :
       $tag_value = 'event';
       $tag_label = 'イベント';
       $description = get_field('event_title') ?: get_the_title();
-=======
-    $news_description = '';
-
-    if ($post_type === 'news') {
-      $tag_value = get_field('news_category') ?: 'notice';
-      $tag_label = [
-        'event' => 'イベント',
-        'symposium' => 'シンポジウム',
-        'notice' => 'お知らせ',
-        'presentation' => '研究発表'
-      ][$tag_value] ?? 'お知らせ';
-
-      $news_description = get_field('news_description') ?: '';
-    } elseif ($post_type === 'event') {
-      $tag_value = 'event';
-      $tag_label = 'イベント';
-      $news_description = get_field('event_title') ?: get_the_title();
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
     }
 
     $tag_class = 'tag-' . esc_attr($tag_value);
@@ -140,14 +113,7 @@ if ($updates_query->have_posts()) :
         </div>
         <h3 class="update-title"><?php the_title(); ?></h3>
         <p class="update-text">
-<<<<<<< HEAD
           <?php echo esc_html(mb_strimwidth($description, 0, 70, '...')); ?>
-=======
-        <?php
-          $truncated_description = mb_strimwidth($news_description, 0, 70, '。。。');
-          echo esc_html($truncated_description);
-          ?>
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
         </p>
       </div>
     </a>
@@ -157,10 +123,6 @@ if ($updates_query->have_posts()) :
   wp_reset_postdata();
 endif;
 ?>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6f83dfbcc175dacd2496e05df812c73a2adfd2ac
       
     </div>
   </div>
@@ -235,52 +197,79 @@ endif;
     <hr class="news-divider">
 
     <?php
-$news_query = new WP_Query([
-  'post_type' => 'news',
-  'posts_per_page' => 5,
-  'meta_key' => 'news_date',
-  'orderby' => 'meta_value',
-  'order' => 'DESC',
-]);
+    $news_query = new WP_Query([
+      'post_type' => 'news',
+      'posts_per_page' => 5,
+      'meta_key' => 'news_date',
+      'orderby' => 'meta_value',
+      'order' => 'DESC',
+    ]);
 
-if ($news_query->have_posts()) :
-  while ($news_query->have_posts()) : $news_query->the_post();
-    $news_date_raw = get_field('news_date'); // returns YYYYMMDD format
-    $news_date = DateTime::createFromFormat('Ymd', $news_date_raw);
-    $news_category_value = get_field('news_category'); // e.g. 'event'
-    $news_category_label = [
-      'event' => 'イベント',
-      'symposium' => 'シンポジウム',
-      'notice' => 'お知らせ',
-      'presentation' => '研究発表'
-    ][$news_category_value] ?? 'お知らせ';
-    $tag_class = 'tag-' . esc_attr($news_category_value);
-    $news_description = get_field('news_description');
-?>
-  <div class="news-item">
-    <div class="news-date"><?php echo $news_date ? esc_html($news_date->format('Y年n月j日')) : ''; ?></div>
-    <?php echo '<!-- Tag class: ' . $tag_class . ' -->'; ?>
-    <div class="news-tag <?php echo esc_attr($tag_class); ?>"><?php echo esc_html($news_category_label); ?></div>
-    <div class="news-summary">
-      <p><a href="<?php the_permalink(); ?>"><?php echo esc_html($news_description); ?></a></p>
-    </div>
+    // Define tag class and label maps
+    $category_classes = [
+      'symposiums'   => 'tag-symposium',
+      'workshops'    => 'tag-workshop',
+      'lectures'     => 'tag-lecture',
+      'conferences'  => 'tag-conference',
+      'publications' => 'tag-publication',
+      'media'        => 'tag-media',
+      'awards'       => 'tag-award',
+      'projects'     => 'tag-project',
+      'contests'     => 'tag-contest',
+      'news'         => 'tag-news'
+    ];
+
+    $category_labels = [
+      'symposiums'   => 'シンポジウム',
+      'workshops'    => 'ワークショップ',
+      'lectures'     => '講演',
+      'conferences'  => 'カンファレンス',
+      'publications' => '出版物',
+      'media'        => 'メディア掲載',
+      'awards'       => '受賞',
+      'projects'     => 'プロジェクト',
+      'contests'     => 'コンテスト',
+      'news'         => 'ニュース'
+    ];
+
+    if ($news_query->have_posts()) :
+      while ($news_query->have_posts()) : $news_query->the_post();
+        $news_date_raw = get_field('news_date');
+        $news_date = DateTime::createFromFormat('Ymd', $news_date_raw);
+        $news_description = get_field('news_description');
+
+        // Get first term from taxonomy
+        $category_value = get_field('news_category');
+$category_label = $category_labels[$category_value] ?? 'ニュース';
+$tag_class = $category_classes[$category_value] ?? 'tag-news';
+
+    ?>
+      <div class="news-item">
+        <div class="news-date"><?php echo $news_date ? esc_html($news_date->format('Y年n月j日')) : ''; ?></div>
+        <div class="news-tag <?php echo esc_attr($tag_class); ?>"><?php echo esc_html($category_label); ?></div>
+        <div class="news-summary">
+          <p><a href="<?php the_permalink(); ?>"><?php echo esc_html($news_description); ?></a></p>
+        </div>
+      </div>
+
+      <hr class="news-divider">
+    <?php
+      endwhile;
+      wp_reset_postdata();
+    else :
+    ?>
+      <p>まだニュースがありません。</p>
+    <?php endif; ?>
   </div>
 
-  <hr class="news-divider">
-<?php
-  endwhile;
-  wp_reset_postdata();
-else :
-?>
-  <p>まだニュースがありません。</p>
-<?php endif; ?>
-  </div>
   <div class="news-button-bottom">
-      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
-        <span>ニュース一覧</span>
-      </a>
-    </div>
+    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
+      <span>ニュース一覧</span>
+    </a>
+  </div>
 </section>
+
+
 
 
 <section class="research-teaser-section section-spacing">
