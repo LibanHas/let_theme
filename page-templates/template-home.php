@@ -6,6 +6,31 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 
+$category_classes = [
+  'symposiums'   => 'tag-symposium',
+  'workshops'    => 'tag-workshop',
+  'lectures'     => 'tag-lecture',
+  'conferences'  => 'tag-conference',
+  'publications' => 'tag-publication',
+  'media'        => 'tag-media',
+  'awards'       => 'tag-award',
+  'projects'     => 'tag-project',
+  'contests'     => 'tag-contest',
+  'news'         => 'tag-news'
+];
+
+$category_labels = [
+  'symposiums'   => 'シンポジウム',
+  'workshops'    => 'ワークショップ',
+  'lectures'     => '講演',
+  'conferences'  => 'カンファレンス',
+  'publications' => '出版物',
+  'media'        => 'メディア掲載',
+  'awards'       => '受賞',
+  'projects'     => 'プロジェクト',
+  'contests'     => 'コンテスト',
+  'news'         => 'ニュース'
+];
 
 // ✅ SAFELY ASSIGN THIS BEFORE ANY JS
 $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters.png' );
@@ -21,7 +46,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 
 
-<section class="hero-section">
+<section class="home-hero-section">
   <div class="hero-inner">
     <!-- Left: Logo -->
     <div class="hero-logo">
@@ -51,8 +76,10 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 </div>
 
   </div>
-</section>
 
+
+
+</div>
 <div class="updates-carousel-wrapper">
   <!-- Arrows -->
   <div class="swiper-button-prev"></div>
@@ -61,18 +88,18 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
   <div class="swiper updates-carousel">
     <div class="swiper-wrapper">
     <?php
-$args = [
-  'post_type' => ['news', 'event'],
-  'posts_per_page' => 10,
-  'orderby' => 'date',
-  'order' => 'DESC',
-];
+  $args = [
+    'post_type' => ['news', 'event'],
+    'posts_per_page' => 10,
+    'orderby' => 'date',
+    'order' => 'DESC',
+  ];
 
 
 
-$updates_query = new WP_Query($args);
+  $updates_query = new WP_Query($args);
 
-if ($updates_query->have_posts()) :
+  if ($updates_query->have_posts()) :
   while ($updates_query->have_posts()) : $updates_query->the_post();
     $post_type = get_post_type();
 
@@ -100,9 +127,11 @@ if ($updates_query->have_posts()) :
       $description = get_field('event_title') ?: get_the_title();
     }
 
-    $tag_class = 'tag-' . esc_attr($tag_value);
-?>
-  <div class="swiper-slide">
+    $tag_class = $category_classes[$tag_value] ?? 'tag-news';
+    $tag_label = $category_labels[$tag_value] ?? 'ニュース';
+
+    ?>
+    <div class="swiper-slide">
     <a href="<?php the_permalink(); ?>" class="update-card-link">
       <div class="update-card">
         <div class="update-date">
@@ -111,28 +140,29 @@ if ($updates_query->have_posts()) :
             <?php echo esc_html($tag_label); ?>
           </span>
         </div>
-        <h3 class="update-title"><?php the_title(); ?></h3>
+        <h3 class="update-title"><?php echo esc_html(mb_strimwidth(get_the_title(), 0, 70, '...')); ?></h3>
         <p class="update-text">
-          <?php echo esc_html(mb_strimwidth($description, 0, 70, '...')); ?>
+          <?php echo esc_html(mb_strimwidth($description, 0, 50, '...')); ?>
         </p>
       </div>
     </a>
   </div>
-<?php
-  endwhile;
-  wp_reset_postdata();
-endif;
-?>
+  <?php
+    endwhile;
+    wp_reset_postdata();
+  endif;
+  ?>
       
     </div>
   </div>
 
   <div class="swiper-pagination"></div>
-</div>
+</section>
+
+
 <a href="#tools" class="scroll-indicator">
   <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down">
 </a>
-
 
 
 <section  id="tools" class="our-tools-section section-spacing">

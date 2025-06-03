@@ -47,7 +47,7 @@ $container = get_theme_mod( 'understrap_container_type' );
               <p>本研究室では、知識モデルやユーザモデルなど、教育・学習の知的支援のために必要となる基本モジュールを、LAプラットフォーム上に開発します。教材・問題から知識要素を抽出し、知識モデルを構築。ログ分析によりユーザモデルを形成し、個人適応型教材の推薦や最適なグループ構成などを支援します。</p>
 
               <figure>
-                <img src="<?php echo get_template_directory_uri(); ?>/images/project-sip2-model.png" alt="知識モデルとユーザーモデル" class="img-fluid">
+                <img src="<?php echo get_template_directory_uri(); ?>/images/project-sip2.png" alt="知識モデルとユーザーモデル" class="img-fluid">
                 <figcaption class="text-center"><strong>知識モデルとユーザーモデル</strong></figcaption>
               </figure>
 

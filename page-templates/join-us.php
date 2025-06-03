@@ -21,11 +21,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 <div class="wrapper" id="join-us-wrapper">
     <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
         <main class="site-main" id="main">
-        <section class="join-hero content-block">
+  <section class="join-hero section-spacing">
   <div class="container">
-    <div class="section-divider"></div>
 
-    <h1 class="join-title">一緒に研究しませんか？</h1>
+    <h1 class="page-title">Join Us</h1>
 
     <div class="join-description">
       <p class="split-line">
@@ -199,6 +198,10 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
         </section>
 
         <section class="admission-flow content-block">
+        <div class="application-intro">
+  <strong>LET Labへの大学院出願のステップをご案内します。</strong>
+  出願の種類やスケジュールによって多少異なる場合がありますが、参考にしてください。
+</div>
   <div class="selectors">
     <select id="applicantType">
       <option value="master">修士</option>
@@ -215,15 +218,33 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
 
   <div id="stepsContainer" class="steps-grid"></div>
 </section>
-<section class="scroll-hero">
-<div class="scroll-hero__bg-wrapper">
-  <img src="<?php echo get_template_directory_uri(); ?>/images/kyoto.jpeg" class="scroll-hero__bg" alt="Kyoto cityscape" data-anim="scroll-background" data-anim-distance="200">
-</div>
+
+<section class="scroll-hero scroll-cta-section">
+  <div class="scroll-hero__bg-wrapper">
+    <img 
+      src="<?php echo get_template_directory_uri(); ?>/images/kyoto.jpeg" 
+      class="scroll-hero__bg" 
+      alt="Kyoto cityscape">
+    <div class="scroll-hero__overlay"></div>
+  </div>
+
   <div class="scroll-hero__content">
     <h2 class="heading-1">研究の第一歩を、緒方研究室で</h2>
-    <a href="/visit" class="btn btn--secondary-outline"><span>見学を予約する</span></a>
+    <p class="scroll-hero__subtext">
+      気軽に一歩を踏み出してみませんか？どなたでも歓迎します。
+    </p>
+    <p class="scroll-hero__smalltext">
+      研究室訪問や出願に関心のある方は、以下のフォームからご連絡ください。<br>
+      研究内容や受験準備についての相談も歓迎します。
+    </p>
+    <div class="scroll-hero__buttons">
+      <a href="/visit" class="btn btn--cta"><span>見学を予約する</span></a>
+      <a href="/contact" class="btn btn--secondary-outline"><span>お問い合わせフォーム</span></a>
+    </div>
   </div>
 </section>
+
+
 
 
 
