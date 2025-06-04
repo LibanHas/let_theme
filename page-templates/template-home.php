@@ -81,6 +81,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 </div>
 <div class="updates-carousel-wrapper">
+<div class="updates-carousel-inner"> 
   <!-- Arrows -->
   <div class="swiper-button-prev"></div>
   <div class="swiper-button-next"></div>
@@ -152,17 +153,20 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     wp_reset_postdata();
   endif;
   ?>
-      
+      </div>
     </div>
   </div>
 
+  <div class="pagination-and-scroll">
   <div class="swiper-pagination"></div>
+  <a href="#tools" class="scroll-indicator">
+    <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down">
+  </a>
+</div>
 </section>
 
 
-<a href="#tools" class="scroll-indicator">
-  <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down">
-</a>
+
 
 
 <section  id="tools" class="our-tools-section section-spacing">

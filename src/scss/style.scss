@@ -1,5 +1,5 @@
 @import "bootstrap/scss/bootstrap";
-
+@mixin flex($ai:center,$jc:center,$gap:0){display:flex;align-items:$ai;justify-content:$jc;gap:$gap;}
 
 
 
@@ -215,11 +215,23 @@ body {
 // Additional SCSS styles for the theme
 
 /* Hide the default menu */
-.navbar-header {
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid #e0d3c0;
+/* ────────────────  NAVBAR  ──────────────── */
+/* EDITABLE TOKENS – adjust once, reuse everywhere */
+$brand-brown: #4A2F1B;
+$brand-cream: #FCF7EA;
+$shadow-line: #e0d3c0;
+$bp-mobile: 480px;
+
+/* 1. Fixed wrapper (sticks to top) */
+#wrapper-navbar {
+  position: fixed;
+  inset: 0 0 auto 0;          // top:0; left/right:0
+  z-index: 1000;
+  background: $brand-cream;
+  border-bottom: 1px solid $shadow-line;
 }
 
+/* 2.   Inner flex container  */
 .navbar-inner {
   max-width: 1280px;
   margin: 0 auto;
@@ -227,335 +239,172 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  padding: 0.75rem 1rem;      // ↑ touch height ≈48 px
+}
 
-
+/* 3-A.  LEFT block  (logo + unit name) */
 .navbar-left {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  @include flex(center, center, 0.75rem);   // mixin if you have one
+  .navbar-logo     { width: 95px; height: auto; }
+  .logo-name {
+    color: $brand-brown;
+    font: 300 0.95rem/1.2 "Ubuntu-Sans", sans-serif;
+    em { font-style: italic; }
+  }
 }
 
-.let-logo-wrapper {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-}
-
-.navbar-logo {
-  height: 56px;
-  width: auto;
-}
-
-.logo-name {
-  font-size: 18px;
-  line-height: 1.2;
-}
-
-.logo-name em {
-  font-style: italic;
-}
-
+/* 3-B.  OPTIONAL centre menu (desktop only) */
+/* 3-B. Center nav menu (desktop only) */
 .navbar-center {
-  flex-grow: 1;
   display: flex;
   justify-content: center;
-}
+  flex-grow: 1;
 
-.top-nav-list {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  @media(max-width: 480px){
-    display: none;
-  }
-}
-
-.top-nav-list li {
-  font-size: 0.95rem;
-  a {
-    color: #4A2F1B;
-  }
-}
-
-.navbar-right {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-
-  .language-switcher {
-    font-size: 0.9rem;
-    margin-left: 1.5rem;
-    .lang-link {
-      &.active {
-        color: #4A2F1B
-      }
-    }
-  }
-}
-
-
-.kyodai-logo {
-  height: 40px;
-  width: auto;
-}
-
-.hamburger-menu {
-  display: block;
-}
-
-.hamburger-icon {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 0;
-}
-
-.hamburger-icon .bar {
-  width: 8px;
-  height: 1px;
-  background-color: #000;
-}
-}
-
-
- // Menu bar
-
- #wrapper-navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background-color: #FCF7EA;
- // box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-body {
-  padding-top: 100px; // adjust based on actual header height
-}
-.menubar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* distribute logo and menu button */
-  padding: 1rem 1.5rem;
-  cursor: pointer;
-  flex-wrap: nowrap;
-}
-
-/* Basic styling for dropdown */
-.menu-item-has-children {
-  position: relative;
-
-  ul.sub-menu {
-    position: absolute;
-    top: calc(100% + 0.5rem); // space below parent
-    left: 0;
-    background: #fff7e6; // match your theme
-    padding: 0.5rem 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    min-width: 180px;
-    z-index: 1000;
-
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  ul.top-nav-list {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
     li {
-      padding: 0.5rem 1rem;
-      white-space: nowrap;
-      list-style: none;
+      position: relative;
 
       a {
-        color: $color-heading;
-        font-weight: normal;
+        color: $brand-brown;
+        font-size: 0.95rem;
         text-decoration: none;
+        transition: color 0.3s ease;
 
         &:hover {
-          color: #4A2F1B;
+          color: $color-accent;
         }
+      }
+
+      /* Dropdown menu (initially hidden) */
+      .sub-menu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        background-color: $color-bg-soft;
+        padding: 0.5rem 0;
+        min-width: 180px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+
+        li {
+          padding: 0.5rem 1rem;
+
+          a {
+            color: $brand-brown;
+            font-size: 0.9rem;
+
+            &:hover {
+              color: $color-accent;
+            }
+          }
+        }
+      }
+
+      &:hover > .sub-menu {
+        display: block;
       }
     }
   }
+}
 
-  &:hover > ul.sub-menu {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+
+/* 3-C.  RIGHT block (Kyodai crest, language, hamburger) */
+.navbar-right {
+  @include flex(center, center, 1rem);
+
+  /* Kyodai logo – hide on very narrow screens if you wish */
+  .kyodai-logo-container {
+    display: flex;
+    .kyodai-logo { width: 40px; height: auto; }
   }
-}
 
-
-
-
-
-/* Responsive for mobile */
-@media (max-width: 480px) {
-  .menubar {
-    padding: 1rem;
-    justify-content: space-between;
-    gap: 0.5rem;
+  /* Language switcher */
+  .language-switcher {
+    font-size: 0.9rem;
+    a { &.active { color: $brand-brown; } }
   }
-}
 
-
-/* Animated underline */
-.menubar::after {
-  content: "";
-  position: absolute;
-  left: 25%; /* or adjust to align visually */
-  bottom: 0;
-  width: 100vw;
-  height: 1px;
-  background-color: black;
-  transform: translateX(-50%) scaleX(0.4); /* initial scale */
-  transform-origin: center;
-  transition: transform 0.6s ease;
-}
-
-.menubar:hover::after,
-.menubar.scrolled::after {
-transform: translateX(-50%) scaleX(2); /* full width */
-}
-.logo-container {
-  display: flex;
-  align-items: center;
-}
-
-.kyodai-logo-container {
-  display: flex;
-  align-items: center;
-
-  @media (max-width: 480px) {
-    display: none;  
-}
-}
-
-.kyodai-logo {
-  height: 40px;
-  width: auto;
-  
-}
-
-@media (max-width: 480px) {
-  .top-nav-list {
-    display: none;
-  }
-}
-
-
-
-.header__content {
-  position: relative;
-  transition: all 0.3s ease;
-}
-/* Side Menu Styling */
-.side-menu {
-    position: fixed;
-    top: 0;
-    right: -300px; /* Initially hide off the screen */
-    width: 300px;
-    height: 100%;
-    background-color: #FFFFFF;
-    transition: right 0.3s ease-in-out;
-    z-index: 999; /* Lower than the hamburger button */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-/* When the menu is open, slide it in */
-.side-menu.open {
-    right: 0;
-}
-
-/* Hamburger Icon */
-.hamburger-icon {
-    cursor: pointer;
-    position: fixed; /* Fix the position in the top right */
-    top: 0px;
-    right: 0px;
-    z-index: 1002; /* Ensures it is above the menu */
-    padding: 24px;
+  /* Hamburger */
+  .hamburger-icon {
+    --bar-w: 24px; --bar-h: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
     border: none;
+    padding: 0;
+    cursor: pointer;
+
+    .bar {
+      width: var(--bar-w);
+      height: var(--bar-h);
+      background: #333;
+      transition: transform .3s, opacity .3s;
+    }
+
+    &.open {
+      .bar:nth-child(1) { transform: translateY(6px)  rotate(45deg); }
+      .bar:nth-child(2) { opacity: 0; }
+      .bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+    }
+  }
 }
 
-/* Hamburger Icon Bars */
-.hamburger-icon .bar {
-    display: block;
-    width: 30px;
-    height: 1px;
-    margin: 6px auto;
-    background-color: #333;
-    transition: all 0.3s ease;
+/* 4.   Side drawer (mobile menu) */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,.2);
+  transition: right .3s;
+  &.open { right: 0; }
 }
 
-/* Optional: Animation for changing bars when clicked */
-.hamburger-icon.open .bar:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 7px; /* Adjusted for better visual effect */
+/* 5.  Animated underline for desktop header */
+.menubar {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 50%;
+    width: 100vw; height: 1px;
+    background: #000;
+    transform-origin: center;
+    transform: translateX(-50%) scaleX(.4);
+    transition: transform .6s;
+  }
+  &:hover::after,
+  &.scrolled::after { transform: translateX(-50%) scaleX(2); }
 }
 
-.hamburger-icon.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger-icon.open .bar:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    top: -7px; /* Adjusted for better visual effect */
-}
-
-.navbar-logo{
-    width: 75px; /* Adjust the width to your preference */
-    height: auto; /* Maintain the aspect ratio */
-    padding: 0.5rem;
-}
-
-// Navbar
-
-.main-menu-desktop {
-  display: flex;
-  gap: 2rem;
-  flex-direction:row;
-  align-items: center;
-  margin-left: auto;
-  padding-right: 2rem;
-}
-
-.nav{
-  margin-left: 350px;
-}
-
-// .top-nav-list {
-//   list-style: none;
-//   display: flex;
-//   gap: 2rem;
-//   margin: 0;
-//   padding: 0;
-// }
-
-.top-nav-list li a {
-  text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.top-nav-list li a:hover {
-  color: #954205;
+/* 6.  Mobile overrides */
+@media (max-width: $bp-mobile) {
+  .top-nav-list            { display: none; }
+  .kyodai-logo-container   { display: none; }   // keep if you prefer
+  .navbar-left .logo-name  { font-size: 0.85rem; }
 }
 
 
 // Home page
 
+body.home {
+padding-top: 7rem; ;
+}
 
 .home-hero-section {
   display: flex;
+  flex-direction: column;     // ← stack logo/text and carousel vertically
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -568,6 +417,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
 
 
 
+
 .hero-inner {
   display: flex;
   align-items: flex-start;
@@ -575,7 +425,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
   max-width: 1200px;
   margin: 0 auto;
   gap: 3rem;
-  height: 40%;
+  //height: 40%;
   @media (max-width: 480px) {
     flex-direction: column;
     text-align: center;
@@ -654,6 +504,35 @@ transform: translateX(-50%) scaleX(2); /* full width */
 }
 
 
+.updates-carousel-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+}
+
+/* 👇 Align with outer edge of carousel-wrapper padding */
+.swiper-button-prev {
+  left: -5rem !important;
+}
+
+.swiper-button-next {
+  right: -5rem !important;
+}
 
 
 
@@ -817,61 +696,37 @@ transform: translateX(-50%) scaleX(2); /* full width */
   line-height: 1.6;
 }
 
-/* Pagination styling */
-.swiper-pagination {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-  margin-top: 1rem;
+.pagination-and-scroll {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.swiper-pagination-bullet {
-  width: 10px;
-  height: 10px;
-  background-color: #7e5a3c;
-  opacity: 0.3;
-  margin: 0 4px;
+ .swiper-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  z-index: 1 !important;
 }
 
-.swiper-pagination-bullet-active {
-  opacity: 1;
-  background-color:#5a4c3c ;
+.scroll-indicator {
+  position: relative;
+  z-index: 2;
 }
 
-/* Arrows */
-.swiper-button-prev,
-.swiper-button-next {
-  color: #7e614c;
-  top: 40%;
+.scroll-indicator img {
+  width: 24px;
+  height: auto;
+  animation: bounce 2s infinite;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-size: 20px;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
 }
 
-
-.fade-in-logo {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1.2s ease-out forwards;
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Fallback: remove animation, show image */
-.no-anim {
-  opacity: 1 !important;
-  transform: none !important;
-  animation: none !important;
-}
 
 
 
@@ -1919,7 +1774,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
     // .section-title {
     //   font-size: 2rem;
     //   font-weight: bold;
-    //   margin-bottom: 1rem;
+    //  margin-bottom: 1rem;
     // }
   
     .section-title--sub {
@@ -2791,11 +2646,9 @@ transform: translateX(-50%) scaleX(2); /* full width */
 }
 
 .page-hero-members::before {
-    .page-hero-members::before {
-        display: none;
-      }
-      
-}
+    display: none;
+  }
+    
 
 .page-hero-members .hero-content {
   position: relative;
@@ -3319,6 +3172,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
           }
         }
       }
+    
       
   
       .application-prep-section {
@@ -3800,7 +3654,7 @@ transform: translateX(-50%) scaleX(2); /* full width */
       
       .accordion-header {
         background-color: #F8DA9E;
-        color: 4A2F1B;
+        color: #4A2F1B;
         font-weight: 300;
         font-family: 'Ubuntu Sans', sans-serif;
         padding: 1rem 1.5rem;
