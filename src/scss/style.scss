@@ -390,8 +390,7 @@ $bp-mobile: 480px;
 
 /* 6.  Mobile overrides */
 @media (max-width: $bp-mobile) {
-  .top-nav-list            { display: none; }
-  .kyodai-logo-container   { display: none; }   // keep if you prefer
+  .top-nav-list            { display: none; } // keep if you prefer
   .navbar-left .logo-name  { font-size: 0.85rem; }
 }
 
@@ -3819,5 +3818,63 @@ padding-top: 7rem; ;
         }
       }
       
+      @media (max-width: 480px) {
+        .updates-carousel-wrapper {
+          padding: 0 1rem !important;
+          max-width: 100% !important;
+        }
       
+        .swiper-wrapper {
+          justify-content: flex-start !important;
+        }
+      
+        .swiper-slide {
+          width: 100% !important;
+          max-width: 100% !important;
+          flex-shrink: 0 !important;
+          box-sizing: border-box;
+          margin: 0 auto;
+        }
+      
+        .update-card {
+          width: 100% !important;
+          max-width: 100% !important;
+          box-sizing: border-box;
+        }
+      
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none !important;
+        }
+      }
+      
+      
+      @media (max-width: 764px) {
+        .navbar-left .navbar-logo {
+        width: 50px;
+        }
+        .navbar-center {
+          display: none;
+        }
+        .kyodai-logo-container{
+          display: none;
+        }
+        .hero-inner {
+          flex-direction: column;
+        }
+      
+        .updates-carousel-wrapper {
+          padding: 0 1rem !important;
+          max-width: 100%
+        }
+      
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none !important;
+        }
+      
+        .swiper-wrapper {
+          justify-content: center;
+        }
+      }
       
