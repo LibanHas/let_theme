@@ -453,6 +453,8 @@ document.addEventListener("DOMContentLoaded", function () {
     slidesPerView: 3,
     spaceBetween: 12,
     loop: true,
+    centeredSlides: true, // 🔥 Ensure the single slide is centered
+    watchOverflow: true,  // 🔥 Prevent weird behavior if few slides
     autoplay: {
       delay: 4000,
       disableOnInteraction: false,
@@ -466,16 +468,23 @@ document.addEventListener("DOMContentLoaded", function () {
       prevEl: '.swiper-button-prev',
     },
     breakpoints: {
-      0: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1280: { slidesPerView: 3 }
+      0: {
+        slidesPerView: 1,
+        centeredSlides: true,
+      },
+      768: {
+        slidesPerView: 2,
+        centeredSlides: false
+      },
+      1280: {
+        slidesPerView: 3,
+        centeredSlides: false
+      }
     }
   });
 });
-
-
-
 </script>
+
 
 
 <?php get_footer(); ?>
