@@ -229,7 +229,7 @@ function register_custom_post_type_event() {
 	  if ($news_date) {
 		update_field('update_date', $news_date, $post_id);
 	  }
-	} elseif ($post_type === 'events') {
+	} elseif ($post_type === 'event') {
 	  $event_date = get_field('event_date', $post_id);
 	  if ($event_date) {
 		update_field('update_date', $event_date, $post_id);

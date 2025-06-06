@@ -245,7 +245,7 @@ $bp-mobile: 480px;
 /* 3-A.  LEFT block  (logo + unit name) */
 .navbar-left {
   @include flex(center, center, 0.75rem);   // mixin if you have one
-  .navbar-logo     { width: 95px; height: auto; }
+  .navbar-logo     { width: 50px; height: auto; }
   .logo-name {
     color: $brand-brown;
     font: 300 0.95rem/1.2 "Ubuntu-Sans", sans-serif;
@@ -318,12 +318,12 @@ $bp-mobile: 480px;
 
 /* 3-C.  RIGHT block (Kyodai crest, language, hamburger) */
 .navbar-right {
-  @include flex(center, center, 1rem);
+  @include flex(center, center, 3rem);
 
   /* Kyodai logo – hide on very narrow screens if you wish */
   .kyodai-logo-container {
     display: flex;
-    .kyodai-logo { width: 40px; height: auto; }
+    .kyodai-logo { width: 120px; height: auto; }
   }
 
   /* Language switcher */
@@ -370,6 +370,19 @@ $bp-mobile: 480px;
   transition: right .3s;
   &.open { right: 0; }
 }
+.menu-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  z-index: 1001;
+}
+
 
 /* 5.  Animated underline for desktop header */
 .menubar {
@@ -1776,12 +1789,6 @@ padding-top: 7rem; ;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
   
-    // .section-title {
-    //   font-size: 2rem;
-    //   font-weight: bold;
-    //  margin-bottom: 1rem;
-    // }
-  
     .section-title--sub {
       font-size: 1.1rem;
       color: #9b8d7a;
@@ -1796,55 +1803,76 @@ padding-top: 7rem; ;
   
     .event-item {
       display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
-      align-items: center;
-      gap: 16px;
-      padding: 1rem 0;
-    }
   
-    .event-date {
-      width: 100px;
-      font-weight: bold;
-      color: #7b715f;
-    }
+      .event-thumbnail {
+        flex: 0 0 150px;
   
-    .event-badge {
-      padding: 4px 10px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: bold;
-      color: #fff;
-      min-width: 70px;
-      text-align: center;
-  
-      &.online {
-        background-color: #f59539;
-      }
-      &.in_person {
-        background-color: #3fa99b;
-      }
-      &.hybrid {
-        background-color: #a3c26f;
-      }
-    }
-  
-    .event-summary {
-      flex: 1;
-      min-width: 200px;
-  
-      .event-title-link {
-        color: #4a3e2a;
-        text-decoration: none;
-  
-        &:hover {
-          text-decoration: underline;
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
         }
       }
   
-      .event-time {
-        margin-top: 0.25rem;
-        font-size: 0.9rem;
-        color: #7b715f;
+      .event-content {
+        display: flex;
+        flex: 1;
+  
+        .event-date {
+          font-weight: bold;
+          color: #7c4a21;
+          margin-bottom: 0.5rem;
+          width: 100px;
+        }
+  
+        .event-badge {
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          padding: 4px 10px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          font-weight: bold;
+          color: #fff;
+          min-width: 70px;
+          text-align: center;
+  
+          &.online {
+            background-color: #f59539;
+          }
+  
+          &.in_person {
+            background-color: #3fa99b;
+          }
+  
+          &.hybrid {
+            background-color: #a3c26f;
+          }
+        }
+  
+        .event-summary {
+          font-size: 1rem;
+          color: #333;
+  
+          .event-title-link {
+            text-decoration: none;
+            color: #4a3e2a;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+  
+          .event-time {
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+            color: #7b715f;
+          }
+        }
       }
     }
   
@@ -1869,6 +1897,7 @@ padding-top: 7rem; ;
       }
     }
   }
+  
 
   // Event single
 
@@ -1877,30 +1906,25 @@ padding-top: 7rem; ;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
   
-    // .section-title {
-    //   font-size: 2rem;
-    //   font-weight: bold;
-    //   margin-bottom: 1rem;
-    // }
-  
     .section-title--sub {
       font-size: 1.1rem;
       color: #9b8d7a;
       margin-bottom: 2.5rem;
     }
+  
     .event-icon {
-        display: inline-flex;
-        align-items: center;
-        margin-right: 1.5rem;
-      
-        img {
-          width: 1.5rem;     // Adjust this value as needed
-          height: auto;
-          display: inline-block;
-          vertical-align: middle;
-        }
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1.5rem;
+  
+      img {
+        width: 1.5rem;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
       }
-      
+    }
+  
     .event-meta {
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
@@ -1910,14 +1934,15 @@ padding-top: 7rem; ;
         color: #7b715f;
       }
     }
-
+  
     .event-meta-item {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-        .event-meta-text{
-            font-weight: 600;
-        }
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+  
+      .event-meta-text {
+        font-weight: 600;
+      }
     }
   
     .event-title {
@@ -1939,14 +1964,47 @@ padding-top: 7rem; ;
   
     .event-body {
       max-width: 800px;
-      margin-left:0;
-      margin-right: 0;
+      margin: 0 auto;
       text-align: left;
       font-size: 1rem;
       line-height: 1.8;
       color: #333;
     }
+  
+    .event-description {
+      max-width: 800px;
+      margin: 2rem 0;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #333;
+    
+      p {
+        margin-bottom: 1.25rem;
+      }
+    
+      strong {
+        font-weight: bold;
+        color: #4a3e2a;
+      }
+    
+      br {
+        display: block;
+        margin-bottom: 0.75rem;
+        content: '';
+      }
+    
+      // Optional: if values come as "Label： Value" in plain text, style that label part
+      span.label {
+        font-weight: bold;
+        display: inline-block;
+        min-width: 5rem;
+        margin-right: 0.5rem;
+        color: #7b715f;
+      }
+    }
+    
   }
+  
   
 // Research page
 
@@ -3825,6 +3883,11 @@ padding-top: 7rem; ;
       }
       
       @media (max-width: 480px) {
+
+        .kyodai-logo-container {
+          
+          .kyodai-logo { display: none; }
+        }
         .updates-carousel-wrapper {
           padding: 0 1rem !important;
           overflow: hidden;
@@ -3871,7 +3934,7 @@ padding-top: 7rem; ;
         }
 
         .navbar-left .navbar-logo {
-          width:50px;
+          width:35px;
         }
 
       

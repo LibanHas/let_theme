@@ -56,17 +56,28 @@ $container = get_theme_mod( 'understrap_container_type' );
               <hr class="event-divider" />
 
               <div class="event-item">
-                <div class="event-date"><?php echo esc_html($formatted_date); ?></div>
-                <div class="event-badge <?php echo esc_attr($format); ?>">
-                  <?php echo esc_html($format_label); ?>
-                </div>
-                <div class="event-summary">
-                  <a href="<?php the_permalink(); ?>" class="event-title-link">
-                    <strong><?php the_title(); ?></strong>
-                  </a>
-                  <?php if ($time_string): ?>
-                    <div class="event-time"><?php echo esc_html($time_string); ?></div>
-                  <?php endif; ?>
+                <?php
+                  $thumbnail = get_field('thumbnail');
+                  if ($thumbnail):
+                ?>
+                  <div class="event-thumbnail">
+                    <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt']); ?>" />
+                  </div>
+                <?php endif; ?>
+
+                <div class="event-content">
+                  <div class="event-date"><?php echo esc_html($formatted_date); ?></div>
+                  <div class="event-badge <?php echo esc_attr($format); ?>">
+                    <?php echo esc_html($format_label); ?>
+                  </div>
+                  <div class="event-summary">
+                    <a href="<?php the_permalink(); ?>" class="event-title-link">
+                      <strong><?php the_title(); ?></strong>
+                    </a>
+                    <?php if ($time_string): ?>
+                      <div class="event-time"><?php echo esc_html($time_string); ?></div>
+                    <?php endif; ?>
+                  </div>
                 </div>
               </div>
 

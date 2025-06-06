@@ -20,6 +20,7 @@ $container = get_theme_mod( 'understrap_container_type' );
               $format = get_field('event_format');
               $thumbnail = get_field('event_thumbnail');
               $body = get_field('event_body');
+              $description = get_field('event_description');
 
               $format_labels = [
                 'online' => 'オンライン',
@@ -86,9 +87,17 @@ $container = get_theme_mod( 'understrap_container_type' );
                   <?php endif; ?>
                 </div>
 
-                <!-- Description -->
-                <div class="event-body content-block">
-                  <?php echo wp_kses_post($body); ?>
+                <!-- Description section -->
+                <div class="event-description content-block">
+                  <?php
+                    // $description = get_field('event_description');
+                    // if ($description) {
+                    //   echo wp_kses_post($description);
+                    // }
+
+                    // Show WordPress main editor content
+                    the_content();
+                  ?>
                 </div>
 
                 <!-- Image -->

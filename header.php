@@ -92,6 +92,7 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
 		<!-- Side Menu (hidden by default) -->
 		<div id="side-menu" class="side-menu">
+    <button class="menu-close" aria-label="Close menu">&times;</button>
 		<?php
 $locations = get_nav_menu_locations();
 $menu_id = $locations['primary'] ?? null;
