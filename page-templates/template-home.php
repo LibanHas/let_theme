@@ -279,8 +279,10 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
 
     ?>
       <div class="news-item">
+      <div class="news-date-tag-combo">
         <div class="news-date"><?php echo $news_date ? esc_html($news_date->format('Y年n月j日')) : ''; ?></div>
         <div class="news-tag <?php echo esc_attr($tag_class); ?>"><?php echo esc_html($category_label); ?></div>
+      </div>
         <div class="news-summary">
           <p><a href="<?php the_permalink(); ?>"><?php echo esc_html($news_description); ?></a></p>
         </div>

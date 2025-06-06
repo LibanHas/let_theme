@@ -1003,49 +1003,55 @@ padding-top: 7rem; ;
     align-items: center;
     padding: 1.5rem 0;
   
+    .news-date-tag-combo {
+      display: flex;
+      align-items: center;
+      margin-right: 1.5rem;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+  
     .news-date {
-      flex: 0 0 120px;
       font-size: 1rem;
       color: #7c4a21;
+      white-space: nowrap;
     }
   
     .news-tag {
-      flex: 0 0 100px;
-      margin: 0 1.5rem;
+      width: 100px; // ✅ Fixed width
       font-size: 0.85rem;
       font-weight: bold;
-      padding: 0.4em 1em;
+      padding: 0.4em 0;
       border-radius: 20px;
       text-align: center;
       white-space: nowrap;
-      color: #ffffff;
+      margin-left: 2rem;
+      color: #fff;
     }
-    
-    
-    
   
     .news-summary {
-        flex: 1;
-        font-size: 1rem;
-        color: #7c4a21;
-      
-        p {
-          margin: 0;
-      
-          a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.2s, text-decoration 0.2s;
-      
-            &:hover {
-              text-decoration: underline;
-              color: #7c4a21; // match your base brown
-            }
+      flex: 1;
+      font-size: 1rem;
+      color: #7c4a21;
+  
+      p {
+        margin: 0;
+  
+        a {
+          color: inherit;
+          text-decoration: none;
+          transition: color 0.2s, text-decoration 0.2s;
+  
+          &:hover {
+            text-decoration: underline;
+            color: #7c4a21;
           }
         }
       }
-      
+    }
   }
+  
+  
 
   /* Desktop: show top button only */
 .news-button-top {
@@ -3863,7 +3869,50 @@ padding-top: 7rem; ;
           width: 22px;
           height: 22px;
         }
-      }
+
+        .navbar-left .navbar-logo {
+          width:50px;
+        }
+
+      
+      
+        .news-item {
+          display: flex; // ← this was missing!
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.25rem;
+        }
+      
+       
+        .news-date-tag-combo {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          flex-wrap: nowrap;
+        }
+      
+        .news-tag {
+          font-size: 0.75rem;        // slightly smaller
+          padding: 0.25rem 0.75rem;   // reduce padding
+          line-height: 1.2;           // ensure it's compact
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+      
+        .news-date {
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+      
+        
+      
+        .news-summary {
+          margin-top: 0.25rem;
+        }
+        }
+      
+        
+      
       
       
       
