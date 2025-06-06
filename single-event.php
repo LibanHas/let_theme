@@ -14,13 +14,43 @@ $container = get_theme_mod( 'understrap_container_type' );
 
           <?php while (have_posts()) : the_post(); ?>
             <?php
-              $date_raw = get_field('event_date');
               $start_time = get_field('event_start_time');
               $end_time = get_field('event_end_time');
               $format = get_field('event_format');
               $thumbnail = get_field('event_thumbnail');
-              $body = get_field('event_body');
               $description = get_field('event_description');
+              $body = get_field('event_body');
+
+              $date_mode = get_field('event_date_mode');
+              $start_date = get_field('event_date_start');
+              $end_date = get_field('event_date_end');
+              $second_date = get_field('event_date_second');
+
+              $weekday_map = [
+                'Sun' => '日', 'Mon' => '月', 'Tue' => '火',
+                'Wed' => '水', 'Thu' => '木', 'Fri' => '金', 'Sat' => '土'
+              ];
+
+              $formatted_dates = ''; // stacked full dates
+
+              if ($date_mode === 'single' && $start_date) {
+                $ts = strtotime(str_replace('/', '-', $start_date));
+                $weekday = $weekday_map[date_i18n('D', $ts)] ?? '';
+                $formatted_dates = '<div>' . date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）</div>';
+              } elseif ($date_mode === 'range' && $start_date && $end_date) {
+                foreach ([$start_date, $end_date] as $date) {
+                  $ts = strtotime($date);
+                  $weekday = $weekday_map[date_i18n('D', $ts)] ?? '';
+                  $formatted_dates .= '<div>' . date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）</div>';
+                }
+              } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
+                foreach ([$start_date, $second_date] as $date) {
+                  $ts = strtotime(str_replace('/', '-', $date));
+
+                  $weekday = $weekday_map[date_i18n('D', $ts)] ?? '';
+                  $formatted_dates .= '<div>' . date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）</div>';
+                }
+              }
 
               $format_labels = [
                 'online' => 'オンライン',
@@ -28,23 +58,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 'hybrid' => 'ハイブリッド'
               ];
 
-              $formatted_date = !empty($date_raw) ? date_i18n('Y年n月j日', strtotime($date_raw)) : '';              $start = !empty($start_time) ? date_i18n('H:i', strtotime($start_time)) : '';
-              $date_raw = get_field('event_date');
-
-                $weekday_map = [
-                'Sun' => '日', 'Mon' => '月', 'Tue' => '火',
-                'Wed' => '水', 'Thu' => '木', 'Fri' => '金', 'Sat' => '土'
-                ];
-
-                if (!empty($date_raw)) {
-                $date_obj = strtotime($date_raw);
-                $weekday_en = date_i18n('D', $date_obj);
-                $weekday_jp = $weekday_map[$weekday_en] ?? '';
-                $formatted_date = date_i18n('Y年n月j日', $date_obj) . '（' . $weekday_jp . '）';
-                } else {
-                $formatted_date = '';
-                }
-
+              $start = !empty($start_time) ? date_i18n('H:i', strtotime($start_time)) : '';
               $end = !empty($end_time) ? date_i18n('H:i', strtotime($end_time)) : '';
             ?>
 
@@ -52,8 +66,8 @@ $container = get_theme_mod( 'understrap_container_type' );
               <div class="container">
                 <!-- Hero -->
                 <div class="events-header">
-                  <h1 class="section-title">Events</h1>
-                  <h3 class="section-title section-title--sub">イベント</h3>
+                  <h1 class="page-title">Events</h1>
+                  <h2 class="page-subtitle">イベント</h2>
                 </div>
 
                 <!-- Title -->
@@ -61,43 +75,39 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                 <!-- Meta Info with Icons -->
                 <div class="event-meta-grid">
-                  <?php if ($formatted_date): ?>
+                  <?php if ($formatted_dates): ?>
                     <div class="event-meta-item">
-                    <span class="event-icon">
+                      <span class="event-icon">
                         <img src="<?php echo get_template_directory_uri(); ?>/images/calendar-days-solid.png" alt="Calendar Icon" />
-                    </span>
-                      <span class="event-meta-text"><?php echo esc_html($formatted_date); ?></span>
+                      </span>
+                      <div class="event-meta-text">
+                        <?php echo $formatted_dates; ?>
+                      </div>
                     </div>
                   <?php endif; ?>
+
                   <?php if ($start && $end): ?>
                     <div class="event-meta-item">
-                    <span class="event-icon">
+                      <span class="event-icon">
                         <img src="<?php echo get_template_directory_uri(); ?>/images/Vector.png" alt="Clock" />
-                    </span>
+                      </span>
                       <span class="event-meta-text"><?php echo esc_html($start); ?> – <?php echo esc_html($end); ?></span>
                     </div>
                   <?php endif; ?>
+
                   <?php if ($format): ?>
                     <div class="event-meta-item">
-                    <span class="event-icon">
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/location-dot-solid.png" alt="Calendar Icon" />
-                    </span>
+                      <span class="event-icon">
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/location-dot-solid.png" alt="Location Icon" />
+                      </span>
                       <span class="event-meta-text"><?php echo esc_html($format_labels[$format] ?? $format); ?></span>
                     </div>
                   <?php endif; ?>
                 </div>
-
+                <hr class="news-divider">
                 <!-- Description section -->
                 <div class="event-description content-block">
-                  <?php
-                    // $description = get_field('event_description');
-                    // if ($description) {
-                    //   echo wp_kses_post($description);
-                    // }
-
-                    // Show WordPress main editor content
-                    the_content();
-                  ?>
+                  <?php the_content(); ?>
                 </div>
 
                 <!-- Image -->

@@ -1,13 +1,13 @@
 <?php
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 get_header();
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod('understrap_container_type');
 ?>
 
 <div class="wrapper events-archive">
-  <div class="<?php echo esc_attr( $container ); ?>" id="content">
+  <div class="<?php echo esc_attr($container); ?>" id="content">
     <div class="row">
       <div class="col-md-12 content-area" id="primary">
         <main class="site-main" id="main" role="main">
@@ -33,12 +33,39 @@ $container = get_theme_mod( 'understrap_container_type' );
 
               if ($events_query->have_posts()) :
                 while ($events_query->have_posts()) : $events_query->the_post();
-                  $date_raw = get_field('event_date');
                   $format = get_field('event_format');
                   $start = get_field('event_start_time');
                   $end = get_field('event_end_time');
 
-                  $formatted_date = $date_raw ? date_i18n('Y/m/d', strtotime($date_raw)) : '';
+                  $date_mode = get_field('event_date_mode');
+                  $start_date = get_field('event_date_start');
+                  $end_date = get_field('event_date_end');
+                  $second_date = get_field('event_date_second');
+
+                  $formatted_date = '未定';
+
+                  if ($date_mode === 'single' && $start_date) {
+                    $formatted_date = date_i18n('Y/n/j', strtotime($start_date));
+                  } elseif ($date_mode === 'range' && $start_date && $end_date) {
+                    $year = date_i18n('Y', strtotime($start_date));
+                    $formatted_date = $year . '/' . date_i18n('n/j', strtotime($start_date)) . ' – ' . date_i18n('n/j', strtotime($end_date));
+                  } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
+                    $ts1 = strtotime(str_replace('/', '-', $start_date));
+                    $ts2 = strtotime(str_replace('/', '-', $second_date));
+                  
+                    if ($ts1 && $ts2) {
+                      if ($ts1 > $ts2) {
+                        [$ts1, $ts2] = [$ts2, $ts1];
+                      }
+                  
+                      $year = date_i18n('Y', $ts1);
+                      $start_display = date_i18n('n/j', $ts1);
+                      $second_display = date_i18n('n/j', $ts2);
+                      $formatted_date = '<span class="event-year">' . esc_html($year) . '/</span>' . esc_html($start_display) . '・' . esc_html($second_display);
+                    } else {
+                      $formatted_date = '未定';
+                    }
+                  }
 
                   $format_labels = [
                     'online' => 'オンライン',
@@ -57,8 +84,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
               <div class="event-item">
                 <?php
-                  $thumbnail = get_field('thumbnail');
-                  if ($thumbnail):
+                $thumbnail = get_field('thumbnail');
+                if ($thumbnail) :
                 ?>
                   <div class="event-thumbnail">
                     <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt']); ?>" />
@@ -66,7 +93,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <?php endif; ?>
 
                 <div class="event-content">
-                  <div class="event-date"><?php echo esc_html($formatted_date); ?></div>
+                  <div class="event-date"><?php echo $formatted_date; ?></div>
                   <div class="event-badge <?php echo esc_attr($format); ?>">
                     <?php echo esc_html($format_label); ?>
                   </div>
@@ -88,7 +115,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <?php echo paginate_links(); ?>
               </div>
 
-              <?php else: ?>
+              <?php else : ?>
                 <p>イベントがまだありません。</p>
               <?php endif; ?>
             </div>
