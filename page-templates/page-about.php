@@ -25,114 +25,113 @@ $container = get_theme_mod( 'understrap_container_type' );
                             <div class="col-md-6 about-hero-text">
                             <h1 class="about-hero-title">すべての学びに、エビデンスとテクノロジーを。</h1>
                             <p class="about-hero-subtitle">
-                            緒方研究室（LET）では、直感や経験に頼ってきた教育を、エビデンスとテクノロジーに基づくものへと進化させることを目指しています。学習のプロセスを可視化し、一人ひとりの理解やつまずきを捉えることで、より良い授業づくりと学習支援を実現しています。<br>教育機関と連携しながら、誰もがどこでも効果的に学べる環境を共に築いています。
+                            緒方研究室（LET）では、直感や経験に頼ってきた教育を、エビデンスとテクノロジーに基づくものへと進化させることを目指しています。<br><br>学習のプロセスを可視化し、一人ひとりの理解やつまずきを捉えることで、より良い授業づくりと学習支援を実現しています。<br>教育機関と連携しながら、誰もがどこでも効果的に学べる環境を共に築いています。
 
                             </p>
                             </div>
                             <div class="col-md-6 about-hero-image">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/about-hero-image.jpg" alt="LET Lab team" class="img-fluid rounded-3">
+                            <img src="<?php echo get_template_directory_uri(); ?>/images/center-image.jpg" alt="LET Lab team" class="img-fluid rounded-3">
                             </div>
                         </div>
                     </section>
 
-                    <section class="timeline-section container section-spacing">
-                        <h2 class="section-title">緒方研究室の歩み</h2>
+                   <section class="timeline-section container section-spacing">
+                    <h2 class="section-title">緒方研究室の歩み</h2>
 
-                        <div class="timeline-wrapper">
-                            <div class="timeline-line"></div>
+                    <div class="timeline-wrapper">
+                      <div class="timeline-line"></div>
 
-                            <!-- 1 -->
-                            <div class="timeline-milestone" data-aos="zoom-in">
-                            <div class="timeline-label top">
-                                <div class="timeline-date">2017年4月</div>
-                                <div class="timeline-text">ラボ設立（京都大学）</div>
-                            </div>
-                            <div class="timeline-icon">🏛️</div>
-                            </div>
-
-                            <!-- 2 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="100">
-                            <div class="timeline-label bottom">
-                                <div class="timeline-date">2017年12月</div>
-                                <div class="timeline-text">国際共同研究開始</div>
-                            </div>
-                            <div class="timeline-icon">🌐</div>
-                            </div>
-
-                            <!-- 3 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="200">
-                            <div class="timeline-label top">
-                                <div class="timeline-date">2018年春頃</div>
-                                <div class="timeline-text">初のパイロット校導入</div>
-                            </div>
-                            <div class="timeline-icon">🎓</div>
-                            </div>
-
-                            <!-- 4 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="300">
-                            <div class="timeline-label bottom">
-                                <div class="timeline-date">2018年6月</div>
-                                <div class="timeline-text">BookRoll公開</div>
-                            </div>
-                            <div class="timeline-icon">📚</div>
-                            </div>
-
-                            <!-- 5 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="400">
-                            <div class="timeline-label top">
-                                <div class="timeline-date">2018年9月</div>
-                                <div class="timeline-text">国際ジャーナル論文採択</div>
-                            </div>
-                            <div class="timeline-icon">📄</div>
-                            </div>
-
-                            <!-- 6 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="500">
-                            <div class="timeline-label bottom">
-                                <div class="timeline-date">2018年11月</div>
-                                <div class="timeline-text">国際ワークショップ開催（LA@ICCE2018）</div>
-                            </div>
-                            <div class="timeline-icon">🎤</div>
-                            </div>
-
-                            <!-- 7 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="600">
-                            <div class="timeline-label top">
-                                <div class="timeline-date">2019年9月</div>
-                                <div class="timeline-text">LogPalette発表</div>
-                            </div>
-                            <div class="timeline-icon">📊</div>
-                            </div>
-
-                            <!-- 8 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="700">
-                            <div class="timeline-label bottom">
-                                <div class="timeline-date">2020年11月</div>
-                                <div class="timeline-text">国際的研究協力の拡大</div>
-                            </div>
-                            <div class="timeline-icon">🤝</div>
-                            </div>
-
-                            <!-- 9 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="800">
-                            <div class="timeline-label top">
-                                <div class="timeline-date">2023年4月</div>
-                                <div class="timeline-text">SIP第3期開始</div>
-                            </div>
-                            <div class="timeline-icon">📈</div>
-                            </div>
-
-                            <!-- 10 -->
-                            <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="900">
-                            <div class="timeline-label bottom">
-                                <div class="timeline-date">2025年4月</div>
-                                <div class="timeline-text">10周年ビジョン策定</div>
-                            </div>
-                            <div class="timeline-icon">🚀</div>
-                            </div>
-
+                      <!-- 1 -->
+                      <div class="timeline-milestone" data-aos="zoom-in">
+                        <div class="timeline-label top">
+                          <div class="timeline-date">2017年4月</div>
+                          <div class="timeline-text">京都大学にて緒方研究室を設立</div>
                         </div>
-                        </section>
+                        <div class="timeline-icon">🏛️</div>
+                      </div>
+
+                      <!-- 2 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="timeline-label bottom">
+                          <div class="timeline-date">2018年頃</div>
+                          <div class="timeline-text">BookRoll正式運用開始</div>
+                        </div>
+                        <div class="timeline-icon">📚</div>
+                      </div>
+
+                      <!-- 3 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="timeline-label top">
+                          <div class="timeline-date">2018年〜</div>
+                          <div class="timeline-text">LEAFシステム開発・導入開始</div>
+                        </div>
+                        <div class="timeline-icon">🧠</div>
+                      </div>
+
+                      <!-- 4 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="timeline-label bottom">
+                          <div class="timeline-date">2021年頃</div>
+                          <div class="timeline-text">京都市立西京高校などでBookRoll活用</div>
+                        </div>
+                        <div class="timeline-icon">🏫</div>
+                      </div>
+
+                      <!-- 5 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="timeline-label top">
+                          <div class="timeline-date">2021年〜</div>
+                          <div class="timeline-text">京都大学FD活動にて教員研修での活用開始</div>
+                        </div>
+                        <div class="timeline-icon">👩‍🏫</div>
+                      </div>
+
+                      <!-- 6 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="timeline-label bottom">
+                          <div class="timeline-date">2023年9月</div>
+                          <div class="timeline-text">北海道寿都高校・天塩高校でLEAFシステム実証開始</div>
+                        </div>
+                        <div class="timeline-icon">📡</div>
+                      </div>
+
+                      <!-- 7 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="timeline-label top">
+                          <div class="timeline-date">2023年10月</div>
+                          <div class="timeline-text">SIP第3期プロジェクト始動</div>
+                        </div>
+                        <div class="timeline-icon">🧩</div>
+                      </div>
+
+                      <!-- 8 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="700">
+                        <div class="timeline-label bottom">
+                          <div class="timeline-date">2024年</div>
+                          <div class="timeline-text">xAPIプロファイルサーバ連携プロジェクトに参加</div>
+                        </div>
+                        <div class="timeline-icon">🔗</div>
+                      </div>
+
+                      <!-- 9 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="800">
+                        <div class="timeline-label top">
+                          <div class="timeline-date">継続中</div>
+                          <div class="timeline-text">LogPaletteなど新ツールの開発・改良</div>
+                        </div>
+                        <div class="timeline-icon">📊</div>
+                      </div>
+
+                      <!-- 10 -->
+                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="900">
+                        <div class="timeline-label bottom">
+                          <div class="timeline-date">2025年以降</div>
+                          <div class="timeline-text">10周年に向けたラボビジョンの策定</div>
+                        </div>
+                        <div class="timeline-icon">🚀</div>
+                      </div>
+                    </div>
+                  </section>
 
                         <div class="tagline-anim-wrapper">
                         <div class="tagline-split">「見えなかった学び」が見える</div>
