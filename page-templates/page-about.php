@@ -47,7 +47,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2017年4月</div>
                           <div class="timeline-text">京都大学にて緒方研究室を設立</div>
                         </div>
-                        <div class="timeline-icon">🏛️</div>
+                        <div class="timeline-icon"><img src="<?php echo get_template_directory_uri(); ?>/images/uni_building.png" alt="LET Lab team" class="img-fluid rounded-3"></div>
                       </div>
 
                       <!-- 2 -->
