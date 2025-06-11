@@ -1544,6 +1544,65 @@ padding-top: 7rem; ;
     margin: 0.5rem auto 0;
   }
 
+  .research-cycle-layout {
+    display: grid;
+    grid-template-areas:
+      "top top top"
+      "left center right"
+      "bottom bottom bottom";
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem 2rem;
+    align-items: center;
+    justify-items: center;
+    padding: 2rem 1rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .research-text {
+    max-width: 280px;
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #4A2F1B;
+  }
+  
+  .research-text h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #4A2F1B;
+  }
+  
+  .research-text.top {
+    grid-area: top;
+  }
+  .research-text.right {
+    grid-area: right;
+  }
+  .research-text.bottom {
+    grid-area: bottom;
+  }
+  .research-text.left {
+    grid-area: left;
+  }
+  
+  .research-cycle-center {
+    grid-area: center;
+    min-height: 1px;
+  }
+  
+  .research-cycle-graphic {
+    width: 350px;
+    height: auto;
+    display: block;
+  }
+  
+  
+  
+  
+
   .student-title {
     text-align: center;
     margin-top: 2rem;

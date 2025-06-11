@@ -174,46 +174,46 @@ $container = get_theme_mod( 'understrap_container_type' );
                                 <div class="founder-quote-box">
                                     <span class="quote-icon">“</span>
                                     <p class="founder-quote-text">
-                                    LETでは、学びを深めるだけでなく、学習者一人ひとりのニーズに寄り添う教育技術の発展をミッションとしています。直感や経験に頼っていた教育を、データとエビデンスに基づくものへと転換することを目指しています。
+                                    私たちの開発しているような教育システムが日本のスタンダードになって、全国各学校の教育データが集約されて、どのような教育をすればよいのかがわかるようになり、より質の高い学びが実現するとうれしいです。日本に生まれれば日本語を話せるようになるように、人間というのは学ぶ生き物だと思います。その学び方について、個人に合ったものにできればよいですね。
                                     </p>
                                 </div>
                                 </div>
 
                                 </div>
                             </section>
-                        <div class="approach-cards">
-                            <div class="approach-card">
-                            <div class="approach-icon">🧠</div>
-                            <h3>研究</h3>
-                            <p>
-                                学習ログや教育理論をもとに、現場の課題を分析。AIやデータサイエンスを活用し、教育の個別最適化を目指しています。
-                            </p>
-                            </div>
+                            <section class="research-cycle container section-spacing">
+                            <div class="research-cycle-layout">
+                              <!-- Top -->
+                              <div class="research-text top">
+                                <h3>研究</h3>
+                                <p>学習ログや教育理論をもとに、現場の課題を分析。AIやデータサイエンスを活用し、教育の個別最適化を目指しています。</p>
+                              </div>
 
-                            <div class="approach-card">
-                            <div class="approach-icon">🧰</div>
-                            <h3>開発</h3>
-                            <p>
-                                得られた知見をもとに、教育支援ツールを開発。BookRollやLogPaletteなど、現場で使いやすいシステムを設計しています。
-                            </p>
-                            </div>
+                              <!-- Right -->
+                              <div class="research-text right">
+                                <h3>開発</h3>
+                                <p>得られた知見をもとに、教育支援ツールを開発。BookRollやLogPaletteなど、現場で使いやすいシステムを設計しています。</p>
+                              </div>
 
-                            <div class="approach-card">
-                            <div class="approach-icon">👩‍🏫</div>
-                            <h3>授業実施</h3>
-                            <p>
-                                パイロット校で実際の授業に導入し、教育効果や課題を検証。多様な学校と連携し、現場での検証を行います。
-                            </p>
-                            </div>
+                              <!-- Bottom -->
+                              <div class="research-text bottom">
+                                <h3>授業実施</h3>
+                                <p>パイロット校で実際の授業に導入し、教育効果や課題を検証。多様な学校と連携し、現場での検証を行います。</p>
+                              </div>
 
-                            <div class="approach-card">
-                            <div class="approach-icon">📈</div>
-                            <h3>フィードバック</h3>
-                            <p>
-                                授業で得たフィードバックやデータをもとに改善。改良は次の研究サイクルへつながり、実践的な教育イノベーションを生み出します。
-                            </p>
+                              <!-- Left -->
+                              <div class="research-text left">
+                                <h3>フィードバック</h3>
+                                <p>授業で得たフィードバックやデータをもとに改善。改良は次の研究サイクルへつながり、実践的な教育イノベーションを生み出します。</p>
+                              </div>
+
+                              <!-- Centered SVG -->
+                              <div class="research-cycle-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/about-research.svg" alt="研究サイクルの図" class="research-cycle-graphic" />
+                              </div>
                             </div>
-                        </div>
+                          </section>
+
 
                         <div class="approach-buttons">
                         <a href="research/" class="btn btn--cta">
