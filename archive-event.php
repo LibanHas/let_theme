@@ -27,7 +27,7 @@ $container = get_theme_mod('understrap_container_type');
                 'posts_per_page' => 10,
                 'paged' => $paged,
                 'orderby' => 'meta_value',
-                'meta_key' => 'event_date',
+                'meta_key' => 'event_date_start',
                 'order' => 'DESC',
               ]);
 
@@ -47,8 +47,23 @@ $container = get_theme_mod('understrap_container_type');
                   if ($date_mode === 'single' && $start_date) {
                     $formatted_date = date_i18n('Y/n/j', strtotime($start_date));
                   } elseif ($date_mode === 'range' && $start_date && $end_date) {
-                    $year = date_i18n('Y', strtotime($start_date));
-                    $formatted_date = $year . '/' . date_i18n('n/j', strtotime($start_date)) . ' – ' . date_i18n('n/j', strtotime($end_date));
+                    $start_ts = strtotime($start_date);
+                    $end_ts = strtotime($end_date);
+                  
+                    $same_year = date_i18n('Y', $start_ts) === date_i18n('Y', $end_ts);
+                    $same_month = date_i18n('n', $start_ts) === date_i18n('n', $end_ts);
+                  
+                    if ($same_year && $same_month) {
+                      $year = date_i18n('Y', $start_ts);
+                      $month = date_i18n('n', $start_ts);
+                      $day_start = date_i18n('j', $start_ts);
+                      $day_end = date_i18n('j', $end_ts);
+                      $formatted_date = $year . '/' . $month . '/' . $day_start . '–' . $day_end;
+                    } else {
+                      // Fallback to full range
+                      $year = date_i18n('Y', $start_ts);
+                      $formatted_date = $year . '/' . date_i18n('n/j', $start_ts) . ' – ' . date_i18n('n/j', $end_ts);
+                    }                  
                   } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
                     $ts1 = strtotime(str_replace('/', '-', $start_date));
                     $ts2 = strtotime(str_replace('/', '-', $second_date));

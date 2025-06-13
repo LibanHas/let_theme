@@ -38,9 +38,16 @@ $container = get_theme_mod('understrap_container_type');
         if ($employment_title) {
           echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
         } elseif ($student_level && $student_year) {
-          $label = $student_level === 'doctoral' ? '博士' : '修士';
-          echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
-        }
+          $label = [
+            'doctoral' => '博士',
+            'masters'  => '修士',
+            'postdoc'  => '特定研究員'
+          ][$student_level] ?? '';
+          
+          if ($label) {
+            echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
+          }
+        }        
         ?>
       </div>
   </div>

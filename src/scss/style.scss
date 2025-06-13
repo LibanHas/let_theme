@@ -68,6 +68,7 @@ $color-tag-purple:  #9B5DE5;
   .section-title {
     text-align: left;
     font-size: 40px;
+    color:#7C4A21;
     font-weight: bold;
     margin-bottom: 2rem;
     @media (max-width: 480px) {
@@ -1272,6 +1273,7 @@ padding-top: 7rem; ;
   padding: 100px 0;
   .about-hero-title {
     font-size: 2.8rem;
+    color: #7C4A21;
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 25px;
@@ -1444,6 +1446,7 @@ padding-top: 7rem; ;
 
   .section-title {
     font-size: 2.5rem;
+    color: #7C4A21;
     font-weight: bold;
     margin-bottom: 1.5rem;
   }
@@ -1514,7 +1517,7 @@ padding-top: 7rem; ;
   .section-intro {
     font-size: 1.125rem;
     line-height: 2;
-    color: #555;
+    //color: #555;
     text-align: left;
     margin-bottom: 4rem;
   }
@@ -1847,6 +1850,12 @@ padding-top: 7rem; ;
     background-color: #fdf8ed;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 3rem auto;
+    }
   
     .section-title--sub {
       font-size: 1.1rem;
@@ -1919,7 +1928,8 @@ padding-top: 7rem; ;
   
           .event-title-link {
             text-decoration: none;
-            color: #4a3e2a;
+            color: #7c4a21;
+            font-weight: 300;
   
             &:hover {
               text-decoration: underline;
@@ -2878,7 +2888,7 @@ padding-top: 7rem; ;
 .member-section-title {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #4a3e2a;
+  color:#7C4A21;
   margin-bottom: 20px;
   border-bottom: 2px solid #e4d5bb;
   padding-bottom: 6px;
@@ -3018,7 +3028,7 @@ padding-top: 7rem; ;
   .section-title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #5c2a1d;
+    color:#7C4A21;
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.25rem;
     margin-bottom: 2rem;
@@ -3312,7 +3322,7 @@ padding-top: 7rem; ;
         .section-title {
           font-size: 1.75rem;
           font-weight: 700;
-          color: #2e1c0e;
+          color:#7C4A21;
           margin-bottom: 2rem;
         }
       

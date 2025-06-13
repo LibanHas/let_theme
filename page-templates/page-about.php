@@ -182,6 +182,10 @@ $container = get_theme_mod( 'understrap_container_type' );
                                 </div>
                             </section>
                             <section class="research-cycle container section-spacing">
+                            <p class="section-intro" style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                              この理念を実現するために、私たちは現場と連携しながら研究を進め、技術を開発・実装し、得られたフィードバックを次の研究へとつなげています。<br>
+                              以下の図は、そのサイクル全体を表しています。
+                            </p>
                             <div class="research-cycle-layout">
                               <!-- Top -->
                               <div class="research-text top">
