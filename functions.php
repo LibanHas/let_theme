@@ -382,3 +382,49 @@ function filter_members_by_member_type($query) {
 add_action('pre_get_posts', 'filter_members_by_member_type');
 
 
+function manually_assign_event_tags() {
+    if (!is_admin() || !current_user_can('manage_options')) {
+        return;
+    }
+
+    if (!isset($_GET['apply_event_tags']) || $_GET['apply_event_tags'] !== '1') {
+        return;
+    }
+
+    $query = new WP_Query([
+        'post_type' => 'event',
+        'posts_per_page' => -1,
+        'fields' => 'ids',
+    ]);
+
+    $tagged = 0;
+
+    foreach ($query->posts as $post_id) {
+        $category = get_field('event_category', $post_id);
+        if ($category) continue;
+
+        $title = get_the_title($post_id);
+        $matched = '';
+
+        if (str_contains($title, 'シンポジウム')) $matched = 'symposiums';
+        elseif (str_contains($title, 'ワークショップ')) $matched = 'workshops';
+        elseif (str_contains($title, '講演')) $matched = 'lectures';
+        elseif (str_contains($title, 'カンファレンス')) $matched = 'conferences';
+        elseif (str_contains($title, '出版')) $matched = 'publications';
+        elseif (str_contains($title, 'メディア')) $matched = 'media';
+        elseif (str_contains($title, '受賞')) $matched = 'awards';
+        elseif (str_contains($title, 'プロジェクト')) $matched = 'projects';
+        elseif (str_contains($title, 'コンテスト')) $matched = 'contests';
+        elseif (str_contains($title, 'ニュース')) $matched = 'news';
+
+        if ($matched) {
+            update_field('event_category', $matched, $post_id);
+            $tagged++;
+        }
+    }
+
+    add_action('admin_notices', function () use ($tagged) {
+        echo "<div class='notice notice-success is-dismissible'><p><strong>✅ {$tagged} events tagged.</strong></p></div>";
+    });
+}
+add_action('admin_init', 'manually_assign_event_tags');

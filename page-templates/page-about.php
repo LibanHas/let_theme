@@ -56,7 +56,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2018年頃</div>
                           <div class="timeline-text">BookRoll正式運用開始</div>
                         </div>
-                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/bookroll-icon.png" alt="BookRoll Logo">
+                        </div>
                       </div>
 
                       <!-- 3 -->
@@ -65,7 +67,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2018年〜</div>
                           <div class="timeline-text">LEAFシステム開発・導入開始</div>
                         </div>
-                        <div class="timeline-icon">🧠</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/brain.svg" alt="brain">
+                        </div>
                       </div>
 
                       <!-- 4 -->
@@ -74,7 +78,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2021年頃</div>
                           <div class="timeline-text">京都市立西京高校などでBookRoll活用</div>
                         </div>
-                        <div class="timeline-icon">🏫</div>
+                        <div class="timeline-icon">
+                           <img src="<?php echo get_template_directory_uri(); ?>/images/school.svg" alt="school">
+                        </div>
                       </div>
 
                       <!-- 5 -->
@@ -83,7 +89,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2021年〜</div>
                           <div class="timeline-text">京都大学FD活動にて教員研修での活用開始</div>
                         </div>
-                        <div class="timeline-icon">👩‍🏫</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="cap">
+                        </div>
                       </div>
 
                       <!-- 6 -->
@@ -92,7 +100,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2023年9月</div>
                           <div class="timeline-text">北海道寿都高校・天塩高校でLEAFシステム実証開始</div>
                         </div>
-                        <div class="timeline-icon">📡</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/test.svg" alt="test">
+                        </div>
                       </div>
 
                       <!-- 7 -->
@@ -101,7 +111,9 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2023年10月</div>
                           <div class="timeline-text">SIP第3期プロジェクト始動</div>
                         </div>
-                        <div class="timeline-icon">🧩</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/rocket.svg" alt="rocket">
+                        </div>
                       </div>
 
                       <!-- 8 -->
@@ -110,27 +122,10 @@ $container = get_theme_mod( 'understrap_container_type' );
                           <div class="timeline-date">2024年</div>
                           <div class="timeline-text">xAPIプロファイルサーバ連携プロジェクトに参加</div>
                         </div>
-                        <div class="timeline-icon">🔗</div>
-                      </div>
-
-                      <!-- 9 -->
-                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="800">
-                        <div class="timeline-label top">
-                          <div class="timeline-date">継続中</div>
-                          <div class="timeline-text">LogPaletteなど新ツールの開発・改良</div>
+                        <div class="timeline-icon">
+                          <img src="<?php echo get_template_directory_uri(); ?>/images/server.svg" alt="server">
                         </div>
-                        <div class="timeline-icon">📊</div>
-                      </div>
-
-                      <!-- 10 -->
-                      <div class="timeline-milestone" data-aos="zoom-in" data-aos-delay="900">
-                        <div class="timeline-label bottom">
-                          <div class="timeline-date">2025年以降</div>
-                          <div class="timeline-text">10周年に向けたラボビジョンの策定</div>
-                        </div>
-                        <div class="timeline-icon">🚀</div>
-                      </div>
-                    </div>
+                      </div> 
                   </section>
 
                         <div class="tagline-anim-wrapper">
@@ -159,29 +154,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                         <p class="section-intro">このようなアプローチは、次の4つのステップからなる開発サイクルで支えられています。まず、教育現場の課題に応じた設計・開発を行い、それを授業に導入。そこで得られる学習ログや行動データを収集・分析し、見えてきた課題や成果をもとに振り返りと改善を重ねていきます。この循環を繰り返すことで、教育の質を継続的に高め、学習者一人ひとりに最適な学びの支援を届けることが可能になります。</p>
 
-
-                        <section class="founder-quote-section container content-block">
-                            <div class="row">
-                                
-                                <!-- Left: Image -->
-                                <div class="col-md-6 text-center">
-                                <img src="<?php echo get_template_directory_uri(); ?>/images/ogata_portrait 1.png" alt="Prof Hiroaki Ogata" class="founder-photo img-fluid rounded-3">
-                                <p class="founder-caption mt-3">緒方広明 教授（博士）緒方研究室創設者</p>
-                                </div>
-
-                                <!-- Right: Quote -->
-                                <div class="col-md-6">
-                                <div class="founder-quote-box">
-                                    <span class="quote-icon">“</span>
-                                    <p class="founder-quote-text">
-                                    私たちの開発しているような教育システムが日本のスタンダードになって、全国各学校の教育データが集約されて、どのような教育をすればよいのかがわかるようになり、より質の高い学びが実現するとうれしいです。日本に生まれれば日本語を話せるようになるように、人間というのは学ぶ生き物だと思います。その学び方について、個人に合ったものにできればよいですね。
-                                    </p>
-                                </div>
-                                </div>
-
-                                </div>
-                            </section>
-                            <section class="research-cycle container section-spacing">
+                          <div class="research-cycle container section-spacing">
                             <div class="research-cycle-layout">
                               <!-- Top -->
                               <div class="research-text top">
@@ -212,7 +185,29 @@ $container = get_theme_mod( 'understrap_container_type' );
                                 <img src="<?php echo get_template_directory_uri(); ?>/images/about-research.svg" alt="研究サイクルの図" class="research-cycle-graphic" />
                               </div>
                             </div>
-                          </section>
+                      ``</div>
+                        <section class="founder-quote-section container content-block">
+                            <div class="row">
+                                
+                                <!-- Left: Image -->
+                                <div class="col-md-6 text-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/ogata_portrait 1.png" alt="Prof Hiroaki Ogata" class="founder-photo img-fluid rounded-3">
+                                <p class="founder-caption mt-3">緒方広明 教授（博士）緒方研究室創設者</p>
+                                </div>
+
+                                <!-- Right: Quote -->
+                                <div class="col-md-6">
+                                <div class="founder-quote-box">
+                                    <span class="quote-icon">“</span>
+                                    <p class="founder-quote-text">
+                                    私たちの開発しているような教育システムが日本のスタンダードになって、全国各学校の教育データが集約されて、どのような教育をすればよいのかがわかるようになり、より質の高い学びが実現するとうれしいです。日本に生まれれば日本語を話せるようになるように、人間というのは学ぶ生き物だと思います。その学び方について、個人に合ったものにできればよいですね。
+                                    </p>
+                                </div>
+                                </div>
+
+                                </div>
+                            </section>
+                           
 
 
                         <div class="approach-buttons">
@@ -258,7 +253,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </div>
 
 <!-- Centered Intro Paragraph -->
-<div class="row justify-content-center mb-300">
+<div class="row justify-content-center">
   <div class="col-md-10 text-left qa-block">
     <div class="qa-item">
       <p class="question">緒方研究室での研究生活は、どのような経験ですか？</p>
@@ -306,7 +301,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
 <!-- Centered Intro Paragraph -->
-<div class="row justify-content-center mb-300">
+<div class="row justify-content-center">
   <div class="col-md-10 text-left qa-block">
     <div class="qa-item">
       <p class="question">緒方研究室に入ろうと思ったきっかけは何ですか？</p>

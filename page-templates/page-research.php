@@ -7,13 +7,27 @@ get_header();
 
 ?>
 
-<section class="research-hero-section section-spacing">
+
+<div class="wrapper" id="page-research">
+  <div class="container" id="content">
+    <div class="row">
+      <div class="col-lg-12 content-area" id="primary">
+        <main class="site-main" id="main">
+
+          <!-- Research Hero Section -->
+   <!-- Research Hero Section -->
+<section class="section-spacing research-hero-section">
   <div class="container">
-    <div class="row align-items-center research-hero-inner">
+    
+    <!-- Title -->
+    <h1 class="page-title">Research</h1>
+    <h2 class="page-subtitle">研究</h2>
+
+    <!-- Two-column layout -->
+    <div class="row align-items-center research-hero-content mt-4">
+      
       <!-- Left: Text -->
-      <div class="col-md-6 research-hero-content">
-        <h1 class="page-title">Research</h1>
-        <h2 class="page-subtitle">研究</h2>
+      <div class="col-md-6">
         <p class="research-intro">
           LETでは、学習ログと分析を活用し、実際の教室データに基づいて教育を改善しています。<br>
           私たちのアプローチは、シームレスで個別化された学習と、エビデンスに基づいた指導を重視しています。
@@ -21,21 +35,24 @@ get_header();
       </div>
 
       <!-- Right: Image -->
-      <div class="col-md-6 research-hero-image text-center">
+      <div class="col-md-6 text-center">
         <img 
           src="<?php echo get_template_directory_uri(); ?>/images/network.png" 
           alt="Learning network illustration" 
           class="img-fluid"
         >
       </div>
-    </div>
-  </div>
 
-  <!-- Scroll Down Icon -->
-  <a href="#tools" class="scroll-indicator">
-    <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down">
-  </a>
+    </div>
+
+    <!-- Scroll-down indicator -->
+    <div class="scroll-indicator text-center mt-4">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/scroll_down.svg" alt="Scroll Down" width="24">
+    </div>
+
+  </div>
 </section>
+
 
 
 <section class="theme-section section-spacing research-accordion">
@@ -421,7 +438,10 @@ get_header();
 </section>
 
 
-
-
+ </main><!-- #main -->
+      </div><!-- #primary -->
+    </div><!-- .row -->
+  </div><!-- #content -->
+</div><!-- .wrapper -->
 
 <?php get_footer(); ?>
