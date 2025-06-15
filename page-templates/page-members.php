@@ -151,8 +151,18 @@ $container = get_theme_mod( 'understrap_container_type' );
                   <div class="subheading-line"></div>
                 </div>
                 <div class="row members-list">
-                  <?php foreach ($faculty as $post) render_member_card($post); ?>
+                <?php foreach ($faculty as $post) render_member_card($post); ?>
+                <!-- Research Collaborators Card -->
+                <div class="col-md-3 member p-member-list__item group-faculty">
+                  <a href="<?php echo esc_url(site_url('/members/research-collaborators')); ?>" class="p-member-list__thumbnail --empty">
+                    <span class="collab-label-jp" style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%; font-weight: bold; color: #fff;">
+                      共同研究員
+                    </span>
+                  </a>
+                  <a href="<?php echo esc_url(site_url('/members/research-collaborators')); ?>" class="p-member-list__name">共同研究員</a>
+                  <p class="p-member-list__position">Research Collaborators</p>
                 </div>
+              </div>
               </div>
               <?php endif; ?>
 
