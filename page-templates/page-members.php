@@ -1,9 +1,7 @@
 <?php
 /**
  * Template Name: Members page
- *
  * Template for displaying members with front-end filter buttons.
- *
  * @package Understrap
  */
 
@@ -241,7 +239,7 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </div>
 
-<!-- FILTERING SCRIPT -->
+<!-- FILTER SCRIPT -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const defaultFilter = 'faculty';

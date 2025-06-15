@@ -154,7 +154,37 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                         <p class="section-intro">このようなアプローチは、次の4つのステップからなる開発サイクルで支えられています。まず、教育現場の課題に応じた設計・開発を行い、それを授業に導入。そこで得られる学習ログや行動データを収集・分析し、見えてきた課題や成果をもとに振り返りと改善を重ねていきます。この循環を繰り返すことで、教育の質を継続的に高め、学習者一人ひとりに最適な学びの支援を届けることが可能になります。</p>
 
+<<<<<<< HEAD
                           <div class="research-cycle container section-spacing">
+=======
+
+                        <section class="founder-quote-section container content-block">
+                            <div class="row">
+                                
+                                <!-- Left: Image -->
+                                <div class="col-md-6 text-center">
+                                <img src="<?php echo get_template_directory_uri(); ?>/images/ogata_portrait 1.png" alt="Prof Hiroaki Ogata" class="founder-photo img-fluid rounded-3">
+                                <p class="founder-caption mt-3">緒方広明 教授（博士）緒方研究室創設者</p>
+                                </div>
+
+                                <!-- Right: Quote -->
+                                <div class="col-md-6">
+                                <div class="founder-quote-box">
+                                    <span class="quote-icon">“</span>
+                                    <p class="founder-quote-text">
+                                    私たちの開発しているような教育システムが日本のスタンダードになって、全国各学校の教育データが集約されて、どのような教育をすればよいのかがわかるようになり、より質の高い学びが実現するとうれしいです。日本に生まれれば日本語を話せるようになるように、人間というのは学ぶ生き物だと思います。その学び方について、個人に合ったものにできればよいですね。
+                                    </p>
+                                </div>
+                                </div>
+
+                                </div>
+                            </section>
+                            <section class="research-cycle container section-spacing">
+                            <p class="section-intro" style="text-align: center; max-width: 700px; margin: 0 auto 3rem;">
+                              この理念を実現するために、私たちは現場と連携しながら研究を進め、技術を開発・実装し、得られたフィードバックを次の研究へとつなげています。<br>
+                              以下の図は、そのサイクル全体を表しています。
+                            </p>
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
                             <div class="research-cycle-layout">
                               <!-- Top -->
                               <div class="research-text top">

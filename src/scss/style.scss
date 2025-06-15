@@ -68,6 +68,7 @@ $color-tag-purple:  #9B5DE5;
   .section-title {
     text-align: left;
     font-size: 40px;
+    color:#7C4A21;
     font-weight: bold;
     margin-bottom: 2rem;
     color: $color-heading;
@@ -1280,6 +1281,7 @@ padding-top: 7rem; ;
   padding: 100px 0;
   .about-hero-title {
     font-size: 2.8rem;
+    color: #7C4A21;
     font-weight: bold;
     line-height: 1.1;
     margin-bottom: 25px;
@@ -1463,6 +1465,7 @@ padding-top: 7rem; ;
 
   .section-title {
     font-size: 2.5rem;
+    color: #7C4A21;
     font-weight: bold;
     margin-bottom: 1.5rem;
   }
@@ -1533,6 +1536,10 @@ padding-top: 7rem; ;
   .section-intro {
     font-size: 1.125rem;
     line-height: 2;
+<<<<<<< HEAD
+=======
+    //color: #555;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
     text-align: left;
     margin-bottom: 4rem;
   }
@@ -1869,6 +1876,7 @@ padding-top: 7rem; ;
     margin: 3rem auto;
   }
 
+<<<<<<< HEAD
   .section-title--sub {
     font-size: 1.1rem;
     color: #9b8d7a;
@@ -1897,6 +1905,23 @@ padding-top: 7rem; ;
         border-radius: 8px;
         object-fit: cover;
       }
+=======
+  .events-archive {
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin: 3rem auto;
+    }
+  
+    .section-title--sub {
+      font-size: 1.1rem;
+      color: #9b8d7a;
+      margin-bottom: 2.5rem;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
     }
 
     .event-content {
@@ -1904,9 +1929,93 @@ padding-top: 7rem; ;
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
+<<<<<<< HEAD
 
       .event-date {
         width: 150px;
+=======
+  
+      .event-thumbnail {
+        flex: 0 0 150px;
+  
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+          object-fit: cover;
+        }
+      }
+  
+      .event-content {
+        display: flex;
+        flex: 1;
+  
+        .event-date {
+          font-weight: bold;
+          color: #7c4a21;
+          margin-bottom: 0.5rem;
+          width: 130px;
+        }
+  
+        .event-badge {
+          display: inline-block;
+          margin-bottom: 0.5rem;
+          padding: 4px 10px;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          font-weight: bold;
+          color: #fff;
+          min-width: 70px;
+          text-align: center;
+  
+          &.online {
+            background-color: #f59539;
+          }
+  
+          &.in_person {
+            background-color: #3fa99b;
+          }
+  
+          &.hybrid {
+            background-color: #a3c26f;
+          }
+        }
+  
+        .event-summary {
+          font-size: 1rem;
+          color: #333;
+  
+          .event-title-link {
+            text-decoration: none;
+            color: #7c4a21;
+            font-weight: 300;
+  
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+  
+          .event-time {
+            margin-top: 0.25rem;
+            font-size: 0.9rem;
+            color: #7b715f;
+          }
+        }
+      }
+    }
+  
+    .pagination {
+      text-align: center;
+      margin-top: 40px;
+  
+      .page-numbers {
+        display: inline-block;
+        margin: 0 4px;
+        padding: 8px 12px;
+        background-color: #e3deaa;
+        color: #333;
+        text-decoration: none;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
         font-weight: bold;
         color: #7c4a21;
         flex-shrink: 0;
@@ -2844,7 +2953,11 @@ padding-top: 7rem; ;
 .member-section-title {
   font-size: 1.5rem;
   font-weight: 600;
+<<<<<<< HEAD
   color: $color-heading;
+=======
+  color:#7C4A21;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
   margin-bottom: 20px;
   border-bottom: 2px solid #e4d5bb;
   padding-bottom: 6px;
@@ -2984,7 +3097,11 @@ padding-top: 7rem; ;
   .section-title {
     font-size: 1.25rem;
     font-weight: 600;
+<<<<<<< HEAD
     color: $color-heading;
+=======
+    color:#7C4A21;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
     border-bottom: 1px solid #ccc;
     padding-bottom: 0.25rem;
     margin-bottom: 2rem;
@@ -3278,7 +3395,11 @@ padding-top: 7rem; ;
         .section-title {
           font-size: 1.75rem;
           font-weight: 700;
+<<<<<<< HEAD
           color: $color-heading;
+=======
+          color:#7C4A21;
+>>>>>>> b7f6e3225a9c674ba2e950d0019d744c9c637e92
           margin-bottom: 2rem;
         }
       
