@@ -10,8 +10,8 @@ $container = get_theme_mod('understrap_container_type');
 ?>
 
 <main id="member-profile-page">
-  <!-- Cover Section with fallback image -->
-  <section class="member-cover alignfull">
+  <!-- Cover Section with spacing -->
+  <section class="member-cover section-spacing alignfull">
     <div class="cover-inner <?php echo esc_attr($container); ?>">
       <h2 class="page-title">Members</h2>
       <p class="page-subtitle">メンバー</p>
@@ -20,39 +20,38 @@ $container = get_theme_mod('understrap_container_type');
 
   <!-- Member Info Section -->
   <div class="container member-info">
-  <div class="row">
-    <?php if (has_post_thumbnail()) : ?>
-      <div class="col-md-4">
-        <?php the_post_thumbnail('medium', ['class' => 'img-fluid rounded']); ?>
-      </div>
-      <div class="col-md-8">
-    <?php else : ?>
-      <div class="col-md-12">
-    <?php endif; ?>
-        <h1 class="member-name"><?php the_title(); ?></h1>
-        <?php
-        $employment_title = get_field('employment_title');
-        $student_level = get_field('student_level');
-        $student_year = get_field('student_year');
+    <div class="row">
+      <?php if (has_post_thumbnail()) : ?>
+        <div class="col-md-4">
+          <?php the_post_thumbnail('medium', ['class' => 'img-fluid rounded']); ?>
+        </div>
+        <div class="col-md-8">
+      <?php else : ?>
+        <div class="col-md-12">
+      <?php endif; ?>
+          <h1 class="member-name"><?php the_title(); ?></h1>
+          <?php
+          $employment_title = get_field('employment_title');
+          $student_level = get_field('student_level');
+          $student_year = get_field('student_year');
 
-        if ($employment_title) {
-          echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
-        } elseif ($student_level && $student_year) {
-          $label = [
-            'doctoral' => '博士',
-            'masters'  => '修士',
-            'postdoc'  => '特定研究員'
-          ][$student_level] ?? '';
-          
-          if ($label) {
-            echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
+          if ($employment_title) {
+            echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
+          } elseif ($student_level && $student_year) {
+            $label = [
+              'doctoral' => '博士',
+              'masters'  => '修士',
+              'postdoc'  => '特定研究員'
+            ][$student_level] ?? '';
+            
+            if ($label) {
+              echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
+            }
           }
-        }        
-        ?>
-      </div>
+          ?>
+        </div>
+    </div>
   </div>
-</div>
-
 
   <!-- Profile and Research -->
   <div class="container member-details">
