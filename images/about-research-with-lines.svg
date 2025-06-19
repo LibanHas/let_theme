@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 942.63 572.79">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #231f20;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-1, .cls-4, .cls-6, .cls-8 {
+        fill: none;
+      }
+
+      .cls-9, .cls-2, .cls-5, .cls-7 {
+        fill: #e1bc8c;
+      }
+
+      .cls-10 {
+        fill: #be9f79;
+      }
+
+      .cls-2 {
+        stroke: #e1bc8c;
+      }
+
+      .cls-2, .cls-3, .cls-5, .cls-6, .cls-7 {
+        stroke-width: 2px;
+      }
+
+      .cls-11 {
+        fill: url(#linear-gradient-4);
+      }
+
+      .cls-12 {
+        fill: url(#linear-gradient-3);
+      }
+
+      .cls-13 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3, .cls-6 {
+        stroke: #cf7d3d;
+      }
+
+      .cls-3, .cls-14 {
+        fill: #cf7d3d;
+      }
+
+      .cls-15 {
+        fill: #a86341;
+      }
+
+      .cls-4, .cls-8 {
+        stroke: #fff;
+        stroke-width: 3px;
+      }
+
+      .cls-16 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-5 {
+        stroke: #be9f79;
+      }
+
+      .cls-8 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-17 {
+        font-size: 31px;
+      }
+
+      .cls-17, .cls-18 {
+        font-family: HiraKakuPro-W3-83pv-RKSJ-H, 'Hiragino Kaku Gothic Pro';
+      }
+
+      .cls-17, .cls-18, .cls-19 {
+        fill: #fff;
+      }
+
+      .cls-7 {
+        stroke: #a86341;
+      }
+
+      .cls-18 {
+        font-size: 24px;
+      }
+
+      .cls-20 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-21 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-22 {
+        letter-spacing: -.09em;
+      }
+
+      .cls-23 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-24 {
+        letter-spacing: -.15em;
+      }
+
+      .cls-25 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-26 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-19 {
+        font-family: HiraKakuPro-W6-83pv-RKSJ-H, 'Hiragino Kaku Gothic Pro';
+        font-size: 18px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="682.11" y1="123.75" x2="682.11" y2="419.08" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#d9a440"/>
+      <stop offset=".19" stop-color="#d9a543"/>
+      <stop offset=".36" stop-color="#daaa4e"/>
+      <stop offset=".52" stop-color="#ddb161"/>
+      <stop offset=".68" stop-color="#e0bc7a"/>
+      <stop offset=".84" stop-color="#e4ca9c"/>
+      <stop offset=".99" stop-color="#e9dbc4"/>
+      <stop offset="1" stop-color="#eaddc8"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="313.46" y1="165.72" x2="672.35" y2="69.56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#c46b4e"/>
+      <stop offset=".29" stop-color="#c56e4d"/>
+      <stop offset=".54" stop-color="#c9794a"/>
+      <stop offset=".77" stop-color="#cf8a46"/>
+      <stop offset="1" stop-color="#d8a340"/>
+      <stop offset="1" stop-color="#d9a440"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-3" x1="317.08" y1="444.47" x2="317.08" y2="122.55" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#8c5f3c"/>
+      <stop offset=".24" stop-color="#92603d"/>
+      <stop offset=".57" stop-color="#a36343"/>
+      <stop offset=".94" stop-color="#bf694c"/>
+      <stop offset="1" stop-color="#c46b4e"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-4" x1="683.48" y1="437.56" x2="327.58" y2="437.56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#eaddc8"/>
+      <stop offset=".39" stop-color="#e8dbc6"/>
+      <stop offset=".55" stop-color="#e3d4bf"/>
+      <stop offset=".66" stop-color="#dbcab2"/>
+      <stop offset=".75" stop-color="#d0baa1"/>
+      <stop offset=".83" stop-color="#c1a68b"/>
+      <stop offset=".91" stop-color="#ae8d6f"/>
+      <stop offset=".97" stop-color="#98704f"/>
+      <stop offset="1" stop-color="#8c5f3c"/>
+    </linearGradient>
+  </defs>
+  <path class="cls-16" d="M735.55,269.22c0,56.61-19.46,108.67-52.07,149.86l-54.8-54.8c19-26.87,30.15-59.66,30.15-95.06,0-33.4-9.93-64.48-26.99-90.44l55.03-55.03c30.56,40.47,48.68,90.85,48.68,145.47Z"/>
+  <path class="cls-13" d="M686.87,123.75l-55.03,55.03c-29.48-44.85-80.24-74.46-137.91-74.46s-107.47,29.05-137.07,73.19l-54.96-54.96c44.15-57.72,113.74-94.95,192.03-94.95s148.83,37.75,192.94,96.15Z"/>
+  <path class="cls-12" d="M381.87,390.19l-54.29,54.28c-46.37-44.03-75.28-106.26-75.28-175.25,0-55.16,18.49-106,49.6-146.67l54.96,54.96c-17.57,26.22-27.83,57.77-27.83,91.71,0,47.81,20.34,90.86,52.84,120.97Z"/>
+  <path class="cls-11" d="M683.48,419.08c-44.26,55.91-112.72,91.77-189.55,91.77-64.46,0-123.03-25.25-166.35-66.38l54.29-54.28c29.41,27.27,68.79,43.94,112.06,43.94,55.67,0,104.91-27.59,134.75-69.85l54.8,54.8Z"/>
+  <line class="cls-1" x1="327.58" y1="444.47" x2="327.55" y2="444.5"/>
+  <line class="cls-1" x1="683.52" y1="419.12" x2="683.48" y2="419.08"/>
+  <circle class="cls-14" cx="672.08" cy="166.76" r="49.49"/>
+  <circle class="cls-10" cx="338.66" cy="407.54" r="50.36"/>
+  <circle class="cls-15" cx="322.18" cy="163.51" r="50.34"/>
+  <text class="cls-17" transform="translate(466.07 75.62) rotate(-2.97)"><tspan x="0" y="0">研</tspan></text>
+  <text class="cls-17" transform="translate(496.39 73.96) rotate(4.33)"><tspan x="0" y="0">究</tspan></text>
+  <text class="cls-17" transform="translate(687.01 244.18) rotate(90.57)"><tspan x="0" y="0">開</tspan></text>
+  <text class="cls-17" transform="translate(686.78 274.57) rotate(97.55)"><tspan x="0" y="0">発</tspan></text>
+  <text class="cls-18" transform="translate(327.66 353.1) rotate(-114.51)"><tspan x="0" y="0">フ</tspan></text>
+  <text class="cls-18" transform="translate(319.45 335.69) rotate(-110.23)"><tspan x="0" y="0">ィ</tspan></text>
+  <text class="cls-18" transform="translate(311.98 315.9) rotate(-105.38)"><tspan x="0" y="0">ー</tspan></text>
+  <text class="cls-18" transform="translate(306.15 295.7) rotate(-99.33)"><tspan x="0" y="0">ド</tspan></text>
+  <text class="cls-18" transform="translate(302.53 275.45) rotate(-93.22)"><tspan x="0" y="0">バ</tspan></text>
+  <text class="cls-18" transform="translate(301.01 254.57) rotate(-85.36)"><tspan x="0" y="0">ッ</tspan></text>
+  <text class="cls-18" transform="translate(302.23 234.47) rotate(-77.36)"><tspan x="0" y="0">ク</tspan></text>
+  <g>
+    <path class="cls-4" d="M342.22,399c0,2.32-1.88,4.21-4.21,4.21h-12.62l-8.41,8.41v-23.14c0-2.32,1.88-4.21,4.21-4.21h16.83c2.32,0,4.21,1.88,4.21,4.21v10.52Z"/>
+    <path class="cls-4" d="M350.64,399h4.21c2.32,0,4.21,1.88,4.21,4.21v23.14l-8.41-8.41h-12.62c-2.32,0-4.21-1.88-4.21-4.21v-2.1"/>
+  </g>
+  <g>
+    <path class="cls-8" d="M308.47,172.82h15.76"/>
+    <path class="cls-8" d="M302.56,180.7h35.45"/>
+    <path class="cls-8" d="M324.23,180.7c7.61,0,13.79-6.17,13.79-13.79s-6.17-13.79-13.79-13.79h-1.97"/>
+    <path class="cls-8" d="M314.38,164.95h3.94"/>
+    <path class="cls-8" d="M314.38,161.01c-2.18,0-3.94-1.76-3.94-3.94v-7.88h11.82v7.88c0,2.18-1.76,3.94-3.94,3.94h-3.94Z"/>
+    <path class="cls-8" d="M320.29,149.19v-5.91c0-1.09-.88-1.97-1.97-1.97h-3.94c-1.09,0-1.97.88-1.97,1.97v5.91"/>
+  </g>
+  <g>
+    <path class="cls-8" d="M672.71,162.96l-3.98,4.97,3.98,4.97"/>
+    <path class="cls-8" d="M680.67,162.96l3.98,4.97-3.98,4.97"/>
+    <path class="cls-8" d="M692.6,181.85c2.2,0,3.98-1.78,3.98-3.98v-19.89c0-2.2-1.78-3.98-3.98-3.98h-15.71c-1.35.01-2.62-.66-3.36-1.79l-1.61-2.39c-.74-1.12-1.98-1.79-3.32-1.79h-7.81c-2.2,0-3.98,1.78-3.98,3.98v25.85c0,2.2,1.78,3.98,3.98,3.98h31.82Z"/>
+  </g>
+  <g>
+    <circle class="cls-9" cx="646.53" cy="410.09" r="49.59"/>
+    <g>
+      <path class="cls-8" d="M650.92,427.48v-8.77c0-2.42-1.96-4.39-4.39-4.39s-4.39,1.96-4.39,4.39v8.77"/>
+      <path class="cls-8" d="M659.69,401.15l7.56,3.78c.74.37,1.21,1.13,1.21,1.96v16.19c0,2.42-1.96,4.39-4.39,4.39h-35.1c-2.42,0-4.39-1.96-4.39-4.39v-16.19c0-.83.47-1.59,1.21-1.96l7.56-3.78"/>
+      <path class="cls-8" d="M659.69,390.19v37.29"/>
+      <path class="cls-8" d="M628.98,392.38l15.59-7.79c1.23-.62,2.69-.62,3.92,0l15.59,7.79"/>
+      <path class="cls-8" d="M633.37,390.19v37.29"/>
+      <circle class="cls-8" cx="646.53" cy="398.96" r="4.39"/>
+    </g>
+  </g>
+  <text class="cls-17" transform="translate(438.84 475.58) rotate(11.74)"><tspan x="0" y="0">授</tspan></text>
+  <text class="cls-17" transform="translate(470.77 482.22) rotate(5.15)"><tspan x="0" y="0">業</tspan></text>
+  <text class="cls-17" transform="translate(504.03 485.21) rotate(-4.57)"><tspan x="0" y="0">実</tspan></text>
+  <text class="cls-17" transform="translate(539.05 482.23) rotate(-21)"><tspan x="0" y="0">施</tspan></text>
+  <line class="cls-3" x1="676.69" y1="118.85" x2="762.85" y2="118.85"/>
+  <line class="cls-6" x1="761.91" y1="119.85" x2="761.91" y2="26.05"/>
+  <line class="cls-2" x1="648.92" y1="457.9" x2="761.91" y2="457.9"/>
+  <line class="cls-5" x1="219.81" y1="456.15" x2="340.66" y2="456.15"/>
+  <line class="cls-7" x1="219.81" y1="116.33" x2="320.29" y2="116.33"/>
+  <line class="cls-7" x1="220.18" y1="15.36" x2="220.18" y2="117.33"/>
+  <line class="cls-7" x1="83.95" y1="15.36" x2="220.81" y2="15.36"/>
+  <g>
+    <rect class="cls-15" x="34.08" width="62.87" height="27.6" rx="11.01" ry="11.01"/>
+    <text class="cls-19" transform="translate(47.05 20.3)"><tspan x="0" y="0">研究</tspan></text>
+  </g>
+  <line class="cls-3" x1="760.91" y1="26.6" x2="847.07" y2="26.6"/>
+  <g>
+    <rect class="cls-14" x="846.07" y="12.8" width="62.87" height="27.6" rx="11.01" ry="11.01"/>
+    <text class="cls-19" transform="translate(859.04 33.09)"><tspan x="0" y="0">開発</tspan></text>
+  </g>
+  <line class="cls-2" x1="760.91" y1="550.7" x2="760.91" y2="456.9"/>
+  <line class="cls-2" x1="759.85" y1="550.7" x2="860.39" y2="550.7"/>
+  <rect class="cls-9" x="847.07" y="536.9" width="95.56" height="27.6" rx="11.01" ry="11.01"/>
+  <text class="cls-19" transform="translate(860.04 557.2)"><tspan x="0" y="0">授業実施</tspan></text>
+  <line class="cls-5" x1="219.81" y1="559.04" x2="219.81" y2="456.15"/>
+  <line class="cls-5" x1="99.33" y1="558.39" x2="220.18" y2="558.39"/>
+  <g>
+    <rect class="cls-10" y="544.44" width="135.33" height="27.6" rx="11.01" ry="11.01"/>
+    <text class="cls-19" transform="translate(9.27 564.74)"><tspan class="cls-24" x="0" y="0">フ</tspan><tspan class="cls-22" x="15.28" y="0">ィ</tspan><tspan class="cls-21" x="31.61" y="0">ー</tspan><tspan class="cls-26" x="48.04" y="0">ド</tspan><tspan class="cls-20" x="63.9" y="0">バ</tspan><tspan class="cls-25" x="80.37" y="0">ッ</tspan><tspan class="cls-23" x="96.17" y="0">ク</tspan></text>
+  </g>
+</svg>

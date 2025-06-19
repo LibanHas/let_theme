@@ -113,44 +113,46 @@
   <line class="cls-1" x1="75.28" y1="416.87" x2="75.25" y2="416.9"/>
   <line class="cls-1" x1="431.22" y1="391.52" x2="431.18" y2="391.48"/>
   <circle class="cls-11" cx="419.78" cy="139.17" r="49.49"/>
-  <circle class="cls-4" cx="411.23" cy="373.49" r="49.59"/>
   <circle class="cls-5" cx="86.36" cy="379.95" r="50.36"/>
   <circle class="cls-9" cx="69.88" cy="135.91" r="50.34"/>
-  <text class="cls-12" transform="translate(214.19 49.73) rotate(-5.55)"><tspan x="0" y="0">研</tspan></text>
-  <text class="cls-12" transform="translate(244.43 46.72) rotate(1.43)"><tspan x="0" y="0">究</tspan></text>
+  <text class="cls-12" transform="translate(213.77 48.02) rotate(-2.97)"><tspan x="0" y="0">研</tspan></text>
+  <text class="cls-12" transform="translate(244.09 46.36) rotate(4.33)"><tspan x="0" y="0">究</tspan></text>
   <text class="cls-12" transform="translate(434.71 216.58) rotate(90.57)"><tspan x="0" y="0">開</tspan></text>
   <text class="cls-12" transform="translate(434.48 246.97) rotate(97.55)"><tspan x="0" y="0">発</tspan></text>
   <text class="cls-13" transform="translate(75.36 325.5) rotate(-114.51)"><tspan x="0" y="0">フ</tspan></text>
-  <text class="cls-13" transform="translate(67.15 308.1) rotate(-110.23)"><tspan x="0" y="0">ィ</tspan></text>
+  <text class="cls-13" transform="translate(67.16 308.1) rotate(-110.23)"><tspan x="0" y="0">ィ</tspan></text>
   <text class="cls-13" transform="translate(59.68 288.31) rotate(-105.38)"><tspan x="0" y="0">ー</tspan></text>
-  <text class="cls-13" transform="translate(53.85 268.1) rotate(-99.33)"><tspan x="0" y="0">ド</tspan></text>
-  <text class="cls-13" transform="translate(50.23 247.86) rotate(-93.22)"><tspan x="0" y="0">バ</tspan></text>
-  <text class="cls-13" transform="translate(48.71 226.97) rotate(-85.36)"><tspan x="0" y="0">ッ</tspan></text>
+  <text class="cls-13" transform="translate(53.86 268.1) rotate(-99.33)"><tspan x="0" y="0">ド</tspan></text>
+  <text class="cls-13" transform="translate(50.24 247.86) rotate(-93.22)"><tspan x="0" y="0">バ</tspan></text>
+  <text class="cls-13" transform="translate(48.72 226.97) rotate(-85.36)"><tspan x="0" y="0">ッ</tspan></text>
   <text class="cls-13" transform="translate(49.93 206.87) rotate(-77.36)"><tspan x="0" y="0">ク</tspan></text>
   <g>
-    <path class="cls-2" d="M76.91,130.24c0,2.32-1.88,4.21-4.21,4.21h-12.62l-8.41,8.41v-23.14c0-2.32,1.88-4.21,4.21-4.21h16.83c2.32,0,4.21,1.88,4.21,4.21v10.52Z"/>
-    <path class="cls-2" d="M85.33,130.24h4.21c2.32,0,4.21,1.88,4.21,4.21v23.14l-8.41-8.41h-12.62c-2.32,0-4.21-1.88-4.21-4.21v-2.1"/>
+    <path class="cls-2" d="M89.93,371.41c0,2.32-1.88,4.21-4.21,4.21h-12.62l-8.41,8.41v-23.14c0-2.32,1.88-4.21,4.21-4.21h16.83c2.32,0,4.21,1.88,4.21,4.21v10.52Z"/>
+    <path class="cls-2" d="M98.34,371.41h4.21c2.32,0,4.21,1.88,4.21,4.21v23.14l-8.41-8.41h-12.62c-2.32,0-4.21-1.88-4.21-4.21v-2.1"/>
   </g>
   <g>
-    <path class="cls-3" d="M409.81,145.23h15.76"/>
-    <path class="cls-3" d="M403.9,153.11h35.45"/>
-    <path class="cls-3" d="M425.57,153.11c7.61,0,13.79-6.17,13.79-13.79s-6.17-13.79-13.79-13.79h-1.97"/>
-    <path class="cls-3" d="M415.72,137.35h3.94"/>
-    <path class="cls-3" d="M415.72,133.41c-2.18,0-3.94-1.76-3.94-3.94v-7.88h11.82v7.88c0,2.18-1.76,3.94-3.94,3.94h-3.94Z"/>
-    <path class="cls-3" d="M421.63,121.59v-5.91c0-1.09-.88-1.97-1.97-1.97h-3.94c-1.09,0-1.97.88-1.97,1.97v5.91"/>
+    <path class="cls-3" d="M56.18,145.23h15.76"/>
+    <path class="cls-3" d="M50.27,153.11h35.45"/>
+    <path class="cls-3" d="M71.94,153.11c7.61,0,13.79-6.17,13.79-13.79s-6.17-13.79-13.79-13.79h-1.97"/>
+    <path class="cls-3" d="M62.09,137.35h3.94"/>
+    <path class="cls-3" d="M62.09,133.41c-2.18,0-3.94-1.76-3.94-3.94v-7.88h11.82v7.88c0,2.18-1.76,3.94-3.94,3.94h-3.94Z"/>
+    <path class="cls-3" d="M68,121.59v-5.91c0-1.09-.88-1.97-1.97-1.97h-3.94c-1.09,0-1.97.88-1.97,1.97v5.91"/>
   </g>
   <g>
-    <path class="cls-3" d="M408.21,371.07l-3.98,4.97,3.98,4.97"/>
-    <path class="cls-3" d="M416.16,371.07l3.98,4.97-3.98,4.97"/>
-    <path class="cls-3" d="M428.1,389.97c2.2,0,3.98-1.78,3.98-3.98v-19.89c0-2.2-1.78-3.98-3.98-3.98h-15.71c-1.35.01-2.62-.66-3.36-1.79l-1.61-2.39c-.74-1.12-1.98-1.79-3.32-1.79h-7.81c-2.2,0-3.98,1.78-3.98,3.98v25.85c0,2.2,1.78,3.98,3.98,3.98h31.82Z"/>
+    <path class="cls-3" d="M420.42,135.36l-3.98,4.97,3.98,4.97"/>
+    <path class="cls-3" d="M428.37,135.36l3.98,4.97-3.98,4.97"/>
+    <path class="cls-3" d="M440.3,154.25c2.2,0,3.98-1.78,3.98-3.98v-19.89c0-2.2-1.78-3.98-3.98-3.98h-15.71c-1.35.01-2.62-.66-3.36-1.79l-1.61-2.39c-.74-1.12-1.98-1.79-3.32-1.79h-7.81c-2.2,0-3.98,1.78-3.98,3.98v25.85c0,2.2,1.78,3.98,3.98,3.98h31.82Z"/>
   </g>
   <g>
-    <path class="cls-3" d="M89.75,401.46v-8.77c0-2.42-1.96-4.39-4.39-4.39s-4.39,1.96-4.39,4.39v8.77"/>
-    <path class="cls-3" d="M98.53,375.14l7.56,3.78c.74.37,1.21,1.13,1.21,1.96v16.19c0,2.42-1.96,4.39-4.39,4.39h-35.1c-2.42,0-4.39-1.96-4.39-4.39v-16.19c0-.83.47-1.59,1.21-1.96l7.56-3.78"/>
-    <path class="cls-3" d="M98.53,364.17v37.29"/>
-    <path class="cls-3" d="M67.82,366.36l15.59-7.79c1.23-.62,2.69-.62,3.92,0l15.59,7.79"/>
-    <path class="cls-3" d="M72.2,364.17v37.29"/>
-    <circle class="cls-3" cx="85.36" cy="372.95" r="4.39"/>
+    <circle class="cls-4" cx="394.23" cy="382.49" r="49.59"/>
+    <g>
+      <path class="cls-3" d="M398.62,399.88v-8.77c0-2.42-1.96-4.39-4.39-4.39s-4.39,1.96-4.39,4.39v8.77"/>
+      <path class="cls-3" d="M407.39,373.56l7.56,3.78c.74.37,1.21,1.13,1.21,1.96v16.19c0,2.42-1.96,4.39-4.39,4.39h-35.1c-2.42,0-4.39-1.96-4.39-4.39v-16.19c0-.83.47-1.59,1.21-1.96l7.56-3.78"/>
+      <path class="cls-3" d="M407.39,362.59v37.29"/>
+      <path class="cls-3" d="M376.68,364.78l15.59-7.79c1.23-.62,2.69-.62,3.92,0l15.59,7.79"/>
+      <path class="cls-3" d="M381.07,362.59v37.29"/>
+      <circle class="cls-3" cx="394.23" cy="371.36" r="4.39"/>
+    </g>
   </g>
   <text class="cls-12" transform="translate(186.55 447.99) rotate(11.74)"><tspan x="0" y="0">授</tspan></text>
   <text class="cls-12" transform="translate(218.48 454.62) rotate(5.15)"><tspan x="0" y="0">業</tspan></text>

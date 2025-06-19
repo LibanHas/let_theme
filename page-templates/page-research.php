@@ -61,8 +61,8 @@ get_header();
     <h2 class="section-heading">テーマ</h2>
 
     <!-- 学習ログの可視化 -->
-    <div class="theme-card">
-      <div class="theme-card__main accordion-header" data-target="theme-logs">
+    <div class="theme-card theme-accordion-header">
+      <div class="theme-card__main" data-target="theme-logs">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon-logs.svg" alt="ログ可視化アイコン">
         </div>
@@ -73,6 +73,10 @@ get_header();
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>
         </div>
+      </div>
+      <div class="theme-card__bottom">
+        <div class="theme-card__line"></div>
+        <div class="theme-card__triangle"></div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-logs">
@@ -164,8 +168,8 @@ get_header();
 </div>
 
     <!-- 教育支援ツールの開発 -->
-    <div class="theme-card">
-      <div class="theme-card__main accordion-header" data-target="theme-tools">
+    <div class="theme-card theme-accordion-header">
+      <div class="theme-card__main" data-target="theme-tools">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/pickaxe.svg" alt="教育支援ツールアイコン">
         </div>
@@ -178,6 +182,10 @@ get_header();
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>
         </div>
+      </div>
+      <div class="theme-card__bottom">
+        <div class="theme-card__line"></div>
+        <div class="theme-card__triangle"></div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-tools">
@@ -234,8 +242,8 @@ get_header();
 </div>
 </div>
     <!-- 学習者モデリング -->
-    <div class="theme-card">
-      <div class="theme-card__main accordion-header" data-target="theme-modeling">
+    <div class="theme-card theme-accordion-header">
+      <div class="theme-card__main" data-target="theme-modeling">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/people.svg" alt="学習者モデリングアイコン">
         </div>
@@ -246,6 +254,10 @@ get_header();
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>
         </div>
+      </div>
+      <div class="theme-card__bottom">
+        <div class="theme-card__line"></div>
+        <div class="theme-card__triangle"></div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-modeling">
@@ -278,21 +290,24 @@ get_header();
     </div>
 
     <!-- xAPIと学習基盤の構築 -->
-    <div class="theme-card">
-      <div class="theme-card__main accordion-header" data-target="theme-xapi">
+    <div class="theme-card theme-accordion-header">
+      <div class="theme-card__main" data-target="theme-xapi">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/globe.svg" alt="xAPIアイコン">
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">xAPIと学習基盤の構築</h3>
           <p class="theme-card__description">
-            学習活動を記録するための国際標準であるxAPIを活用し、ツールや環境を越えて学習ログを一元的に蓄積・活用できる教育基盤を構築しています。
+            学習活動を記録するための国際標準であるxAPIを<br>活用し、ツールや環境を越えて学習ログを一元的に蓄積・活用できる教育基盤を構築しています。
           </p>
         </div>
-        <div class="accordion-icon plus-icon">
-          <span class="line horizontal"></span>
-          <span class="line vertical"></span>
+        <div class="theme-card__expand">
+          <span class="accordion-icon">＋</span>
+        </div>
       </div>
+      <div class="theme-card__bottom">
+        <div class="theme-card__line"></div>
+        <div class="theme-card__triangle"></div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-xapi">
@@ -319,8 +334,8 @@ get_header();
 
 
     <!-- 実証研究 -->
-    <div class="theme-card">
-      <div class="theme-card__main accordion-header" data-target="theme-field">
+    <div class="theme-card theme-accordion-header">
+      <div class="theme-card__main" data-target="theme-field">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/school.svg" alt="実証研究アイコン">
         </div>
@@ -331,6 +346,10 @@ get_header();
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>
         </div>
+      </div>
+      <div class="theme-card__bottom">
+        <div class="theme-card__line"></div>
+        <div class="theme-card__triangle"></div>
       </div>
     </div>
     <div class="accordion-panel theme-card__content" id="theme-field">

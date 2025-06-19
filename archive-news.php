@@ -31,7 +31,6 @@ $container = get_theme_mod('understrap_container_type');
             'order' => 'DESC',
           ]);
 
-          // Category mappings
           $category_classes = [
             'symposiums'   => 'tag-symposium',
             'workshops'    => 'tag-workshop',
@@ -65,62 +64,66 @@ $container = get_theme_mod('understrap_container_type');
                 <h1 class="page-title">News</h1>
                 <h2 class="page-subtitle">ニュース</h2>
               </div>
-
               <?php if ($news_query->have_posts()) : ?>
-                <?php while ($news_query->have_posts()) : $news_query->the_post();
-                  $date_raw = get_field('news_date');
-                  $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
-                  $description = get_field('news_description');
+  <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 
-                  $category_value = get_field('news_category');
-$category_label = $category_labels[$category_value] ?? 'ニュース';
-$tag_class = $category_classes[$category_value] ?? 'tag-news';
+    <?php
+      $date_raw = get_field('news_date');
+      $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
+      $description = get_field('news_description');
+      $category_value = get_field('news_category');
+      $category_label = $category_labels[$category_value] ?? 'ニュース';
+      $tag_class = $category_classes[$category_value] ?? 'tag-news';
+    ?>
 
-                ?>
+    <hr class="news-divider" />
 
-                  <hr class="news-divider">
+    <div class="news-item">
+      <div class="news-meta">
+        <div class="news-date"><?php echo esc_html($date); ?></div>
+        <div class="news-tag <?php echo esc_attr($tag_class); ?>">
+          <?php echo esc_html($category_label); ?>
+        </div>
+      </div>
+      <div class="news-summary">
+        <p>
+          <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
+            <?php echo esc_html($description); ?>
+          </a>
+        </p>
+      </div>
+    </div>
 
-                  <div class="news-item">
-                    <div class="news-date"><?php echo esc_html($date); ?></div>
-                    <div class="news-tag <?php echo esc_attr($tag_class); ?>">
-                      <?php echo esc_html($category_label); ?>
-                    </div>
-                    <div class="news-summary">
-                      <p>
-                        <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
-                          <?php echo esc_html($description); ?>
-                        </a>
-                      </p>
-                    </div>
-                  </div>
+  <?php endwhile; ?>
 
-                <?php endwhile; ?>
+  <hr class="news-divider" />
 
-                <hr class="news-divider">
-                <div class="custom-pagination">
-                  <?php
-                  $pagination = paginate_links([
-                    'prev_next' => false,
-                    'type' => 'array',
-                    'mid_size' => 2,
-                    'end_size' => 1
-                  ]);
+  <div class="custom-pagination">
+    <?php
+    $pagination = paginate_links([
+      'prev_next' => false,
+      'type' => 'array',
+      'mid_size' => 2,
+      'end_size' => 1
+    ]);
 
-                  if ($pagination) {
-                    echo '<ul class="pagination-list">';
-                    foreach ($pagination as $page) {
-                      if (trim(strip_tags($page)) !== '') {
-                        echo '<li>' . $page . '</li>';
-                      }
-                    }
-                    echo '</ul>';
-                  }
-                  ?>
-                </div>
+    if ($pagination) {
+      echo '<ul class="pagination-list">';
+      foreach ($pagination as $page) {
+        if (trim(strip_tags($page)) !== '') {
+          echo '<li>' . $page . '</li>';
+        }
+      }
+      echo '</ul>';
+    }
+    ?>
+  </div>
 
-              <?php else : ?>
-                <p>ニュースがまだありません。</p>
-              <?php endif; ?>
+<?php else : ?>
+  <p>ニュースがまだありません。</p>
+<?php endif; ?>
+
+
             </div>
           </section>
 

@@ -23,7 +23,7 @@ $container = get_theme_mod('understrap_container_type');
     <div class="row">
       <?php if (has_post_thumbnail()) : ?>
         <div class="col-md-4">
-          <?php the_post_thumbnail('medium', ['class' => 'img-fluid rounded']); ?>
+          <?php the_post_thumbnail('medium', ['class' => 'img-fluid']); ?>
         </div>
         <div class="col-md-8">
       <?php else : ?>
