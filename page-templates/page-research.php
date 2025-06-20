@@ -61,8 +61,8 @@ get_header();
     <h2 class="section-heading">テーマ</h2>
 
     <!-- 学習ログの可視化 -->
-    <div class="theme-card theme-accordion-header">
-      <div class="theme-card__main" data-target="theme-logs">
+    <div class="theme-card accordion-header" data-target="theme-logs">
+      <div class="theme-card__main" >
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/icon-logs.svg" alt="ログ可視化アイコン">
         </div>
@@ -168,15 +168,15 @@ get_header();
 </div>
 
     <!-- 教育支援ツールの開発 -->
-    <div class="theme-card theme-accordion-header">
-      <div class="theme-card__main" data-target="theme-tools">
+    <div class="theme-card accordion-header" data-target="theme-tools">
+      <div class="theme-card__main">
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/pickaxe.svg" alt="教育支援ツールアイコン">
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">教育支援ツールの開発</h3>
           <p class="theme-card__description">
-            学習科学の知見と現場のニーズをもとに、教育支援ツールの設計・開発と実証研究を行なっています。
+            学習科学の知見と現場のニーズをもとに、<br />教育支援ツールの設計・開発と実証研究を<br />行なっています。
           </p>
         </div>
         <div class="theme-card__expand">
@@ -242,8 +242,8 @@ get_header();
 </div>
 </div>
     <!-- 学習者モデリング -->
-    <div class="theme-card theme-accordion-header">
-      <div class="theme-card__main" data-target="theme-modeling">
+    <div class="theme-card accordion-header" data-target="theme-modeling">
+      <div class="theme-card__main" >
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/people.svg" alt="学習者モデリングアイコン">
         </div>
@@ -290,16 +290,15 @@ get_header();
     </div>
 
     <!-- xAPIと学習基盤の構築 -->
-    <div class="theme-card theme-accordion-header">
-      <div class="theme-card__main" data-target="theme-xapi">
+    <div class="theme-card accordion-header" data-target="theme-xapi">
+      <div class="theme-card__main" >
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/globe.svg" alt="xAPIアイコン">
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">xAPIと学習基盤の構築</h3>
           <p class="theme-card__description">
-            学習活動を記録するための国際標準であるxAPIを<br>活用し、ツールや環境を越えて学習ログを一元的に蓄積・活用できる教育基盤を構築しています。
-          </p>
+          学習活動の国際標準xAPIにより、<br />学習ログの一元的な蓄積・活用を実現しています。</p>
         </div>
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>
@@ -334,14 +333,14 @@ get_header();
 
 
     <!-- 実証研究 -->
-    <div class="theme-card theme-accordion-header">
-      <div class="theme-card__main" data-target="theme-field">
+    <div class="theme-card accordion-header" data-target="theme-field">
+      <div class="theme-card__main" >
         <div class="theme-card__icon">
           <img src="<?php echo get_template_directory_uri(); ?>/images/school.svg" alt="実証研究アイコン">
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">実証研究</h3>
-          <p class="theme-card__description">学校や教育現場と連携し、実際の授業でツールを活用・検証。</p>
+          <p class="theme-card__description">学校や教育現場と連携し、<br />実際の授業でツールを活用・検証。</p>
         </div>
         <div class="theme-card__expand">
           <span class="accordion-icon">＋</span>

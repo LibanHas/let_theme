@@ -2252,7 +2252,7 @@ padding-top: 7rem; ;
 
 
 .research-accordion {
-  .theme-accordion-header {
+  .accordion-header {
     background-color: #ffffff;
     color: $color-heading;
     font-weight: 600;
@@ -2264,7 +2264,7 @@ padding-top: 7rem; ;
     width: 100%;
     text-align: left;
     display: flex;
-    justify-content: space-between;
+    //justify-content: space-between;
     align-items: center;
     cursor: pointer;
   }
@@ -2465,7 +2465,7 @@ padding-top: 7rem; ;
 .theme-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  //justify-content: space-between;
   background: #fff;
   border-radius: 2rem;
   padding: 1.5rem 2rem;
@@ -2498,9 +2498,7 @@ padding-top: 7rem; ;
     }
 
     .theme-card__description {
-      margin: 0;
-      font-size: 1rem;
-      color: $color-text-body;
+     
     }
   }
 
@@ -2602,51 +2600,59 @@ padding-top: 7rem; ;
   }
 
   .theme-card {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items: center; // Center the contents inside the card
     padding: 1.25rem;
     gap: 1rem;
     border-radius: 1.25rem;
     width: 100%;
+    max-width: 360px;
+    margin: 0 auto 1.5rem;
     box-sizing: border-box;
     background: #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-    margin-bottom: 1.5rem;
   }
 
   .theme-card__main {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    width: 100%;
+    padding: 0 0.5rem;
+    gap: 1rem;
   }
 
   .theme-card__icon {
     flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     img {
-      width: 36px;
-      height: 36px;
-      margin-right: 15px;
-      object-fit: contain;
+      width: 100%;
+      height: auto;
+      display: block;
     }
   }
 
   .theme-card__text {
     flex-grow: 1;
-    min-width: 0;
-    font-size: 0.6rem;
 
     .theme-card__title {
-      font-size: 0.8rem;
+      font-size: 1rem;
       font-weight: bold;
-      margin: 0 0 0.25rem;
-      line-height: 1c.4;
+      margin: 0;
+      line-height: 1.4;
     }
 
     .theme-card__description {
-      margin: 0;
-      font-size: 0.6rem;
-      min-height: 2.5em;
+      margin: 0.25rem 0 0;
+      font-size: 0.65rem;
       line-height: 1.5;
       color: #4a2f1b;
       word-break: keep-all;
@@ -2654,7 +2660,7 @@ padding-top: 7rem; ;
   }
 
   .theme-card__expand {
-    display: none; // Hide the plus sign on mobile
+    display: none;
   }
 
   .theme-card__bottom {
@@ -2666,10 +2672,11 @@ padding-top: 7rem; ;
   }
 
   .theme-card__line {
-    width: 40%;
+    width: 144px;
     height: 1px;
     background-color: #4a2f1b;
     margin-bottom: 0.5rem;
+    opacity: 0.5;
   }
 
   .theme-card__triangle {
@@ -2680,6 +2687,9 @@ padding-top: 7rem; ;
     border-top: 10px solid #4a2f1b;
   }
 }
+
+
+
 
 
 
@@ -4073,7 +4083,7 @@ padding-top: 7rem; ;
       }
       
       
-      .accordion-header {
+      .pub-accordion-header {
         background-color: #F8DA9E;
         color: #4A2F1B;
         font-weight: 300;
