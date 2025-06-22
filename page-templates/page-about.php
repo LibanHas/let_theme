@@ -87,15 +87,10 @@ get_header();
         従来、学習者の理解度やつまずきは教師の勘に委ねられてきました。
         しかし私たちは、テクノロジーとラーニングアナリティクスを活用することで、学習の過程そのものを記録・分析し、目に見える形で捉え直すことを可能にしています。
       </p>
-      <p class="section-intro">
-        このようなアプローチは、次の4つのステップからなる開発サイクルで支えられています。
-        まず、教育現場の課題に応じた設計・開発を行い、それを授業に導入。
-        そこで得られる学習ログや行動データを収集・分析し、見えてきた課題や成果をもとに振り返りと改善を重ねていきます。
+      <p class="section-intro"> そこで得られる学習ログや行動データを収集・分析し、見えてきた課題や成果をもとに振り返りと改善を重ねていきます。
         この循環を繰り返すことで、教育の質を継続的に高め、学習者一人ひとりに最適な学びの支援を届けることが可能になります。
       </p>
-    </section>
-
-    <section class="founder-quote-section container content-block">
+        <section class="founder-quote-section container content-block">
       <div class="row align-items-center">
         <!-- Left: Image -->
         <div class="col-md-6 text-center mb-4 mb-md-0">
@@ -117,12 +112,15 @@ get_header();
         </div>
       </div>
     </section>
+    <p class="section-intro">
+        このようなアプローチは、次の4つのステップからなる開発サイクルで支えられています。
+        まず、教育現場の課題に応じた設計・開発を行い、それを授業に導入。</p>
+       
+    </section>
 
-    <section class="research-cycle container section-spacing">
-  <p class="section-intro">
-    この理念を実現するために、私たちは現場と連携しながら研究を進め、技術を開発・実装し、得られたフィードバックを次の研究へとつなげています。<br>
-    以下の図は、そのサイクル全体を表しています。
-  </p>
+    
+
+    <section class="research-cycle container">
 
   <div class="research-cycle-layout">
     

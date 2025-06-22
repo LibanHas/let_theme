@@ -428,3 +428,23 @@ function manually_assign_event_tags() {
     });
 }
 add_action('admin_init', 'manually_assign_event_tags');
+
+add_action( 'after_setup_theme', function() {
+	if ( function_exists( 'bogo_get_languages' ) ) {
+		error_log('✅ Bogo function is available');
+	} else {
+		error_log('❌ Bogo function is NOT available');
+	}
+});
+
+add_action('init', function () {
+  add_filter('bogo_get_translatable_post_types', function ($types) {
+    if (!in_array('news', $types, true)) {
+      $types[] = 'news';
+    }
+    return $types;
+  }, 20); // priority 20 = ensure it runs after CPTs are registered
+});
+
+
+

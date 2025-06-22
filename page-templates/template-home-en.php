@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Template-Home
+ * Template Name: Template-Home-EN
  */
 defined( 'ABSPATH' ) || exit;
 get_header();
@@ -59,19 +59,19 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
     <!-- Right: Tagline and Intro Text -->
     <div class="hero-content">
-     <h1 class="hero-title">
-  エビデンスに基づく<br>確かな教育を求めて
-    </h1>
+      <h1 class="hero-title">
+        Committed to evidence-based, <br />learner-centered education
+      </h1>
       <p class="hero-description">
-        <strong>LET（Learning and Educational Technologies Research Unit／緒方研究室）</strong>では、デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。<br>
+        At <strong>LET (Learning and Educational Technologies Research Unit / Ogata Lab)</strong>, we design and develop digital tools—such as interactive reading systems, learning dashboards, and school platforms—to support evidence-based, learner-centered education. Our mission is to make learning more visible, personalized, and effective through data and technology.
       </p>
 
       <div class="hero-buttons">
   <a data-anim-trigger-self data-anim="fade-in" href="/about" class="btn btn--cta">
-    <span>LETについてもっと知る</span>
+    <span>Learn more about LET</span>
   </a>
   <a data-anim-trigger-self data-anim="fade-in" href="/research" class="btn btn--cta">
-    <span>研究を見る</span>
+    <span>Explore our research</span>
   </a>
 </div>
 
@@ -172,7 +172,6 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 <section  id="tools" class="our-tools-section section-spacing">
   <div class="container">
   <h2 class="section-title">Our Tools</h2>
-  <h3 class="section-title section-title--sub">ツール</h3>
 
 
     <div class="tool-item">
@@ -181,13 +180,12 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
       </div>
       <div class="tool-description">
         <p>
-          BookRollは、双方向型の教材を配信・記録できるデジタルプラットフォームで、
-          個別最適化されたデータ駆動型の学びを実現します。
+          BookRoll is a digital platform for delivering and recording interactive learning materials, enabling data-driven, personalized learning.
         </p>
       </div>
       <div class="tool-button">
         <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--cta">
-          <span>Bookrollの詳細へ</span>
+          <span>Learn more about BookRoll</span>
         </a>
       </div>
     </div>
@@ -200,13 +198,12 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
       </div>
       <div class="tool-description">
         <p>
-          LogPaletteは、学習者の教材とのやり取りを可視化するラーニングアナリティクスツールで、
-          学習者と教育者の双方に気づきを提供します。
+          LogPalette is a learning analytics tool that visualizes how learners interact with educational materials, providing insights for both learners and educators.
         </p>
       </div>
       <div class="tool-button">
       <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--cta">
-    <span>LogPaletteの詳細へ</span>
+    <span>Learn more about LogPalette</span>
     </a>
       </div>
     </div>
@@ -219,12 +216,11 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
   <div class="container">
     <div class="news-header">
       <h2 class="section-title">News</h2>
-      <h3 class="section-title section-title--sub">ニュース</h3>
     </div>
 
     <div class="news-button-top">
       <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
-        <span>ニュース一覧</span>
+        <span>Browse News</span>
       </a>
     </div>
 
@@ -294,13 +290,13 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
       wp_reset_postdata();
     else :
     ?>
-      <p>まだニュースがありません。</p>
+      <p>No news available yet.</p>
     <?php endif; ?>
   </div>
 
   <div class="news-button-bottom">
     <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
-      <span>ニュース一覧</span>
+      <span>Browse News</span>
     </a>
   </div>
 </section>
@@ -314,15 +310,13 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
       <!-- Left: Text + Desktop Button -->
       <div class="col-md-5">
         <h2 class="section-title">Research</h2>
-        <h3 class="section-title section-title--sub">研究</h3>
         <p class="research-description">
-          LET研究室では、学習ログの可視化やAIを活用した学習支援などを通じて、
-          一人ひとりに最適化された学びの実現に取り組んでいます。<br>
-          現場との連携を通して開発したツールや実践事例の一部をご紹介します。
+          At the LET Lab, we work to realize personalized learning tailored to each individual by visualizing learning logs and leveraging AI-based learning support.<br />
+Here, we introduce some of the tools and practical use cases we’ve developed in collaboration with schools and educators.
         </p>
         <div class="research-button-top mt-4">
           <a href="research/" class="btn btn--cta">
-            <span>研究ページを見る</span>
+            <span>Explore our research</span>
           </a>
         </div>
       </div>
@@ -349,7 +343,7 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
     <!-- Mobile-only Button -->
     <div class="research-button-bottom mt-4">
       <a href="research/" class="btn btn--cta">
-        <span>研究ページを見る</span>
+        <span>Explore our research</span>
       </a>
     </div>
   </div>
@@ -365,14 +359,13 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
   <div class="container members-wrapper">
     <div class="members-content">
       <h2 class="section-title">Members</h2>
-      <h3 class="section-title section-title--sub">メンバー</h3>
       <p class="members-description">
-        私たちのメンバーは、世界中から集まった多様でフレンドリーな研究者・教育者・イノベーターの集まりです。
-        教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
+        Our members are a diverse and friendly group of researchers, educators, and innovators from around the world.
+We work together to expand the possibilities of educational technology and create meaningful learning experiences.
       </p>
       <div class="members-button-top mt-4">
         <a href="members/" class="btn btn--cta">
-          <span>メンバー紹介を見る</span>
+          <span>See Member Profiles</span>
         </a>
       </div>
     </div>
@@ -386,7 +379,7 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
     <!-- Mobile-only Button -->
     <div class="members-button-bottom">
       <a href="members/" class="btn btn--cta">
-        <span>メンバー紹介を見る</span>
+        <span>See Member Profiles</span>
       </a>
     </div>
   </div>
@@ -401,19 +394,18 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
     </div>
 
     <div class="cta-content">
-      <h2 class="cta-title">メンバー募集に興味がありますか？</h2>
+      <h2 class="cta-title">Join us in transforming learning.</h2>
       <p class="cta-text">
-        私たちは、教育技術の発展に情熱を注ぐ研究者や学生の参加をいつでも歓迎しています。<br><br>
-        私たちのミッションに共感してくださる方はもちろん、「ちょっと見てみたい」という方も大歓迎です。<br>
-        ぜひお気軽にご連絡ください！
+        The Ogata Lab is looking for new members to explore the future of education together.
+If you're interested in pursuing graduate studies or would like to visit the lab, feel free to get in touch with us.
       </p>
 
       <div class="cta-buttons">
-      <a href="join-us/" class="btn btn--cta">
-        <span>訪問予約をする</span>
+      <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--cta">
+        <span>Send us an email</span>
       </a>
       <a href="join-us/" class="btn btn--cta">
-        <span>申請する</span>
+        <span>Learn more</span>
       </a>
 
       </div>

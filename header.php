@@ -74,8 +74,21 @@ $navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
 
   <!-- 🔽 Language switcher -->
   <div class="language-switcher">
-  <a href="/en" class="lang-link active">EN</a>
-  </div>
+  <?php
+  $locale = get_locale(); // e.g., 'en_US' or 'ja'
+  if ( $locale === 'ja' ) {
+    echo '<a href="/en" class="lang-link">EN</a>';
+  } else {
+    echo '<a href="/" class="lang-link">日本語</a>';
+  }
+  ?>
+</div>
+
+
+
+
+
+
 
 
   <div class="hamburger-menu">
