@@ -19,68 +19,60 @@ $container = get_theme_mod('understrap_container_type');
       <div class="col-md-12 content-area" id="primary">
         <main class="site-main" id="main" role="main">
 
-          <?php
-          $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
-          $news_query = new WP_Query([
-                'post_type' => 'news',
-                'posts_per_page' => 10,
-                'paged' => $paged,
-                'meta_key' => 'news_date',
-                'orderby' => 'meta_value',
-                'order' => 'DESC',
-                'meta_query' => [
-                    [
-                    'key'     => 'news_language',
-                    'value'   => 'en',
-                    'compare' => '='
-                    ]
-                ]
-                ]);
-
-  
-
-
-          $category_classes = [
-            'symposiums'   => 'tag-symposium',
-            'workshops'    => 'tag-workshop',
-            'lectures'     => 'tag-lecture',
-            'conferences'  => 'tag-conference',
-            'publications' => 'tag-publication',
-            'media'        => 'tag-media',
-            'awards'       => 'tag-award',
-            'projects'     => 'tag-project',
-            'contests'     => 'tag-contest',
-            'news'         => 'tag-news'
-          ];
-
-          $category_labels = [
-            'symposiums'   => 'Symposium',
-            'workshops'    => 'Workshop',
-            'lectures'     => 'Lecture',
-            'conferences'  => 'Conference',
-            'publications' => 'Publication',
-            'media'        => 'Media',
-            'awards'       => 'Award',
-            'projects'     => 'Project',
-            'contests'     => 'Contest',
-            'news'         => 'News'
-          ];
-          ?>
-
           <section class="section-spacing news-section">
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title">News</h1>
                 <h2 class="page-subtitle">Latest announcements and updates</h2>
               </div>
-            <?php
-  echo '<p style="font-size:14px; color: gray;">Current language: ' . esc_html(bogo_get_current_language()) . '</p>';
-  if ($news_query->have_posts()) :
-            ?>
-                <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 
-                  <?php
+              <?php
+
+              $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+              
+
+              $news_query = new WP_Query([
+                'post_type' => 'news',
+                'posts_per_page' => 10,
+                'paged' => $paged,
+                'suppress_filters' => true,
+                'lang' => pll_current_language()
+              ]);
+
+              
+
+              $category_classes = [
+                'symposiums'   => 'tag-symposium',
+                'workshops'    => 'tag-workshop',
+                'lectures'     => 'tag-lecture',
+                'conferences'  => 'tag-conference',
+                'publications' => 'tag-publication',
+                'media'        => 'tag-media',
+                'awards'       => 'tag-award',
+                'projects'     => 'tag-project',
+                'contests'     => 'tag-contest',
+                'news'         => 'tag-news'
+              ];
+
+              $category_labels = [
+                'symposiums'   => 'Symposium',
+                'workshops'    => 'Workshop',
+                'lectures'     => 'Lecture',
+                'conferences'  => 'Conference',
+                'publications' => 'Publication',
+                'media'        => 'Media',
+                'awards'       => 'Award',
+                'projects'     => 'Project',
+                'contests'     => 'Contest',
+                'news'         => 'News'
+              ];
+
+              if ($news_query->have_posts()) :
+                while ($news_query->have_posts()) : $news_query->the_post();
+
+                  // Display post debug info
+
                   $date_raw = get_field('news_date');
                   $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
                   $description = get_field('news_description');
@@ -133,9 +125,9 @@ $container = get_theme_mod('understrap_container_type');
                 </div>
 
               <?php else : ?>
-                <p>There are no news articles yet.</p>
-              <?php endif; ?>
-
+                <p style="color:red;">❌ No English news posts found.</p>
+              <?php endif;
+              wp_reset_postdata(); ?>
             </div>
           </section>
 
