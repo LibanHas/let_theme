@@ -3160,6 +3160,23 @@ padding-top: 7rem; ;
   margin-top: 2px;
 }
 
+ .accordion-header {
+        background-color: #F8DA9E;
+        color: #4A2F1B;
+        font-weight: 300;
+        font-family: 'Ubuntu Sans', sans-serif;
+        padding: 1rem 1.5rem;
+        font-size: 1.5rem;
+        border: 2px;
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+      }
+
 @media (max-width: 768px) {
   .members-list {
     display: grid;

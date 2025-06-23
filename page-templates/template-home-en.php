@@ -20,17 +20,18 @@ $category_classes = [
 ];
 
 $category_labels = [
-  'symposiums'   => 'シンポジウム',
-  'workshops'    => 'ワークショップ',
-  'lectures'     => '講演',
-  'conferences'  => 'カンファレンス',
-  'publications' => '出版物',
-  'media'        => 'メディア掲載',
-  'awards'       => '受賞',
-  'projects'     => 'プロジェクト',
-  'contests'     => 'コンテスト',
-  'news'         => 'ニュース'
-];
+            'symposiums'   => 'Symposium',
+            'workshops'    => 'Workshop',
+            'lectures'     => 'Lecture',
+            'conferences'  => 'Conference',
+            'publications' => 'Publication',
+            'media'        => 'Media',
+            'awards'       => 'Award',
+            'projects'     => 'Project',
+            'contests'     => 'Contest',
+            'news'         => 'News'
+          ];
+          
 
 // ✅ SAFELY ASSIGN THIS BEFORE ANY JS
 $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters.png' );
@@ -250,17 +251,18 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     ];
 
     $category_labels = [
-      'symposiums'   => 'シンポジウム',
-      'workshops'    => 'ワークショップ',
-      'lectures'     => '講演',
-      'conferences'  => 'カンファレンス',
-      'publications' => '出版物',
-      'media'        => 'メディア掲載',
-      'awards'       => '受賞',
-      'projects'     => 'プロジェクト',
-      'contests'     => 'コンテスト',
-      'news'         => 'ニュース'
-    ];
+            'symposiums'   => 'Symposium',
+            'workshops'    => 'Workshop',
+            'lectures'     => 'Lecture',
+            'conferences'  => 'Conference',
+            'publications' => 'Publication',
+            'media'        => 'Media',
+            'awards'       => 'Award',
+            'projects'     => 'Project',
+            'contests'     => 'Contest',
+            'news'         => 'News'
+          ];
+          
 
     if ($news_query->have_posts()) :
       while ($news_query->have_posts()) : $news_query->the_post();

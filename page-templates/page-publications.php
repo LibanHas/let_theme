@@ -34,7 +34,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Journal Papers -->
             <div class="accordion-item">
-              <button class="pub-pub-accordion-header active" data-target="panel1">
+              <button class="accordion-header active" data-target="panel1">
                 <span>Journal papers</span>
                 <span class="accordion-icon">×</span>
               </button>
@@ -45,7 +45,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- International Conferences -->
             <div class="accordion-item">
-              <button class="pub-pub-accordion-header" data-target="panel2">
+              <button class="accordion-header" data-target="panel2">
                 <span>International Conferences</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -56,7 +56,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Book Editor -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel3">
+              <button class="accordion-header" data-target="panel3">
                 <span>Book editor</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -67,7 +67,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Book Chapter -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel4">
+              <button class="accordion-header" data-target="panel4">
                 <span>Book chapter</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -78,7 +78,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Keynote -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel5">
+              <button class="accordion-header" data-target="panel5">
                 <span>Keynote</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -89,7 +89,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Survey Paper -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel6">
+              <button class="accordion-header" data-target="panel6">
                 <span>Survey paper</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -100,7 +100,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Domestic Conferences -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel7">
+              <button class="accordion-header" data-target="panel7">
                 <span>Domestic Conferences</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -111,7 +111,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Press -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel8">
+              <button class="accordion-header" data-target="panel8">
                 <span>Press Releases & Newspapers</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -122,7 +122,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Awards -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel9">
+              <button class="accordion-header" data-target="panel9">
                 <span>Awards</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -133,7 +133,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Patents -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel10">
+              <button class="accordion-header" data-target="panel10">
                 <span>Patents</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -144,7 +144,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Symposiums -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel11">
+              <button class="accordion-header" data-target="panel11">
                 <span>Symposiums</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -155,7 +155,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Doctoral & Master's Thesis -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel12">
+              <button class="accordion-header" data-target="panel12">
                 <span>Doctoral & Master’s Thesis</span>
                 <span class="accordion-icon">+</span>
               </button>
@@ -166,7 +166,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <!-- Others -->
             <div class="accordion-item">
-              <button class="pub-accordion-header" data-target="panel13">
+              <button class="accordion-header" data-target="panel13">
                 <span>Others</span>
                 <span class="accordion-icon">+</span>
               </button>
