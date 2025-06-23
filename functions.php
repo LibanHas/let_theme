@@ -166,7 +166,7 @@ function register_news_post_type() {
         'rewrite' => array('slug' => 'news'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-megaphone',
-        'supports' => array('title', 'excerpt', 'custom-fields'), // 🟢 Now supports excerpt & ACF
+        'supports' => array('title', 'editor', 'excerpt', 'custom-fields'), // 🟢 Now supports excerpt & ACF
         'show_in_rest' => true, // 🟢 Enables Gutenberg & REST support
     ));
 }
@@ -429,22 +429,21 @@ function manually_assign_event_tags() {
 }
 add_action('admin_init', 'manually_assign_event_tags');
 
-add_action( 'after_setup_theme', function() {
-	if ( function_exists( 'bogo_get_languages' ) ) {
-		error_log('✅ Bogo function is available');
-	} else {
-		error_log('❌ Bogo function is NOT available');
-	}
-});
 
-add_action('init', function () {
-  add_filter('bogo_get_translatable_post_types', function ($types) {
-    if (!in_array('news', $types, true)) {
-      $types[] = 'news';
-    }
-    return $types;
-  }, 20); // priority 20 = ensure it runs after CPTs are registered
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
