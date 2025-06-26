@@ -204,7 +204,7 @@ get_header();
   <div class="our-tools-section">
     <div class="tool-item">
       <div class="tool-logo">
-        <img src="<?php echo get_template_directory_uri(); ?>/images/bookroll-icon.png" alt="BookRoll Logo">
+        <img src="<?php echo get_template_directory_uri(); ?>/images/bookroll-icon.svg" alt="BookRoll Logo">
       </div>
       <div class="tool-description">
         <p>

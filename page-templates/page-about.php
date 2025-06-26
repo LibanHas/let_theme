@@ -51,7 +51,7 @@ get_header();
           <?php
           $milestones = [
             ["2017年4月", "京都大学にて緒方研究室を設立", "uni_building.png", "LET Lab team"],
-            ["2018年頃", "BookRoll正式運用開始", "bookroll-icon.png", "BookRoll Logo"],
+            ["2018年頃", "BookRoll正式運用開始", "bookroll-icon.svg", "BookRoll Logo"],
             ["2018年〜", "LEAFシステム開発・導入開始", "brain.svg", "brain"],
             ["2021年頃", "京都市立西京高校などでBookRoll活用", "school.svg", "school"],
             ["2021年〜", "京都大学FD活動にて教員研修での活用開始", "graduation-cap.svg", "cap"],

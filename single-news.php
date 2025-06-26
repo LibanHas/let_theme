@@ -10,8 +10,10 @@ $container = get_theme_mod('understrap_container_type');
 while ( have_posts() ) : the_post();
 
   // Detect post language via ACF
-  $lang_raw = get_field('news_language') ?? 'ja';
-  $lang = ($lang_raw === 'en-US') ? 'en' : 'ja';
+  $lang_raw = get_field('news_language') ?? pll_current_language();
+  $lang = ($lang_raw === 'en' || $lang_raw === 'en-US') ? 'en' : 'ja';
+  echo '<pre>Language Raw: ' . esc_html($lang_raw) . '</pre>';
+
 
   
 
@@ -62,8 +64,10 @@ while ( have_posts() ) : the_post();
           <section class="section-spacing">
             <div class="container">
               <div class="news-header">
-                <h1 class="page-title"><?php echo ($lang === 'en') ? 'News' : 'ニュース'; ?></h1>
-                <h2 class="page-subtitle"><?php echo ($lang === 'en') ? 'Latest updates' : 'News'; ?></h2>
+                <h1 class="page-title">News</h1>
+<h2 class="page-subtitle">
+  <?php echo (get_locale() === 'ja') ? 'ニュース' : 'Latest updates'; ?>
+</h2>
               </div>
 
               <div class="news-inner">

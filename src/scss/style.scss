@@ -90,45 +90,69 @@ $color-tag-purple:  #9B5DE5;
   
   
 
-        .tag-symposium {
-        background-color: #f4a261; // soft orange (was tag-event)
-      }
-
-      .tag-workshop {
-        background-color: #f4a261; // same as symposium for now, or choose a variation if needed
-      }
-
-      .tag-lecture {
-        background-color: #e76f51; // red-orange (moved from media)
-      }
-
-      .tag-conference {
-        background-color: #2a9d8f; // blue-green (was project)
-      }
-
-      .tag-publication {
-        background-color: #264653; // deep teal
-      }
-
-      .tag-media {
-        background-color: #457b9d; // muted blue (was news)
-      }
-
-      .tag-award {
-        background-color: #e9c46a; // golden yellow
-      }
-
-      .tag-project {
-        background-color: #90be6d; // soft green (new for projects)
-      }
-
-      .tag-contest {
-        background-color: #9b5de5; // violet
-      }
-
-      .tag-news {
-        background-color: #adb5bd; // soft gray for internal updates
-      }
+  .tag-symposium {
+    background-color: #e07a5f; // warm coral
+  }
+  
+  .tag-workshop {
+    background-color: #f2cc8f; // soft apricot
+  }
+  
+  .tag-lecture {
+    background-color: #3d405b; // dark desaturated blue
+  }
+  
+  .tag-conference {
+    background-color: #81b29a; // muted teal
+  }
+  
+  .tag-publication {
+    background-color: #1d3557; // deep navy
+  }
+  
+  .tag-media {
+    background-color: #a8dadc; // light turquoise
+  }
+  
+  .tag-award {
+    background-color: #ffbe0b; // sunflower yellow
+  }
+  
+  .tag-project {
+    background-color: #06d6a0; // vivid mint green
+  }
+  
+  .tag-contest {
+    background-color: #8338ec; // bold violet
+  }
+  
+  .tag-news {
+    background-color: #8d99ae; // slate gray
+  }
+  
+  
+  // Newly added ones
+  
+  .tag-expo {
+    background-color: #f94144; // vivid red (new)
+  }
+  
+  .tag-camp {
+    background-color: #43aa8b; // forest green (new)
+  }
+  
+  .tag-visit {
+    background-color: #577590; // steel blue (new)
+  }
+  
+  .tag-social {
+    background-color: #f9c74f; // warm yellow (new)
+  }
+  
+  .tag-default {
+    background-color: #ced4da; // fallback gray
+  }
+  
 
 
 
@@ -341,8 +365,13 @@ $bp-mobile: 480px;
   /* Language switcher */
   .language-switcher {
     font-size: 0.9rem;
-    a { &.active { color: $brand-brown; } }
+    .lang-link {
+      
+        color: $brand-brown;
+      }
+    
   }
+  
 
   /* Hamburger */
   .hamburger-icon {
@@ -1472,6 +1501,20 @@ padding-top: 7rem; ;
   will-change: transform, opacity;
 }
 
+.split-char::after {
+  content: attr(data-char);
+}
+
+.split-char[data-char="_"] {
+  color: transparent;
+  width: 0.6em;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+
+
 
 .approach-section {
   padding: 4rem 0;
@@ -2121,7 +2164,16 @@ padding-top: 7rem; ;
     background-color: #fdf8ed;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
-  
+    .event-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
     .section-title--sub {
       font-size: 1.1rem;
       color: #9b8d7a;

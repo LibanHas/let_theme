@@ -115,40 +115,44 @@ document.addEventListener('DOMContentLoaded', () => {
   // tagline-split animation logic
   // ==============================
   console.log('split tagline code starting');
-  const splitTargets = document.querySelectorAll('.tagline-split');
-  console.log('Found tagline-split:', splitTargets);
+const splitTargets = document.querySelectorAll('.tagline-split');
+console.log('Found tagline-split:', splitTargets);
 
-  if (splitTargets.length === 0) {
-    console.warn('No elements with class "tagline-split" found.');
-  } else {
-    splitTargets.forEach(target => {
-      const text = target.textContent.trim();
-      target.textContent = '';
+if (splitTargets.length === 0) {
+  console.warn('No elements with class "tagline-split" found.');
+} else {
+  splitTargets.forEach(target => {
+    const text = target.textContent.trim();
+    target.textContent = '';
 
-      [...text].forEach((char, i) => {
-        const span = document.createElement('span');
-        span.className = 'split-char';
-        span.textContent = char;
-        target.appendChild(span);
-      });
+    [...text].forEach((char, i) => {
+      const span = document.createElement('span');
+      span.className = 'split-char';
+      span.textContent = char;
+      span.setAttribute('data-char', char);
+      target.appendChild(span);
     });
+    
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          console.log('Tagline entered viewport');
-          entry.target.querySelectorAll('.split-char').forEach((char, i) => {
-            char.style.transition = `all 0.6s ease-out ${i * 0.05}s`;
-            char.style.opacity = 1;
-            char.style.transform = 'translateY(0)';
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.2 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        console.log('Tagline entered viewport');
+        entry.target.querySelectorAll('.split-char').forEach((char, i) => {
+          if (char.classList.contains('split-space')) return;
 
-    splitTargets.forEach(el => observer.observe(el));
-  }
+          char.style.transition = `all 0.6s ease-out ${i * 0.05}s`;
+          char.style.opacity = 1;
+          char.style.transform = 'translateY(0)';
+        });
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  splitTargets.forEach(el => observer.observe(el));
+}
+
 
   // ==============================
   // Generic [data-anim] in-view trigger
