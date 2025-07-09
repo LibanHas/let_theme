@@ -42,30 +42,40 @@ $container = get_theme_mod( 'understrap_container_type' );
 
         <section class="join-profile content-block">
             <div class="container">
-                <h2 class="section-heading">求める学生像</h2>
-                <p class="section-intro">
+                <h2 class="join-section-heading">求める学生像</h2>
+                <p class="join-section-intro">
                 LET Labでは、次のような方のご参加を歓迎します：
                 </p>
 
                 <ul class="profile-list">
                 <li>
-                    <div class="icon-wrapper"><i class="fas fa-search"></i></div>
+                    <div class="icon-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/target.svg" alt="" />
+                    </div>
                     <span>人の行動や学習プロセスの観察・分析に興味がある方</span>
                 </li>
                 <li>
-                    <div class="icon-wrapper"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="icon-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/target.svg" alt="" />
+                    </div>
                     <span>モバイル情報機器や無線通信技術を教育に応用したい方</span>
                 </li>
                 <li>
-                    <div class="icon-wrapper"><i class="fas fa-lightbulb"></i></div>
+                    <div class="icon-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/target.svg" alt="" />
+                    </div>
                     <span>自分のアイデアをソフトウェアやアプリケーションとして具体的に実現したい方</span>
                 </li>
                 <li>
-                    <div class="icon-wrapper"><i class="fas fa-chart-bar"></i></div>
+                    <div class="icon-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/target.svg" alt="" />
+                    </div>
                     <span>教育データの分析・可視化に興味を持ち、教育改善に貢献したい方</span>
                 </li>
                 <li>
-                    <div class="icon-wrapper"><i class="fas fa-cogs"></i></div>
+                    <div class="icon-wrapper">
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/target.svg" alt="" />
+                    </div>
                     <span>理論だけでなく、実際の教育現場に適用可能な実践的研究をしたい方</span>
                 </li>
                 </ul>
@@ -77,8 +87,8 @@ $container = get_theme_mod( 'understrap_container_type' );
         </section>
         <section class="skills-section content-block">
         <div class="container">
-            <h2 class="section-heading">緒方研究室で学べること</h2>
-            <p class="section-intro">
+            <h2 class="join-section-heading">緒方研究室で学べること</h2>
+            <p class="join-section-intro">
             緒方研究室の研究活動を通して、次のような実践的スキルが身につきます。
             </p>
 
@@ -207,7 +217,6 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
       <option value="master">修士</option>
       <option value="phd">博士</option>
       <option value="research">研究生</option>
-      <option value="international">留学生</option>
     </select>
 
     <select id="entryTerm">

@@ -145,8 +145,8 @@ get_header();
   </div>
   <div class="research-block">
   <blockquote class="theme-example__quote">
-    <p>「これまで見えなかった“つまずき”が、授業中に可視化されることで、対応が変わった」</p>
-    <cite>— 京都市立高校 英語科 教員</cite>
+    <p>「視覚化された情報を頼りに、授業をしながらでも当初の授業プランを変更できるようになりました。」</p>
+    <cite>— 京都市立西京高等学校 英語科 教員</cite>
   </blockquote>
 </div>
 </div>

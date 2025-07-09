@@ -36,18 +36,26 @@ $container = get_theme_mod('understrap_container_type');
           $student_year = get_field('student_year');
 
           if ($employment_title) {
-            echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
-          } elseif ($student_level && $student_year) {
-            $label = [
-              'doctoral' => '博士',
-              'masters'  => '修士',
-              'postdoc'  => '特定研究員'
-            ][$student_level] ?? '';
-            
-            if ($label) {
-              echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
-            }
+              // Display 職位 if set
+              echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
+          } elseif ($student_level) {
+              // Map student_level values
+              $label = [
+                  'doctoral'         => '博士',
+                  'masters'          => '修士',
+                  'postdoc'          => '特定研究員',
+                  'research_student' => '研究生'
+              ][$student_level] ?? '';
+
+              // Handle 研究生 (may not have a year)
+              if ($label === '研究生') {
+                  echo '<p class="member-position">' . esc_html($label) . '</p>';
+              } elseif ($label && $student_year) {
+                  // Display 課程+学年 if both are set
+                  echo '<p class="member-position">' . esc_html($label . $student_year . '年') . '</p>';
+              }
           }
+          // Optional fallback: display nothing if no info
           ?>
         </div>
     </div>
@@ -61,11 +69,14 @@ $container = get_theme_mod('understrap_container_type');
         <?php
         $fields = [
           'birthplace' => '出身地',
+          'degree' => '学位',
           'university_department' => '出身大学・学部',
           'programming_languages' => '得意なプログラム言語',
+          'research_theme' => '研究テーマ',
           'hobby' => '趣味',
           'recommendation' => '緒方研のおすすめのポイント',
-          'link' => 'リンク'
+          'link' => 'リンク',
+          'profile' => 'プロフィール'
         ];
 
         foreach ($fields as $field => $label) {

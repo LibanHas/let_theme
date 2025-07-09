@@ -179,7 +179,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                   if ($type === 'faculty') {
                       $faculty_alumni[] = $post;
-                  } elseif ($level === 'doctoral' || $level === 'masters') {
+                  } elseif ($level === 'doctoral' || $level === 'masters' || $level === 'research_student') {
                       $student_alumni[] = $post;
                   } else {
                       $staff_alumni[] = $post;
@@ -231,9 +231,15 @@ $container = get_theme_mod( 'understrap_container_type' );
                         <?php
                         $level = get_field('student_level');
                         $year = get_field('student_year');
-                        if ($level && $year && $level !== 'na') {
-                            $label = $level === 'doctoral' ? '博士' : '修士';
-                            echo '（' . esc_html($label . $year . '年') . '）';
+                        if ($level && $level !== 'na') {
+                            if ($level === 'doctoral' || $level === 'masters') {
+                                if ($year) {
+                                    $label = $level === 'doctoral' ? '博士' : '修士';
+                                    echo '（' . esc_html($label . $year . '年') . '）';
+                                }
+                            } elseif ($level === 'research_student') {
+                                echo '（研究生）'; // ✅ Show without year
+                            }
                         }
                         ?>
                       </li>

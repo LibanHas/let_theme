@@ -92,7 +92,8 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
   $args = [
     'post_type' => ['news', 'event'],
     'posts_per_page' => 10,
-    'orderby' => 'date',
+    'meta_key' => 'update_date',
+    'orderby' => 'meta_value',
     'order' => 'DESC',
   ];
 

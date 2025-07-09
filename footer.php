@@ -55,52 +55,47 @@ $footer_text = [
 
 <div class="wrapper" id="wrapper-footer">
 
-  <footer class="custom-footer">
-    <div class="container">
-      <div class="custom-footer__top">
+<footer class="custom-footer">
+  <div class="container">
+    <!-- Top section: logo, heading, address -->
+    <div class="custom-footer__top">
+      <div class="custom-footer__logo-address">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/let_logo.png" alt="LET Lab Logo" class="footer-logo">
+        <address class="footer-address">
+          京都大学 学術情報メディアセンター南館 4階 412号室<br>
+          〒606-8501 京都市左京区吉田二本松町<br>
+          <a href="mailto:info@let.media.kyoto-u.ac.jp">info@let.media.kyoto-u.ac.jp</a>
+        </address>
+      </div>
+      <div class="custom-footer__message">
         <h2 class="custom-footer__heading">
           <?php echo $footer_text['heading'][$lang]; ?>
         </h2>
-        <div class="custom-footer__contact">
-          <p class="lead"><?php echo $footer_text['contact_lead'][$lang]; ?></p>
-          <p><?php echo $footer_text['contact_body'][$lang]; ?></p>
-          <a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>contact" class="btn btn--secondary-outline btn--secondary-outline-dark">
-            <span><?php echo $footer_text['contact_button'][$lang]; ?></span>
-          </a>
-        </div>
-      </div>
-
-      <hr class="custom-footer__divider">
-
-      <div class="custom-footer__bottom">
-        <div class="footer-column">
-          <h4><?php echo $footer_text['about'][$lang]; ?></h4>
-          <ul>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>about"><?php echo $footer_text['about'][$lang]; ?></a></li>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>members"><?php echo $footer_text['members'][$lang]; ?></a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4><?php echo $footer_text['projects'][$lang]; ?></h4>
-          <ul>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>bookroll">BookRoll</a></li>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>logpalette">LogPalette</a></li>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>leaf">LEAF</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-column">
-          <h4>Links</h4>
-          <ul>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>publications"><?php echo $footer_text['publications'][$lang]; ?></a></li>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>join"><?php echo $footer_text['join'][$lang]; ?></a></li>
-            <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>contact"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
-          </ul>
-        </div>
+        <p><?php echo $footer_text['contact_body'][$lang]; ?></p>
+        <a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>contact" class="btn btn--secondary-outline btn--secondary-outline-dark">
+          <span><?php echo $footer_text['contact_button'][$lang]; ?></span>
+        </a>
       </div>
     </div>
-  </footer>
+
+    <hr class="custom-footer__divider">
+
+    <!-- Bottom section: links only, no headings -->
+    <div class="custom-footer__links">
+      <ul class="footer-links">
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>about"><?php echo $footer_text['about'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>members"><?php echo $footer_text['members'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>bookroll">BookRoll</a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>logpalette">LogPalette</a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>leaf">LEAF</a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>publications"><?php echo $footer_text['publications'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>join"><?php echo $footer_text['join'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>contact"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
 
 </div><!-- #wrapper-footer -->
 

@@ -24,10 +24,29 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title"><?php the_title(); ?></h1>
-                <h2 class="page-subtitle">発表</h2>
+                <h2 class="page-subtitle">リーフ</h2>
               </div>
             </div>
           </section>
+
+          
+
+<!-- LEAF INTRO BLOCK -->
+<section class="leaf-intro section-spacing">
+  <div class="container leaf-intro__container">
+    <div class="leaf-intro__content">
+      <h2 class="leaf-intro__title">LEAF</h2>
+      <p class="leaf-intro__description">
+        LEAF（Learning and Evidence Analytics Framework）は、BookRollやLogPaletteなどのツールを通じて、教育データを活用した授業支援を行う統合システムです。
+      </p>
+      <div class="leaf-intro__links">
+        <a href="https://leaf.let.media.kyoto-u.ac.jp/" target="_blank" class="btn btn-primary">LEAF公式サイトを見る</a>
+        <a href="https://leaf.let.media.kyoto-u.ac.jp/evidence" target="_blank" class="btn btn-secondary">エビデンスポータルを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 
           <!-- VIDEO SECTION -->
           <section class="presentation-video">

@@ -222,7 +222,7 @@ get_header();
           <img src="<?php echo get_template_directory_uri(); ?>/images/steve-portrait.jpg" alt="Steve Worrallston" class="founder-photo img-fluid rounded-3">
         </div>
         <div class="student-title">
-          <h3 class="student-name">Steve Worrallston</h3>
+          <h3 class="student-name">Steve Woollaston</h3>
           <p class="student-role">2nd-year Doctoral Student</p>
         </div>
       </div>
@@ -240,8 +240,9 @@ get_header();
     <div class="row justify-content-center">
       <div class="col-md-10 text-left qa-block">
         <div class="qa-item">
-          <p class="question">What inspired you to join the Ogata Lab?</p>
-          <p>While studying educational technology in New Zealand, I became interested in research using learning logs. I learned about the Ogata Lab's work with tools like BookRoll and LogPalette in real classrooms and felt it was the perfect place to deepen my research.</p>
+          <p class="question">What made you decide to join the Ogata Lab?</p>
+          <p>The support here has been incredible! I’ve had the chance to collaborate with amazing researchers like Professor Ogata, Associate Professor Flanagan, and other colleagues, who’ve been generous with their time and insights. Their guidance has been invaluable, whether it’s refining my ideas, co-authoring papers, or preparing for conferences. The lab also provides a fantastic space to share ideas—whether in formal meetings or casual chats over coffee / matcha. Thanks to this collaborative environment, we’ve been able to explore how well-designed chatbots can make language learning more engaging and effective, and I’ve grown so much as a researcher along the way.
+          </p>
         </div>
 
         <div class="qa-item">
@@ -251,7 +252,8 @@ get_header();
 
         <div class="qa-item">
           <p class="question">What message would you give to prospective students?</p>
-          <p>If you’re looking for an international research environment where you can proceed at your own pace, this is the place for you. If you want to connect theory with real educational practice, you’ll especially enjoy it here. You don’t need perfect Japanese—there’s a welcoming atmosphere that makes it easy to join.</p>
+          <p>If you’re thinking about joining the Ogata Lab, go for it! It’s a warm, supportive community where you can dive into cutting-edge research while learning from brilliant peers. Whether you’re interested in AI, education, or both, there are endless opportunities to explore, share, and grow. You’ll also get plenty of Japanese practice (don’t worry—everyone is patient and encouraging!). For me, it’s been a place to contribute meaningfully to the field, develop practical skills, and work toward making language learning more accessible. Come join the whānau! 
+          </p>
         </div>
       </div>
     </div>

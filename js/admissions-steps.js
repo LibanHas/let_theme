@@ -164,7 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
       const applicantType = document.getElementById('applicantType');
       const entryTerm = document.getElementById('entryTerm');
       const stepsContainer = document.getElementById('stepsContainer');
-      
+      const themeBaseUrl = themeData.baseUrl;
+
       function renderSteps() {
         const type = applicantType.value;
         const term = entryTerm.value;

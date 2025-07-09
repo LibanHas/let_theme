@@ -431,6 +431,20 @@ add_action('admin_init', 'manually_assign_event_tags');
 
 
 
+function enqueue_join_us_script() {
+    wp_enqueue_script(
+        'join-us-js',
+        get_template_directory_uri() . '/js/join-us.js',
+        array(), // dependencies if any (e.g., array('jquery'))
+        false,   // version
+        true     // load in footer
+    );
+
+    wp_localize_script('join-us-js', 'themeData', array(
+        'baseUrl' => get_template_directory_uri()
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_join_us_script');
 
 
 
