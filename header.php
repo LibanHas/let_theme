@@ -34,6 +34,10 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
 </head>
 
 <body <?php body_class(); ?> <?php understrap_body_attributes(); ?>>
+<?php
+// Detect current language
+$lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
+?>
 <?php do_action( 'wp_body_open' ); ?>
 <div class="site" id="page">
 
@@ -59,17 +63,16 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
 				<nav class="navbar-center">
 					<?php
 					// Dynamically load top menu for current language
-					$top_menu_location = 'top-' . $lang;
-					if (has_nav_menu($top_menu_location)) {
-						wp_nav_menu([
-							'theme_location' => $top_menu_location,
-							'container'      => false,
-							'menu_class'     => 'top-nav-list',
-							'fallback_cb'    => false,
-						]);
-					} else {
-						echo '<p style="color: red;">⚠️ Top menu not assigned for ' . esc_html($lang) . '.</p>';
-					}
+          if (has_nav_menu('top')) {
+            wp_nav_menu([
+                'theme_location'  => 'top',
+                'container'       => false,
+                'menu_class'      => 'top-nav-list',
+                'fallback_cb'     => false,
+            ]);
+        } else {
+            echo '<p style="color: red;">⚠️ Top menu not assigned.</p>';
+        }        
 					?>
 				</nav>
 
@@ -109,9 +112,9 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'en';
 				<button class="menu-close" aria-label="Close menu">&times;</button>
 				<?php
 				// Dynamically load side menu for current language
-				$primary_menu_location = 'primary-' . $lang;
-				$locations = get_nav_menu_locations();
-				$menu_id = $locations[$primary_menu_location] ?? null;
+				$primary_menu_location = 'primary';
+        $locations = get_nav_menu_locations();
+        $menu_id = $locations[$primary_menu_location] ?? null;
 				$menu = $menu_id ? wp_get_nav_menu_items($menu_id) : [];
 
 				if ($menu) :
