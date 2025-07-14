@@ -119,17 +119,17 @@ get_header();
   <div class="research-block">
   <h4>教師にとっての価値</h4>
   <ul>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 生徒のつまずき箇所を把握し、授業改善に活かす</li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> クラス全体の傾向と個別の違いを見比べて対応</li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 経験に基づいた指導を、**エビデンスで裏付ける**</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 生徒のつまずき箇所を把握し、授業改善に活かす</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> クラス全体の傾向と個別の違いを見比べて対応</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 経験に基づいた指導を、**エビデンスで裏付ける**</li>
   </ul>
   </div>
   <div class="research-block">
   <h4>学習者にとっての価値</h4>
   <ul>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 自分の学習の進め方やクセを <strong>客観的に可視化</strong></li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> データを手がかりに、復習や振り返りができる</li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span> 「自分の学び方を知る」ことで、<strong>学習に自信</strong>が持てる</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 自分の学習の進め方やクセを <strong>客観的に可視化</strong></li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> データを手がかりに、復習や振り返りができる</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>「自分の学び方を知る」ことで、<strong>学習に自信</strong>が持てる</li>
   </ul>
 </div>
 <div class="research-block">

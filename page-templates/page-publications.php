@@ -24,7 +24,9 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title"><?php the_title(); ?></h1>
-                <h2 class="page-subtitle">出版</h2>
+                <?php if ( function_exists('pll_current_language') && pll_current_language() === 'ja' ) : ?>
+    <h2 class="page-subtitle">出版</h2>
+<?php endif; ?>
               </div>
             </div>
           </section>

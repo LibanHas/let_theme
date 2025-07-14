@@ -40,14 +40,6 @@ $grants = [
         'summary' => 'リアルワールド教育データからのエビデンス抽出・共有・利用のための情報基盤開発'
     ],
     [
-        'year' => '2022',
-        'period' => '2022年4月1日～2025年3月31日',
-        'type' => '科学研究費（補助金）',
-        'title' => '基盤研究（B）',
-        'pi' => 'Majumdar Rwitajit',
-        'summary' => 'GOAL project: AI-supported self-directed learning lifestyle in data-rich educational ecosystem'
-    ],
-    [
         'year' => '2021',
         'period' => '2021年4月1日～2024年3月31日',
         'type' => '科学研究費（補助金）',

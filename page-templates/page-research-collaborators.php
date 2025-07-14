@@ -28,9 +28,9 @@ $container = get_theme_mod( 'understrap_container_type' );
             </div>
           </section>
 
-          <!-- MEMBER CARDS -->
+          <!-- SIMPLE LIST OF COLLABORATORS -->
           <div class="container">
-            <div class="row members-list">
+            <div class="collaborators-list">
               <?php
               $collaborators = new WP_Query([
                 'post_type' => 'member',
@@ -48,23 +48,23 @@ $container = get_theme_mod( 'understrap_container_type' );
 
               if ($collaborators->have_posts()) :
                 while ($collaborators->have_posts()) : $collaborators->the_post();
-                  $employment_title = get_field('employment_title');
+                  $employment_title = get_field('employment_title'); // Position
+                  $institution = get_field('institution'); // Institution
               ?>
-              <div class="col-md-3 member p-member-list__item group-collaborator">
-                <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
-                  <?php if (has_post_thumbnail()) {
-                    the_post_thumbnail('medium');
-                  } else {
-                    echo '<div class="p-member-list__thumbnail --empty"></div>';
-                  } ?>
-                </a>
-                <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
-                <?php if ($employment_title) : ?>
-                  <p class="p-member-list__position"><?php echo esc_html($employment_title); ?></p>
-                <?php endif; ?>
-              </div>
-              <?php endwhile; wp_reset_postdata(); else : ?>
-              <p>現在、表示する共同研究員はいません。</p>
+                <div class="collaborator-item">
+                  <p class="collaborator-name"><strong><?php the_title(); ?></strong></p>
+                  <?php if ($institution): ?>
+                    <p class="collaborator-institution"><?php echo esc_html($institution); ?></p>
+                  <?php endif; ?>
+                  <?php if ($employment_title): ?>
+                    <p class="collaborator-position"><?php echo esc_html($employment_title); ?></p>
+                  <?php endif; ?>
+                </div>
+              <?php
+                endwhile;
+                wp_reset_postdata();
+              else : ?>
+                <p>現在、表示する共同研究員はいません。</p>
               <?php endif; ?>
             </div>
           </div>

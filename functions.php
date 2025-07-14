@@ -324,6 +324,7 @@ function add_member_type_admin_filter() {
         'faculty' => 'faculty',
         'student' => 'student',
         'alumni'  => 'alumni',
+        'collaborator' => 'collaborator'
     ];
 
     echo '<select name="member_type">';
@@ -447,10 +448,47 @@ function enqueue_join_us_script() {
 add_action('wp_enqueue_scripts', 'enqueue_join_us_script');
 
 
+// Add Polylang language as a location rule for ACF
+add_filter('acf/location/rule_types', function ($choices) {
+    $choices['Post']['language'] = 'Language';
+    return $choices;
+});
+
+add_filter('acf/location/rule_values/language', function ($choices) {
+    // Manually define language options
+    $choices['ja'] = 'Japanese';
+    $choices['en'] = 'English';
+    return $choices;
+});
+
+add_filter('acf/location/rule_match/language', function ($match, $rule, $options) {
+    if (function_exists('pll_get_post_language') && isset($options['post_id'])) {
+        $post_lang = pll_get_post_language($options['post_id']);
+        if ($rule['operator'] === "==") {
+            $match = ($post_lang === $rule['value']);
+        } elseif ($rule['operator'] === "!=") {
+            $match = ($post_lang !== $rule['value']);
+        }
+    }
+    return $match;
+}, 10, 3);
 
 
 
+// Allow Polylang to use the same slug for different languages in URLs
+add_filter( 'pll_get_the_terms', '__return_false' );
+add_filter( 'pll_get_the_post_types', '__return_false' );
 
+// Force WordPress to allow duplicate slugs for translated pages
+add_filter( 'wp_unique_post_slug', function( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
+    if ( function_exists( 'pll_get_post' ) ) {
+        $translated_post_ID = pll_get_post( $post_ID, pll_default_language() );
+        if ( $translated_post_ID && $slug === $original_slug ) {
+            return $original_slug; // Use the same slug for translation
+        }
+    }
+    return $slug;
+}, 10, 6 );
 
 
 

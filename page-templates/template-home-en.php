@@ -317,7 +317,7 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
 Here, we introduce some of the tools and practical use cases we’ve developed in collaboration with schools and educators.
         </p>
         <div class="research-button-top mt-4">
-          <a href="research/" class="btn btn--cta">
+          <a href="en/research-en/" class="btn btn--cta">
             <span>Explore our research</span>
           </a>
         </div>

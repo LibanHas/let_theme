@@ -175,6 +175,9 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
   <h2 class="section-title">Our Tools</h2>
   <h3 class="section-title section-title--sub">ツール</h3>
 
+  <p class="tools-intro">
+    緒方研究室では、学習をより双方向的かつ適応的にし、教育の質を高めるための先進的なツールを開発しています。
+  </p>
 
     <div class="tool-item">
       <div class="tool-logo">
