@@ -5,11 +5,13 @@
  * @package Understrap
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 get_header();
 
-$container = get_theme_mod( 'understrap_container_type' );
+$container = get_theme_mod('understrap_container_type');
+// Detect current language with Polylang
+$lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
 ?>
 
 <div class="wrapper" id="page-members">
@@ -23,7 +25,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title"><?php the_title(); ?></h1>
-                <h2 class="page-subtitle">メンバー</h2>
+                <h2 class="page-subtitle"><?php echo $lang === 'ja' ? 'メンバー' : 'Members'; ?></h2>
               </div>
             </div>
           </section>
@@ -32,10 +34,14 @@ $container = get_theme_mod( 'understrap_container_type' );
             <!-- FILTER BUTTONS -->
             <div class="wp-block-buttons alignwide is-content-justification-center is-layout-flex wp-block-buttons-is-layout-flex" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)">
               <?php
-              $buttons = [
+              $buttons = $lang === 'ja' ? [
                 'faculty' => '教員・スタッフ',
                 'student' => '学生',
                 'alumni'  => '元メンバー'
+              ] : [
+                'faculty' => 'Faculty & Staff',
+                'student' => 'Students',
+                'alumni'  => 'Former Members'
               ];
               $default_filter = 'faculty';
 
@@ -54,13 +60,13 @@ $container = get_theme_mod( 'understrap_container_type' );
             <!-- MEMBERS LIST -->
             <div class="members-container">
               <?php
-              function render_member_card($post) {
+              function render_member_card($post, $lang) {
                   setup_postdata($post);
                   $post_id = $post->ID;
                   $member_type = get_field('member_type', $post_id);
                   $student_level = get_field('student_level', $post_id);
                   $student_year = get_field('student_year', $post_id);
-                  $employment_title = get_field('employment_title', $post_id);
+                  $employment_title = $lang === 'ja' ? get_field('employment_title', $post_id) : get_field('employment_title_en', $post_id);
               ?>
               <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
                 <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
@@ -73,8 +79,13 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
                 <?php
                 if ($student_level && $student_year) {
-                    $label = $student_level === 'doctoral' ? '博士' : '修士';
-                    echo '<p class="p-member-list__position">' . esc_html($label . $student_year . '年') . '</p>';
+                    if ($lang === 'ja') {
+                        $label = $student_level === 'doctoral' ? '博士' : '修士';
+                        echo '<p class="p-member-list__position">' . esc_html($label . $student_year . '年') . '</p>';
+                    } else {
+                        $label = $student_level === 'doctoral' ? 'PhD' : 'M';
+                        echo '<p class="p-member-list__position">' . esc_html($label . ' ' . $student_year) . '</p>';
+                    }
                 } elseif ($member_type === 'faculty' && $employment_title) {
                     echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
                 }
@@ -82,12 +93,12 @@ $container = get_theme_mod( 'understrap_container_type' );
               </div>
               <?php wp_reset_postdata(); }
 
-              // Query
+              // Query: Polylang automatically filters posts by language
               $members = new WP_Query([
                 'post_type' => 'member',
                 'posts_per_page' => -1,
                 'orderby' => 'menu_order',
-                'order' => 'ASC',
+                'order' => 'ASC'
               ]);
 
               $faculty = [];
@@ -117,162 +128,30 @@ $container = get_theme_mod( 'understrap_container_type' );
               }
               ?>
 
-              <!-- 博士 -->
-              <?php if (!empty($doctoral)) : ?>
-              <div class="member-group-section group-student">
-                <div class="member-subheading">
-                  <h2 class="subheading-title">博士</h2>
-                  <div class="subheading-line"></div>
-                </div>
-                <div class="row members-list">
-                  <?php foreach ($doctoral as $post) render_member_card($post); ?>
-                </div>
-              </div>
-              <?php endif; ?>
-
-              <!-- 修士 -->
-              <?php if (!empty($masters)) : ?>
-              <div class="member-group-section group-student">
-                <div class="member-subheading">
-                  <h2 class="subheading-title">修士</h2>
-                  <div class="subheading-line"></div>
-                </div>
-                <div class="row members-list">
-                  <?php foreach ($masters as $post) render_member_card($post); ?>
-                </div>
-              </div>
-              <?php endif; ?>
-
-              <!-- 教員・スタッフ -->
-              <?php if (!empty($faculty)) : ?>
-              <div class="member-group-section group-faculty">
-                <div class="member-subheading">
-                  <h2 class="subheading-title">教員・スタッフ</h2>
-                  <div class="subheading-line"></div>
-                </div>
-                <div class="row members-list">
-                <?php foreach ($faculty as $post) render_member_card($post); ?>
-                <!-- Research Collaborators Card -->
-                <div class="col-md-3 member p-member-list__item group-faculty">
-                  <a href="<?php echo esc_url(site_url('/members/research-collaborators')); ?>" class="p-member-list__thumbnail --empty">
-                    <span class="collab-label-jp" style="display: flex; align-items: center; justify-content: center; height: 100%; width: 100%; font-weight: bold; color: #fff;">
-                      共同研究員
-                    </span>
-                  </a>
-                  <a href="<?php echo esc_url(site_url('/members/research-collaborators')); ?>" class="p-member-list__name">共同研究員</a>
-                  <p class="p-member-list__position">Research Collaborators</p>
-                </div>
-              </div>
-              </div>
-              <?php endif; ?>
-
-              <!-- 元メンバー -->
+              <!-- Display sections -->
               <?php
-              $faculty_alumni = [];
-              $student_alumni = [];
-              $staff_alumni = [];
-
-              foreach ($alumni as $post) {
-                  setup_postdata($post);
-                  $type = get_field('member_type');
-                  $level = get_field('student_level');
-
-                  if ($type === 'faculty') {
-                      $faculty_alumni[] = $post;
-                  } elseif ($level === 'doctoral' || $level === 'masters' || $level === 'research_student') {
-                      $student_alumni[] = $post;
-                  } else {
-                      $staff_alumni[] = $post;
-                  }
-              }
+              $sections = [
+                  'doctoral' => $lang === 'ja' ? '博士' : 'PhD Students',
+                  'masters'  => $lang === 'ja' ? '修士' : 'Masters Students',
+                  'faculty'  => $lang === 'ja' ? '教員・スタッフ' : 'Faculty & Staff'
+              ];
+              foreach (['doctoral', 'masters', 'faculty'] as $group) :
+                  $posts = $$group;
+                  if (!empty($posts)) :
               ?>
-
-              <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
-              <div class="member-group-section group-alumni accordion-section">
+              <div class="member-group-section group-<?php echo $group === 'faculty' ? 'faculty' : 'student'; ?>">
                 <div class="member-subheading">
-                  <h2 class="subheading-title">元メンバー</h2>
+                  <h2 class="subheading-title"><?php echo esc_html($sections[$group]); ?></h2>
                   <div class="subheading-line"></div>
                 </div>
-
-                <!-- Former Faculty -->
-                <?php if (!empty($faculty_alumni)) : ?>
-                <div class="accordion-item">
-                  <button class="accordion-header" type="button" data-target="faculty-panel">
-                    元 教員 <span class="accordion-icon">＋</span>
-                  </button>
-                  <div class="accordion-panel" id="faculty-panel">
-                    <ol>
-                      <?php foreach ($faculty_alumni as $post) : setup_postdata($post); ?>
-                      <li>
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        <?php
-                        $title = get_field('employment_title');
-                        if ($title) echo '（' . esc_html($title) . '）';
-                        ?>
-                      </li>
-                      <?php endforeach; ?>
-                    </ol>
-                  </div>
+                <div class="row members-list">
+                  <?php foreach ($posts as $post) render_member_card($post, $lang); ?>
                 </div>
-                <?php endif; ?>
-
-                <!-- Former Students -->
-                <?php if (!empty($student_alumni)) : ?>
-                <div class="accordion-item">
-                  <button class="accordion-header" type="button" data-target="student-panel">
-                    元 学生（博士・修士）<span class="accordion-icon">＋</span>
-                  </button>
-                  <div class="accordion-panel" id="student-panel">
-                    <ul class="alumni-list with-icon">
-                      <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
-                      <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        <?php
-                        $level = get_field('student_level');
-                        $year = get_field('student_year');
-                        if ($level && $level !== 'na') {
-                            if ($level === 'doctoral' || $level === 'masters') {
-                                if ($year) {
-                                    $label = $level === 'doctoral' ? '博士' : '修士';
-                                    echo '（' . esc_html($label . $year . '年') . '）';
-                                }
-                            } elseif ($level === 'research_student') {
-                                echo '（研究生）'; // ✅ Show without year
-                            }
-                        }
-                        ?>
-                      </li>
-                      <?php endforeach; ?>
-                    </ul>
-                  </div>
-                </div>
-                <?php endif; ?>
-
-                <!-- Former Staff -->
-                <?php if (!empty($staff_alumni)) : ?>
-                <div class="accordion-item">
-                  <button class="accordion-header" type="button" data-target="staff-panel">
-                    元 スタッフ <span class="accordion-icon">＋</span>
-                  </button>
-                  <div class="accordion-panel" id="staff-panel">
-                    <ul class="alumni-list with-icon">
-                      <?php foreach ($staff_alumni as $post) : setup_postdata($post); ?>
-                      <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/briefcase-business.svg" alt="" class="alumni-icon" />
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        <?php
-                        $title = get_field('employment_title');
-                        if ($title) echo '（' . esc_html($title) . '）';
-                        ?>
-                      </li>
-                      <?php endforeach; ?>
-                    </ul>
-                  </div>
-                </div>
-                <?php endif; ?>
               </div>
-              <?php endif; ?>
+              <?php
+                  endif;
+              endforeach;
+              ?>
             </div>
           </div>
         </main>

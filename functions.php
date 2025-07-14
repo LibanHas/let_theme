@@ -136,9 +136,12 @@ function enqueue_aos_scripts() {
 add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
 
 register_nav_menus(array(
-	'primary' => __('Side Menu', 'understrap'), // for your hamburger/side nav
-	'top'     => __('Top Menu', 'understrap'),  // for the few key links in the header
-  ));
+    'primary-en' => __('Primary Menu English', 'understrap'),
+    'primary-ja' => __('Primary Menu 日本語', 'understrap'),
+    'top-en'     => __('Top Menu English', 'understrap'),
+    'top-ja'     => __('Top Menu 日本語', 'understrap'),
+));
+
   
 
 function add_publications_body_class( $classes ) {
@@ -489,6 +492,7 @@ add_filter( 'wp_unique_post_slug', function( $slug, $post_ID, $post_status, $pos
     }
     return $slug;
 }, 10, 6 );
+
 
 
 
