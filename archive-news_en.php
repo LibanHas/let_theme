@@ -1,12 +1,7 @@
 <?php
 /**
- * Template Name: News Archive EN
- *
- * Template for displaying a list of News custom posts (English version).
- *
- * @package Understrap
+ * Archive template for English News
  */
-
 defined('ABSPATH') || exit;
 
 get_header();
@@ -19,60 +14,56 @@ $container = get_theme_mod('understrap_container_type');
       <div class="col-md-12 content-area" id="primary">
         <main class="site-main" id="main" role="main">
 
+          <?php
+          $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+
+          $news_query = new WP_Query([
+            'post_type'      => 'news_en',
+            'posts_per_page' => 10,
+            'paged'          => $paged,
+            'meta_key'       => 'news_date',
+            'orderby'        => 'meta_value',
+            'order'          => 'DESC',
+          ]);
+
+          $category_classes = [
+            'symposiums'   => 'tag-symposium',
+            'workshops'    => 'tag-workshop',
+            'lectures'     => 'tag-lecture',
+            'conferences'  => 'tag-conference',
+            'publications' => 'tag-publication',
+            'media'        => 'tag-media',
+            'awards'       => 'tag-award',
+            'projects'     => 'tag-project',
+            'contests'     => 'tag-contest',
+            'news'         => 'tag-news'
+          ];
+
+          $category_labels = [
+            'symposiums'   => 'Symposium',
+            'workshops'    => 'Workshop',
+            'lectures'     => 'Lecture',
+            'conferences'  => 'Conference',
+            'publications' => 'Publication',
+            'media'        => 'Media Coverage',
+            'awards'       => 'Award',
+            'projects'     => 'Project',
+            'contests'     => 'Contest',
+            'news'         => 'News'
+          ];
+          ?>
+
           <section class="section-spacing news-section">
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title">News</h1>
-                <h2 class="page-subtitle">Latest announcements and updates</h2>
+                <h2 class="page-subtitle">Latest updates</h2>
               </div>
 
-              <?php
+              <?php if ($news_query->have_posts()) : ?>
+                <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
 
-              $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-
-              
-
-              $news_query = new WP_Query([
-                'post_type' => 'news',
-                'posts_per_page' => 10,
-                'paged' => $paged,
-                'suppress_filters' => true,
-                'lang' => pll_current_language()
-              ]);
-
-              
-
-              $category_classes = [
-                'symposiums'   => 'tag-symposium',
-                'workshops'    => 'tag-workshop',
-                'lectures'     => 'tag-lecture',
-                'conferences'  => 'tag-conference',
-                'publications' => 'tag-publication',
-                'media'        => 'tag-media',
-                'awards'       => 'tag-award',
-                'projects'     => 'tag-project',
-                'contests'     => 'tag-contest',
-                'news'         => 'tag-news'
-              ];
-
-              $category_labels = [
-                'symposiums'   => 'Symposium',
-                'workshops'    => 'Workshop',
-                'lectures'     => 'Lecture',
-                'conferences'  => 'Conference',
-                'publications' => 'Publication',
-                'media'        => 'Media',
-                'awards'       => 'Award',
-                'projects'     => 'Project',
-                'contests'     => 'Contest',
-                'news'         => 'News'
-              ];
-
-              if ($news_query->have_posts()) :
-                while ($news_query->have_posts()) : $news_query->the_post();
-
-                  // Display post debug info
-
+                  <?php
                   $date_raw = get_field('news_date');
                   $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
                   $description = get_field('news_description');
@@ -107,9 +98,9 @@ $container = get_theme_mod('understrap_container_type');
                   <?php
                   $pagination = paginate_links([
                     'prev_next' => false,
-                    'type' => 'array',
-                    'mid_size' => 2,
-                    'end_size' => 1
+                    'type'      => 'array',
+                    'mid_size'  => 2,
+                    'end_size'  => 1
                   ]);
 
                   if ($pagination) {
@@ -125,9 +116,8 @@ $container = get_theme_mod('understrap_container_type');
                 </div>
 
               <?php else : ?>
-                <p style="color:red;">❌ No English news posts found.</p>
-              <?php endif;
-              wp_reset_postdata(); ?>
+                <p>No news yet.</p>
+              <?php endif; ?>
             </div>
           </section>
 

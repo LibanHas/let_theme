@@ -8,7 +8,23 @@
 defined('ABSPATH') || exit;
 
 $container = get_theme_mod('understrap_container_type');
-$lang = function_exists('pll_current_language') ? pll_current_language() : 'ja'; // 'en' or 'ja'
+
+// ✅ Detect language
+$lang = 'ja'; // Default: Japanese
+
+// Detect language from URL for archives and CPTs
+if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
+    $lang = 'en';
+} else {
+    // Fallback: On singular posts/pages, check translation fields
+    if (is_singular()) {
+        if (get_field('translation_en')) {
+            $lang = 'ja'; // Current page is Japanese (has English translation)
+        } elseif (get_field('translation_jp')) {
+            $lang = 'en'; // Current page is English (has Japanese translation)
+        }
+    }
+}
 
 // Define footer content
 $footer_text = [
@@ -63,40 +79,39 @@ $footer_text = [
   <div class="container">
     <!-- Top section: logo, heading, address -->
     <div class="custom-footer__top">
-  <div class="footer-left">
-    <h2 class="custom-footer__heading">
-      <?php echo $footer_text['heading'][$lang]; ?>
-    </h2>
-    <p><?php echo $footer_text['contact_body'][$lang]; ?></p>
-    <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--secondary-outline btn--secondary-outline-dark">
-      <span><?php echo $footer_text['contact_button'][$lang]; ?></span>
-    </a>
-  </div>
-  <div class="footer-right">
-    <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/let_logo.png" alt="LET Lab Logo" class="footer-logo">
-    <div class="footer-address">
-    <?php echo $footer_text['address'][$lang]; ?>
-  </div>
-  </div>
-</div>
+      <div class="footer-left">
+        <h2 class="custom-footer__heading">
+          <?php echo $footer_text['heading'][$lang]; ?>
+        </h2>
+        <p><?php echo $footer_text['contact_body'][$lang]; ?></p>
+        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--secondary-outline btn--secondary-outline-dark">
+          <span><?php echo $footer_text['contact_button'][$lang]; ?></span>
+        </a>
+      </div>
+      <div class="footer-right">
+        <img src="<?php echo get_stylesheet_directory_uri(); ?>/images/let_logo.png" alt="LET Lab Logo" class="footer-logo">
+        <div class="footer-address">
+          <?php echo $footer_text['address'][$lang]; ?>
+        </div>
+      </div>
+    </div>
 
     <hr class="custom-footer__divider">
 
     <!-- Bottom section: links only, no headings -->
     <div class="custom-footer__links">
-    <ul class="footer-links">
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>about"><?php echo $footer_text['about'][$lang]; ?></a></li>
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>members"><?php echo $footer_text['members'][$lang]; ?></a></li>
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>research"><?php echo ($lang === 'en') ? 'Research' : '研究'; ?></a></li>
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>leaf">LEAF</a></li>
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>publications"><?php echo $footer_text['publications'][$lang]; ?></a></li>
-  <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>join"><?php echo $footer_text['join'][$lang]; ?></a></li>
-  <li><a href="mailto:info@let.media.kyoto-u.ac.jp"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
-</ul>
+      <ul class="footer-links">
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>about"><?php echo $footer_text['about'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>members"><?php echo $footer_text['members'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>research"><?php echo ($lang === 'en') ? 'Research' : '研究'; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>leaf">LEAF</a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>publications"><?php echo $footer_text['publications'][$lang]; ?></a></li>
+        <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>join-us"><?php echo $footer_text['join'][$lang]; ?></a></li>
+        <li><a href="mailto:info@let.media.kyoto-u.ac.jp"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
+      </ul>
     </div>
   </div>
 </footer>
-
 
 </div><!-- #wrapper-footer -->
 

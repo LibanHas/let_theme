@@ -104,29 +104,41 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
                     <!-- 🔽 Language switcher -->
 <div class="language-switcher">
     <?php
-    $current_id = get_the_ID();
-    echo '<!-- DEBUG: Current ID = ' . esc_html($current_id) . ' -->';
+    $translation_url = '';
+    $link_text = ($page_lang === 'ja') ? 'English' : '日本語';
 
-    $translation_field = ($page_lang === 'ja') ? 'translation_en' : 'translation_jp';
-    echo '<!-- DEBUG: Translation field = ' . esc_html($translation_field) . ' -->';
+    if (is_singular()) {
+        // For single Pages or Posts
+        $current_id = get_the_ID();
+        $translation_field = ($page_lang === 'ja') ? 'translation_en' : 'translation_jp';
+        $translation = get_field($translation_field, $current_id);
 
-    $translation = get_field($translation_field, $current_id);
-    echo '<!-- DEBUG: Translation raw = ';
-    var_dump($translation);
-    echo '-->';
+        if ($translation) {
+            $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
+                ? $translation
+                : get_permalink($translation);
+        }
+    } elseif (is_post_type_archive('news_jp')) {
+        $translation_url = site_url('/en/news/');
+    } elseif (is_post_type_archive('news_en')) {
+        $translation_url = site_url('/news/');
+    } elseif (is_post_type_archive('event_jp')) {
+        $translation_url = site_url('/en/events/');
+    } elseif (is_post_type_archive('event_en')) {
+        $translation_url = site_url('/events/');
+    } elseif (is_home()) {
+        // Blog home (if you use it)
+        $translation_url = ($page_lang === 'ja') ? site_url('/en/') : site_url('/');
+    }
 
-    if ($translation) {
-        $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
-            ? $translation
-            : get_permalink($translation);
-
-        $link_text = ($page_lang === 'ja') ? 'English' : '日本語';
+    if ($translation_url) {
         echo '<a href="' . esc_url($translation_url) . '">' . esc_html($link_text) . '</a>';
     } else {
-        echo '<!-- ⚠️ No translation linked -->';
+        echo '<!-- ⚠️ No translation linked for this page -->';
     }
     ?>
 </div>
+
 
 
                     <div class="hamburger-menu">

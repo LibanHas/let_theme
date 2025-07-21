@@ -164,44 +164,83 @@ function add_publications_body_class($classes)
 }
 add_filter('body_class', 'add_publications_body_class');
 
-function register_news_post_type()
-{
-    register_post_type('news', array(
-        'labels' => array(
-            'name' => 'News',
-            'singular_name' => 'News',
-            'add_new_item' => 'Add New News Item',
-            'edit_item' => 'Edit News Item',
-            'new_item' => 'New News Item',
-            'view_item' => 'View News Item',
-            'search_items' => 'Search News',
-        ),
-        'public' => true,
-        'has_archive' => true,
-        'rewrite' => array('slug' => 'news'),
-        'menu_position' => 5,
-        'menu_icon' => 'dashicons-megaphone',
-        'supports' => array('title', 'editor', 'excerpt', 'custom-fields'),
-        'show_in_rest' => true,
-    ));
-}
-add_action('init', 'register_news_post_type');
 
 function register_news_taxonomy()
 {
-    register_taxonomy('news_category', 'news', array(
-        'labels' => array(
-            'name' => 'News Categories',
-            'singular_name' => 'News Category',
-        ),
-        'hierarchical' => false,
-        'public' => true,
-        'show_in_rest' => true,
-    ));
+   register_taxonomy('news_category', ['news_jp', 'news_en'], array(
+    'labels' => array(
+        'name' => 'News Categories',
+        'singular_name' => 'News Category',
+    ),
+    'hierarchical' => false,
+    'public' => true,
+    'show_in_rest' => true,
+));
 }
 add_action('init', 'register_news_taxonomy');
 
 
+/**
+ * Register Japanese News CPT
+ */
+function register_news_jp_post_type() {
+    register_post_type('news_jp', array(
+        'labels' => array(
+            'name'               => __('News (JP)', 'textdomain'),
+            'singular_name'      => __('News (JP)', 'textdomain'),
+            'add_new'            => __('Add New News (JP)', 'textdomain'),
+            'add_new_item'       => __('Add New News (JP)', 'textdomain'),
+            'edit_item'          => __('Edit News (JP)', 'textdomain'),
+            'new_item'           => __('New News (JP)', 'textdomain'),
+            'view_item'          => __('View News (JP)', 'textdomain'),
+            'search_items'       => __('Search News (JP)', 'textdomain'),
+            'not_found'          => __('No News (JP) found', 'textdomain'),
+            'not_found_in_trash' => __('No News (JP) found in Trash', 'textdomain'),
+            'all_items'          => __('All News (JP)', 'textdomain'),
+        ),
+        'public'       => true,
+        'has_archive'  => true,
+        'rewrite'      => array(
+            'slug' => 'news',
+            'with_front' => false
+        ),
+        'menu_icon'    => 'dashicons-megaphone',
+        'supports'     => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_news_jp_post_type');
+
+/**
+ * Register English News CPT
+ */
+function register_news_en_post_type() {
+    register_post_type('news_en', array(
+        'labels' => array(
+            'name'               => __('News (EN)', 'textdomain'),
+            'singular_name'      => __('News (EN)', 'textdomain'),
+            'add_new'            => __('Add New News (EN)', 'textdomain'),
+            'add_new_item'       => __('Add New News (EN)', 'textdomain'),
+            'edit_item'          => __('Edit News (EN)', 'textdomain'),
+            'new_item'           => __('New News (EN)', 'textdomain'),
+            'view_item'          => __('View News (EN)', 'textdomain'),
+            'search_items'       => __('Search News (EN)', 'textdomain'),
+            'not_found'          => __('No News (EN) found', 'textdomain'),
+            'not_found_in_trash' => __('No News (EN) found in Trash', 'textdomain'),
+            'all_items'          => __('All News (EN)', 'textdomain'),
+        ),
+        'public'       => true,
+        'has_archive'  => true,
+        'rewrite'      => array(
+            'slug' => 'en/news',
+            'with_front' => false
+        ),
+        'menu_icon'    => 'dashicons-megaphone',
+        'supports'     => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_news_en_post_type');
 
 
 /**
@@ -645,3 +684,29 @@ add_filter('language_attributes', function($output) {
 
     return $output;
 });
+
+
+/**
+ * Temporarily register the old News CPT
+ */
+function register_custom_post_type_news()
+{
+    register_post_type('news', [
+        'labels' => [
+            'name' => 'News (OLD)',
+            'singular_name' => 'News (OLD)',
+            'add_new_item' => 'Add New News (OLD)',
+            'edit_item' => 'Edit News (OLD)',
+            'new_item' => 'New News (OLD)',
+            'view_item' => 'View News (OLD)',
+            'search_items' => 'Search News (OLD)',
+            'not_found' => 'No News (OLD) found',
+            'not_found_in_trash' => 'No News (OLD) found in Trash',
+        ],
+        'public' => true,
+        'show_in_menu' => true, // ✅ Show it in admin menu
+        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+        'show_in_rest' => true, // ✅ Enable block editor
+    ]);
+}
+add_action('init', 'register_custom_post_type_news');
