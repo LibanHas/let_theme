@@ -1,4 +1,13 @@
 <?php
+// ✅ Fallback for missing wp_admin_headers
+if (!function_exists('wp_admin_headers')) {
+    function wp_admin_headers() {
+        // Do nothing, fallback function to prevent fatal error
+    }
+}
+
+
+
 /**
  * UnderStrap functions and definitions
  *
@@ -6,153 +15,157 @@
  */
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
 // UnderStrap's includes directory.
 $understrap_inc_dir = 'inc';
 
 // Array of files to include.
 $understrap_includes = array(
-	'/theme-settings.php',
-	'/setup.php',
-	'/widgets.php',
-	'/enqueue.php',
-	'/template-tags.php',
-	'/pagination.php',
-	'/hooks.php',
-	'/extras.php',
-	'/customizer.php',
-	'/custom-comments.php',
-	'/class-wp-bootstrap-navwalker.php',
-	'/editor.php',
-	'/block-editor.php',
-	'/deprecated.php',
+    '/theme-settings.php',
+    '/setup.php',
+    '/widgets.php',
+    '/enqueue.php',
+    '/template-tags.php',
+    '/pagination.php',
+    '/hooks.php',
+    '/extras.php',
+    '/customizer.php',
+    '/custom-comments.php',
+    '/class-wp-bootstrap-navwalker.php',
+    '/editor.php',
+    '/block-editor.php',
+    '/deprecated.php',
 );
 
+
 // Load WooCommerce functions if WooCommerce is activated.
-if ( class_exists( 'WooCommerce' ) ) {
-	$understrap_includes[] = '/woocommerce.php';
+if (class_exists('WooCommerce')) {
+    $understrap_includes[] = '/woocommerce.php';
 }
 
 // Load Jetpack compatibility file if Jetpack is activated.
-if ( class_exists( 'Jetpack' ) ) {
-	$understrap_includes[] = '/jetpack.php';
+if (class_exists('Jetpack')) {
+    $understrap_includes[] = '/jetpack.php';
 }
 
 // Include files.
-foreach ( $understrap_includes as $file ) {
-	require_once get_theme_file_path( $understrap_inc_dir . $file );
+foreach ($understrap_includes as $file) {
+    require_once get_theme_file_path($understrap_inc_dir . $file);
 }
 
 /**
  * Enqueue custom styles and scripts
  */
-function enqueue_custom_theme_scripts() {
-	// Custom main theme style
-	wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), null, 'all');
+function enqueue_custom_theme_scripts()
+{
+    // Custom main theme style
+    wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), null, 'all');
 
-	// Hamburger menu script
-	wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), null, true);
+    // Hamburger menu script
+    wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), null, true);
 
-	// Scroll animation script
-	wp_enqueue_script('animations', get_template_directory_uri() . '/js/animations.js', array(), null, true);
+    // Scroll animation script
+    wp_enqueue_script('animations', get_template_directory_uri() . '/js/animations.js', array(), null, true);
 
-	// Tagline animation script
-	wp_enqueue_script('tagline-test', get_template_directory_uri() . '/js/tagline-test.js', array(), null, true);
+    // Tagline animation script
+    wp_enqueue_script('tagline-test', get_template_directory_uri() . '/js/tagline-test.js', array(), null, true);
 
-	// Admissions steps interaction
-	wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
+    // Admissions steps interaction
+    wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
 
-	// Accordion interaction script
-	wp_enqueue_script('accordion', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
+    // Accordion interaction script
+    wp_enqueue_script('accordion', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
 
-	// Swiper styles and scripts
-	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
+    // Swiper styles and scripts
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_theme_scripts');
 
 /**
  * Register Member Custom Post Type
  */
-function register_member_post_type() {
-	register_post_type('member',
-		array(
-			'labels' => array(
-				'name' => __('Members'),
-				'singular_name' => __('Member'),
-				'add_new' => __('Add New Member'),
-				'add_new_item' => __('Add New Member'),
-				'edit_item' => __('Edit Member'),
-				'new_item' => __('New Member'),
-				'view_item' => __('View Member'),
-				'search_items' => __('Search Members'),
-				'not_found' => __('No members found'),
-				'not_found_in_trash' => __('No members found in Trash'),
-				'all_items' => __('All Members'),
-			),
-			'public' => true,
-			'has_archive' => false,
-			'rewrite' => array('slug' => 'member'),
-			'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
-			'menu_position' => 5,
-			'menu_icon' => 'dashicons-groups',
-			'show_in_rest' => true,
-			'taxonomies' => array('member_group'),
-		)
-	);
+function register_member_post_type()
+{
+    register_post_type('member', array(
+        'labels' => array(
+            'name' => __('Members'),
+            'singular_name' => __('Member'),
+            'add_new' => __('Add New Member'),
+            'add_new_item' => __('Add New Member'),
+            'edit_item' => __('Edit Member'),
+            'new_item' => __('New Member'),
+            'view_item' => __('View Member'),
+            'search_items' => __('Search Members'),
+            'not_found' => __('No members found'),
+            'not_found_in_trash' => __('No members found in Trash'),
+            'all_items' => __('All Members'),
+        ),
+        'public' => true,
+        'has_archive' => false,
+        'rewrite' => array(
+    'slug' => (function_exists('get_field') && get_field('language') === 'en') ? 'en/member' : 'member',
+        ),
+        'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
+        'menu_position' => 5,
+        'menu_icon' => 'dashicons-groups',
+        'show_in_rest' => true,
+        'taxonomies' => array('member_group'),
+    ));
 }
 add_action('init', 'register_member_post_type');
 
 /**
  * Register Member Group Custom Taxonomy
  */
-function register_member_group_taxonomy() {
-	register_taxonomy('member_group', 'member', array(
-		'labels' => array(
-			'name' => 'メンバー区分',
-			'singular_name' => 'メンバー区分',
-		),
-		'public' => true,
-		'hierarchical' => true,
-		'show_ui' => true,
-		'show_admin_column' => true,
-		'show_in_rest' => true,
-		'rewrite' => array('slug' => 'member-group'),
-	));
+function register_member_group_taxonomy()
+{
+    register_taxonomy('member_group', 'member', array(
+        'labels' => array(
+            'name' => 'メンバー区分',
+            'singular_name' => 'メンバー区分',
+        ),
+        'public' => true,
+        'hierarchical' => true,
+        'show_ui' => true,
+        'show_admin_column' => true,
+        'show_in_rest' => true,
+        'rewrite' => array('slug' => 'member-group'),
+    ));
 }
 add_action('init', 'register_member_group_taxonomy');
 
-function enqueue_aos_scripts() {
-	wp_enqueue_style('aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
-	wp_enqueue_script('aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
+function enqueue_aos_scripts()
+{
+    wp_enqueue_style('aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
+    wp_enqueue_script('aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
 
-	wp_add_inline_script('aos-script', 'AOS.init({
-		duration: 800,
-		easing: "ease-out-back",
-		once: true
-	});');
+    wp_add_inline_script('aos-script', 'AOS.init({
+        duration: 800,
+        easing: "ease-out-back",
+        once: true
+    });');
 }
 add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
 
 register_nav_menus(array(
+    'top_jp' => __('Top Menu (Japanese)', 'understrap'),
+    'top_en' => __('Top Menu (English)', 'understrap'),
     'primary' => __('Primary Menu', 'understrap'),
-    'top'     => __('Top Menu', 'understrap'),
 ));
 
-
-  
-
-function add_publications_body_class( $classes ) {
-    if ( is_page_template( 'page-templates/page-publications.php' ) ) {
+function add_publications_body_class($classes)
+{
+    if (is_page_template('page-templates/page-publications.php')) {
         $classes[] = 'page-publications-scrollfix';
     }
     return $classes;
 }
-add_filter( 'body_class', 'add_publications_body_class' );
+add_filter('body_class', 'add_publications_body_class');
 
-
-function register_news_post_type() {
+function register_news_post_type()
+{
     register_post_type('news', array(
         'labels' => array(
             'name' => 'News',
@@ -168,14 +181,14 @@ function register_news_post_type() {
         'rewrite' => array('slug' => 'news'),
         'menu_position' => 5,
         'menu_icon' => 'dashicons-megaphone',
-        'supports' => array('title', 'editor', 'excerpt', 'custom-fields'), // 🟢 Now supports excerpt & ACF
-        'show_in_rest' => true, // 🟢 Enables Gutenberg & REST support
+        'supports' => array('title', 'editor', 'excerpt', 'custom-fields'),
+        'show_in_rest' => true,
     ));
 }
 add_action('init', 'register_news_post_type');
 
-
-function register_news_taxonomy() {
+function register_news_taxonomy()
+{
     register_taxonomy('news_category', 'news', array(
         'labels' => array(
             'name' => 'News Categories',
@@ -183,71 +196,111 @@ function register_news_taxonomy() {
         ),
         'hierarchical' => false,
         'public' => true,
-        'show_in_rest' => true, // 🟢 Important for block editor
+        'show_in_rest' => true,
     ));
 }
 add_action('init', 'register_news_taxonomy');
 
 
-function register_custom_post_type_event() {
 
-	register_post_type('event', [
-	  'labels' => [
-		'name' => 'Events',
-		'singular_name' => 'Event',
-		'add_new_item' => 'Add New Event',
-		'edit_item' => 'Edit Event',
-		'new_item' => 'New Event',
-		'view_item' => 'View Event',
-		'search_items' => 'Search Events',
-		'not_found' => 'No events found',
-		'not_found_in_trash' => 'No events found in trash'
-	  ],
-	  'public' => true,
-	  'has_archive' => true,
-	  'rewrite' => ['slug' => 'events'],
-	  'menu_icon' => 'dashicons-calendar-alt',
-	  'supports' => ['title', 'editor', 'thumbnail'],
-	  'show_in_rest' => true,
-	]);
-  }
-  add_action('init', 'register_custom_post_type_event');
-  
-  function enqueue_swiper_assets() {
-	wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-	wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
-  }
-  add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
-  
-  function sync_update_date_field($post_id) {
-	// Prevent infinite loop
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-	if (wp_is_post_revision($post_id)) return;
-  
-	$post_type = get_post_type($post_id);
-  
-	if ($post_type === 'news') {
-	  $news_date = get_field('news_date', $post_id);
-	  if ($news_date) {
-		update_field('update_date', $news_date, $post_id);
-	  }
-	} elseif ($post_type === 'event') {
-	  $event_date = get_field('event_date', $post_id);
-	  if ($event_date) {
-		update_field('update_date', $event_date, $post_id);
-	  }
-	}
-  }
-  add_action('acf/save_post', 'sync_update_date_field', 20);
-  
-  // Manual sync for existing news and event posts
-function manually_sync_update_dates() {
-    // Only allow admin users to run this
+
+/**
+ * Register Japanese Events CPT
+ */
+function register_event_jp_post_type() {
+    register_post_type('event_jp', array(
+        'labels' => array(
+            'name'               => __('Events (JP)', 'textdomain'),
+            'singular_name'      => __('Event (JP)', 'textdomain'),
+            'add_new'            => __('Add New Event (JP)', 'textdomain'),
+            'add_new_item'       => __('Add New Event (JP)', 'textdomain'),
+            'edit_item'          => __('Edit Event (JP)', 'textdomain'),
+            'new_item'           => __('New Event (JP)', 'textdomain'),
+            'view_item'          => __('View Event (JP)', 'textdomain'),
+            'search_items'       => __('Search Events (JP)', 'textdomain'),
+            'not_found'          => __('No Events (JP) found', 'textdomain'),
+            'not_found_in_trash' => __('No Events (JP) found in Trash', 'textdomain'),
+            'all_items'          => __('All Events (JP)', 'textdomain'),
+        ),
+        'public'       => true,
+        'has_archive'  => true,
+        'rewrite'      => array(
+            'slug' => 'events',
+            'with_front' => false
+        ),
+        'menu_icon'    => 'dashicons-calendar-alt',
+        'supports'     => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_event_jp_post_type');
+
+/**
+ * Register English Events CPT
+ */
+function register_event_en_post_type() {
+    register_post_type('event_en', array(
+        'labels' => array(
+            'name'               => __('Events (EN)', 'textdomain'),
+            'singular_name'      => __('Event (EN)', 'textdomain'),
+            'add_new'            => __('Add New Event (EN)', 'textdomain'),
+            'add_new_item'       => __('Add New Event (EN)', 'textdomain'),
+            'edit_item'          => __('Edit Event (EN)', 'textdomain'),
+            'new_item'           => __('New Event (EN)', 'textdomain'),
+            'view_item'          => __('View Event (EN)', 'textdomain'),
+            'search_items'       => __('Search Events (EN)', 'textdomain'),
+            'not_found'          => __('No Events (EN) found', 'textdomain'),
+            'not_found_in_trash' => __('No Events (EN) found in Trash', 'textdomain'),
+            'all_items'          => __('All Events (EN)', 'textdomain'),
+        ),
+        'public'       => true,
+        'has_archive'  => true,
+        'rewrite'      => array(
+            'slug' => 'en/events',
+            'with_front' => false
+        ),
+        'menu_icon'    => 'dashicons-calendar-alt',
+        'supports'     => array('title', 'editor', 'thumbnail', 'custom-fields'),
+        'show_in_rest' => true,
+    ));
+}
+add_action('init', 'register_event_en_post_type');
+
+
+function enqueue_swiper_assets()
+{
+    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
+    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
+
+function sync_update_date_field($post_id)
+{
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (wp_is_post_revision($post_id)) return;
+
+    $post_type = get_post_type($post_id);
+
+    if ($post_type === 'news') {
+        $news_date = get_field('news_date', $post_id);
+        if ($news_date) {
+            update_field('update_date', $news_date, $post_id);
+        }
+    } elseif ($post_type === 'event') {
+        $event_date = get_field('event_date', $post_id);
+        if ($event_date) {
+            update_field('update_date', $event_date, $post_id);
+        }
+    }
+}
+add_action('acf/save_post', 'sync_update_date_field', 20);
+
+function manually_sync_update_dates()
+{
     if (!is_admin() || !current_user_can('manage_options')) {
         return;
     }
 
-    // Only run if explicitly triggered via URL
     if (!isset($_GET['sync_updates']) || $_GET['sync_updates'] !== '1') {
         return;
     }
@@ -280,13 +333,12 @@ function manually_sync_update_dates() {
 }
 add_action('admin_init', 'manually_sync_update_dates');
 
-function set_new_member_menu_order( $post_id, $post, $update ) {
-    // Only target 'member' post type and on creation (not updates)
-    if ( $post->post_type !== 'member' || $update ) {
+function set_new_member_menu_order($post_id, $post, $update)
+{
+    if ($post->post_type !== 'member' || $update) {
         return;
     }
 
-    // Get the current highest menu_order
     $max_order = get_posts([
         'post_type'      => 'member',
         'posts_per_page' => 1,
@@ -301,32 +353,27 @@ function set_new_member_menu_order( $post_id, $post, $update ) {
         $next_order = (int) $existing_post->menu_order + 1;
     }
 
-    // Update this new post's menu_order
-    remove_action('save_post', 'set_new_member_menu_order', 10); // prevent infinite loop
+    remove_action('save_post', 'set_new_member_menu_order', 10);
     wp_update_post([
         'ID'         => $post_id,
-        'menu_order'=> $next_order,
+        'menu_order' => $next_order,
     ]);
     add_action('save_post', 'set_new_member_menu_order', 10, 3);
 }
 add_action('save_post', 'set_new_member_menu_order', 10, 3);
 
-// Add custom filter dropdown to admin list view for 'member' post type
-function add_member_type_admin_filter() {
+function add_member_type_admin_filter()
+{
     global $typenow;
-    if ($typenow === 'member') {
-        echo '';
-    } else {
-        return; // Exit if not on the member post type screen
-    }
+    if ($typenow !== 'member') return;
 
     $selected = $_GET['member_type'] ?? '';
     $options = [
-        '' => 'すべてのメンバー種別',
-        'faculty' => 'faculty',
-        'student' => 'student',
-        'alumni'  => 'alumni',
-        'collaborator' => 'collaborator'
+        ''            => 'すべてのメンバー種別',
+        'faculty'     => 'faculty',
+        'student'     => 'student',
+        'alumni'      => 'alumni',
+        'collaborator'=> 'collaborator'
     ];
 
     echo '<select name="member_type">';
@@ -342,29 +389,26 @@ function add_member_type_admin_filter() {
 }
 add_action('restrict_manage_posts', 'add_member_type_admin_filter');
 
-
-// Add custom column
-function add_member_type_column($columns) {
+function add_member_type_column($columns)
+{
     $columns['member_type'] = 'メンバー区分';
     return $columns;
 }
 add_filter('manage_member_posts_columns', 'add_member_type_column');
 
-// Populate custom column
-function show_member_type_column($column, $post_id) {
+function show_member_type_column($column, $post_id)
+{
     if ($column === 'member_type') {
         $value = get_field('member_type', $post_id);
-        echo esc_html($value ? $value : '—');
+        echo esc_html($value ?: '—');
     }
 }
 add_action('manage_member_posts_custom_column', 'show_member_type_column', 10, 2);
 
-
-
-function filter_members_by_member_type($query) {
+function filter_members_by_member_type($query)
+{
     global $pagenow;
 
-    // Only modify in admin when editing the 'member' list
     if (
         is_admin() &&
         $query->is_main_query() &&
@@ -384,8 +428,8 @@ function filter_members_by_member_type($query) {
 }
 add_action('pre_get_posts', 'filter_members_by_member_type');
 
-
-function manually_assign_event_tags() {
+function manually_assign_event_tags()
+{
     if (!is_admin() || !current_user_can('manage_options')) {
         return;
     }
@@ -432,15 +476,14 @@ function manually_assign_event_tags() {
 }
 add_action('admin_init', 'manually_assign_event_tags');
 
-
-
-function enqueue_join_us_script() {
+function enqueue_join_us_script()
+{
     wp_enqueue_script(
         'join-us-js',
         get_template_directory_uri() . '/js/join-us.js',
-        array(), // dependencies if any (e.g., array('jquery'))
-        false,   // version
-        true     // load in footer
+        array(),
+        false,
+        true
     );
 
     wp_localize_script('join-us-js', 'themeData', array(
@@ -450,55 +493,155 @@ function enqueue_join_us_script() {
 add_action('wp_enqueue_scripts', 'enqueue_join_us_script');
 
 
-// Add Polylang language as a location rule for ACF
+add_action('parse_query', function ($query) {
+    if (!is_admin() && $query->is_main_query()) {
+        global $page_lang;
+
+        if (is_post_type_archive('event_en') || is_singular('event_en')) {
+            $page_lang = 'en';
+        } elseif (is_post_type_archive('event_jp') || is_singular('event_jp')) {
+            $page_lang = 'ja';
+        }
+    }
+});
+
+
+add_filter('language_attributes', function ($output) {
+    global $page_lang;
+
+    if ($page_lang === 'en') {
+        return 'lang="en"';
+    } elseif ($page_lang === 'ja') {
+        return 'lang="ja"';
+    }
+    return $output;
+});
+
+add_filter('wp_nav_menu_objects', function ($items, $args) {
+    global $page_lang;
+
+    foreach ($items as &$item) {
+        // Get the page ID of the menu item
+        $linked_page_id = url_to_postid($item->url);
+
+        if ($linked_page_id) {
+            if ($page_lang === 'en') {
+                // On an English page → try to find English translation
+                $translated_page = get_field('translation_en', $linked_page_id);
+                if ($translated_page) {
+                    $item->url = get_permalink($translated_page);
+                }
+            } elseif ($page_lang === 'ja') {
+                // On a Japanese page → try to find Japanese translation
+                $translated_page = get_field('translation_jp', $linked_page_id);
+                if ($translated_page) {
+                    $item->url = get_permalink($translated_page);
+                }
+            }
+        }
+    }
+
+    return $items;
+}, 10, 2); // 👈 add ", 2" so WP passes both $items and $args
+
+
+// ✅ Add "Language" to ACF location rules for Post (CPTs like Member)
 add_filter('acf/location/rule_types', function ($choices) {
     $choices['Post']['language'] = 'Language';
     return $choices;
 });
 
+// ✅ Populate dropdown values for "Language"
 add_filter('acf/location/rule_values/language', function ($choices) {
-    // Manually define language options
-    $choices['ja'] = 'Japanese';
     $choices['en'] = 'English';
+    $choices['ja'] = 'Japanese';
     return $choices;
 });
 
+// ✅ Match rule logic for "Language"
 add_filter('acf/location/rule_match/language', function ($match, $rule, $options) {
-    if (function_exists('pll_get_post_language') && isset($options['post_id'])) {
-        $post_lang = pll_get_post_language($options['post_id']);
-        if ($rule['operator'] === "==") {
-            $match = ($post_lang === $rule['value']);
-        } elseif ($rule['operator'] === "!=") {
-            $match = ($post_lang !== $rule['value']);
-        }
+    $post_id = $options['post_id'] ?? 0;
+    $current_language = get_field('language', $post_id);
+
+    if ($rule['operator'] === '==') {
+        $match = ($current_language === $rule['value']);
+    } elseif ($rule['operator'] === '!=') {
+        $match = ($current_language !== $rule['value']);
     }
     return $match;
 }, 10, 3);
 
+// 🛠 One-time fixer: assign language to existing Member posts
+function assign_language_to_existing_members() {
+    // Query all Member posts
+    $members = get_posts([
+        'post_type'      => 'member',
+        'posts_per_page' => -1,
+        'post_status'    => 'any'
+    ]);
 
-
-// Allow Polylang to use the same slug for different languages in URLs
-add_filter( 'pll_get_the_terms', '__return_false' );
-add_filter( 'pll_get_the_post_types', '__return_false' );
-
-// Force WordPress to allow duplicate slugs for translated pages
-add_filter( 'wp_unique_post_slug', function( $slug, $post_ID, $post_status, $post_type, $post_parent, $original_slug ) {
-    if ( function_exists( 'pll_get_post' ) ) {
-        $translated_post_ID = pll_get_post( $post_ID, pll_default_language() );
-        if ( $translated_post_ID && $slug === $original_slug ) {
-            return $original_slug; // Use the same slug for translation
+    foreach ($members as $member) {
+        // Only assign if language is not set
+        if (!get_field('language', $member->ID)) {
+            // 📝 Guess language: set to 'ja' (Japanese) by default
+            update_field('language', 'ja', $member->ID);
         }
     }
-    return $slug;
-}, 10, 6 );
+
+    echo "✅ Language field assigned to " . count($members) . " members.";
+}
+// assign_language_to_existing_members();
 
 
+/**
+ * Adjust member post type slugs based on language
+ */
+function custom_member_post_type_slug($args, $post_type) {
+    if ($post_type === 'member') {
+        // Check if we are editing an English member in admin
+        if (is_admin() && isset($_GET['post']) && function_exists('get_field')) {
+            $post_id = intval($_GET['post']);
+            $language = get_field('language', $post_id);
+
+            if ($language === 'en') {
+                $args['rewrite']['slug'] = 'en/member'; // English member
+            } else {
+                $args['rewrite']['slug'] = 'member'; // Japanese member
+            }
+        } else {
+            // Frontend: default to Japanese for rewrite rules
+            $args['rewrite']['slug'] = 'member';
+        }
+    }
+    return $args;
+}
+add_filter('register_post_type_args', 'custom_member_post_type_slug', 10, 2);
 
 
+function register_custom_post_type_event()
+{
+    register_post_type('event', [
+        'labels' => [
+            'name' => 'Events',
+            'singular_name' => 'Event',
+        ],
+        'public' => true,
+        'show_in_menu' => true,
+        'supports' => ['title', 'editor', 'thumbnail'],
+        'show_in_rest' => true,
+    ]);
+}
+add_action('init', 'register_custom_post_type_event');
 
+add_filter('language_attributes', function($output) {
+    // Get current URL
+    $current_url = $_SERVER['REQUEST_URI'];
 
+    // Check if we are on the English Events archive
+    if (strpos($current_url, '/en/events') === 0) {
+        // Replace lang="ja" with lang="en"
+        $output = str_replace('lang="ja"', 'lang="en"', $output);
+    }
 
-
-
-
-
+    return $output;
+});

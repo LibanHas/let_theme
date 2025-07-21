@@ -56,10 +56,10 @@ $container = get_theme_mod('understrap_container_type');
               function render_member_card_en($post) {
                   setup_postdata($post);
                   $post_id = $post->ID;
-                  $member_type = get_field('member_type', $post_id);
-                  $student_level = get_field('student_level', $post_id);
-                  $student_year = get_field('student_year', $post_id);
-                  $employment_title = get_field('employment_title_en', $post_id); // 👈 Use English title if available
+                  $member_type = get_field('member_type_en', $post_id);
+                  $student_level = get_field('student_level_en', $post_id);
+                  $student_year = get_field('student_year_en', $post_id);
+                  $employment_title = get_field('employment_title_en', $post_id);
               ?>
               <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
                 <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
@@ -87,15 +87,14 @@ $container = get_theme_mod('understrap_container_type');
                 'posts_per_page' => -1,
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
-                'tax_query' => [
+                'meta_query' => [
                     [
                         'taxonomy' => 'language',
                         'field'    => 'slug',
                         'terms'    => 'en', // Only English posts
                     ],
                 ],
-            ]);
-            
+              ]);
 
               $faculty = [];
               $alumni = [];
@@ -105,8 +104,8 @@ $container = get_theme_mod('understrap_container_type');
               if ($members->have_posts()) {
                   while ($members->have_posts()) {
                       $members->the_post();
-                      $type = get_field('member_type');
-                      $level = get_field('student_level');
+                      $type = get_field('member_type_en');
+                      $level = get_field('student_level_en');
 
                       switch ($type) {
                           case 'faculty': $faculty[] = get_post(); break;
@@ -173,15 +172,15 @@ $container = get_theme_mod('understrap_container_type');
               <?php endif; ?>
 
               <!-- Former Members -->
-                <?php
+              <?php
                 $faculty_alumni = [];
                 $student_alumni = [];
                 $staff_alumni = [];
 
                 foreach ($alumni as $post) {
                     setup_postdata($post);
-                    $type = get_field('member_type');
-                    $level = get_field('student_level');
+                    $type = get_field('member_type_en');
+                    $level = get_field('student_level_en');
 
                     if ($type === 'faculty') {
                         $faculty_alumni[] = $post;
@@ -191,52 +190,52 @@ $container = get_theme_mod('understrap_container_type');
                         $staff_alumni[] = $post;
                     }
                 }
-                ?>
+              ?>
 
-                <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
-                <div class="member-group-section group-alumni accordion-section">
+              <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
+              <div class="member-group-section group-alumni accordion-section">
                 <div class="member-subheading">
-                    <h2 class="subheading-title">Former Members</h2>
-                    <div class="subheading-line"></div>
+                  <h2 class="subheading-title">Former Members</h2>
+                  <div class="subheading-line"></div>
                 </div>
 
                 <!-- Former Faculty -->
                 <?php if (!empty($faculty_alumni)) : ?>
                 <div class="accordion-item">
-                    <button class="accordion-header" type="button" data-target="faculty-panel-en">
+                  <button class="accordion-header" type="button" data-target="faculty-panel-en">
                     Former Faculty <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-panel" id="faculty-panel-en">
+                  </button>
+                  <div class="accordion-panel" id="faculty-panel-en">
                     <ol>
-                        <?php foreach ($faculty_alumni as $post) : setup_postdata($post); ?>
-                        <li>
+                      <?php foreach ($faculty_alumni as $post) : setup_postdata($post); ?>
+                      <li>
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         <?php
                         $title = get_field('employment_title_en');
                         if ($title) echo ' (' . esc_html($title) . ')';
                         ?>
-                        </li>
-                        <?php endforeach; ?>
+                      </li>
+                      <?php endforeach; ?>
                     </ol>
-                    </div>
+                  </div>
                 </div>
                 <?php endif; ?>
 
                 <!-- Former Students -->
                 <?php if (!empty($student_alumni)) : ?>
                 <div class="accordion-item">
-                    <button class="accordion-header" type="button" data-target="student-panel-en">
+                  <button class="accordion-header" type="button" data-target="student-panel-en">
                     Former Students <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-panel" id="student-panel-en">
+                  </button>
+                  <div class="accordion-panel" id="student-panel-en">
                     <ul class="alumni-list with-icon">
-                        <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
-                        <li>
+                      <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
+                      <li>
                         <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         <?php
-                        $level = get_field('student_level');
-                        $year = get_field('student_year');
+                        $level = get_field('student_level_en');
+                        $year = get_field('student_year_en');
                         if ($level && $level !== 'na') {
                             if ($level === 'doctoral' || $level === 'masters') {
                                 if ($year) {
@@ -248,37 +247,37 @@ $container = get_theme_mod('understrap_container_type');
                             }
                         }
                         ?>
-                        </li>
-                        <?php endforeach; ?>
+                      </li>
+                      <?php endforeach; ?>
                     </ul>
-                    </div>
+                  </div>
                 </div>
                 <?php endif; ?>
 
                 <!-- Former Staff -->
                 <?php if (!empty($staff_alumni)) : ?>
                 <div class="accordion-item">
-                    <button class="accordion-header" type="button" data-target="staff-panel-en">
+                  <button class="accordion-header" type="button" data-target="staff-panel-en">
                     Former Staff <span class="accordion-icon">+</span>
-                    </button>
-                    <div class="accordion-panel" id="staff-panel-en">
+                  </button>
+                  <div class="accordion-panel" id="staff-panel-en">
                     <ul class="alumni-list with-icon">
-                        <?php foreach ($staff_alumni as $post) : setup_postdata($post); ?>
-                        <li>
+                      <?php foreach ($staff_alumni as $post) : setup_postdata($post); ?>
+                      <li>
                         <img src="<?php echo get_template_directory_uri(); ?>/images/briefcase-business.svg" alt="" class="alumni-icon" />
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         <?php
                         $title = get_field('employment_title_en');
                         if ($title) echo ' (' . esc_html($title) . ')';
                         ?>
-                        </li>
-                        <?php endforeach; ?>
+                      </li>
+                      <?php endforeach; ?>
                     </ul>
-                    </div>
+                  </div>
                 </div>
                 <?php endif; ?>
-                </div>
-                <?php endif; ?>
+              </div>
+              <?php endif; ?>
             </div>
           </div>
         </main>
