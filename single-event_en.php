@@ -1,0 +1,151 @@
+<?php
+// Exit if accessed directly.
+defined('ABSPATH') || exit;
+
+get_header();
+$container = get_theme_mod('understrap_container_type');
+
+// Inside The Loop
+while (have_posts()) : the_post();
+
+  // Hardcode language to English
+  $lang = 'en';
+
+  // ACF fields
+  $start_time = get_field('event_start_time');
+  $end_time = get_field('event_end_time');
+  $format = get_field('event_format');
+  $thumbnail = get_field('event_thumbnail');
+  $body = get_field('event_body');
+
+  $date_mode = get_field('event_date_mode');
+  $start_date = get_field('event_date_start');
+  $end_date = get_field('event_date_end');
+  $second_date = get_field('event_date_second');
+  $category_value = get_field('event_category');
+
+  // Category labels and classes
+  $category_labels = [
+    'symposiums'   => 'Symposium',
+    'workshops'    => 'Workshop',
+    'lectures'     => 'Lecture',
+    'conferences'  => 'Conference',
+    'expo'         => 'Expo',
+    'camp'         => 'Camp',
+    'visit'        => 'Visit',
+    'social_event' => 'Social Event',
+    'news'         => 'News',
+  ];
+
+  $category_classes = [
+    'symposiums'   => 'tag-symposium',
+    'workshops'    => 'tag-workshop',
+    'lectures'     => 'tag-lecture',
+    'conferences'  => 'tag-conference',
+    'expo'         => 'tag-expo',
+    'camp'         => 'tag-camp',
+    'visit'        => 'tag-visit',
+    'social_event' => 'tag-social',
+    'news'         => 'tag-news',
+  ];
+
+  $category_label = $category_labels[$category_value] ?? 'Event';
+  $tag_class = $category_classes[$category_value] ?? 'tag-event';
+
+  // Format dates
+  $weekday_map = ['Sun' => 'Sun', 'Mon' => 'Mon', 'Tue' => 'Tue', 'Wed' => 'Wed', 'Thu' => 'Thu', 'Fri' => 'Fri', 'Sat' => 'Sat'];
+
+  $formatted_dates = '';
+  if ($date_mode === 'single' && $start_date) {
+    $ts = strtotime($start_date);
+    $weekday = $weekday_map[date('D', $ts)] ?? '';
+    $formatted_dates = date('F j, Y', $ts) . ' (' . $weekday . ')';
+  } elseif ($date_mode === 'range' && $start_date && $end_date) {
+    $ts1 = strtotime($start_date);
+    $ts2 = strtotime($end_date);
+    $formatted_dates = date('F j, Y', $ts1) . ' – ' . date('F j, Y', $ts2);
+  } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
+    $ts1 = strtotime($start_date);
+    $ts2 = strtotime($second_date);
+    $formatted_dates = date('F j, Y', $ts1) . ', ' . date('F j, Y', $ts2);
+  }
+
+  $format_labels = [
+    'online'    => 'Online',
+    'in_person' => 'In-person',
+    'hybrid'    => 'Hybrid',
+  ];
+?>
+
+<div class="wrapper event-single">
+  <div class="<?php echo esc_attr($container); ?>" id="content">
+    <div class="row">
+      <div class="col-md-12 content-area" id="primary">
+        <main class="site-main" id="main" role="main">
+
+          <section class="section-spacing">
+            <div class="container">
+              <div class="events-header">
+                <h1 class="page-title">Events</h1>
+                <h2 class="page-subtitle">Event Details</h2>
+              </div>
+
+              <h2 class="event-title"><?php the_title(); ?></h2>
+
+              <div class="event-meta-grid">
+                <?php if ($formatted_dates): ?>
+                  <div class="event-meta-item">
+                    <span class="event-icon">
+                      <img src="<?php echo get_template_directory_uri(); ?>/images/calendar-days-solid.png" alt="Calendar Icon">
+                    </span>
+                    <div class="event-meta-text"><?php echo $formatted_dates; ?></div>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($start_time && $end_time): ?>
+                  <div class="event-meta-item">
+                    <span class="event-icon">
+                      <img src="<?php echo get_template_directory_uri(); ?>/images/Vector.png" alt="Clock Icon">
+                    </span>
+                    <div class="event-meta-text"><?php echo esc_html(date('H:i', strtotime($start_time))); ?> – <?php echo esc_html(date('H:i', strtotime($end_time))); ?></div>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($format): ?>
+                  <div class="event-meta-item">
+                    <span class="event-icon">
+                      <img src="<?php echo get_template_directory_uri(); ?>/images/location-dot-solid.png" alt="Location Icon">
+                    </span>
+                    <div class="event-meta-text"><?php echo esc_html($format_labels[$format] ?? $format); ?></div>
+                  </div>
+                <?php endif; ?>
+
+                <?php if ($category_label): ?>
+                  <div class="event-meta-item">
+                    <span class="event-tag <?php echo esc_attr($tag_class); ?>"><?php echo esc_html($category_label); ?></span>
+                  </div>
+                <?php endif; ?>
+              </div>
+
+              <hr class="news-divider">
+
+              <div class="event-description content-block">
+                <?php the_content(); ?>
+              </div>
+
+              <?php if (!empty($thumbnail) && is_array($thumbnail) && isset($thumbnail['url'])): ?>
+                <div class="event-image">
+                  <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt'] ?? ''); ?>">
+                </div>
+              <?php endif; ?>
+            </div>
+          </section>
+
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php endwhile; ?>
+<?php get_footer(); ?>

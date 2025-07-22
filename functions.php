@@ -689,24 +689,24 @@ add_filter('language_attributes', function($output) {
 /**
  * Temporarily register the old News CPT
  */
-function register_custom_post_type_news()
-{
-    register_post_type('news', [
-        'labels' => [
-            'name' => 'News (OLD)',
-            'singular_name' => 'News (OLD)',
-            'add_new_item' => 'Add New News (OLD)',
-            'edit_item' => 'Edit News (OLD)',
-            'new_item' => 'New News (OLD)',
-            'view_item' => 'View News (OLD)',
-            'search_items' => 'Search News (OLD)',
-            'not_found' => 'No News (OLD) found',
-            'not_found_in_trash' => 'No News (OLD) found in Trash',
-        ],
-        'public' => true,
-        'show_in_menu' => true, // ✅ Show it in admin menu
-        'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
-        'show_in_rest' => true, // ✅ Enable block editor
-    ]);
-}
-add_action('init', 'register_custom_post_type_news');
+// function register_custom_post_type_news()
+// {
+//     register_post_type('news', [
+//         'labels' => [
+//             'name' => 'News (OLD)',
+//             'singular_name' => 'News (OLD)',
+//             'add_new_item' => 'Add New News (OLD)',
+//             'edit_item' => 'Edit News (OLD)',
+//             'new_item' => 'New News (OLD)',
+//             'view_item' => 'View News (OLD)',
+//             'search_items' => 'Search News (OLD)',
+//             'not_found' => 'No News (OLD) found',
+//             'not_found_in_trash' => 'No News (OLD) found in Trash',
+//         ],
+//         'public' => true,
+//         'show_in_menu' => true, // ✅ Show it in admin menu
+//         'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
+//         'show_in_rest' => true, // ✅ Enable block editor
+//     ]);
+// }
+// add_action('init', 'register_custom_post_type_news');

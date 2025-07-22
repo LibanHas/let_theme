@@ -9,26 +9,21 @@ $container = get_theme_mod('understrap_container_type');
 // Inside The Loop
 while ( have_posts() ) : the_post();
 
-  // Detect post language via ACF
-  $lang_raw = get_field('news_language') ?? pll_current_language();
-  $lang = ($lang_raw === 'en' || $lang_raw === 'en-US') ? 'en' : 'ja';
-  echo '<pre>Language Raw: ' . esc_html($lang_raw) . '</pre>';
-
-
-  
+  // Set language manually for EN
+  $lang = 'en';
 
   // Define labels and classes
   $category_labels = [
-    'symposiums'   => ['ja' => 'シンポジウム',     'en' => 'Symposium'],
-    'workshops'    => ['ja' => 'ワークショップ', 'en' => 'Workshop'],
-    'lectures'     => ['ja' => '講演',           'en' => 'Lecture'],
-    'conferences'  => ['ja' => 'カンファレンス', 'en' => 'Conference'],
-    'publications' => ['ja' => '出版物',         'en' => 'Publication'],
-    'media'        => ['ja' => 'メディア掲載',   'en' => 'Media'],
-    'awards'       => ['ja' => '受賞',           'en' => 'Award'],
-    'projects'     => ['ja' => 'プロジェクト',   'en' => 'Project'],
-    'contests'     => ['ja' => 'コンテスト',     'en' => 'Contest'],
-    'news'         => ['ja' => 'ニュース',       'en' => 'News']
+    'symposiums'   => 'Symposium',
+    'workshops'    => 'Workshop',
+    'lectures'     => 'Lecture',
+    'conferences'  => 'Conference',
+    'publications' => 'Publication',
+    'media'        => 'Media',
+    'awards'       => 'Award',
+    'projects'     => 'Project',
+    'contests'     => 'Contest',
+    'news'         => 'News'
   ];
 
   $category_classes = [
@@ -48,9 +43,8 @@ while ( have_posts() ) : the_post();
   $date_raw = get_field('news_date');
   $date = $date_raw ? date('Y/m/d', strtotime($date_raw)) : '';
   $category = get_field('news_category');
-  $category_label = $category_labels[$category][$lang] ?? 'News';
+  $category_label = $category_labels[$category] ?? 'News';
   $category_class = $category_classes[$category] ?? 'tag-news';
-  $description = get_field('news_description');
   $body = get_field('news_body');
   $title = get_the_title();
 ?>
@@ -65,13 +59,11 @@ while ( have_posts() ) : the_post();
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title">News</h1>
-<h2 class="page-subtitle">
-  <?php echo (get_locale() === 'ja') ? 'ニュース' : 'Latest updates'; ?>
-</h2>
+                <h2 class="page-subtitle">Latest updates</h2>
               </div>
 
               <div class="news-inner">
-               
+
                 <div class="news-meta">
                   <span class="news-date"><?php echo esc_html($date); ?></span>
                   <?php if ($category): ?>

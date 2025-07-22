@@ -47,23 +47,65 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
 
 
-<section class="home-hero-section">
+<section class="home-hero-section-en">
   <div class="hero-inner">
     <!-- Left: Logo -->
     <div class="hero-logo">
-      <img 
-        src="<?php echo get_template_directory_uri(); ?>/images/let_logo.svg"
-        alt="LET Lab Logo"
-        class="hero-logo-img fade-in-logo"
-      />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150.43 150.45" width="150" height="150">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: #cfdb00;
+                        stroke: #cfdb00;
+                    }
+
+                    .cls-1, .cls-2 {
+                        stroke-miterlimit: 10;
+                    }
+
+                    .cls-3 {
+                        fill: #71b230;
+                    }
+
+                    .cls-2 {
+                        fill: #fff;
+                        stroke: #fff;
+                    }
+
+                    .cls-4 {
+                        fill: #8ec31f;
+                    }
+                </style>
+            </defs>
+            <g id="Layer_4" data-name="Layer 4">
+                <path d="M.92,82.59c.04.36.09.72.13,1.09l.07.02c-.04-.36-.1-.72-.14-1.09l-.06-.02Z"></path>
+                <path class="cls-4" d="M75.3.29C34.04.29.59,33.73.59,74.99c0,2.57.13,5.12.38,7.62l23.8,7.34,25.1-17.96,25.42,2.99,25.16-18.21,25.64-5.11,15.17-11.48c.16.3.31.6.46.9l-15.22,11.52-25.65,5.12-25.29,18.32-.19-.02-25.23-2.97-25.19,18.02-23.84-7.36c4.32,37.15,35.87,66,74.18,66,41.26,0,74.71-33.45,74.71-74.7S116.55.29,75.3.29Z"></path>
+            </g>
+            <g id="Layer_5" data-name="Layer 5">
+                <path class="cls-3" d="M142.2,41.68l-15.22,11.52-25.65,5.12-25.29,18.32-.19-.02-25.23-2.97-25.19,18.02-23.9-7.38c4.24,37.24,35.83,66.17,74.21,66.17,41.26,0,74.71-33.45,74.71-74.71,0-12.27-2.98-23.85-8.22-34.06Z"></path>
+            </g>
+            <g id="network">
+                <path class="cls-1" d="M52.54,73.07c-.19,1.58-1.62,2.71-3.2,2.53s-2.71-1.62-2.53-3.2,1.62-2.71,3.2-2.53,2.71,1.62,2.53,3.2ZM75.04,72.56c-1.58-.19-3.01.95-3.2,2.53s.95,3.01,2.53,3.2,3.01-.95,3.2-2.53-.95-3.01-2.53-3.2ZM99.86,54.68c-1.58-.19-3.01.95-3.2,2.53s.95,3.01,2.53,3.2,3.01-.95,3.2-2.53-.95-3.01-2.53-3.2ZM125.1,49.67c-1.58-.19-3.01.95-3.2,2.53s.95,3.01,2.53,3.2,3.01-.95,3.2-2.53-.95-3.01-2.53-3.2ZM25.27,87.24c-1.58-.19-3.01.95-3.2,2.53s.95,3.01,2.53,3.2,3.01-.95,3.2-2.53-.95-3.01-2.53-3.2ZM1.51,84.8l20.08,6.32.99-3.28-21.28-7.13.21,4.09ZM27.8,90.44l21.07-15.93-1.31-2.53-21.3,16.1,1.55,2.37ZM52.38,73.73l20.13,2.42.31-2.92-20.44-2.25v2.74ZM77.56,75.76l20.85-15.89-1.76-2.66-20.47,15.75,1.37,2.8ZM102.39,57.88l20.95-4.02-.56-2.82-21.35,3.89.97,2.94ZM127.61,52.06l13.97-10.94-1.25-1.9-14.12,10.81,1.41,2.03Z"></path>
+                <ellipse class="cls-1" cx="47.91" cy="73.84" rx=".91" ry=".96"></ellipse>
+            </g>
+            <g id="letters">
+                <polygon class="cls-2" points="33.54 52.1 44.66 52.1 44.66 95.04 80.42 95.04 80.42 106.16 33.54 106.16 33.54 52.1"></polygon>
+                <polygon class="cls-2" points="56.46 27.33 89.54 27.33 89.54 38.17 67.58 38.17 67.72 52.1 89.54 52.1 89.54 62.38 67.3 62.38 67.3 80.4 89.54 80.4 89.54 91.24 56.46 91.24 56.46 27.33"></polygon>
+                <polygon class="cls-2" points="90.46 65.46 124.46 65.46 124.46 76.34 113.33 76.34 112.91 121.35 103.06 121.35 102.95 76.27 90.63 76.23 90.46 65.46"></polygon>
+                <rect class="cls-2" x="32.06" y="108.48" width="3.94" height="12.87"></rect>
+                <rect class="cls-2" x="68.1" y="108.48" width="4.9" height="12.87"></rect>
+                <rect class="cls-2" x="93.54" y="57.55" width="16.97" height="3.85"></rect>
+                <polygon class="cls-2" points="117.5 41.82 121.91 44.64 114.73 59.28 110.51 55.8 117.5 41.82"></polygon>
+            </g>
+        </svg>
     </div>
 
     <!-- Right: Tagline and Intro Text -->
     <div class="hero-content">
-      <h1 class="hero-title">
+      <h1 class="hero-title-en">
         Committed to evidence-based, <br />learner-centered education
       </h1>
-      <p class="hero-description">
+      <p class="hero-description-en">
         At <strong>LET (Learning and Educational Technologies Research Unit / Ogata Lab)</strong>, we design and develop digital tools—such as interactive reading systems, learning dashboards, and school platforms—to support evidence-based, learner-centered education. Our mission is to make learning more visible, personalized, and effective through data and technology.
       </p>
 
@@ -91,7 +133,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     <div class="swiper-wrapper">
     <?php
   $args = [
-    'post_type' => ['news', 'event'],
+    'post_type' => ['news_jp', 'news_en', 'event_jp', 'event_en'],
     'posts_per_page' => 10,
     'orderby' => 'date',
     'order' => 'DESC',
