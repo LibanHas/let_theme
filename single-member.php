@@ -1,6 +1,6 @@
 <?php
 /**
- * Template for displaying individual member profile.
+ * Template for displaying individual member profile (JP + EN combined).
  *
  * @package Understrap
  */
@@ -8,8 +8,9 @@
 get_header();
 $container = get_theme_mod('understrap_container_type');
 
-// Get current language
-$lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
+// Check ACF language field (fallback to 'ja')
+$lang = get_field('language') ?: 'ja';
+$suffix = ($lang === 'en') ? '_en' : '';
 ?>
 
 <main id="member-profile-page">
@@ -17,7 +18,7 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
   <section class="member-cover section-spacing alignfull">
     <div class="cover-inner <?php echo esc_attr($container); ?>">
       <h2 class="page-title"><?php echo ($lang === 'en') ? 'Members' : 'メンバー'; ?></h2>
-      <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'メンバー'; ?></p>
+      <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'メンバープロフィール'; ?></p>
     </div>
   </section>
 
@@ -34,15 +35,13 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
       <?php endif; ?>
           <h1 class="member-name"><?php the_title(); ?></h1>
           <?php
-          // Fetch language-specific employment title
-          $employment_title = get_field('employment_title' . ($lang === 'en' ? '_en' : ''));
-          $student_level = get_field('student_level' . ($lang === 'en' ? '_en' : ''));
-          $student_year = get_field('student_year' . ($lang === 'en' ? '_en' : ''));
+          $employment_title = get_field("employment_title$suffix");
+          $student_level = get_field("student_level$suffix");
+          $student_year = get_field("student_year$suffix");
 
           if ($employment_title) {
               echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
           } elseif ($student_level) {
-              // Map student levels
               $level_labels = [
                   'ja' => [
                       'doctoral'         => '博士',
@@ -60,8 +59,8 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
               $level_label = $level_labels[$lang][$student_level] ?? '';
 
               if ($level_label && $student_year) {
-                  $year_label = ($lang === 'en') ? $student_year . ' Year' : $student_year . '年';
-                  echo '<p class="member-position">' . esc_html($level_label . ' (' . $year_label . ')') . '</p>';
+                  $year_label = ($lang === 'en') ? "Year $student_year" : "{$student_year}年";
+                  echo '<p class="member-position">' . esc_html("$level_label ($year_label)") . '</p>';
               } elseif ($level_label) {
                   echo '<p class="member-position">' . esc_html($level_label) . '</p>';
               }
@@ -77,7 +76,7 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
       <h2 class="member-section-title"><?php echo ($lang === 'en') ? 'Profile' : 'プロフィール'; ?></h2>
       <ul class="member-profile-list">
         <?php
-        // Field labels (Japanese & English)
+        // Define field labels
         $fields = [
           'birthplace'            => ['ja' => '出身地', 'en' => 'Birthplace'],
           'degree'                => ['ja' => '学位', 'en' => 'Degree'],
@@ -91,7 +90,7 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
         ];
 
         foreach ($fields as $field => $labels) {
-          $value = get_field($field . ($lang === 'en' ? '_en' : ''));
+          $value = get_field($field . $suffix);
           if ($value) {
               echo '<li><strong>' . esc_html($labels[$lang]) . ':</strong> ';
               if ($field === 'link') {

@@ -11,7 +11,7 @@ get_header();
 
 $container = get_theme_mod('understrap_container_type');
 // Detect current language with Polylang
-$lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
+$lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
 ?>
 
 <div class="wrapper" id="page-members">
@@ -93,13 +93,21 @@ $lang = function_exists('pll_current_language') ? pll_current_language() : 'ja';
               </div>
               <?php wp_reset_postdata(); }
 
-              // Query: Polylang automatically filters posts by language
-              $members = new WP_Query([
-                'post_type' => 'member',
-                'posts_per_page' => -1,
-                'orderby' => 'menu_order',
-                'order' => 'ASC'
-              ]);
+$members = new WP_Query([
+  'post_type' => 'member',
+  'posts_per_page' => -1,
+  'meta_query' => [
+      [
+          'key' => 'language',
+          'value' => $lang,
+          'compare' => '='
+      ]
+  ],
+  'orderby' => 'menu_order',
+  'order' => 'ASC'
+]);
+
+
 
               $faculty = [];
               $alumni = [];

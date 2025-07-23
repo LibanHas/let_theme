@@ -8,37 +8,65 @@
  */
 
 // Exit if accessed directly.
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-$bootstrap_version = get_theme_mod( 'understrap_bootstrap_version', 'bootstrap4' );
-$navbar_type       = get_theme_mod( 'understrap_navbar_type', 'collapse' );
-?>
-<!DOCTYPE html>
-<?php
-// Determine page language
-$page_lang = 'ja'; // Default: Japanese page
+$bootstrap_version = get_theme_mod('understrap_bootstrap_version', 'bootstrap4');
+$navbar_type       = get_theme_mod('understrap_navbar_type', 'collapse');
 
-// Check for /en/ in URL for archives & CPTs
+// Detect current page language (default: Japanese)
+$page_lang = 'ja';
 if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
     $page_lang = 'en';
-} else {
-    // On singular posts/pages, fallback to translation fields
-    if (is_singular()) {
-        if (get_field('translation_en')) {
-            $page_lang = 'ja'; // Has English translation → Japanese page
-        } elseif (get_field('translation_jp')) {
-            $page_lang = 'en'; // Has Japanese translation → English page
-        }
+}
+
+// Detect language for custom post type archives
+if (is_post_type_archive('news_jp') || strpos($_SERVER['REQUEST_URI'], '/news/') === 0 ||
+    is_post_type_archive('event_jp') || strpos($_SERVER['REQUEST_URI'], '/events/') === 0) {
+    $page_lang = 'ja';
+} elseif (is_post_type_archive('news_en') || strpos($_SERVER['REQUEST_URI'], '/en/news/') === 0 ||
+        is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
+    $page_lang = 'en';
+} elseif (is_post_type_archive('event_jp') || strpos($_SERVER['REQUEST_URI'], '/events/') === 0) {
+    $page_lang = 'ja';
+} elseif (is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
+    $page_lang = 'en';
+}
+
+// Prepare translation link and label
+$current_id = is_singular() ? get_the_ID() : null;
+$translation_url = '';
+$link_text = ($page_lang === 'ja') ? 'English' : '日本語';
+
+if ($current_id) {
+    // Get translation from ACF field
+    $translation_field = ($page_lang === 'ja') ? 'translation_en' : 'translation_jp';
+    $translation = get_field($translation_field, $current_id);
+
+    if ($translation) {
+        $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
+            ? $translation
+            : get_permalink($translation);
     }
 }
+
+// Fallbacks for archives or front page
+if (!$translation_url) {
+    if (is_post_type_archive('news_jp') || strpos($_SERVER['REQUEST_URI'], '/news/') === 0) {
+        $translation_url = site_url('/en/news/');
+    } elseif (is_post_type_archive('news_en') || strpos($_SERVER['REQUEST_URI'], '/en/news/') === 0) {
+        $translation_url = site_url('/news/');
+    } elseif (is_post_type_archive('event_jp') || strpos($_SERVER['REQUEST_URI'], '/events/') === 0) {
+        $translation_url = site_url('/en/events/');
+    } elseif (is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
+        $translation_url = site_url('/events/');
+    }    
+}
 ?>
-
-
+<!DOCTYPE html>
 <html lang="<?php echo esc_attr($page_lang); ?>">
 
-
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="profile" href="http://gmpg.org/xfn/11">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +82,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
 
 <body <?php body_class(); ?> <?php understrap_body_attributes(); ?>>
 
-<?php do_action( 'wp_body_open' ); ?>
+<?php do_action('wp_body_open'); ?>
 <div class="site" id="page">
 
     <!-- ******************* The Navbar Area ******************* -->
@@ -93,7 +121,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
                     ?>
                 </nav>
 
-                <!-- Right: Kyodai Logo + Hamburger -->
+                <!-- Right: Kyodai Logo + Language Switcher + Hamburger -->
                 <div class="navbar-right">
                     <div class="kyodai-logo-container">
                         <a href="https://www.kyoto-u.ac.jp/en" target="_blank" rel="noopener noreferrer" class="kyodai-logo-wrapper">
@@ -101,33 +129,37 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
                         </a>
                     </div>
 
-                    <!-- 🔽 Language switcher -->
+                   <!-- Language Switcher -->
 <div class="language-switcher">
     <?php
-    $translation_url = '';
     $link_text = ($page_lang === 'ja') ? 'English' : '日本語';
 
     if (is_singular()) {
-        // For single Pages or Posts
         $current_id = get_the_ID();
-        $translation_field = ($page_lang === 'ja') ? 'translation_en' : 'translation_jp';
-        $translation = get_field($translation_field, $current_id);
-
-        if ($translation) {
-            $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
-                ? $translation
-                : get_permalink($translation);
+        if ($page_lang === 'ja') {
+            // Japanese page → find EN translation
+            $translation = get_field('translation_en', $current_id);
+            if ($translation) {
+                $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
+                    ? $translation
+                    : get_permalink($translation);
+            } else {
+                // fallback for missing field: swap / with /en/
+                $translation_url = home_url('/en' . str_replace(home_url(), '', get_permalink($current_id)));
+            }
+        } else {
+            // English page → find JP translation
+            $translation = get_field('translation_jp', $current_id);
+            if ($translation) {
+                $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
+                    ? $translation
+                    : get_permalink($translation);
+            } else {
+                // fallback for missing field: swap /en/ with /
+                $translation_url = str_replace('/en/', '/', get_permalink($current_id));
+            }
         }
-    } elseif (is_post_type_archive('news_jp')) {
-        $translation_url = site_url('/en/news/');
-    } elseif (is_post_type_archive('news_en')) {
-        $translation_url = site_url('/news/');
-    } elseif (is_post_type_archive('event_jp')) {
-        $translation_url = site_url('/en/events/');
-    } elseif (is_post_type_archive('event_en')) {
-        $translation_url = site_url('/events/');
-    } elseif (is_home()) {
-        // Blog home (if you use it)
+    } elseif (is_front_page()) {
         $translation_url = ($page_lang === 'ja') ? site_url('/en/') : site_url('/');
     }
 
@@ -138,7 +170,6 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
     }
     ?>
 </div>
-
 
 
                     <div class="hamburger-menu">
@@ -161,12 +192,11 @@ if (strpos($_SERVER['REQUEST_URI'], '/en/') === 0) {
                 $menu_id = $locations[$primary_menu_location] ?? null;
                 $menu = $menu_id ? wp_get_nav_menu_items($menu_id) : [];
 
-                if ($menu) :
-                ?>
+                if ($menu): ?>
                     <div class="page-menu">
                         <?php foreach ($menu as $menu_item): ?>
                             <a href="<?php echo esc_url($menu_item->url); ?>"
-                                class="page-menu__link<?php echo ($menu_item->object_id == get_queried_object_id()) ? ' page-menu__link--current' : ''; ?>">
+                               class="page-menu__link<?php echo ($menu_item->object_id == get_queried_object_id()) ? ' page-menu__link--current' : ''; ?>">
                                 <?php echo esc_html($menu_item->title); ?>
                             </a>
                         <?php endforeach; ?>

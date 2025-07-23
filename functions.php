@@ -105,7 +105,7 @@ function register_member_post_type()
         'public' => true,
         'has_archive' => false,
         'rewrite' => array(
-    'slug' => (function_exists('get_field') && get_field('language') === 'en') ? 'en/member' : 'member',
+            'slug' => 'member', // Use a static slug here
         ),
         'supports' => array('title', 'editor', 'thumbnail', 'page-attributes'),
         'menu_position' => 5,
@@ -115,6 +115,27 @@ function register_member_post_type()
     ));
 }
 add_action('init', 'register_member_post_type');
+
+add_filter('post_type_link', 'custom_member_permalink', 10, 2);
+
+function custom_member_permalink($permalink, $post) {
+    if ($post->post_type === 'member') {
+        $language = get_field('language', $post->ID); // Get ACF field value
+        if ($language === 'en') {
+            // Replace 'member' with 'en/member'
+            $permalink = str_replace('/member/', '/en/member/', $permalink);
+        }
+    }
+    return $permalink;
+}
+
+add_action('init', function () {
+    add_rewrite_rule(
+        '^en/member/([^/]+)/?$',
+        'index.php?post_type=member&name=$matches[1]',
+        'top'
+    );
+});
 
 /**
  * Register Member Group Custom Taxonomy
@@ -710,3 +731,7 @@ add_filter('language_attributes', function($output) {
 //     ]);
 // }
 // add_action('init', 'register_custom_post_type_news');
+
+
+
+

@@ -271,7 +271,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
 
     <?php
     $news_query = new WP_Query([
-      'post_type' => 'news',
+      'post_type' => ['news_jp', 'news_en'],
       'posts_per_page' => 5,
       'meta_key' => 'news_date',
       'orderby' => 'meta_value',
@@ -339,7 +339,7 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
   </div>
 
   <div class="news-button-bottom">
-    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
+    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_en')); ?>" class="btn btn--cta">
       <span>Browse News</span>
     </a>
   </div>
