@@ -21,8 +21,8 @@ get_header();
             <!-- Text Column -->
             <div class="col-12 col-lg-6 mb-4 mb-lg-0 text-lg-start text-center">
               <h1 class="about-hero-title fw-bold mb-4">
-                <span class="d-block d-md-inline">For every learner,</span>
-                <span class="d-block d-md-inline">evidence and technology.</span>
+                <span class="d-block d-md-inline">Integrating evidence and technology</span>
+                <span class="d-block d-md-inline">into every learning experience.</span>
               </h1>
               <p>
                 At the Ogata Lab (LET), we aim to evolve education from something based on intuition and experience into something grounded in evidence and technology.
@@ -44,7 +44,7 @@ get_header();
       <!-- Timeline Section -->
       <section class="timeline-section section-spacing">
         <div class="container">
-          <h2 class="section-title">Milestones of Ogata Lab</h2>
+          <h2 class="section-title milestones">Milestones of Ogata Lab</h2>
           <div class="timeline-wrapper">
           <div class="timeline-line"></div>
 
