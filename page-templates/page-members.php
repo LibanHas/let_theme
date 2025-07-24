@@ -10,7 +10,6 @@ defined('ABSPATH') || exit;
 get_header();
 
 $container = get_theme_mod('understrap_container_type');
-// Detect current language with Polylang
 $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
 ?>
 
@@ -107,8 +106,6 @@ $members = new WP_Query([
   'order' => 'ASC'
 ]);
 
-
-
               $faculty = [];
               $alumni = [];
               $doctoral = [];
@@ -147,7 +144,8 @@ $members = new WP_Query([
                   $posts = $$group;
                   if (!empty($posts)) :
               ?>
-              <div class="member-group-section group-<?php echo $group === 'faculty' ? 'faculty' : 'student'; ?>">
+<div class="member-group-section group-<?php echo $group === 'faculty' ? 'faculty' : 'student'; ?>"
+     style="<?php echo ($group !== $default_filter) ? 'display:none;' : ''; ?>">
                 <div class="member-subheading">
                   <h2 class="subheading-title"><?php echo esc_html($sections[$group]); ?></h2>
                   <div class="subheading-line"></div>
@@ -160,6 +158,126 @@ $members = new WP_Query([
                   endif;
               endforeach;
               ?>
+
+              <!-- Former Members Section -->
+              <?php
+              $faculty_alumni = [];
+              $student_alumni = [];
+              $staff_alumni = [];
+
+              foreach ($alumni as $post) {
+                  setup_postdata($post);
+                  $type = get_field('member_type');
+                  $level = get_field('student_level');
+
+                  if ($type === 'faculty') {
+                      $faculty_alumni[] = $post;
+                  } elseif ($level === 'doctoral' || $level === 'masters' || $level === 'research_student') {
+                      $student_alumni[] = $post;
+                  } else {
+                      $staff_alumni[] = $post;
+                  }
+              }
+              ?>
+
+              <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
+              <div class="member-group-section group-alumni accordion-section" style="display:none;">
+                <div class="member-subheading">
+                  <h2 class="subheading-title"><?php echo $lang === 'ja' ? '元メンバー' : 'Former Members'; ?></h2>
+                  <div class="subheading-line"></div>
+                </div>
+
+                <!-- Former Faculty -->
+                <?php if (!empty($faculty_alumni)) : ?>
+                <div class="accordion-item">
+                  <button class="accordion-header" type="button" data-target="faculty-panel">
+                    <?php echo $lang === 'ja' ? '元 教員' : 'Former Faculty'; ?>
+                    <span class="accordion-icon plus-icon">
+                    <span class="line horizontal"></span>
+                    <span class="line vertical"></span>
+                  </span>
+                  </button>
+                  <div class="accordion-panel" id="faculty-panel">
+                    <ol>
+                      <?php foreach ($faculty_alumni as $post) : setup_postdata($post); ?>
+                      <li>
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <?php
+                        $title = get_field('employment_title');
+                        if ($title) echo '（' . esc_html($title) . '）';
+                        ?>
+                      </li>
+                      <?php endforeach; ?>
+                    </ol>
+                  </div>
+                </div>
+                <?php endif; ?>
+
+                <!-- Former Students -->
+                <?php if (!empty($student_alumni)) : ?>
+                <div class="accordion-item">
+                  <button class="accordion-header" type="button" data-target="student-panel">
+                    <?php echo $lang === 'ja' ? '元 学生（博士・修士）' : 'Former Students (PhD/Masters)'; ?>
+                    <span class="accordion-icon plus-icon">
+                    <span class="line horizontal"></span>
+                    <span class="line vertical"></span>
+                  </span>
+                  </button>
+                  <div class="accordion-panel" id="student-panel">
+                    <ul class="alumni-list with-icon">
+                      <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
+                      <li>
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <?php
+                        $level = get_field('student_level');
+                        $year = get_field('student_year');
+                        if ($level && $level !== 'na') {
+                            if ($level === 'doctoral' || $level === 'masters') {
+                                if ($year) {
+                                    $label = $level === 'doctoral' ? ($lang === 'ja' ? '博士' : 'PhD') : ($lang === 'ja' ? '修士' : 'M');
+                                    echo '（' . esc_html($label . ($lang === 'ja' ? $year . '年' : ' ' . $year)) . '）';
+                                }
+                            } elseif ($level === 'research_student') {
+                                echo $lang === 'ja' ? '（研究生）' : ' (Research Student)';
+                            }
+                        }
+                        ?>
+                      </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                </div>
+                <?php endif; ?>
+
+                <!-- Former Staff -->
+                <?php if (!empty($staff_alumni)) : ?>
+                <div class="accordion-item">
+                  <button class="accordion-header" type="button" data-target="staff-panel">
+                    <?php echo $lang === 'ja' ? '元 スタッフ' : 'Former Staff'; ?>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
+                  </button>
+                  <div class="accordion-panel" id="staff-panel">
+                    <ul class="alumni-list with-icon">
+                      <?php foreach ($staff_alumni as $post) : setup_postdata($post); ?>
+                      <li>
+                        <img src="<?php echo get_template_directory_uri(); ?>/images/briefcase-business.svg" alt="" class="alumni-icon" />
+                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                        <?php
+                        $title = get_field('employment_title');
+                        if ($title) echo '（' . esc_html($title) . '）';
+                        ?>
+                      </li>
+                      <?php endforeach; ?>
+                    </ul>
+                  </div>
+                </div>
+                <?php endif; ?>
+              </div>
+              <?php endif; ?>
             </div>
           </div>
         </main>
@@ -190,6 +308,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+
+
+  
 });
 </script>
 

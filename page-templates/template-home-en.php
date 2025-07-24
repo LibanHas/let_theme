@@ -101,19 +101,19 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     </div>
 
     <!-- Right: Tagline and Intro Text -->
-    <div class="hero-content">
+    <div class="hero-content-en">
       <h1 class="hero-title-en">
         Committed to evidence-based, <br />learner-centered education
       </h1>
       <p class="hero-description-en">
-        At <strong>LET (Learning and Educational Technologies Research Unit / Ogata Lab)</strong>, we design and develop digital tools—such as interactive reading systems, learning dashboards, and school platforms—to support evidence-based, learner-centered education. Our mission is to make learning more visible, personalized, and effective through data and technology.
+        At <strong>LET (Learning and Educational Technologies Research Unit / Ogata Lab)</strong>, we design and develop digital tools—such as interactive reading systems, learning dashboards, and school platforms—to support evidence-based, learner-centered education. Our mission is to make the learning process more visible, personalized, and effective through data and technology.
       </p>
 
       <div class="hero-buttons">
-  <a data-anim-trigger-self data-anim="fade-in" href="/about" class="btn btn--cta">
+  <a data-anim-trigger-self data-anim="fade-in" href="/en/about" class="btn btn--cta">
     <span>Learn more about LET</span>
   </a>
-  <a data-anim-trigger-self data-anim="fade-in" href="/research" class="btn btn--cta">
+  <a data-anim-trigger-self data-anim="fade-in" href="/en/research" class="btn btn--cta">
     <span>Explore our research</span>
   </a>
 </div>
@@ -160,12 +160,12 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     $tag_label = '';
     $description = '';
 
-    if ($post_type === 'news') {
+    if (in_array($post_type, ['news_jp', 'news_en'])) {
       $category_field = get_field_object('news_category');
       $tag_value = $category_field['value'] ?? 'news';
       $tag_label = $category_field['choices'][$tag_value] ?? 'ニュース';
       $description = get_field('news_description') ?: '';
-    } elseif ($post_type === 'event') {
+    } elseif (in_array($post_type, ['event_jp', 'event_en'])) {
       $tag_value = 'event';
       $tag_label = 'イベント';
       $description = get_field('event_title') ?: get_the_title();
@@ -177,7 +177,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     ?>
     <div class="swiper-slide">
     <a href="<?php the_permalink(); ?>" class="update-card-link">
-      <div class="update-card">
+    <div class="update-card">
         <div class="update-date">
           <?php echo esc_html($formatted_date); ?>
           <span class="tag <?php echo esc_attr($tag_class); ?>">
@@ -227,7 +227,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--cta">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/bookroll/" class="btn btn--cta">
           <span>Learn more about BookRoll</span>
         </a>
       </div>
@@ -245,7 +245,7 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
         </p>
       </div>
       <div class="tool-button">
-      <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--cta">
+      <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/logpalette/" class="btn btn--cta">
     <span>Learn more about LogPalette</span>
     </a>
       </div>
@@ -262,9 +262,9 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
     </div>
 
     <div class="news-button-top">
-      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news')); ?>" class="btn btn--cta">
-        <span>Browse News</span>
-      </a>
+    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(home_url('/en/news/')); ?>" class="btn btn--cta">
+  <span>Browse News</span>
+</a>
     </div>
 
     <hr class="news-divider">
@@ -359,7 +359,7 @@ $tag_class = $category_classes[$category_value] ?? 'tag-news';
 Here, we introduce some of the tools and practical use cases we’ve developed in collaboration with schools and educators.
         </p>
         <div class="research-button-top mt-4">
-          <a href="en/research-en/" class="btn btn--cta">
+          <a href="/en/research" class="btn btn--cta">
             <span>Explore our research</span>
           </a>
         </div>
@@ -386,7 +386,7 @@ Here, we introduce some of the tools and practical use cases we’ve developed i
 
     <!-- Mobile-only Button -->
     <div class="research-button-bottom mt-4">
-      <a href="research/" class="btn btn--cta">
+      <a href="/en/research" class="btn btn--cta">
         <span>Explore our research</span>
       </a>
     </div>
@@ -408,7 +408,7 @@ Here, we introduce some of the tools and practical use cases we’ve developed i
 We work together to expand the possibilities of educational technology and create meaningful learning experiences.
       </p>
       <div class="members-button-top mt-4">
-        <a href="members/" class="btn btn--cta">
+        <a href="/en/members" class="btn btn--cta">
           <span>See Member Profiles</span>
         </a>
       </div>
@@ -422,7 +422,7 @@ We work together to expand the possibilities of educational technology and creat
 
     <!-- Mobile-only Button -->
     <div class="members-button-bottom">
-      <a href="members/" class="btn btn--cta">
+      <a href="/en/members" class="btn btn--cta">
         <span>See Member Profiles</span>
       </a>
     </div>
@@ -448,7 +448,7 @@ If you're interested in pursuing graduate studies or would like to visit the lab
       <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--cta">
         <span>Send us an email</span>
       </a>
-      <a href="join-us/" class="btn btn--cta">
+      <a href="/en/join-us" class="btn btn--cta">
         <span>Learn more</span>
       </a>
 

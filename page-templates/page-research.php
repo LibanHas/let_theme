@@ -55,7 +55,7 @@ get_header();
 
 
 
-<section class="theme-section section-spacing research-accordion">
+<section class="theme-section section-spacing accordion research-accordion">
 <div class="theme-inner">
   <div class="container">
     <h2 class="section-heading">テーマ</h2>
@@ -70,9 +70,10 @@ get_header();
           <h3 class="theme-card__title">学習ログの可視化</h3>
           <p class="theme-card__description">学習ログに基づく分析で、授業や学習の質を向上。</p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>
@@ -179,9 +180,10 @@ get_header();
             学習科学の知見と現場のニーズをもとに、<br />教育支援ツールの設計・開発と実証研究を<br />行なっています。
           </p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>
@@ -251,9 +253,10 @@ get_header();
           <h3 class="theme-card__title">学習者モデリング</h3>
           <p class="theme-card__description">学習ログの分析により、個別最適な支援を実現。</p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>
@@ -300,9 +303,10 @@ get_header();
           <p class="theme-card__description">
           学習活動の国際標準xAPIにより、<br />学習ログの一元的な蓄積・活用を実現しています。</p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>
@@ -342,9 +346,10 @@ get_header();
           <h3 class="theme-card__title">実証研究</h3>
           <p class="theme-card__description">学校や教育現場と連携し、<br />実際の授業でツールを活用・検証。</p>
         </div>
-        <div class="theme-card__expand">
-          <span class="accordion-icon">＋</span>
-        </div>
+        <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>

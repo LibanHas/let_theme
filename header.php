@@ -92,16 +92,15 @@ if (!$translation_url) {
 
                 <!-- Left: LET Logo + Text -->
                 <div class="navbar-left">
-                    <div class="logo-container">
-                        <a href="<?php echo home_url(); ?>" class="let-logo-wrapper">
-                            <img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
-                        </a>
-                    </div>
-                    <div class="logo-name">
-                        <em>Learning & Educational<br>
-                        Technologies Research Unit</em>
-                    </div>
-                </div>
+  <a href="<?php echo home_url(); ?>" class="let-logo-wrapper">
+    <div class="logo-container ">
+      <img src="<?php echo get_template_directory_uri(); ?>/images/let_logo.png" alt="LET Logo" class="navbar-logo">
+    </div>
+    <div class="logo-name">
+      <em>Learning & Educational<br>Technologies Research Unit</em>
+    </div>
+  </a>
+</div>
 
                 <!-- Center: Nav Menu -->
                 <nav class="navbar-center">

@@ -341,17 +341,18 @@ function sync_update_date_field($post_id)
 
     $post_type = get_post_type($post_id);
 
-    if ($post_type === 'news') {
-        $news_date = get_field('news_date', $post_id);
-        if ($news_date) {
-            update_field('update_date', $news_date, $post_id);
-        }
-    } elseif ($post_type === 'event') {
-        $event_date = get_field('event_date', $post_id);
-        if ($event_date) {
-            update_field('update_date', $event_date, $post_id);
-        }
+if (in_array($post_type, ['news', 'news_en', 'news_jp'])) {
+    $news_date = get_field('news_date', $post_id);
+    if ($news_date) {
+        update_field('update_date', $news_date, $post_id);
     }
+} elseif (in_array($post_type, ['event', 'event_en', 'event_jp'])) {
+    $event_date = get_field('event_date', $post_id);
+    if ($event_date) {
+        update_field('update_date', $event_date, $post_id);
+    }
+}
+
 }
 add_action('acf/save_post', 'sync_update_date_field', 20);
 
@@ -366,7 +367,7 @@ function manually_sync_update_dates()
     }
 
     $query = new WP_Query([
-        'post_type' => ['news', 'event'],
+        'post_type' => ['news', 'news_en', 'news_jp', 'event', 'event_en', 'event_jp'],
         'posts_per_page' => -1,
         'fields' => 'ids',
     ]);

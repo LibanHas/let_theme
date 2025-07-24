@@ -17,8 +17,8 @@ $suffix = ($lang === 'en') ? '_en' : '';
   <!-- Cover Section -->
   <section class="member-cover section-spacing alignfull">
     <div class="cover-inner <?php echo esc_attr($container); ?>">
-      <h2 class="page-title"><?php echo ($lang === 'en') ? 'Members' : 'メンバー'; ?></h2>
-      <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'メンバープロフィール'; ?></p>
+      <h2 class="page-title">Members</h2>
+      <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'プロフィール'; ?></p>
     </div>
   </section>
 
