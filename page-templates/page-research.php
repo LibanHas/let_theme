@@ -71,102 +71,102 @@ get_header();
           <p class="theme-card__description">学習ログに基づく分析で、授業や学習の質を向上。</p>
         </div>
         <span class="accordion-icon plus-icon">
-  <span class="line horizontal"></span>
-  <span class="line vertical"></span>
-</span>
+        <span class="line horizontal"></span>
+        <span class="line vertical"></span>
+      </span>
       </div>
       <div class="theme-card__bottom">
         <div class="theme-card__line"></div>
         <div class="theme-card__triangle"></div>
       </div>
-    </div>
-    <div class="accordion-panel theme-card__content" id="theme-logs">
-    <div class="research-block">
-    <h4>なぜ可視化するのか？</h4>
-  <p>
-    学習ログとは、教材をどのように読んだか、どこに時間をかけたか、何に注目し、どんな疑問を持ったかを記録したデータです。<br>
-    これまで見えなかった学びの過程を可視化することで、学習者自身の振り返りや、教師による指導の最適化を実現します。
-  </p>
-  </div>
-  <div class="research-block">
-  <h4>可視化される主なログ</h4>
-  <table>
-    <thead>
-      <tr>
-        <th>ログの種類</th>
-        <th>具体例</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>閲覧履歴</strong></td>
-        <td>どの教材をいつ開き、どのページにどれだけ滞在したか</td>
-      </tr>
-      <tr>
-        <td><strong>ハイライト・メモ</strong></td>
-        <td>強調した文章、書き込んだコメント</td>
-      </tr>
-      <tr>
-        <td><strong>クイズの記録</strong></td>
-        <td>解答結果、正答率、再挑戦の有無など</td>
-      </tr>
-      <tr>
-        <td><strong>再訪ログ</strong></td>
-        <td>特定のページや教材へのアクセス頻度</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-  <div class="research-block">
-  <h4>教師にとっての価値</h4>
-  <ul>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 生徒のつまずき箇所を把握し、授業改善に活かす</li>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> クラス全体の傾向と個別の違いを見比べて対応</li>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 経験に基づいた指導を、**エビデンスで裏付ける**</li>
-  </ul>
-  </div>
-  <div class="research-block">
-  <h4>学習者にとっての価値</h4>
-  <ul>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 自分の学習の進め方やクセを <strong>客観的に可視化</strong></li>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> データを手がかりに、復習や振り返りができる</li>
-    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>「自分の学び方を知る」ことで、<strong>学習に自信</strong>が持てる</li>
-  </ul>
-</div>
-<div class="research-block">
-<h4>実践例</h4>
-<div class="theme-example">
-  <div class="theme-example__text">
-    <p><strong>京都市立高校（英語授業）</strong></p>
-    <p>
-      <em>BookRoll</em>を用いた英文読解教材の配信において、生徒は「わからない箇所」を黄色、「重要だと思った箇所」を赤でハイライトしました。<br>
-      授業中に<em>LogPalette</em>でこれらの情報を確認した教師は、多くの生徒が理解に苦しんでいる段落を即座に特定し、その場で授業内容を調整しました。
-    </p>
-  </div>
-  </div>
-  <div class="research-block">
-  <blockquote class="theme-example__quote">
-    <p>「視覚化された情報を頼りに、授業をしながらでも当初の授業プランを変更できるようになりました。」</p>
-    <cite>— 京都市立西京高等学校 英語科 教員</cite>
-  </blockquote>
-</div>
-</div>
-<div class="research-block">
-<h4>関連プロジェクト・論文</h4>
-<ul class="theme-resources">
-  <li>
-    【内閣府】SIP 第2期プロジェクト（2018–2020）<br>
-    <a href="https://www.let.media.kyoto-u.ac.jp/project/sip/" target="_blank">
-      https://www.let.media.kyoto-u.ac.jp/project/sip/
-    </a>
-  </li>
-  <li>
-    【論文】Ogata et al. (2023). <em>Visualizing Learning Behavior for Adaptive Teaching.</em> LAK2023<br>
-    
-  </li>
-</ul>
-</div>
-</div>
+      </div>
+      <div class="accordion-panel theme-card__content" id="theme-logs">
+      <div class="research-block">
+        <h4>なぜ可視化するのか？</h4>
+          <p>
+            学習ログとは、教材をどのように読んだか、どこに時間をかけたか、何に注目し、どんな疑問を持ったかを記録したデータです。<br>
+            これまで見えなかった学びの過程を可視化することで、学習者自身の振り返りや、教師による指導の最適化を実現します。
+          </p>
+        </div>
+        <div class="research-block">
+          <h4>可視化される主なログ</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>ログの種類</th>
+                <th>具体例</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>閲覧履歴</strong></td>
+                <td>どの教材をいつ開き、どのページにどれだけ滞在したか</td>
+              </tr>
+              <tr>
+                <td><strong>ハイライト・メモ</strong></td>
+                <td>強調した文章、書き込んだコメント</td>
+              </tr>
+              <tr>
+                <td><strong>クイズの記録</strong></td>
+                <td>解答結果、正答率、再挑戦の有無など</td>
+              </tr>
+              <tr>
+                <td><strong>再訪ログ</strong></td>
+                <td>特定のページや教材へのアクセス頻度</td>
+              </tr>
+            </tbody>
+          </table>
+            </div>
+              <div class="research-block">
+              <h4>教師にとっての価値</h4>
+              <ul>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 生徒のつまずき箇所を把握し、授業改善に活かす</li>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> クラス全体の傾向と個別の違いを見比べて対応</li>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 経験に基づいた指導を、**エビデンスで裏付ける**</li>
+              </ul>
+              </div>
+              <div class="research-block">
+              <h4>学習者にとっての価値</h4>
+              <ul>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> 自分の学習の進め方やクセを <strong>客観的に可視化</strong></li>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span> データを手がかりに、復習や振り返りができる</li>
+                <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>「自分の学び方を知る」ことで、<strong>学習に自信</strong>が持てる</li>
+              </ul>
+            </div>
+            <div class="research-block">
+            <h4>実践例</h4>
+            <div class="theme-example">
+              <div class="theme-example__text">
+                <p><strong>京都市立高校（英語授業）</strong></p>
+                <p>
+                  <em>BookRoll</em>を用いた英文読解教材の配信において、生徒は「わからない箇所」を黄色、「重要だと思った箇所」を赤でハイライトしました。<br>
+                  授業中に<em>LogPalette</em>でこれらの情報を確認した教師は、多くの生徒が理解に苦しんでいる段落を即座に特定し、その場で授業内容を調整しました。
+                </p>
+              </div>
+              </div>
+              <div class="research-block">
+              <blockquote class="theme-example__quote">
+                <p>「視覚化された情報を頼りに、授業をしながらでも当初の授業プランを変更できるようになりました。」</p>
+                <cite>— 京都市立西京高等学校 英語科 教員</cite>
+              </blockquote>
+            </div>
+            </div>
+            <div class="research-block">
+            <h4>関連プロジェクト・論文</h4>
+            <ul class="theme-resources">
+              <li>
+                【内閣府】SIP 第2期プロジェクト（2018–2020）<br>
+                <a href="https://www.let.media.kyoto-u.ac.jp/project/sip/" target="_blank">
+                  https://www.let.media.kyoto-u.ac.jp/project/sip/
+                </a>
+              </li>
+              <li>
+                【論文】Ogata et al. (2023). <em>Visualizing Learning Behavior for Adaptive Teaching.</em> LAK2023<br>
+                
+              </li>
+            </ul>
+            </div>
+            </div>
 
     <!-- 教育支援ツールの開発 -->
     <div class="theme-card accordion-header" data-target="theme-tools">
