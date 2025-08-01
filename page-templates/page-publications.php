@@ -32,13 +32,16 @@ $container = get_theme_mod( 'understrap_container_type' );
           </section>
 
           <!-- ACCORDION SECTION -->
-          <div class="accordion-section">
+          <div class="accordion">
 
             <!-- Journal Papers -->
             <div class="accordion-item">
               <button class="accordion-header active" data-target="panel1">
                 <span>Journal papers</span>
-                <span class="accordion-icon">×</span>
+                <span class="accordion-icon plus-icon">
+                  <span class="line horizontal"></span>
+                  <span class="line vertical"></span>
+                </span>
               </button>
               <div class="accordion-panel show" id="panel1">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/journalPapers" style="width:100%; height:600px; border:none;"></iframe>
@@ -49,7 +52,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel2">
                 <span>International Conferences</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+                <span class="line horizontal"></span>
+                <span class="line vertical"></span>
+              </span>
               </button>
               <div class="accordion-panel" id="panel2">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/conferences" style="width:100%; height:600px; border:none;"></iframe>
@@ -60,7 +66,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel3">
                 <span>Book editor</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel3">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookEditors" style="width:100%; height:600px; border:none;"></iframe>
@@ -71,7 +80,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel4">
                 <span>Book chapter</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel4">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookChapters" style="width:100%; height:600px; border:none;"></iframe>
@@ -82,7 +94,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel5">
                 <span>Keynote</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel5">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/invitedTalks" style="width:100%; height:600px; border:none;"></iframe>
@@ -93,7 +108,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel6">
                 <span>Survey paper</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel6">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/surveyPapers" style="width:100%; height:600px; border:none;"></iframe>
@@ -104,7 +122,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel7">
                 <span>Domestic Conferences</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel7">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/domesticConferences" style="width:100%; height:600px; border:none;"></iframe>
@@ -115,7 +136,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel8">
                 <span>Press Releases & Newspapers</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel8">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/newspapers" style="width:100%; height:600px; border:none;"></iframe>
@@ -126,7 +150,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel9">
                 <span>Awards</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel9">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/awards" style="width:100%; height:600px; border:none;"></iframe>
@@ -137,7 +164,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel10">
                 <span>Patents</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel10">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/patents" style="width:100%; height:600px; border:none;"></iframe>
@@ -148,7 +178,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel11">
                 <span>Symposiums</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel11">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/symposiums" style="width:100%; height:600px; border:none;"></iframe>
@@ -159,7 +192,10 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel12">
                 <span>Doctoral & Master’s Thesis</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel12">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/doctoralAndMastersThesis" style="width:100%; height:600px; border:none;"></iframe>
@@ -170,14 +206,17 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel13">
                 <span>Others</span>
-                <span class="accordion-icon">+</span>
+                <span class="accordion-icon plus-icon">
+  <span class="line horizontal"></span>
+  <span class="line vertical"></span>
+</span>
               </button>
               <div class="accordion-panel" id="panel13">
                 <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/others" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
-          </div><!-- .accordion-section -->
+          </div><!-- .accordion -->
 
         </main><!-- #main -->
       </div><!-- #primary -->

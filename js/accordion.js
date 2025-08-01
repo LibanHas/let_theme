@@ -34,3 +34,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+//Filter functionality
+const defaultFilter = 'faculty';
+const buttons = document.querySelectorAll('.filter-button');
+const sections = document.querySelectorAll('.member-group-section');
+
+sections.forEach(section => {
+  section.style.display = section.classList.contains('group-' + defaultFilter) ? '' : 'none';
+});
+
+buttons.forEach(button => {
+  button.addEventListener('click', function () {
+    const filter = this.dataset.filter;
+    buttons.forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+
+    sections.forEach(section => {
+      section.style.display = section.classList.contains('group-' + filter) ? '' : 'none';
+    });
+  });
+});

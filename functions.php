@@ -74,7 +74,7 @@ function enqueue_custom_theme_scripts()
     // Admissions steps interaction
     wp_enqueue_script('admissions-steps', get_template_directory_uri() . '/js/admissions-steps.js', array(), null, true);
 
-    // Accordion interaction script
+    // Accordion interaction script //
     wp_enqueue_script('accordion', get_stylesheet_directory_uri() . '/js/accordion.js', array(), null, true);
 
     // Swiper styles and scripts

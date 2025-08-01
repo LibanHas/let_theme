@@ -232,8 +232,8 @@ $color-tag-purple:  #9B5DE5;
   
     .accordion-icon.plus-icon {
       position: relative;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 1rem;
+      height: 1rem;
       display: inline-block;
       flex-shrink: 0;
   
@@ -3284,26 +3284,38 @@ padding-top: 7rem; ;
   color: #4A2F1B;
   text-decoration: none;
   margin-top: 2px;
+  font-weight: 600;
 }
 
 .page-template-page-members {
- .accordion-header {
-        background-color: #F8DA9E;
-        color: #4A2F1B;
-        font-weight: 300;
-        font-family: 'Ubuntu Sans', sans-serif;
-        padding: 1rem 1.5rem;
-        font-size: 1.5rem;
-        border: 2px;
-        border-radius: 20px 20px 0 0;
-        width: 100%;
-        text-align: left;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-      }
-    }
+  .accordion-header {
+    background-color: #F8DA9E;
+    color: #4A2F1B;
+    font-weight: 300;
+    font-family: 'Ubuntu Sans', sans-serif;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    border: 2px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  // Add this:
+  .accordion-panel {
+    overflow: hidden;
+    height: 0;
+    transition: height 0.4s ease;
+  }
+
+  .accordion-panel.open {
+    height: auto;
+  }
+}
 
 @media (max-width: 768px) {
   .members-list {

@@ -20,11 +20,11 @@ $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
         <main class="site-main" id="main" role="main">
 
           <!-- HERO SECTION -->
-          <section class="section-spacing">
+          <section class="members-section-spacing">
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title"><?php the_title(); ?></h1>
-                <h2 class="page-subtitle"><?php echo $lang === 'ja' ? 'メンバー' : 'Members'; ?></h2>
+                <h2 class="page-subtitle"><?php echo $lang === 'ja' ? 'メンバー' : 'Member Profiles'; ?></h2>
               </div>
             </div>
           </section>
@@ -181,7 +181,7 @@ $members = new WP_Query([
               ?>
 
               <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
-              <div class="member-group-section group-alumni accordion-section" style="display:none;">
+              <div class="member-group-section group-alumni accordion" style="display:none;">
                 <div class="member-subheading">
                   <h2 class="subheading-title"><?php echo $lang === 'ja' ? '元メンバー' : 'Former Members'; ?></h2>
                   <div class="subheading-line"></div>
@@ -286,32 +286,6 @@ $members = new WP_Query([
   </div>
 </div>
 
-<!-- FILTER SCRIPT -->
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const defaultFilter = 'faculty';
-  const buttons = document.querySelectorAll('.filter-button');
-  const sections = document.querySelectorAll('.member-group-section');
 
-  sections.forEach(section => {
-    section.style.display = section.classList.contains('group-' + defaultFilter) ? '' : 'none';
-  });
-
-  buttons.forEach(button => {
-    button.addEventListener('click', function () {
-      const filter = this.dataset.filter;
-      buttons.forEach(btn => btn.classList.remove('active'));
-      this.classList.add('active');
-
-      sections.forEach(section => {
-        section.style.display = section.classList.contains('group-' + filter) ? '' : 'none';
-      });
-    });
-  });
-
-
-  
-});
-</script>
 
 <?php get_footer(); ?>
