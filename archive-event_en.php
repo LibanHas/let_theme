@@ -4,6 +4,22 @@ defined('ABSPATH') || exit;
 get_header();
 $container = get_theme_mod('understrap_container_type');
 $lang = 'en'; // Fixed for English
+
+// Function to convert DD/MM/YYYY to timestamp
+function parse_date_ddmmyyyy($date_string) {
+    if (empty($date_string)) return false;
+    
+    // Check if it's in DD/MM/YYYY format
+    if (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/', $date_string, $matches)) {
+        $day = $matches[1];
+        $month = $matches[2];
+        $year = $matches[3];
+        return mktime(0, 0, 0, $month, $day, $year);
+    }
+    
+    // Fallback to strtotime for other formats
+    return strtotime($date_string);
+}
 ?>
 
 <div class="wrapper events-archive">
@@ -71,9 +87,22 @@ $lang = 'en'; // Fixed for English
                   $formatted_date = 'TBD';
 
                   if ($date_mode === 'single' && $start_date) {
-                    $formatted_date = date_i18n('Y/n/j', strtotime($start_date));
+                    $ts = parse_date_ddmmyyyy($start_date);
+                    if ($ts !== false) {
+                      $formatted_date = date_i18n('Y/n/j', $ts);
+                    }
                   } elseif ($date_mode === 'range' && $start_date && $end_date) {
-                    $formatted_date = date_i18n('Y/n/j', strtotime($start_date)) . ' – ' . date_i18n('Y/n/j', strtotime($end_date));
+                    $ts1 = parse_date_ddmmyyyy($start_date);
+                    $ts2 = parse_date_ddmmyyyy($end_date);
+                    if ($ts1 !== false && $ts2 !== false) {
+                      $formatted_date = date_i18n('Y/n/j', $ts1) . ' – ' . date_i18n('Y/n/j', $ts2);
+                    }
+                  } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
+                    $ts1 = parse_date_ddmmyyyy($start_date);
+                    $ts2 = parse_date_ddmmyyyy($second_date);
+                    if ($ts1 !== false && $ts2 !== false) {
+                      $formatted_date = date_i18n('Y/n/j', $ts1) . ', ' . date_i18n('Y/n/j', $ts2);
+                    }
                   }
 
                   $time_string = ($start && $end) ? date('H:i', strtotime($start)) . ' - ' . date('H:i', strtotime($end)) : '';

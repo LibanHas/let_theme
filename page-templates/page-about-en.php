@@ -79,7 +79,7 @@ get_header();
 
       <!-- Tagline Animation Section -->
       <div class="tagline-anim-wrapper">
-        <div class="tagline-split">Making_learning_visible</div>
+        <div class="tagline-split">Making learning visible</div>
       </div>
 
       <section class="approach-section container content-block">

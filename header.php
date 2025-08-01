@@ -130,43 +130,11 @@ if (!$translation_url) {
 
                    <!-- Language Switcher -->
 <div class="language-switcher">
-    <?php
+<?php
     $link_text = ($page_lang === 'ja') ? 'English' : '日本語';
+    $translation_url = ($page_lang === 'ja') ? home_url('/en/') : home_url('/');
 
-    if (is_singular()) {
-        $current_id = get_the_ID();
-        if ($page_lang === 'ja') {
-            // Japanese page → find EN translation
-            $translation = get_field('translation_en', $current_id);
-            if ($translation) {
-                $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
-                    ? $translation
-                    : get_permalink($translation);
-            } else {
-                // fallback for missing field: swap / with /en/
-                $translation_url = home_url('/en' . str_replace(home_url(), '', get_permalink($current_id)));
-            }
-        } else {
-            // English page → find JP translation
-            $translation = get_field('translation_jp', $current_id);
-            if ($translation) {
-                $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
-                    ? $translation
-                    : get_permalink($translation);
-            } else {
-                // fallback for missing field: swap /en/ with /
-                $translation_url = str_replace('/en/', '/', get_permalink($current_id));
-            }
-        }
-    } elseif (is_front_page()) {
-        $translation_url = ($page_lang === 'ja') ? site_url('/en/') : site_url('/');
-    }
-
-    if ($translation_url) {
-        echo '<a href="' . esc_url($translation_url) . '">' . esc_html($link_text) . '</a>';
-    } else {
-        echo '<!-- ⚠️ No translation linked for this page -->';
-    }
+    echo '<a href="' . esc_url($translation_url) . '">' . esc_html($link_text) . '</a>';
     ?>
 </div>
 

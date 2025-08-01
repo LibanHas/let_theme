@@ -5,6 +5,22 @@ defined('ABSPATH') || exit;
 get_header();
 $container = get_theme_mod('understrap_container_type');
 
+// Function to convert DD/MM/YYYY to timestamp
+function parse_date_ddmmyyyy($date_string) {
+    if (empty($date_string)) return false;
+    
+    // Check if it's in DD/MM/YYYY format
+    if (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/', $date_string, $matches)) {
+        $day = $matches[1];
+        $month = $matches[2];
+        $year = $matches[3];
+        return mktime(0, 0, 0, $month, $day, $year);
+    }
+    
+    // Fallback to strtotime for other formats
+    return strtotime($date_string);
+}
+
 // Inside The Loop
 while (have_posts()) : the_post();
 
@@ -34,9 +50,15 @@ while (have_posts()) : the_post();
     'camp'         => '合宿',
     'visit'        => '訪問',
     'social_event' => '交流会',
-    'news'         => 'ニュース',
+    'publications' => '出版物',
+    'media'        => 'メディア掲載',
+    'awards'       => '受賞',
+    'projects'     => 'プロジェクト',
+    'contests'     => 'コンテスト',
+    'news'         => 'ニュース'
   ];
-
+  
+  // Merged category classes (use in both templates)
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
@@ -46,7 +68,12 @@ while (have_posts()) : the_post();
     'camp'         => 'tag-camp',
     'visit'        => 'tag-visit',
     'social_event' => 'tag-social',
-    'news'         => 'tag-news',
+    'publications' => 'tag-publication',
+    'media'        => 'tag-media',
+    'awards'       => 'tag-award',
+    'projects'     => 'tag-project',
+    'contests'     => 'tag-contest',
+    'news'         => 'tag-news'
   ];
 
   $category_label = $category_labels[$category_value] ?? 'イベント';
@@ -57,17 +84,23 @@ while (have_posts()) : the_post();
 
   $formatted_dates = '';
   if ($date_mode === 'single' && $start_date) {
-    $ts = strtotime($start_date);
-    $weekday = $weekday_map[date('D', $ts)] ?? '';
-    $formatted_dates = date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）';
+    $ts = parse_date_ddmmyyyy($start_date);
+    if ($ts !== false) {
+        $weekday = $weekday_map[date('D', $ts)] ?? '';
+        $formatted_dates = date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）';
+    }
   } elseif ($date_mode === 'range' && $start_date && $end_date) {
-    $ts1 = strtotime($start_date);
-    $ts2 = strtotime($end_date);
-    $formatted_dates = date_i18n('Y年n月j日', $ts1) . ' – ' . date_i18n('Y年n月j日', $ts2);
+    $ts1 = parse_date_ddmmyyyy($start_date);
+    $ts2 = parse_date_ddmmyyyy($end_date);
+    if ($ts1 !== false && $ts2 !== false) {
+        $formatted_dates = date_i18n('Y年n月j日', $ts1) . ' – ' . date_i18n('Y年n月j日', $ts2);
+    }
   } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
-    $ts1 = strtotime($start_date);
-    $ts2 = strtotime($second_date);
-    $formatted_dates = date_i18n('Y年n月j日', $ts1) . ', ' . date_i18n('Y年n月j日', $ts2);
+    $ts1 = parse_date_ddmmyyyy($start_date);
+    $ts2 = parse_date_ddmmyyyy($second_date);
+    if ($ts1 !== false && $ts2 !== false) {
+        $formatted_dates = date_i18n('Y年n月j日', $ts1) . ', ' . date_i18n('Y年n月j日', $ts2);
+    }
   }
 
   $format_labels = [

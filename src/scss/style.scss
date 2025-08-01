@@ -1612,17 +1612,18 @@ padding-top: 7rem; ;
   will-change: transform, opacity;
 }
 
-.split-char::after {
-  content: attr(data-char);
+.split-char.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.split-char[data-char="_"] {
-  color: transparent;
-  width: 0.6em;
+.split-char.is-space {
+  width: 0.4em;
   opacity: 1 !important;
   transform: none !important;
   transition: none !important;
 }
+
 
 
 
@@ -2396,43 +2397,12 @@ padding-top: 7rem; ;
   
 // Research page
 
-.research-hero-section {
-  position: relative; // needed for absolute child positioning
-  height: 100vh;
-
-  .scroll-indicator {
-    position: absolute;
-    bottom: 100px; // adjust as needed
-    left: 50%;
-    transform: translateX(-50%);
-    text-align: center;
-  }
-
-  .scroll-indicator img {
-    animation: bounce 2s infinite;
-  }
-}
-
-
-
-
-
-
-
 .research-accordion {
   .accordion-header {
     background-color: #fff;
   }
+
   & > *:not(:last-child) {
-    margin-bottom: 2rem;
-  }
-
-  p {
-    margin-bottom: 1.25rem;
-  }
-
-  ul {
-    margin-top: 1rem;
     margin-bottom: 2rem;
   }
 
@@ -2441,30 +2411,149 @@ padding-top: 7rem; ;
     margin-bottom: 1rem;
   }
 
-  li {
+  p {
+    font-size: 1rem;
+    line-height: 1.7;
     margin-bottom: 1.25rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
+    li {
+      display: block;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      position: relative;
+      padding-left: 2rem;
+
+      .tick {
+        position: absolute;
+        left: 0;
+        top: 0.2rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: #8b4f1f;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 60%;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .accordion-panel {
+    padding: 0 1.5rem;
+    height: 0;
+    overflow: hidden;
+    border-radius: 0 0 20px 20px;
+
+    &.theme-card__content {
+      color: #4A2F1B;
+
+      h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #7C4A21;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 2.5rem;
+        font-size: 1rem;
+        text-align: center;
+
+        th {
+          background-color: #EFDDBD;
+          padding: 0.75rem 1rem;
+          border: 1px solid rgba(74, 47, 27, 0.5);
+          font-weight: bold;
+          color: #7C4A21;
+        }
+
+        td {
+          background-color: #FFFAF2;
+          padding: 0.75rem 1rem;
+          border: 1px solid rgba(74, 47, 27, 0.1);
+        }
+      }
+
+      .theme-example {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+
+        &__text {
+          flex: 1 1 60ch;
+          font-size: 1rem;
+          line-height: 1.8;
+        }
+
+        &__quote {
+          flex: 1 1 25ch;
+          background-color: #fffaf2;
+          border: 1px solid rgba(74, 47, 27, 0.4);
+          padding: 1rem 1.5rem;
+          font-size: 0.95rem;
+          font-style: italic;
+          line-height: 1.6;
+          width: 400px;
+          max-width: 100%;
+          box-sizing: border-box;
+          color: #7C4A21;
+
+          cite {
+            display: block;
+            margin-top: 0.5rem;
+            font-style: normal;
+            text-align: right;
+            font-size: 0.85rem;
+          }
+        }
+      }
+
+      .theme-resources {
+        font-size: 1rem;
+        line-height: 1.7;
+
+        a {
+          display: inline-block;
+          word-break: break-word;
+          margin-top: 0.25rem;
+          color: #7C4A21;
+          text-decoration: underline;
+        }
+      }
+    }
+
+    ol {
+      margin-left: 1rem;
+      padding-left: 1.2rem;
+      line-height: 1.6;
+      max-width: 65ch;
+
+      li {
+        margin-bottom: 1rem;
+      }
+    }
   }
 }
 
-.accordion-panel {
-  padding: 0 1.5rem;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.4s ease, padding 0.4s ease;
-  border-radius: 0 0 20px 20px;
-      }
-      .accordion-panel.open {
-        padding: 0rem 1.5rem;
-      }
-      .accordion-panel ol {
-        margin-left: 1rem; 
-        padding-left: 1.2rem;
-        line-height: 1.6;
-        max-width: 65ch;
-        li {
-            margin-bottom: 1rem;
-        }
-      }
+
 
 .theme-section {
   background-color: #FCF7EA; // base beige
@@ -3081,6 +3170,10 @@ padding-top: 7rem; ;
 
 // Members page
 
+
+.members-section-spacing {
+  padding-top: 8rem;
+}
 /* Base style for filter buttons */
 .filter-button {
   background-color: #EED4BE;
@@ -3762,7 +3855,83 @@ padding-top: 7rem; ;
         }
       }
     
+      .skill-card-en {
+        background-color: #ecd5bb;
+        border-radius: 10px;
+        padding: 1.5rem 1.25rem; 
+        box-shadow: 0 0 0 1px #ddd;
+        height: 350px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: #2e1c0e; // dark brown text
       
+        .skill-header {
+            margin-bottom: 0.75rem;
+          
+            .skill-title-row {
+              display: flex;
+              align-items: center;
+              gap: 0.5rem;
+              margin-bottom: 0.25rem;
+          
+              .skill-icon {
+                width: 1.5rem;
+                height: 1.5rem;
+                flex-shrink: 0;
+              }
+          
+              h3 {
+                font-size: 1.15rem;
+                font-weight: 700;
+                margin: 0;
+                color: #3b2a1a;
+              }
+            }
+          
+            hr {
+              height: 1px;
+              background-color: #c8aa90;
+              border: none;
+              margin: 1rem 0;
+            }
+          }
+          
+      
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      
+          li {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 2rem; 
+            font-size: 0.95rem;
+            line-height: 1.5;
+      
+            .tick {
+                width: 1.75rem;
+                height: 1.75rem;
+                background-color: #8b4f1f;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 60%;
+                border-radius: 50%;
+                display: inline-block;
+                flex-shrink: 0;
+                margin-top: 0.25rem;
+                margin-right: 0.5rem;
+              }
+              
+              
+              
+              
+          }
+        }
+      }
   
       .application-prep-section {
         padding-top: 4rem ;

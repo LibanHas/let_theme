@@ -27,25 +27,25 @@ $container = get_theme_mod('understrap_container_type');
           'title' => '[NEDO] Research and Development of EXAIT',
           'excerpt' => 'Building the educational explanation-generation AI engine EXAIT, aiming for deployment in collaboration with Kyoto City Board of Education.',
           'image' => 'project-nedo.png',
-          'link' => '/en/projects/nedo-exait-2/'
+          'link' => '/en/nedo-exait/'
         ],
         [
           'title' => '[Cabinet Office] Research on Tailor-Made Education',
           'excerpt' => 'Integrating learning cognitive science, AI, and information infrastructure technologies to study big data-driven educational support.',
           'image' => 'project-sip2.png',
-          'link' => '/en/projects/sip2-2/'
+          'link' => '/en/sip2/'
         ],
         [
           'title' => '[Kyoto University] Library Recommendation System Development',
           'excerpt' => 'Developing a library recommendation feature integrated with BookRoll to promote self-directed learning.',
           'image' => 'project-library.jpg',
-          'link' => '/en/projects/library-integration-2/'
+          'link' => '/en/library-integration/'
         ],
         [
           'title' => '[MEXT] Experimental Future-Oriented Education Model',
           'excerpt' => 'Exploring and verifying an educational model that enables personalized learning through collaborative activities.',
           'image' => 'project-mext.png',
-          'link' => '/en/projects/mext-model-2/'
+          'link' => '/en/mext-model/'
         ],
       ];
 

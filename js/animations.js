@@ -111,46 +111,43 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', revealLines);
   window.addEventListener('resize', revealLines);
 
-  // ==============================
-  // tagline-split animation logic
-  // ==============================
-  console.log('split tagline code starting');
+// ==============================
+// tagline-split animation logic
+// ==============================
 const splitTargets = document.querySelectorAll('.tagline-split');
-console.log('Found tagline-split:', splitTargets);
 
-if (splitTargets.length === 0) {
-  console.warn('No elements with class "tagline-split" found.');
-} else {
-  splitTargets.forEach(target => {
+splitTargets.forEach(target => {
     const text = target.textContent.trim();
     target.textContent = '';
-
+    
+    // STEP 2 CODE HERE:
     [...text].forEach((char, i) => {
-      const span = document.createElement('span');
-      span.className = 'split-char';
-      span.textContent = char;
-      span.setAttribute('data-char', char);
-      target.appendChild(span);
+        const span = document.createElement('span');
+        span.classList.add('split-char');
+        
+        if (char === ' ') {
+            span.classList.add('is-space');
+            span.innerHTML = '&nbsp;';
+        } else {
+            span.textContent = char;
+        }
+        
+        target.appendChild(span);
     });
     
+    // Your Intersection Observer code here...
+    setupIntersectionObserver(target);
+});
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        console.log('Tagline entered viewport');
-        entry.target.querySelectorAll('.split-char').forEach((char, i) => {
-          if (char.classList.contains('split-space')) return;
-
-          char.style.transition = `all 0.6s ease-out ${i * 0.05}s`;
-          char.style.opacity = 1;
-          char.style.transform = 'translateY(0)';
-        });
-        observer.unobserve(entry.target);
-      }
+function animateChars(target) {
+    // STEP 4 CODE HERE:
+    const chars = target.querySelectorAll('.split-char:not(.is-space)');
+    
+    chars.forEach((char, i) => {
+        setTimeout(() => {
+            char.classList.add('animate');
+        }, i * 100);
     });
-  }, { threshold: 0.2 });
-
-  splitTargets.forEach(el => observer.observe(el));
 }
 
 
