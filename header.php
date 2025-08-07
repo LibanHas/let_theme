@@ -154,11 +154,11 @@ if (!$translation_url) {
                 <button class="menu-close" aria-label="Close menu">&times;</button>
                 <?php
                 // Dynamically load side menu for current language
-                $primary_menu_location = 'primary';
+                // Use the same menu location as the top nav based on current language
+                $side_menu_location = ($page_lang === 'en') ? 'top_en' : 'top_jp';
                 $locations = get_nav_menu_locations();
-                $menu_id = $locations[$primary_menu_location] ?? null;
+                $menu_id = $locations[$side_menu_location] ?? null;
                 $menu = $menu_id ? wp_get_nav_menu_items($menu_id) : [];
-
                 if ($menu): ?>
                     <div class="page-menu">
                         <?php foreach ($menu as $menu_item): ?>

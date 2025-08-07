@@ -116,26 +116,26 @@ function register_member_post_type()
 }
 add_action('init', 'register_member_post_type');
 
-add_filter('post_type_link', 'custom_member_permalink', 10, 2);
+// add_filter('post_type_link', 'custom_member_permalink', 10, 2);
 
-function custom_member_permalink($permalink, $post) {
-    if ($post->post_type === 'member') {
-        $language = get_field('language', $post->ID); // Get ACF field value
-        if ($language === 'en') {
-            // Replace 'member' with 'en/member'
-            $permalink = str_replace('/member/', '/en/member/', $permalink);
-        }
-    }
-    return $permalink;
-}
+// function custom_member_permalink($permalink, $post) {
+//     if ($post->post_type === 'member') {
+//         $language = get_field('language', $post->ID); // Get ACF field value
+//         if ($language === 'en') {
+//             // Replace 'member' with 'en/member'
+//             $permalink = str_replace('/member/', '/en/member/', $permalink);
+//         }
+//     }
+//     return $permalink;
+// }
 
-add_action('init', function () {
-    add_rewrite_rule(
-        '^en/member/([^/]+)/?$',
-        'index.php?post_type=member&name=$matches[1]',
-        'top'
-    );
-});
+// add_action('init', function () {
+//     add_rewrite_rule(
+//         '^en/member/([^/]+)/?$',
+//         'index.php?post_type=member&name=$matches[1]',
+//         'top'
+//     );
+// });
 
 /**
  * Register Member Group Custom Taxonomy
@@ -657,26 +657,47 @@ function assign_language_to_existing_members() {
 /**
  * Adjust member post type slugs based on language
  */
-function custom_member_post_type_slug($args, $post_type) {
-    if ($post_type === 'member') {
-        // Check if we are editing an English member in admin
-        if (is_admin() && isset($_GET['post']) && function_exists('get_field')) {
-            $post_id = intval($_GET['post']);
-            $language = get_field('language', $post_id);
+/**
+ * Add extra rewrite rule so /en/member/... works alongside /member/...
+ */
+/**
+ * Allow /en/member/... URLs and redirect English members there if needed.
+ */
+/**
+ * Allow /en/member/... URLs for members.
+ */
+function member_add_en_rewrite_rule() {
+    add_rewrite_rule(
+        '^en/member/([^/]+)/?',
+        'index.php?post_type=member&name=$matches[1]',
+        'top'
+    );
+}
+add_action('init', 'member_add_en_rewrite_rule');
 
-            if ($language === 'en') {
-                $args['rewrite']['slug'] = 'en/member'; // English member
-            } else {
-                $args['rewrite']['slug'] = 'member'; // Japanese member
+/**
+ * Redirect English members to /en/member/... if not already there.
+ */
+function redirect_english_members_to_en_url() {
+    if (is_singular('member')) {
+        $lang = get_field('language', get_queried_object_id());
+
+        if ($lang === 'en') {
+            $request_uri = $_SERVER['REQUEST_URI'];
+
+            // If URL doesn't start with /en/, redirect
+            if (strpos($request_uri, '/en/') !== 0) {
+                $permalink = get_permalink(get_queried_object_id());
+                $en_url = home_url('/en' . parse_url($permalink, PHP_URL_PATH));
+                wp_redirect($en_url, 301);
+                exit;
             }
-        } else {
-            // Frontend: default to Japanese for rewrite rules
-            $args['rewrite']['slug'] = 'member';
         }
     }
-    return $args;
 }
-add_filter('register_post_type_args', 'custom_member_post_type_slug', 10, 2);
+add_action('template_redirect', 'redirect_english_members_to_en_url');
+
+
 
 
 function register_custom_post_type_event()

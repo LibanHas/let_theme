@@ -31,6 +31,10 @@ $container = get_theme_mod('understrap_container_type');
             'workshops'    => 'tag-workshop',
             'lectures'     => 'tag-lecture',
             'conferences'  => 'tag-conference',
+            'expo'         => 'tag-expo',
+            'camp'         => 'tag-camp',
+            'visit'        => 'tag-visit',
+            'social_event' => 'tag-social',
             'publications' => 'tag-publication',
             'media'        => 'tag-media',
             'awards'       => 'tag-award',
@@ -38,12 +42,16 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'tag-contest',
             'news'         => 'tag-news'
           ];
-
+          
           $category_labels = [
             'symposiums'   => 'シンポジウム',
             'workshops'    => 'ワークショップ',
             'lectures'     => '講演',
             'conferences'  => 'カンファレンス',
+            'expo'         => '展示会',
+            'camp'         => '合宿',
+            'visit'        => '訪問',
+            'social_event' => '交流会',
             'publications' => '出版物',
             'media'        => 'メディア掲載',
             'awards'       => '受賞',
@@ -51,6 +59,7 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'コンテスト',
             'news'         => 'ニュース'
           ];
+          
           ?>
 
           <section class="section-spacing news-section">

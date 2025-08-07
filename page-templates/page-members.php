@@ -82,8 +82,8 @@ $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
                         $label = $student_level === 'doctoral' ? '博士' : '修士';
                         echo '<p class="p-member-list__position">' . esc_html($label . $student_year . '年') . '</p>';
                     } else {
-                        $label = $student_level === 'doctoral' ? 'PhD' : 'M';
-                        echo '<p class="p-member-list__position">' . esc_html($label . ' ' . $student_year) . '</p>';
+                        $label = $student_level === 'doctoral' ? 'D' : 'M';
+                        echo '<p class="p-member-list__position">' . esc_html($label . $student_year) . '</p>';
                     }
                 } elseif ($member_type === 'faculty' && $employment_title) {
                     echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
@@ -91,7 +91,6 @@ $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
                 ?>
               </div>
               <?php wp_reset_postdata(); }
-
 $members = new WP_Query([
   'post_type' => 'member',
   'posts_per_page' => -1,
@@ -106,31 +105,46 @@ $members = new WP_Query([
   'order' => 'ASC'
 ]);
 
+
               $faculty = [];
               $alumni = [];
               $doctoral = [];
               $masters = [];
 
-              if ($members->have_posts()) {
-                  while ($members->have_posts()) {
-                      $members->the_post();
-                      $type = get_field('member_type');
-                      $level = get_field('student_level');
+              // Decide field suffix based on current language
+// Decide field suffix based on current language
+$suffix = ($lang === 'en') ? '_en' : '';
 
-                      switch ($type) {
-                          case 'faculty': $faculty[] = get_post(); break;
-                          case 'alumni': $alumni[] = get_post(); break;
-                          case 'student':
-                              if ($level === 'doctoral') {
-                                  $doctoral[] = get_post();
-                              } elseif ($level === 'masters') {
-                                  $masters[] = get_post();
-                              }
-                              break;
-                      }
-                  }
-                  wp_reset_postdata();
-              }
+if ($members->have_posts()) {
+    while ($members->have_posts()) {
+        $members->the_post();
+
+        // Pull correct language-specific fields
+        $type  = get_field('member_type' . $suffix);
+        $level = get_field('student_level' . $suffix);
+
+        switch ($type) {
+            case 'faculty':
+                $faculty[] = get_post();
+                break;
+
+            case 'alumni':
+                $alumni[] = get_post();
+                break;
+
+            case 'student':
+                if ($level === 'doctoral') {
+                    $doctoral[] = get_post();
+                } elseif ($level === 'masters') {
+                    $masters[] = get_post();
+                }
+                break;
+        }
+    }
+    wp_reset_postdata();
+}
+
+
               ?>
 
               <!-- Display sections -->
@@ -165,10 +179,13 @@ $members = new WP_Query([
               $student_alumni = [];
               $staff_alumni = [];
 
+              $suffix = ($lang === 'en') ? '_en' : '';
+
               foreach ($alumni as $post) {
                   setup_postdata($post);
-                  $type = get_field('member_type');
-                  $level = get_field('student_level');
+
+                  $type  = get_field('member_type' . $suffix);
+                  $level = get_field('student_level' . $suffix);
 
                   if ($type === 'faculty') {
                       $faculty_alumni[] = $post;
@@ -227,23 +244,27 @@ $members = new WP_Query([
                     <ul class="alumni-list with-icon">
                       <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
                       <li>
-                        <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-                        <?php
-                        $level = get_field('student_level');
-                        $year = get_field('student_year');
-                        if ($level && $level !== 'na') {
-                            if ($level === 'doctoral' || $level === 'masters') {
-                                if ($year) {
-                                    $label = $level === 'doctoral' ? ($lang === 'ja' ? '博士' : 'PhD') : ($lang === 'ja' ? '修士' : 'M');
-                                    echo '（' . esc_html($label . ($lang === 'ja' ? $year . '年' : ' ' . $year)) . '）';
-                                }
-                            } elseif ($level === 'research_student') {
-                                echo $lang === 'ja' ? '（研究生）' : ' (Research Student)';
-                            }
-                        }
-                        ?>
-                      </li>
+    <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
+    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+    <?php
+    $suffix = ($lang === 'en') ? '_en' : '';
+    $level = get_field('student_level' . $suffix);
+    $year  = get_field('student_year' . $suffix);
+
+    if ($level && $level !== 'na') {
+        if ($level === 'doctoral' || $level === 'masters') {
+            if ($year) {
+                $label = $level === 'doctoral'
+                    ? ($lang === 'ja' ? '博士' : 'D')
+                    : ($lang === 'ja' ? '修士' : 'M');
+                echo '（' . esc_html($label . ($lang === 'ja' ? $year . '年' : $year)) . '）';
+            }
+        } elseif ($level === 'research_student') {
+            echo $lang === 'ja' ? '（研究生）' : ' (Research Student)';
+        }
+    }
+    ?>
+</li>
                       <?php endforeach; ?>
                     </ul>
                   </div>

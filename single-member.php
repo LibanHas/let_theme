@@ -14,13 +14,24 @@ $suffix = ($lang === 'en') ? '_en' : '';
 ?>
 
 <main id="member-profile-page">
-  <!-- Cover Section -->
-  <section class="member-cover section-spacing alignfull">
+<?php
+// Get member type for heading
+$member_type = get_field('member_type' . $suffix);
+
+// Decide heading text
+if ($member_type === 'alumni') {
+    $heading_text = ($lang === 'en') ? 'Former Members' : '元メンバー';
+} else {
+    $heading_text = ($lang === 'en') ? 'Members' : 'メンバー';
+}
+?>
+<!-- Cover Section -->
+<section class="member-cover section-spacing alignfull">
     <div class="cover-inner <?php echo esc_attr($container); ?>">
-      <h2 class="page-title">Members</h2>
-      <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'プロフィール'; ?></p>
+        <h2 class="page-title"><?php echo esc_html($heading_text); ?></h2>
+        <p class="page-subtitle"><?php echo ($lang === 'en') ? 'Member Profile' : 'プロフィール'; ?></p>
     </div>
-  </section>
+</section>
 
   <!-- Member Info -->
   <div class="container member-info">

@@ -18,6 +18,10 @@ while ( have_posts() ) : the_post();
     'workshops'    => 'ワークショップ',
     'lectures'     => '講演',
     'conferences'  => 'カンファレンス',
+    'expo'         => '展示会',
+    'camp'         => '合宿',
+    'visit'        => '訪問',
+    'social_event' => '交流会',
     'publications' => '出版物',
     'media'        => 'メディア掲載',
     'awards'       => '受賞',
@@ -25,12 +29,16 @@ while ( have_posts() ) : the_post();
     'contests'     => 'コンテスト',
     'news'         => 'ニュース'
   ];
-
+  
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
     'lectures'     => 'tag-lecture',
     'conferences'  => 'tag-conference',
+    'expo'         => 'tag-expo',
+    'camp'         => 'tag-camp',
+    'visit'        => 'tag-visit',
+    'social_event' => 'tag-social',
     'publications' => 'tag-publication',
     'media'        => 'tag-media',
     'awards'       => 'tag-award',
@@ -38,6 +46,7 @@ while ( have_posts() ) : the_post();
     'contests'     => 'tag-contest',
     'news'         => 'tag-news'
   ];
+  
 
   // ACF fields
   $date_raw = get_field('news_date');

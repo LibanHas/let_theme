@@ -24,6 +24,12 @@ $container = get_theme_mod('understrap_container_type');
       <?php
       $projects = [
         [
+          'title' => '[Cabinet Office] SIP3: Building and Analyzing Supportive Learning Environments',
+          'excerpt' => 'Developing an educational support infrastructure to enable new ways of learning and working in the post-COVID era.',
+          'image' => 'sip3_hero_image.jpg',
+          'link'  => 'https://eds.let.media.kyoto-u.ac.jp/sip3/en/'
+        ],        
+        [
           'title' => '[NEDO] Research and Development of EXAIT',
           'excerpt' => 'Building the educational explanation-generation AI engine EXAIT, aiming for deployment in collaboration with Kyoto City Board of Education.',
           'image' => 'project-nedo.png',

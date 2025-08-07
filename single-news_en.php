@@ -18,19 +18,27 @@ while ( have_posts() ) : the_post();
     'workshops'    => 'Workshop',
     'lectures'     => 'Lecture',
     'conferences'  => 'Conference',
+    'expo'         => 'Expo',
+    'camp'         => 'Camp',
+    'visit'        => 'Visit',
+    'social_event' => 'Social Event',
     'publications' => 'Publication',
-    'media'        => 'Media',
+    'media'        => 'Media Coverage',
     'awards'       => 'Award',
     'projects'     => 'Project',
     'contests'     => 'Contest',
     'news'         => 'News'
   ];
-
+  
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
     'lectures'     => 'tag-lecture',
     'conferences'  => 'tag-conference',
+    'expo'         => 'tag-expo',
+    'camp'         => 'tag-camp',
+    'visit'        => 'tag-visit',
+    'social_event' => 'tag-social',
     'publications' => 'tag-publication',
     'media'        => 'tag-media',
     'awards'       => 'tag-award',
@@ -38,13 +46,18 @@ while ( have_posts() ) : the_post();
     'contests'     => 'tag-contest',
     'news'         => 'tag-news'
   ];
+  
+   
 
   // ACF fields
   $date_raw = get_field('news_date');
   $date = $date_raw ? date('Y/m/d', strtotime($date_raw)) : '';
   $category = get_field('news_category');
-  $category_label = $category_labels[$category] ?? 'News';
-  $category_class = $category_classes[$category] ?? 'tag-news';
+  if (!$category || !array_key_exists($category, $category_labels)) {
+    $category = 'news';
+  }
+  $category_label = $category_labels[$category];
+  $category_class = $category_classes[$category];  
   $body = get_field('news_body');
   $title = get_the_title();
 ?>

@@ -31,6 +31,10 @@ $container = get_theme_mod('understrap_container_type');
             'workshops'    => 'tag-workshop',
             'lectures'     => 'tag-lecture',
             'conferences'  => 'tag-conference',
+            'expo'         => 'tag-expo',
+            'camp'         => 'tag-camp',
+            'visit'        => 'tag-visit',
+            'social_event' => 'tag-social',
             'publications' => 'tag-publication',
             'media'        => 'tag-media',
             'awards'       => 'tag-award',
@@ -38,12 +42,16 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'tag-contest',
             'news'         => 'tag-news'
           ];
-
+          
           $category_labels = [
             'symposiums'   => 'Symposium',
             'workshops'    => 'Workshop',
             'lectures'     => 'Lecture',
             'conferences'  => 'Conference',
+            'expo'         => 'Expo',
+            'camp'         => 'Camp',
+            'visit'        => 'Visit',
+            'social_event' => 'Social Event',
             'publications' => 'Publication',
             'media'        => 'Media Coverage',
             'awards'       => 'Award',
@@ -51,6 +59,7 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'Contest',
             'news'         => 'News'
           ];
+          
           ?>
 
           <section class="section-spacing news-section">

@@ -40,6 +40,14 @@ $grants = [
         'summary' => 'Developing an information infrastructure for extracting, sharing, and utilizing evidence from real-world educational data.'
     ],
     [
+        'year' => '2023',
+        'period' => 'April 2023 – March 2026',
+        'type' => 'National Institute for Educational Policy Research',
+        'title' => 'Empirical Study, Infrastructure Development, and Policy Consideration Toward the Realization of Data-Driven Education',
+        'pi' => 'Hiroaki Ogata',
+        'summary' => ''
+    ],
+    [
         'year' => '2022',
         'period' => 'April 1, 2022 – March 31, 2025',
         'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
@@ -142,6 +150,14 @@ $grants = [
         'title' => 'Integration of BookRoll and Library Systems',
         'pi' => 'Hiroaki Ogata',
         'summary' => 'Supporting self-directed learning by linking BookRoll with a library materials recommendation system.'
+    ],
+    [
+        'year' => '2016',
+        'period' => 'May 31, 2016 – March 31, 2021',
+        'type' => 'Grant-in-Aid for Scientific Research (S)',
+        'title' => 'Research on Cloud-Based Information Infrastructure for Educational and Learning Support Using Big Data in Education',
+        'pi' => 'Hiroaki Ogata',
+        'summary' => ''
     ],
     [
         'year' => '2016',

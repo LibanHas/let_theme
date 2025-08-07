@@ -53,6 +53,10 @@ function parse_date_ddmmyyyy($date_string) {
                 'workshops'    => 'tag-workshop',
                 'lectures'     => 'tag-lecture',
                 'conferences'  => 'tag-conference',
+                'expo'         => 'tag-expo',
+                'camp'         => 'tag-camp',
+                'visit'        => 'tag-visit',
+                'social_event' => 'tag-social',
                 'publications' => 'tag-publication',
                 'media'        => 'tag-media',
                 'awards'       => 'tag-award',
@@ -60,12 +64,16 @@ function parse_date_ddmmyyyy($date_string) {
                 'contests'     => 'tag-contest',
                 'news'         => 'tag-news'
               ];
-
+              
               $category_labels = [
                 'symposiums'   => 'Symposium',
                 'workshops'    => 'Workshop',
                 'lectures'     => 'Lecture',
                 'conferences'  => 'Conference',
+                'expo'         => 'Expo',
+                'camp'         => 'Camp',
+                'visit'        => 'Visit',
+                'social_event' => 'Social Event',
                 'publications' => 'Publication',
                 'media'        => 'Media',
                 'awards'       => 'Award',
@@ -73,6 +81,7 @@ function parse_date_ddmmyyyy($date_string) {
                 'contests'     => 'Contest',
                 'news'         => 'News'
               ];
+              
 
               if ($events_query->have_posts()) :
                 while ($events_query->have_posts()) : $events_query->the_post();

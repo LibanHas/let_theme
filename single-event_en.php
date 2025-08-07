@@ -50,9 +50,14 @@ while (have_posts()) : the_post();
     'camp'         => 'Camp',
     'visit'        => 'Visit',
     'social_event' => 'Social Event',
-    'news'         => 'News',
+    'publications' => 'Publication',
+    'media'        => 'Media Coverage',
+    'awards'       => 'Award',
+    'projects'     => 'Project',
+    'contests'     => 'Contest',
+    'news'         => 'News'
   ];
-
+  
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
@@ -62,8 +67,14 @@ while (have_posts()) : the_post();
     'camp'         => 'tag-camp',
     'visit'        => 'tag-visit',
     'social_event' => 'tag-social',
-    'news'         => 'tag-news',
+    'publications' => 'tag-publication',
+    'media'        => 'tag-media',
+    'awards'       => 'tag-award',
+    'projects'     => 'tag-project',
+    'contests'     => 'tag-contest',
+    'news'         => 'tag-news'
   ];
+  
 
   $category_label = $category_labels[$category_value] ?? 'Event';
   $tag_class = $category_classes[$category_value] ?? 'tag-event';
