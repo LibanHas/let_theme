@@ -32,19 +32,26 @@ $container = get_theme_mod( 'understrap_container_type' );
           <div class="container">
             <div class="collaborators-list">
               <?php
-              $collaborators = new WP_Query([
+            $collaborators = new WP_Query([
                 'post_type' => 'member',
                 'posts_per_page' => -1,
                 'orderby' => 'menu_order',
                 'order' => 'ASC',
                 'meta_query' => [
+                  'relation' => 'AND',
                   [
                     'key' => 'member_type',
                     'value' => 'collaborator',
                     'compare' => '='
+                  ],
+                  [
+                    'key' => 'language',
+                    'value' => 'en',
+                    'compare' => '='
                   ]
                 ]
               ]);
+              
 
               if ($collaborators->have_posts()) :
                 while ($collaborators->have_posts()) : $collaborators->the_post();

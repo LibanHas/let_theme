@@ -165,8 +165,28 @@ if ($members->have_posts()) {
                   <div class="subheading-line"></div>
                 </div>
                 <div class="row members-list">
-                  <?php foreach ($posts as $post) render_member_card($post, $lang); ?>
-                </div>
+  <?php foreach ($posts as $post) render_member_card($post, $lang); ?>
+
+  <?php if ($group === 'faculty') : ?>
+  <!-- Research Collaborators Card -->
+  <div class="col-md-3 member p-member-list__item group-faculty">
+    <a href="<?php echo esc_url(site_url($lang === 'ja' ? '/members/research-collaborators' : '/en/members/research-collaborators')); ?>"
+       class="p-member-list__thumbnail --empty"
+       style="display: flex; align-items: center; justify-content: center; background-color: #d3b97d; color: white; text-align: center;">
+      <span style="font-weight: bold;">
+        <?php echo $lang === 'ja' ? '共同研究員' : 'Research<br>Collaborators'; ?>
+      </span>
+    </a>
+    <a href="<?php echo esc_url(site_url($lang === 'ja' ? '/members/research-collaborators' : '/en/members/research-collaborators')); ?>"
+       class="p-member-list__name">
+      <?php echo $lang === 'ja' ? '共同研究員' : 'Research Collaborators'; ?>
+    </a>
+    <p class="p-member-list__position">
+      <?php echo $lang === 'ja' ? '研究協力者' : 'Research Collaborators'; ?>
+    </p>
+  </div>
+  <?php endif; ?>
+</div>
               </div>
               <?php
                   endif;

@@ -39,17 +39,18 @@ $container = get_theme_mod( 'understrap_container_type' );
                 'order' => 'ASC',
                 'meta_query' => [
                   [
-                    'key' => 'member_type',
+                    'key' => 'member_type_jp',
                     'value' => 'collaborator',
                     'compare' => '='
                   ]
                 ]
               ]);
+              
 
               if ($collaborators->have_posts()) :
                 while ($collaborators->have_posts()) : $collaborators->the_post();
-                  $employment_title = get_field('employment_title'); // Position
-                  $institution = get_field('institution'); // Institution
+                  $employment_title = get_field('employment_title_jp'); // Position
+                  $institution = get_field('institution_jp'); // Institution
               ?>
                 <div class="collaborator-item">
                   <p class="collaborator-name"><strong><?php the_title(); ?></strong></p>

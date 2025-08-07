@@ -426,18 +426,23 @@ add_action('save_post', 'set_new_member_menu_order', 10, 3);
 function add_member_type_admin_filter()
 {
     global $typenow;
+
     if ($typenow !== 'member') return;
 
-    $selected = $_GET['member_type'] ?? '';
+    // Detect language based on admin URL
+    $is_en = strpos($_SERVER['REQUEST_URI'], '/en/') !== false;
+    $meta_key = $is_en ? 'member_type_en' : 'member_type_jp';
+    $selected = $_GET[$meta_key] ?? '';
+
     $options = [
-        ''            => 'すべてのメンバー種別',
+        ''            => $is_en ? 'All Member Types' : 'すべてのメンバー種別',
         'faculty'     => 'faculty',
         'student'     => 'student',
         'alumni'      => 'alumni',
         'collaborator'=> 'collaborator'
     ];
 
-    echo '<select name="member_type">';
+    echo '<select name="' . esc_attr($meta_key) . '">';
     foreach ($options as $value => $label) {
         printf(
             '<option value="%s"%s>%s</option>',
@@ -450,6 +455,8 @@ function add_member_type_admin_filter()
 }
 add_action('restrict_manage_posts', 'add_member_type_admin_filter');
 
+
+
 function add_member_type_column($columns)
 {
     $columns['member_type'] = 'メンバー区分';
@@ -460,10 +467,11 @@ add_filter('manage_member_posts_columns', 'add_member_type_column');
 function show_member_type_column($column, $post_id)
 {
     if ($column === 'member_type') {
-        $value = get_field('member_type', $post_id);
+        $value = get_field('member_type_en', $post_id) ?: get_field('member_type_jp', $post_id);
         echo esc_html($value ?: '—');
     }
 }
+
 add_action('manage_member_posts_custom_column', 'show_member_type_column', 10, 2);
 
 function filter_members_by_member_type($query)
@@ -475,19 +483,26 @@ function filter_members_by_member_type($query)
         $query->is_main_query() &&
         $pagenow === 'edit.php' &&
         isset($_GET['post_type']) &&
-        $_GET['post_type'] === 'member' &&
-        !empty($_GET['member_type'])
+        $_GET['post_type'] === 'member'
     ) {
-        $query->set('meta_query', [
-            [
-                'key'     => 'member_type',
-                'value'   => sanitize_text_field($_GET['member_type']),
-                'compare' => '=',
-            ]
-        ]);
+        // Check for either member_type_en or member_type_jp
+        foreach (['member_type_en', 'member_type_jp'] as $meta_key) {
+            if (!empty($_GET[$meta_key])) {
+                $query->set('meta_query', [
+                    [
+                        'key'     => $meta_key,
+                        'value'   => sanitize_text_field($_GET[$meta_key]),
+                        'compare' => '=',
+                    ]
+                ]);
+                break;
+            }
+        }
     }
 }
 add_action('pre_get_posts', 'filter_members_by_member_type');
+
+
 
 function manually_assign_event_tags()
 {
