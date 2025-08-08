@@ -429,30 +429,24 @@ function add_member_type_admin_filter()
 
     if ($typenow !== 'member') return;
 
-    // Detect language based on admin URL
-    $is_en = strpos($_SERVER['REQUEST_URI'], '/en/') !== false;
-    $meta_key = $is_en ? 'member_type_en' : 'member_type_jp';
-    $selected = $_GET[$meta_key] ?? '';
-
-    $options = [
-        ''            => $is_en ? 'All Member Types' : 'すべてのメンバー種別',
-        'faculty'     => 'faculty',
-        'student'     => 'student',
-        'alumni'      => 'alumni',
-        'collaborator'=> 'collaborator'
+    $filters = [
+        'member_type_jp' => 'Japanese',
+        'member_type_en' => 'English',
     ];
 
-    echo '<select name="' . esc_attr($meta_key) . '">';
-    foreach ($options as $value => $label) {
-        printf(
-            '<option value="%s"%s>%s</option>',
-            esc_attr($value),
-            selected($selected, $value, false),
-            esc_html($label)
-        );
+    foreach ($filters as $meta_key => $label_prefix) {
+        $selected = $_GET[$meta_key] ?? '';
+
+        echo '<select name="' . esc_attr($meta_key) . '">';
+        echo '<option value="">' . $label_prefix . ' – All Types</option>';
+        echo '<option value="faculty"' . selected($selected, 'faculty', false) . '>Faculty</option>';
+        echo '<option value="student"' . selected($selected, 'student', false) . '>Student</option>';
+        echo '<option value="alumni"' . selected($selected, 'alumni', false) . '>Former Member</option>';
+        echo '<option value="collaborator"' . selected($selected, 'collaborator', false) . '>Research Collaborator</option>';
+        echo '</select>';
     }
-    echo '</select>';
 }
+
 add_action('restrict_manage_posts', 'add_member_type_admin_filter');
 
 

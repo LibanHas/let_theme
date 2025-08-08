@@ -23,7 +23,6 @@ $container = get_theme_mod( 'understrap_container_type' );
             <div class="container">
               <div class="news-header">
                 <h1 class="page-title"><?php the_title(); ?></h1>
-                <h2 class="page-subtitle">Research Collaborators</h2>
               </div>
             </div>
           </section>
@@ -32,31 +31,29 @@ $container = get_theme_mod( 'understrap_container_type' );
           <div class="container">
             <div class="collaborators-list">
               <?php
-            $collaborators = new WP_Query([
-                'post_type' => 'member',
-                'posts_per_page' => -1,
-                'orderby' => 'menu_order',
-                'order' => 'ASC',
-                'meta_query' => [
-                  'relation' => 'AND',
-                  [
-                    'key' => 'member_type',
-                    'value' => 'collaborator',
-                    'compare' => '='
-                  ],
-                  [
-                    'key' => 'language',
-                    'value' => 'en',
-                    'compare' => '='
-                  ]
-                ]
-              ]);
-              
-
+           $collaborators = new WP_Query([
+            'post_type' => 'member',
+            'posts_per_page' => -1,
+            'orderby' => 'menu_order',
+            'order' => 'ASC',
+            'meta_query' => [
+              'relation' => 'AND',
+              [
+                'key' => 'member_type_en',
+                'value' => 'collaborator',
+                'compare' => '='
+              ],
+              [
+                'key' => 'language',
+                'value' => 'en',
+                'compare' => '='
+              ]
+            ]
+          ]);          
               if ($collaborators->have_posts()) :
                 while ($collaborators->have_posts()) : $collaborators->the_post();
-                  $employment_title = get_field('employment_title'); // Position
-                  $institution = get_field('institution'); // Institution
+                  $employment_title = get_field('employment_title_en'); // Position
+                  $institution = get_field('institution_en'); // Institution
               ?>
                 <div class="collaborator-item">
                   <p class="collaborator-name"><strong><?php the_title(); ?></strong></p>
