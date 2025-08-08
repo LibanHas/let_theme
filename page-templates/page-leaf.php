@@ -1,8 +1,8 @@
 <?php
 /**
- * Template Name: Presentations Page
+ * Template Name: LEAF Page
  *
- * Template for displaying the Presentations archive in full width.
+ * Template for displaying the LEAF system.
  *
  * @package Understrap
  */
@@ -13,7 +13,7 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<div class="wrapper" id="page-presentations">
+<div class="wrapper" id="page-leaf">
   <div class="<?php echo esc_attr( $container ); ?>" id="content">
     <div class="row">
     <div class="col-lg-12 content-area" id="primary">

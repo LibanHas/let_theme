@@ -23,7 +23,7 @@ while ( have_posts() ) : the_post();
     'visit'        => 'Visit',
     'social_event' => 'Social Event',
     'publications' => 'Publication',
-    'media'        => 'Media Coverage',
+    'media'        => 'Media',
     'awards'       => 'Award',
     'projects'     => 'Project',
     'contests'     => 'Contest',
