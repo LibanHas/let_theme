@@ -132,49 +132,53 @@ $logo_image_url = trim( get_template_directory_uri() . '/images/let_logo_letters
   <div class="swiper updates-carousel">
     <div class="swiper-wrapper">
     <?php
-  $args = [
-    'post_type' => ['news_jp', 'news_en', 'event_jp', 'event_en'],
-    'posts_per_page' => 10,
-    'orderby' => 'date',
-    'order' => 'DESC',
-  ];
+   $current_year = date_i18n('Y');
 
+   $year = date_i18n('Y'); // e.g. 2025
 
+$args = [
+  'post_type'      => ['news_en', 'event_en'],
+  'posts_per_page' => 10,
+  'meta_key'       => 'update_date',
+  'orderby'        => 'meta_value',
+  'order'          => 'DESC',
+];
+
+  
 
   $updates_query = new WP_Query($args);
 
   if ($updates_query->have_posts()) :
-  while ($updates_query->have_posts()) : $updates_query->the_post();
-    $post_type = get_post_type();
-
-    $update_date = get_field('update_date');
-    $formatted_date = '日付未定';
-    if ($update_date) {
-      $date_obj = DateTime::createFromFormat('Ymd', $update_date);
-      if ($date_obj) {
-        $formatted_date = $date_obj->format('Y/m/d');
+    while ($updates_query->have_posts()) : $updates_query->the_post();
+      $post_type = get_post_type();
+      $update_date = get_field('update_date');
+      $formatted_date = 'TBD';
+      if ($update_date) {
+        $date_obj = DateTime::createFromFormat('Ymd', $update_date);
+        if ($date_obj) {
+          $formatted_date = $date_obj->format('Y/m/d');
+        }
       }
-    }
 
-    $tag_value = '';
-    $tag_label = '';
-    $description = '';
+      $tag_value = '';
+      $tag_label = '';
+      $description = '';
 
-    if (in_array($post_type, ['news_jp', 'news_en'])) {
-      $category_field = get_field_object('news_category');
-      $tag_value = $category_field['value'] ?? 'news';
-      $tag_label = $category_field['choices'][$tag_value] ?? 'ニュース';
-      $description = get_field('news_description') ?: '';
-    } elseif (in_array($post_type, ['event_jp', 'event_en'])) {
-      $tag_value = 'event';
-      $tag_label = 'イベント';
-      $description = get_field('event_title') ?: get_the_title();
-    }
+      if ($post_type === 'news_en') {
+        $category_field = get_field_object('news_category');
+        $tag_value = $category_field['value'] ?? 'news';
+        $tag_label = $category_field['choices'][$tag_value] ?? 'News';
+        $description = get_field('news_description') ?: '';
+      } elseif ($post_type === 'event_en') {
+        $tag_value = 'event';
+        $tag_label = 'Event';
+        $description = get_field('event_title') ?: get_the_title();
+      }
 
-    $tag_class = $category_classes[$tag_value] ?? 'tag-news';
-    $tag_label = $category_labels[$tag_value] ?? 'ニュース';
+      $tag_class = $category_classes[$tag_value] ?? 'tag-news';
+      $tag_label = $category_labels[$tag_value] ?? 'News';
+?>
 
-    ?>
     <div class="swiper-slide">
     <a href="<?php the_permalink(); ?>" class="update-card-link">
     <div class="update-card">

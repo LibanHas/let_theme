@@ -15,14 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
         targetPanel.classList.remove("open");
         headerEl.classList.remove("active", "is-open");
       } else {
-        // Close all others (optional)
-        // document.querySelectorAll(".accordion-panel.open").forEach(panel => {
-        //   panel.style.height = "0px";
-        //   panel.classList.remove("open");
-        //   const otherHeader = document.querySelector(`.accordion-header[data-target="${panel.id}"]`);
-        //   otherHeader?.classList.remove("active", "is-open");
-        // });
-
+        // targetPanel opening logic
         targetPanel.classList.add("open");
         targetPanel.style.height = "auto";
         const fullHeight = targetPanel.scrollHeight;
@@ -30,12 +23,18 @@ document.addEventListener("DOMContentLoaded", function () {
         void targetPanel.offsetWidth;
         targetPanel.style.height = fullHeight + "px";
         headerEl.classList.add("active", "is-open");
+
+        // ✅ Lazy-load iframe only when the panel is opened
+        const iframe = targetPanel.querySelector("iframe");
+        if (iframe && !iframe.src) {
+          iframe.src = iframe.dataset.src;
+        }
       }
     });
   });
 });
 
-//Filter functionality
+// Filter functionality for members section (untouched)
 const defaultFilter = 'faculty';
 const buttons = document.querySelectorAll('.filter-button');
 const sections = document.querySelectorAll('.member-group-section');

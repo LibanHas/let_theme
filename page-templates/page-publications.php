@@ -44,7 +44,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 </span>
               </button>
               <div class="accordion-panel show" id="panel1">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/journalPapers" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/journalPapers" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -58,7 +58,7 @@ $container = get_theme_mod( 'understrap_container_type' );
               </span>
               </button>
               <div class="accordion-panel" id="panel2">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/conferences" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/conferences" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -72,7 +72,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel3">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookEditors" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookEditors" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -86,7 +86,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel4">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookChapters" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/bookChapters" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -100,7 +100,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel5">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/invitedTalks" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/invitedTalks" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -114,7 +114,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel6">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/surveyPapers" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/surveyPapers" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -128,7 +128,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel7">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/domesticConferences" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/domesticConferences" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -142,7 +142,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel8">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/newspapers" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/newspapers" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -156,7 +156,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel9">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/awards" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/awards" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -170,7 +170,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel10">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/patents" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/patents" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -184,7 +184,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel11">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/symposiums" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/symposiums" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -198,7 +198,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel12">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/doctoralAndMastersThesis" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/doctoralAndMastersThesis" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
@@ -212,7 +212,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 </span>
               </button>
               <div class="accordion-panel" id="panel13">
-                <iframe src="https://lab.let.media.kyoto-u.ac.jp/let-pub/others" style="width:100%; height:600px; border:none;"></iframe>
+                <iframe data-src="https://lab.let.media.kyoto-u.ac.jp/let-pub/others" style="width:100%; height:600px; border:none;"></iframe>
               </div>
             </div>
 
