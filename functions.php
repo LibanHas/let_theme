@@ -766,3 +766,35 @@ add_filter('language_attributes', function($output) {
 
 
 
+// Temporary snippet (run once; then remove)
+add_action('admin_init', function () {
+    if (!current_user_can('manage_options')) return;
+
+    $map = [
+        'birthplace'            => 'birthplace_jp',
+        'degree'                => 'degree_jp',
+        'university_department' => 'university_department_jp',
+        'programming_languages' => 'programming_languages_jp',
+        'research_theme'        => 'research_theme_jp',
+        'hobby'                 => 'hobby_jp',
+        'recommendation'        => 'recommendation_jp',
+        'profile'               => 'profile_jp',
+        'link'                  => 'link_jp',
+    ];
+
+    $members = get_posts([
+        'post_type' => 'member',
+        'posts_per_page' => -1,
+        'post_status' => 'any',
+        'fields' => 'ids',
+    ]);
+
+    foreach ($members as $post_id) {
+        foreach ($map as $old => $new) {
+            if (get_field($new, $post_id)) continue; // don't overwrite if already set
+            $val = get_post_meta($post_id, $old, true);
+            if ($val === '' || $val === null) continue;
+            update_field($new, $val, $post_id); // sets ACF’s reference meta too
+        }
+    }
+});

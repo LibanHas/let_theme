@@ -5,20 +5,40 @@ defined('ABSPATH') || exit;
 get_header();
 $container = get_theme_mod('understrap_container_type');
 
-// Function to convert DD/MM/YYYY to timestamp
-function parse_date_ddmmyyyy($date_string) {
+/**
+ * Parse various date formats into a UNIX timestamp.
+ * Accepts: Ymd (ACF return), d/m/Y (editor display), Y-m-d, or anything strtotime understands.
+ */
+function parse_to_ts($date_string) {
     if (empty($date_string)) return false;
-    
-    // Check if it's in DD/MM/YYYY format
-    if (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/', $date_string, $matches)) {
-        $day = $matches[1];
-        $month = $matches[2];
-        $year = $matches[3];
-        return mktime(0, 0, 0, $month, $day, $year);
+
+    // Ymd (e.g., 20251028)
+    if (preg_match('/^\d{8}$/', $date_string)) {
+        $dt = DateTime::createFromFormat('Ymd', $date_string);
+        return $dt ? $dt->getTimestamp() : false;
     }
-    
-    // Fallback to strtotime for other formats
-    return strtotime($date_string);
+    // d/m/Y (e.g., 28/10/2025)
+    if (preg_match('/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/', $date_string, $m)) {
+        return mktime(0, 0, 0, (int)$m[2], (int)$m[1], (int)$m[3]);
+    }
+    // Y-m-d (e.g., 2025-10-28)
+    if (preg_match('/^\d{4}-\d{1,2}-\d{1,2}$/', $date_string)) {
+        $dt = date_create($date_string);
+        return $dt ? $dt->getTimestamp() : false;
+    }
+    // Fallback
+    $ts = strtotime($date_string);
+    return $ts ? $ts : false;
+}
+
+/**
+ * Format timestamp -> "Y年n月j日（曜）"
+ */
+function format_jp_date_wday($ts) {
+    if ($ts === false) return '';
+    $wmap = ['Sun' => '日', 'Mon' => '月', 'Tue' => '火', 'Wed' => '水', 'Thu' => '木', 'Fri' => '金', 'Sat' => '土'];
+    $w = $wmap[date('D', $ts)] ?? '';
+    return date_i18n('Y年n月j日', $ts) . '（' . $w . '）';
 }
 
 // Inside The Loop
@@ -29,15 +49,18 @@ while (have_posts()) : the_post();
 
   // ACF fields
   $start_time = get_field('event_start_time');
-  $end_time = get_field('event_end_time');
-  $format = get_field('event_format');
-  $thumbnail = get_field('event_thumbnail');
-  $body = get_field('event_body');
+  $end_time   = get_field('event_end_time');
+  $format     = get_field('event_format');
+  $thumbnail  = get_field('event_thumbnail');
+  $body       = get_field('event_body');
 
-  $date_mode = get_field('event_date_mode');
-  $start_date = get_field('event_date_start');
-  $end_date = get_field('event_date_end');
-  $second_date = get_field('event_date_second');
+  $date_mode   = get_field('event_date_mode');   // 'single' | 'range' | 'multiple'
+  $start_date  = get_field('event_date_start');  // single/range/multiple primary
+  $end_date    = get_field('event_date_end');    // range end (optional)
+  $second_date = get_field('event_date_second'); // multiple second
+  $third_date  = get_field('event_date_third');  // NEW: multiple third
+  $fourth_date = get_field('event_date_fourth'); // NEW: multiple fourth
+
   $category_value = get_field('event_category');
 
   // Category labels and classes
@@ -57,7 +80,7 @@ while (have_posts()) : the_post();
     'contests'     => 'コンテスト',
     'news'         => 'ニュース'
   ];
-  
+
   // Merged category classes (use in both templates)
   $category_classes = [
     'symposiums'   => 'tag-symposium',
@@ -77,29 +100,39 @@ while (have_posts()) : the_post();
   ];
 
   $category_label = $category_labels[$category_value] ?? 'イベント';
-  $tag_class = $category_classes[$category_value] ?? 'tag-event';
+  $tag_class      = $category_classes[$category_value] ?? 'tag-event';
 
-  // Format dates
-  $weekday_map = ['Sun' => '日', 'Mon' => '月', 'Tue' => '火', 'Wed' => '水', 'Thu' => '木', 'Fri' => '金', 'Sat' => '土'];
-
+  // Build formatted date string (supports single | range | multiple 2–4 dates)
   $formatted_dates = '';
+
   if ($date_mode === 'single' && $start_date) {
-    $ts = parse_date_ddmmyyyy($start_date);
+    $ts = parse_to_ts($start_date);
     if ($ts !== false) {
-        $weekday = $weekday_map[date('D', $ts)] ?? '';
-        $formatted_dates = date_i18n('Y年n月j日', $ts) . '（' . $weekday . '）';
+      $formatted_dates = format_jp_date_wday($ts);
     }
+
   } elseif ($date_mode === 'range' && $start_date && $end_date) {
-    $ts1 = parse_date_ddmmyyyy($start_date);
-    $ts2 = parse_date_ddmmyyyy($end_date);
+    $ts1 = parse_to_ts($start_date);
+    $ts2 = parse_to_ts($end_date);
     if ($ts1 !== false && $ts2 !== false) {
-        $formatted_dates = date_i18n('Y年n月j日', $ts1) . ' – ' . date_i18n('Y年n月j日', $ts2);
+      // Start with weekday; end without (consistent with your previous template)
+      $formatted_dates = format_jp_date_wday($ts1) . ' – ' . date_i18n('Y年n月j日', $ts2);
     }
-  } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
-    $ts1 = parse_date_ddmmyyyy($start_date);
-    $ts2 = parse_date_ddmmyyyy($second_date);
-    if ($ts1 !== false && $ts2 !== false) {
-        $formatted_dates = date_i18n('Y年n月j日', $ts1) . ', ' . date_i18n('Y年n月j日', $ts2);
+
+  } elseif ($date_mode === 'multiple') {
+    // Collect up to four dates; normalize, dedupe, sort; print each with weekday
+    $candidates = array_filter([$start_date, $second_date, $third_date, $fourth_date]);
+    $ts_list = [];
+    foreach ($candidates as $d) {
+      $ts = parse_to_ts($d);
+      if ($ts !== false) $ts_list[] = $ts;
+    }
+    $ts_list = array_values(array_unique($ts_list));
+    sort($ts_list);
+
+    if (!empty($ts_list)) {
+      $formatted_each = array_map('format_jp_date_wday', $ts_list);
+      $formatted_dates = implode(', ', $formatted_each);
     }
   }
 
@@ -136,7 +169,9 @@ while (have_posts()) : the_post();
                 <?php if ($start_time && $end_time): ?>
                   <div class="event-meta-item">
                     <span class="event-icon"><img src="<?php echo get_template_directory_uri(); ?>/images/Vector.png" alt="時計"></span>
-                    <div class="event-meta-text"><?php echo esc_html(date('H:i', strtotime($start_time))); ?> – <?php echo esc_html(date('H:i', strtotime($end_time))); ?></div>
+                    <div class="event-meta-text">
+                      <?php echo esc_html(date('H:i', strtotime($start_time))); ?> – <?php echo esc_html(date('H:i', strtotime($end_time))); ?>
+                    </div>
                   </div>
                 <?php endif; ?>
 

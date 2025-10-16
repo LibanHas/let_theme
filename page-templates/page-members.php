@@ -58,39 +58,47 @@ $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
 
             <!-- MEMBERS LIST -->
             <div class="members-container">
-              <?php
-              function render_member_card($post, $lang) {
-                  setup_postdata($post);
-                  $post_id = $post->ID;
-                  $member_type = get_field('member_type', $post_id);
-                  $student_level = get_field('student_level', $post_id);
-                  $student_year = get_field('student_year', $post_id);
-                  $employment_title = $lang === 'ja' ? get_field('employment_title', $post_id) : get_field('employment_title_en', $post_id);
-              ?>
-              <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
-                <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
-                  <?php if (has_post_thumbnail()) {
-                      the_post_thumbnail('medium');
-                  } else {
-                      echo '<div class="p-member-list__thumbnail --empty"></div>';
-                  } ?>
-                </a>
-                <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
-                <?php
-                if ($student_level && $student_year) {
-                    if ($lang === 'ja') {
-                        $label = $student_level === 'doctoral' ? '博士' : '修士';
-                        echo '<p class="p-member-list__position">' . esc_html($label . $student_year . '年') . '</p>';
-                    } else {
-                        $label = $student_level === 'doctoral' ? 'D' : 'M';
-                        echo '<p class="p-member-list__position">' . esc_html($label . $student_year) . '</p>';
-                    }
-                } elseif ($member_type === 'faculty' && $employment_title) {
-                    echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
-                }
-                ?>
-              </div>
-              <?php wp_reset_postdata(); }
+            <?php
+function render_member_card($post, $lang) {
+    setup_postdata($post);
+    $post_id = $post->ID;
+
+    // choose suffix depending on language
+    $suffix = ($lang === 'en') ? '_en' : '_jp';
+
+    $member_type      = get_field('member_type'      . $suffix, $post_id);
+    $student_level    = get_field('student_level'    . $suffix, $post_id);
+    $student_year     = get_field('student_year'     . $suffix, $post_id);
+    $employment_title = get_field('employment_title' . $suffix, $post_id);
+?>
+    <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
+        <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
+            <?php if (has_post_thumbnail()) {
+                the_post_thumbnail('medium');
+            } else {
+                echo '<div class="p-member-list__thumbnail --empty"></div>';
+            } ?>
+        </a>
+        <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
+        <?php
+        if ($student_level && $student_year) {
+            if ($lang === 'ja') {
+                $label = ($student_level === 'doctoral') ? '博士' : '修士';
+                echo '<p class="p-member-list__position">' . esc_html($label . $student_year . '年') . '</p>';
+            } else {
+                $label = ($student_level === 'doctoral') ? 'D' : 'M';
+                echo '<p class="p-member-list__position">' . esc_html($label . $student_year) . '</p>';
+            }
+        } elseif ($member_type === 'faculty' && $employment_title) {
+            echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
+        }
+        ?>
+    </div>
+<?php
+    wp_reset_postdata();
+} // ← this closes the function
+?>
+<?php
 $members = new WP_Query([
   'post_type' => 'member',
   'posts_per_page' => -1,
@@ -113,15 +121,15 @@ $members = new WP_Query([
 
               // Decide field suffix based on current language
 // Decide field suffix based on current language
-$suffix = ($lang === 'en') ? '_en' : '';
+$suffix = ($lang === 'en') ? '_en' : '_jp';
 
 if ($members->have_posts()) {
     while ($members->have_posts()) {
-        $members->the_post();
-
+      $members->the_post();
+      $post_id = get_the_ID();
         // Pull correct language-specific fields
-        $type  = get_field('member_type' . $suffix);
-        $level = get_field('student_level' . $suffix);
+        $type   = get_field('member_type'   . $suffix, $post_id);
+        $level  = get_field('student_level' . $suffix, $post_id);
 
         switch ($type) {
             case 'faculty':
@@ -199,7 +207,7 @@ if ($members->have_posts()) {
               $student_alumni = [];
               $staff_alumni = [];
 
-              $suffix = ($lang === 'en') ? '_en' : '';
+              $suffix = ($lang === 'en') ? '_en' : '_jp';
 
               foreach ($alumni as $post) {
                   setup_postdata($post);
@@ -215,6 +223,7 @@ if ($members->have_posts()) {
                       $staff_alumni[] = $post;
                   }
               }
+              wp_reset_postdata();
               ?>
 
               <?php if (!empty($faculty_alumni) || !empty($student_alumni) || !empty($staff_alumni)) : ?>
@@ -240,11 +249,11 @@ if ($members->have_posts()) {
                       <li>
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         <?php
-                        $title = get_field('employment_title');
+                        $title = get_field('employment_title' . $suffix);
                         if ($title) echo '（' . esc_html($title) . '）';
                         ?>
                       </li>
-                      <?php endforeach; ?>
+                      <?php endforeach; wp_reset_postdata();?>
                     </ol>
                   </div>
                 </div>
@@ -264,28 +273,28 @@ if ($members->have_posts()) {
                     <ul class="alumni-list with-icon">
                       <?php foreach ($student_alumni as $post) : setup_postdata($post); ?>
                       <li>
-    <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
-    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    <?php
-    $suffix = ($lang === 'en') ? '_en' : '';
-    $level = get_field('student_level' . $suffix);
-    $year  = get_field('student_year' . $suffix);
+                    <img src="<?php echo get_template_directory_uri(); ?>/images/graduation-cap.svg" alt="" class="alumni-icon" />
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                    <?php
+                    $suffix = ($lang === 'en') ? '_en' : '_jp';
+                    $level = get_field('student_level' . $suffix);
+                    $year  = get_field('student_year' . $suffix);
 
-    if ($level && $level !== 'na') {
-        if ($level === 'doctoral' || $level === 'masters') {
-            if ($year) {
-                $label = $level === 'doctoral'
-                    ? ($lang === 'ja' ? '博士' : 'D')
-                    : ($lang === 'ja' ? '修士' : 'M');
-                echo '（' . esc_html($label . ($lang === 'ja' ? $year . '年' : $year)) . '）';
-            }
-        } elseif ($level === 'research_student') {
-            echo $lang === 'ja' ? '（研究生）' : ' (Research Student)';
-        }
-    }
-    ?>
-</li>
-                      <?php endforeach; ?>
+                    if ($level && $level !== 'na') {
+                        if ($level === 'doctoral' || $level === 'masters') {
+                            if ($year) {
+                                $label = $level === 'doctoral'
+                                    ? ($lang === 'ja' ? '博士' : 'D')
+                                    : ($lang === 'ja' ? '修士' : 'M');
+                                echo '（' . esc_html($label . ($lang === 'ja' ? $year . '年' : $year)) . '）';
+                            }
+                        } elseif ($level === 'research_student') {
+                            echo $lang === 'ja' ? '（研究生）' : ' (Research Student)';
+                        }
+                    }
+                    ?>
+                </li>
+                      <?php endforeach;wp_reset_postdata();?>
                     </ul>
                   </div>
                 </div>
@@ -308,11 +317,11 @@ if ($members->have_posts()) {
                         <img src="<?php echo get_template_directory_uri(); ?>/images/briefcase-business.svg" alt="" class="alumni-icon" />
                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                         <?php
-                        $title = get_field('employment_title');
+                        $title = get_field('employment_title' . $suffix);
                         if ($title) echo '（' . esc_html($title) . '）';
                         ?>
                       </li>
-                      <?php endforeach; ?>
+                      <?php endforeach; wp_reset_postdata(); ?>
                     </ul>
                   </div>
                 </div>

@@ -5,20 +5,36 @@ get_header();
 $container = get_theme_mod('understrap_container_type');
 $lang = 'ja'; // Fixed for Japanese
 
-// Function to convert DD/MM/YYYY to timestamp
-function parse_date_ddmmyyyy($date_string) {
+/**
+ * Parse various date formats into a UNIX timestamp.
+ * Accepts: Ymd (ACF return), d/m/Y (editor display), Y-m-d, or anything strtotime understands.
+ */
+function archive_parse_to_ts($date_string) {
     if (empty($date_string)) return false;
-    
-    // Check if it's in DD/MM/YYYY format
-    if (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/', $date_string, $matches)) {
-        $day = $matches[1];
-        $month = $matches[2];
-        $year = $matches[3];
-        return mktime(0, 0, 0, $month, $day, $year);
+
+    // Ymd (e.g., 20251028)
+    if (preg_match('/^\d{8}$/', $date_string)) {
+        $dt = DateTime::createFromFormat('Ymd', $date_string);
+        return $dt ? $dt->getTimestamp() : false;
     }
-    
-    // Fallback to strtotime for other formats
-    return strtotime($date_string);
+    // d/m/Y (e.g., 28/10/2025)
+    if (preg_match('/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/', $date_string, $m)) {
+        return mktime(0, 0, 0, (int)$m[2], (int)$m[1], (int)$m[3]);
+    }
+    // Y-m-d (e.g., 2025-10-28)
+    if (preg_match('/^\d{4}-\d{1,2}-\d{1,2}$/', $date_string)) {
+        $dt = date_create($date_string);
+        return $dt ? $dt->getTimestamp() : false;
+    }
+    // Fallback
+    $ts = strtotime($date_string);
+    return $ts ? $ts : false;
+}
+
+// Short date: "n/j"
+function archive_format_short($ts) {
+    if ($ts === false) return '';
+    return date_i18n('Y/n/j', $ts);
 }
 ?>
 
@@ -64,7 +80,7 @@ function parse_date_ddmmyyyy($date_string) {
                 'contests'     => 'コンテスト',
                 'news'         => 'ニュース'
               ];
-              
+
               // Merged category classes (use in both templates)
               $category_classes = [
                 'symposiums'   => 'tag-symposium',
@@ -86,52 +102,79 @@ function parse_date_ddmmyyyy($date_string) {
               if ($events_query->have_posts()) :
                 while ($events_query->have_posts()) : $events_query->the_post();
 
+                  // Times
                   $start = get_field('event_start_time');
-                  $end = get_field('event_end_time');
-                  $date_mode = get_field('event_date_mode');
-                  $start_date = get_field('event_date_start');
-                  $end_date = get_field('event_date_end');
-                  $second_date = get_field('event_date_second');
+                  $end   = get_field('event_end_time');
 
+                  // Date mode + fields
+                  $date_mode   = get_field('event_date_mode');   // 'single' | 'range' | 'multiple'
+                  $start_date  = get_field('event_date_start');
+                  $end_date    = get_field('event_date_end');
+                  $second_date = get_field('event_date_second');
+                  $third_date  = get_field('event_date_third');   // NEW
+                  $fourth_date = get_field('event_date_fourth');  // NEW
+
+                  // Build formatted date (short)
                   $formatted_date = '未定';
 
                   if ($date_mode === 'single' && $start_date) {
-                    $ts = parse_date_ddmmyyyy($start_date);
+                    $ts = archive_parse_to_ts($start_date);
                     if ($ts !== false) {
-                      $formatted_date = date_i18n('Y/n/j', $ts);
+                      $formatted_date = archive_format_short($ts);
                     }
+
                   } elseif ($date_mode === 'range' && $start_date && $end_date) {
-                    $ts1 = parse_date_ddmmyyyy($start_date);
-                    $ts2 = parse_date_ddmmyyyy($end_date);
+                    $ts1 = archive_parse_to_ts($start_date);
+                    $ts2 = archive_parse_to_ts($end_date);
                     if ($ts1 !== false && $ts2 !== false) {
-                      $formatted_date = date_i18n('Y/n/j', $ts1) . ' – ' . date_i18n('Y/n/j', $ts2);
+                      $formatted_date = archive_format_short($ts1) . ' – ' . archive_format_short($ts2);
                     }
-                  } elseif ($date_mode === 'multiple' && $start_date && $second_date) {
-                    $ts1 = parse_date_ddmmyyyy($start_date);
-                    $ts2 = parse_date_ddmmyyyy($second_date);
-                    if ($ts1 !== false && $ts2 !== false) {
-                      $formatted_date = date_i18n('Y/n/j', $ts1) . ', ' . date_i18n('Y/n/j', $ts2);
+
+                  } elseif ($date_mode === 'multiple') {
+                    $candidates = array_filter([$start_date, $second_date, $third_date, $fourth_date]);
+                    $ts_list = [];
+                    foreach ($candidates as $d) {
+                      $ts = archive_parse_to_ts($d);
+                      if ($ts !== false) $ts_list[] = $ts;
+                    }
+                    $ts_list = array_values(array_unique($ts_list));
+                    sort($ts_list);
+
+                    if (!empty($ts_list)) {
+                      $shorts = array_map('archive_format_short', $ts_list);
+                      // Join with ・ (e.g., 2025/10/28・2025/10/29・2025/11/4)
+                      $formatted_date = implode('・', array_filter($shorts));
                     }
                   }
 
-                  $time_string = ($start && $end) ? date('H:i', strtotime($start)) . ' - ' . date('H:i', strtotime($end)) : '';
-                  $thumbnail = get_field('thumbnail');
+                  // Time string
+                  $time_string = ($start && $end)
+                    ? date('H:i', strtotime($start)) . ' - ' . date('H:i', strtotime($end))
+                    : '';
+
+                  // Thumbnail: try event_thumbnail first, fall back to 'thumbnail' field if that’s what your ACF uses here
+                  $thumbnail = get_field('event_thumbnail');
+                  if (!$thumbnail) {
+                    $thumbnail = get_field('thumbnail');
+                  }
+
+                  // Category tag
                   $category_value = get_field('event_category');
                   $category_label = $category_labels[$category_value] ?? 'イベント';
-                  $tag_class = $category_classes[$category_value] ?? 'tag-news';
+                  $tag_class      = $category_classes[$category_value] ?? 'tag-news';
               ?>
 
               <hr class="event-divider" />
 
               <div class="event-item">
-                <?php if ($thumbnail) : ?>
+                <?php if ($thumbnail && is_array($thumbnail) && !empty($thumbnail['url'])) : ?>
                   <div class="event-thumbnail">
-                    <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt']); ?>" />
+                    <img src="<?php echo esc_url($thumbnail['url']); ?>" alt="<?php echo esc_attr($thumbnail['alt'] ?? ''); ?>" />
                   </div>
                 <?php endif; ?>
 
                 <div class="event-content">
-                  <div class="event-date"><?php echo $formatted_date; ?></div>
+                  <div class="event-date"><?php echo esc_html($formatted_date); ?></div>
                   <div class="event-tag <?php echo esc_attr($tag_class); ?>">
                     <?php echo esc_html($category_label); ?>
                   </div>
@@ -172,7 +215,7 @@ function parse_date_ddmmyyyy($date_string) {
 
               <?php else : ?>
                 <p>イベントがまだありません。</p>
-              <?php endif; ?>
+              <?php endif; wp_reset_postdata(); ?>
             </div>
           </section>
 

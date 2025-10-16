@@ -3479,7 +3479,7 @@ padding-top: 7rem; ;
 
 
 
-// Presentations page
+// Leaf page
 
 #page-leaf {
   margin: 0 auto;
@@ -3544,23 +3544,40 @@ padding-top: 7rem; ;
         transition: background-color 0.3s ease;
       }
   
-      .btn-primary {
-        background-color: #b97842;
-        color: #fff;
+     /* Solid variants: no overlay, no blend tricks */
+.btn-primary,
+.btn-secondary {
+  &:after { display: none !important; }     /* or opacity:0 !important */
+  span { mix-blend-mode: normal !important; }
+}
 
-        &:hover {
-          background-color: #a36d3c !important;
-        }
-      }
-  
-      .btn-secondary {
-        background-color: #e3d5c2;
-        color: #4b3e33;
+/* Primary */
+.btn-primary {
+  background-color: #b97842;
+  color: #fff;
+  border-color: #b97842;
 
-        &:hover {
-          background-color: #d1c0ad !important;
-        }
-      }
+  &:hover,
+  &:focus {
+    background-color: #a36d3c !important;
+    border-color: #a36d3c !important;
+    color: #fff !important;
+  }
+}
+
+/* Secondary (light) */
+.btn-secondary {
+  background-color: #e3d5c2;
+  color: #4b3e33;
+  border-color: #e3d5c2;
+
+  &:hover,
+  &:focus {
+    background-color: #d1c0ad !important;
+    border-color: #d1c0ad !important;
+    color: #4b3e33 !important;
+  }
+}
     }
   }
 
@@ -4506,7 +4523,34 @@ padding-top: 7rem; ;
       }
       
      
+      .accordion-panel { position: relative; overflow: visible; }
+      .accordion-panel.loading > .spinner { display: flex !important; }
       
+      .spinner {
+        position: absolute; inset: 0;
+        display: none;
+        align-items: center; justify-content: center;
+        background: rgba(255,255,255,0.6);
+        z-index: 2147483647;  /* above any iframe */
+        pointer-events: none;
+      }
+      .spinner .ring {
+        width: 32px; height: 32px;
+        border: 3px solid #e5e5e5;
+        border-top-color: #666;
+        border-radius: 50%;
+        animation: spin .8s linear infinite;
+      }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      
+.spinner .sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
       
       // Footer
 

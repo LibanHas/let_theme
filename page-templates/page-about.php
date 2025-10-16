@@ -176,7 +176,7 @@ get_header();
           <img src="<?php echo get_template_directory_uri(); ?>/images/ichidate-san-profile.jpg" alt="伊達 初音" class="founder-photo img-fluid rounded-3">
           </div>
           <div class="student-title">
-              <h3 class="student-name">一伊建　初音</h3>
+              <h3 class="student-name">一伊達　初音</h3>
               <p class="student-role">修士2年生</p>
           </div>
 
