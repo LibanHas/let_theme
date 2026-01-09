@@ -29,7 +29,7 @@ $container = get_theme_mod('understrap_container_type');
 
           <div class="container">
             <!-- FILTER BUTTONS -->
-            <div class="wp-block-buttons alignwide is-content-justification-center is-layout-flex wp-block-buttons-is-layout-flex" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)">
+            <div class="d-flex justify-content-center gap-3 my-5 flex-wrap members-filter-buttons" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)">
               <?php
               $buttons = [
                 'faculty' => 'Faculty & Staff',

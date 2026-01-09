@@ -75,7 +75,6 @@ $container = get_theme_mod('understrap_container_type');
                   <?php
                   $date_raw = get_field('news_date');
                   $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
-                  $description = get_field('news_description');
                   $category_value = get_field('news_category');
                   $category_label = $category_labels[$category_value] ?? 'ニュース';
                   $tag_class = $category_classes[$category_value] ?? 'tag-news';
@@ -93,7 +92,7 @@ $container = get_theme_mod('understrap_container_type');
                     <div class="news-summary">
                       <p>
                         <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
-                          <?php echo esc_html($description); ?>
+                        <?php the_title(); ?>
                         </a>
                       </p>
                     </div>

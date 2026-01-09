@@ -76,6 +76,7 @@ if (!$translation_url) {
             --tick-url: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');
         }
     </style>
+    <meta name="google-site-verification" content="TQpBEvti6KQuMbDlzmgDhG5h0aQQd6gDGGLfLfUgWV8" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+JP:wght@100..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>

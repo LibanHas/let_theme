@@ -15,232 +15,191 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 // Example grants array (replace this with ACF or loop through posts/custom DB if needed)
 $grants = [
+
+    // ---------- 2023 ----------
     [
-        'year' => '2024',
-        'period' => 'April 1, 2024 – March 31, 2029',
-        'type' => 'Commissioned Research',
-        'title' => 'Strategic Innovation Promotion Program (SIP3)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Building a platform to realize new ways of learning and working in the post-COVID era.'
+        'year'   => '2023',
+        'period' => '2023年4月26日〜2025年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Scientific Research (A)',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Development of an information infrastructure for extracting, sharing, and utilizing evidence from real-world educational data (Project No.: 23H00505)'
     ],
     [
-        'year' => '2024',
-        'period' => 'April 1, 2024 – March 31, 2026',
-        'type' => 'Collaborative Research',
-        'title' => 'Benesse Corporation',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research on identifying learner comprehension centered on “writing learning actions” and developing instructional methods based on them.'
+        'year'   => '2023',
+        'period' => '2023年3月31日〜2024年3月31日',
+        'type'   => 'Commissioned Research',
+        'title'  => 'National Institute for Educational Policy Research (FY2023 Educational Data Analysis and Research Promotion Project)',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Empirical study, infrastructure development, and policy consideration toward the realization of data-driven education'
+    ],
+
+    // ---------- 2022 ----------
+    [
+        'year'   => '2022',
+        'period' => '2022年4月1日〜2024年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Scientific Research (B)',
+        'pi'     => 'Rwitajit Majumdar',
+        'summary'=> 'GOAL project: AI-supported self-directed learning lifestyle in data-rich educational ecosystem (Project No.: 22H03902)'
     ],
     [
-        'year' => '2023',
-        'period' => 'April 26, 2023 – March 31, 2026',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (A)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Developing an information infrastructure for extracting, sharing, and utilizing evidence from real-world educational data.'
+        'year'   => '2022',
+        'period' => '2022年4月1日〜2025年3月31日',
+        'type'   => 'Grant-in-Aid for JSPS Fellows',
+        'title'  => 'JSPS Research Fellowship',
+        'pi'     => 'OCHEJA Patrick',
+        'summary'=> 'Linking lifelong learning logs and distributed user models using blockchain (Project No.: 22J15869)'
     ],
     [
-        'year' => '2023',
-        'period' => 'April 2023 – March 2026',
-        'type' => 'National Institute for Educational Policy Research',
-        'title' => 'Empirical Study, Infrastructure Development, and Policy Consideration Toward the Realization of Data-Driven Education',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => ''
+        'year'   => '2022',
+        'period' => '2022年8月31日〜2023年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Research Activity Start-up',
+        'pi'     => 'Izumi Horikoshi',
+        'summary'=> 'Developing a cycle for appropriate peer assessment implementation and improvement using learning logs (Project No.: 22K20246)'
     ],
     [
-        'year' => '2022',
-        'period' => 'April 1, 2022 – March 31, 2025',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (B)',
-        'pi' => 'Rwitajit Majumdar',
-        'summary' => 'GOAL project: AI-supported self-directed learning lifestyle in data-rich educational ecosystems.'
+        'year'   => '2022',
+        'period' => '2022年9月1日〜2023年3月31日',
+        'type'   => 'Collaborative Research',
+        'title'  => 'Collaborative Research with Shingakusha Co., Ltd.',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Research on the utilization of educational data in elementary and junior high schools'
     ],
     [
-        'year' => '2021',
-        'period' => 'April 1, 2021 – March 31, 2024',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (B)',
-        'pi' => 'Yuki Watanabe',
-        'summary' => 'Supporting instructional design based on classification of digital textbook usage scenarios.'
+        'year'   => '2022',
+        'period' => '2022年9月1日〜2023年3月31日',
+        'type'   => 'Collaborative Research',
+        'title'  => 'Collaborative Research with Tokyo Shoseki Co., Ltd.',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Research on analysis and visualization methods for digital textbook usage logs'
+    ],
+
+    // ---------- 2021 ----------
+    [
+        'year'   => '2021',
+        'period' => '2021年7月9日〜2023年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (Fund)',
+        'title'  => 'Grant-in-Aid for Challenging Research (Exploratory)',
+        'pi'     => 'Brendan Flanagan',
+        'summary'=> 'Learning Support by Novel Modality Process Analysis of Educational Big Data (Project No.: 21K19824)'
     ],
     [
-        'year' => '2020',
-        'period' => 'April 1, 2020 – March 31, 2023',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (B)',
-        'pi' => 'Rwitajit Majumdar',
-        'summary' => 'Supporting learners by linking learning logs and subjective information.'
+        'year'   => '2021',
+        'period' => '2021年8月11日〜2022年3月31日',
+        'type'   => 'Collaborative Research',
+        'title'  => 'Collaborative Research with Tokyo Shoseki Co., Ltd.',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Collecting digital textbook usage logs and researching analysis/visualization methods for content revision'
     ],
     [
-        'year' => '2019',
-        'period' => 'April 1, 2019 – March 31, 2023',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (A)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research on utilizing educational big data for real-time learning support.'
+        'year'   => '2021',
+        'period' => '2021年9月17日〜2022年2月28日',
+        'type'   => 'Commissioned Research',
+        'title'  => 'MEXT Elementary and Secondary Education Bureau – Demonstration/Survey Research (Kyoto City Board of Education)',
+        'pi'     => 'Kyoto City (Hiroaki Ogata)',
+        'summary'=> 'Nationwide deployment of online learning systems and promotion of advanced technologies/educational data utilization: “Kyoto Model for Future-Oriented Education” demonstration project'
+    ],
+
+    // ---------- 2020 ----------
+    [
+        'year'   => '2020',
+        'period' => '2020年4月1日〜2022年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Scientific Research (B)',
+        'pi'     => 'Brendan Flanagan',
+        'summary'=> 'Knowledge-Aware Learning Analytics Infrastructure to Support Smart Education and Learning (Project No.: 20H01722)'
     ],
     [
-        'year' => '2016',
-        'period' => 'April 1, 2016 – March 31, 2021',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (A)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research and development of learner support systems based on learner modeling and learning log analysis.'
+        'year'   => '2020',
+        'period' => '2020年4月1日〜2023年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (Fund)',
+        'title'  => 'Grant-in-Aid for Early-Career Scientists',
+        'pi'     => 'Rwitajit Majumdar',
+        'summary'=> 'GOAL Project: SMART AI Support with students’ learning and wellbeing data (Project No.: 20K20131)'
     ],
     [
-        'year' => '2022',
-        'period' => 'April 1, 2022 – March 31, 2023',
-        'type' => 'Collaborative Research',
-        'title' => 'Digital Archive Teaching Materials Utilization and Learning Logs for Higher Education DX',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Improving the quality of education based on the use of digital archive teaching materials and analysis of learning logs in university classes.'
+        'year'   => '2020',
+        'period' => '2020年12月1日〜2023年3月31日',
+        'type'   => 'Commissioned Research Funds',
+        'title'  => 'JST: ACT-X (Advanced Core Technologies for Practical Applications – Individual Type)',
+        'pi'     => 'Hiroyuki Kuromiya (Research Implementation Responsible: Hiroaki Ogata)',
+        'summary'=> 'Building an evidence ecosystem for education'
     ],
     [
-        'year' => '2022',
-        'period' => 'October 2022 – March 2023',
-        'type' => 'Commissioned Research',
-        'title' => 'AI for Education × LINE',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research and development of an educational support environment that links learning logs with LINE.'
+        'year'   => '2020',
+        'period' => '2020年7月16日〜2025年3月31日',
+        'type'   => 'Commissioned Research',
+        'title'  => 'NEDO: R&D on Technologies for Next-Generation AI Co-Evolving with Humans / Foundational Technologies for Explainable AI',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'EXAIT: Developing an educational learning support environment via co-evolution of learners’ self-explanations and AI explanation generation'
     ],
     [
-        'year' => '2021',
-        'period' => 'April 1, 2021 – March 31, 2024',
-        'type' => 'Collaborative Research',
-        'title' => 'GIGA School Initiative Support',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Survey of ICT utilization in educational settings and development of support methods.'
+        'year'   => '2020',
+        'period' => '2020年7月16日〜2025年3月31日',
+        'type'   => 'President’s Discretionary Expenses',
+        'title'  => 'FY2019 President’s Discretionary Expenses',
+        'pi'     => 'Academic Center for Computing and Media Studies (Hiroaki Ogata)',
+        'summary'=> 'Evidence-based digital learning material recommendation system for promoting self-directed study'
     ],
     [
-        'year' => '2020',
-        'period' => 'April 1, 2020 – February 2022',
-        'type' => 'Commissioned Research',
-        'title' => 'EXAIT Project',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Development of an educational support environment through the co-evolution of learners’ self-explanations and AI explanation generation.'
+        'year'   => '2020',
+        'period' => '2020年9月1日〜2021年2月28日',
+        'type'   => 'Commissioned Research',
+        'title'  => 'MEXT Elementary and Secondary Education Bureau – Demonstration/Survey Research (Kyoto City Board of Education)',
+        'pi'     => 'Kyoto City (Hiroaki Ogata)',
+        'summary'=> 'Demonstration project on introducing advanced technologies in learning (“Kyoto Model for Future-Oriented Education”)'
+    ],
+
+    // ---------- 2019 ----------
+    [
+        'year'   => '2019',
+        'period' => '2019年4月25日〜2021年3月31日',
+        'type'   => 'Grant-in-Aid for JSPS Fellows',
+        'title'  => 'JSPS Research Fellowship',
+        'pi'     => 'ABOU KHALIL Victoria',
+        'summary'=> 'Research to support learning of pseudo-homonyms across contexts (Project No.: 19J15167)'
+    ],
+
+    // ---------- 2018 ----------
+    [
+        'year'   => '2018',
+        'period' => '2018年11月15日〜2023年3月31日',
+        'type'   => 'Commissioned Research',
+        'title'  => 'NEDO: Cross-ministerial Strategic Innovation Promotion Program (SIP) – Phase 2 / Learning Support Technology',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'R&D on evidence-based tailor-made education'
     ],
     [
-        'year' => '2018',
-        'period' => 'FY2018 – FY2020',
-        'type' => 'Commissioned Research',
-        'title' => 'Educational Research Utilizing Big Data and AI',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Realizing tailor-made education based on educational and learning log data.'
+        'year'   => '2018',
+        'period' => '2018年8月24日〜2020年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Research Activity Start-up',
+        'pi'     => 'Rwitajit Majumdar',
+        'summary'=> 'GOAL Project: Developing technology support for acquisition of self-direction skill (Project No.: 18H05746)'
     ],
     [
-        'year' => '2018',
-        'period' => 'FY2018 – FY2019',
-        'type' => 'Commissioned Research',
-        'title' => '“Future-Oriented Education” Kyoto Model Demonstration Project',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Exploring and verifying personalized learning approaches centered on collaborative learning.'
+        'year'   => '2018',
+        'period' => '2018年8月24日〜2020年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Research Activity Start-up',
+        'pi'     => 'Hasnine Nehal',
+        'summary'=> 'Recommending appropriate images for vocabulary learning using educational big data and image analysis (Project No.: 18H05745)'
     ],
+
+    // ---------- 2016 ----------
     [
-        'year' => '2017',
-        'period' => 'April 1, 2017 – March 31, 2020',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Challenging Exploratory Research',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research on linking learning logs and educational evaluation in real classroom settings.'
+        'year'   => '2016',
+        'period' => '2016年5月31日〜2022年3月31日',
+        'type'   => 'Grants-in-Aid for Scientific Research (KAKENHI)',
+        'title'  => 'Grant-in-Aid for Scientific Research (S)',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Research on cloud-based information infrastructure for educational and learning support using educational big data'
     ],
-    [
-        'year' => '2016',
-        'period' => 'April 1, 2016 – March 31, 2019',
-        'type' => 'Collaborative Research',
-        'title' => 'Integration of BookRoll and Library Systems',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Supporting self-directed learning by linking BookRoll with a library materials recommendation system.'
-    ],
-    [
-        'year' => '2016',
-        'period' => 'May 31, 2016 – March 31, 2021',
-        'type' => 'Grant-in-Aid for Scientific Research (S)',
-        'title' => 'Research on Cloud-Based Information Infrastructure for Educational and Learning Support Using Big Data in Education',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => ''
-    ],
-    [
-        'year' => '2016',
-        'period' => 'April 1, 2016 – March 31, 2018',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (B)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Development of an information infrastructure for educational assessment based on learning logs.'
-    ],
-    [
-        'year' => '2016',
-        'period' => 'April 1, 2016 – March 31, 2017',
-        'type' => 'Collaborative Research',
-        'title' => 'Teaching Practice Using BookRoll',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Educational practices using BookRoll in classes and analysis of the resulting learning logs.'
-    ],
-    [
-        'year' => '2015',
-        'period' => 'April 1, 2015 – March 31, 2018',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (B)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research on cloud-based information infrastructure for educational and learning support using big educational data.'
-    ],
-    [
-        'year' => '2015',
-        'period' => 'April 1, 2015 – March 31, 2016',
-        'type' => 'Collaborative Research',
-        'title' => 'Collaborative Learning Platform Utilizing Learning Logs',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Development and evaluation of a collaborative learning information platform for sharing learning experience videos.'
-    ],
-    [
-        'year' => '2014',
-        'period' => 'April 1, 2014 – March 31, 2015',
-        'type' => 'Collaborative Research',
-        'title' => 'Research on e-Learning Support Systems',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research and development of content delivery and learning log systems for e-learning support.'
-    ],
-    [
-        'year' => '2013',
-        'period' => 'April 1, 2013 – March 31, 2016',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Challenging Exploratory Research',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Development of a recording system for visualizing educational activities and supporting learning.'
-    ],
-    [
-        'year' => '2012',
-        'period' => 'April 1, 2012 – March 31, 2015',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Grant-in-Aid for Scientific Research (C)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Estimating learner states and optimizing feedback in learning environments.'
-    ],
-    [
-        'year' => '2011',
-        'period' => 'April 1, 2011 – March 31, 2014',
-        'type' => 'Collaborative Research',
-        'title' => 'Research on Mobile Learning Environments',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Research on mobile learning environments utilizing handheld devices and collecting/analyzing learning logs.'
-    ],
-    [
-        'year' => '2010',
-        'period' => 'April 1, 2010 – March 31, 2013',
-        'type' => 'Grants-in-Aid for Scientific Research (KAKENHI)',
-        'title' => 'Young Researchers Grant (B)',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Development and implementation of a learning support system utilizing learning logs.'
-    ],
-    [
-        'year' => '2009',
-        'period' => 'April 1, 2009 – March 31, 2012',
-        'type' => 'Collaborative Research',
-        'title' => 'Web-Based Teaching Material Distribution System',
-        'pi' => 'Hiroaki Ogata',
-        'summary' => 'Improving education through web-based teaching material distribution and log analysis.'
-    ],    
-    
+
 ];
+
 
 
 // Sort grants by year descending

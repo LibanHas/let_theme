@@ -6,8 +6,6 @@ if (!function_exists('wp_admin_headers')) {
     }
 }
 
-
-
 /**
  * UnderStrap functions and definitions
  *
@@ -55,8 +53,14 @@ foreach ($understrap_includes as $file) {
 }
 
 /**
- * Enqueue custom styles and scripts
+ * ==================================================
+ * ASSETS / SCRIPTS / STYLES
+ * ==================================================
+ *
+ * All frontend CSS and JS enqueues live here.
+ * If you need to add a new script, start here.
  */
+
 function enqueue_custom_theme_scripts()
 {
     // Custom main theme style
@@ -82,6 +86,38 @@ function enqueue_custom_theme_scripts()
     wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'enqueue_custom_theme_scripts');
+
+function enqueue_aos_scripts()
+{
+    wp_enqueue_style('aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
+    wp_enqueue_script('aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
+
+    wp_add_inline_script('aos-script', 'AOS.init({
+        duration: 800,
+        easing: "ease-out-back",
+        once: true
+    });');
+}
+add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
+
+
+function enqueue_join_us_script()
+{
+    wp_enqueue_script(
+        'join-us-js',
+        get_template_directory_uri() . '/js/join-us.js',
+        array(),
+        false,
+        true
+    );
+
+    wp_localize_script('join-us-js', 'themeData', array(
+        'baseUrl' => get_template_directory_uri()
+    ));
+}
+add_action('wp_enqueue_scripts', 'enqueue_join_us_script');
+
+
 
 /**
  * Register Member Custom Post Type
@@ -116,26 +152,7 @@ function register_member_post_type()
 }
 add_action('init', 'register_member_post_type');
 
-// add_filter('post_type_link', 'custom_member_permalink', 10, 2);
 
-// function custom_member_permalink($permalink, $post) {
-//     if ($post->post_type === 'member') {
-//         $language = get_field('language', $post->ID); // Get ACF field value
-//         if ($language === 'en') {
-//             // Replace 'member' with 'en/member'
-//             $permalink = str_replace('/member/', '/en/member/', $permalink);
-//         }
-//     }
-//     return $permalink;
-// }
-
-// add_action('init', function () {
-//     add_rewrite_rule(
-//         '^en/member/([^/]+)/?$',
-//         'index.php?post_type=member&name=$matches[1]',
-//         'top'
-//     );
-// });
 
 /**
  * Register Member Group Custom Taxonomy
@@ -157,18 +174,7 @@ function register_member_group_taxonomy()
 }
 add_action('init', 'register_member_group_taxonomy');
 
-function enqueue_aos_scripts()
-{
-    wp_enqueue_style('aos-style', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css', array(), '2.3.4');
-    wp_enqueue_script('aos-script', 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js', array('jquery'), '2.3.4', true);
 
-    wp_add_inline_script('aos-script', 'AOS.init({
-        duration: 800,
-        easing: "ease-out-back",
-        once: true
-    });');
-}
-add_action('wp_enqueue_scripts', 'enqueue_aos_scripts');
 
 register_nav_menus(array(
     'top_jp' => __('Top Menu (Japanese)', 'understrap'),
@@ -327,12 +333,8 @@ function register_event_en_post_type() {
 add_action('init', 'register_event_en_post_type');
 
 
-function enqueue_swiper_assets()
-{
-    wp_enqueue_style('swiper-css', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css');
-    wp_enqueue_script('swiper-js', 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js', [], null, true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_swiper_assets');
+
+
 
 function sync_update_date_field($post_id)
 {
@@ -356,43 +358,7 @@ if (in_array($post_type, ['news', 'news_en', 'news_jp'])) {
 }
 add_action('acf/save_post', 'sync_update_date_field', 20);
 
-function manually_sync_update_dates()
-{
-    if (!is_admin() || !current_user_can('manage_options')) {
-        return;
-    }
 
-    if (!isset($_GET['sync_updates']) || $_GET['sync_updates'] !== '1') {
-        return;
-    }
-
-    $query = new WP_Query([
-        'post_type' => ['news', 'news_en', 'news_jp', 'event', 'event_en', 'event_jp'],
-        'posts_per_page' => -1,
-        'fields' => 'ids',
-    ]);
-
-    $synced = 0;
-
-    foreach ($query->posts as $post_id) {
-        $type = get_post_type($post_id);
-        if ($type === 'news') {
-            $d = get_field('news_date', $post_id);
-        } elseif ($type === 'event') {
-            $d = get_field('event_date', $post_id);
-        }
-
-        if ($d) {
-            update_field('update_date', $d, $post_id);
-            $synced++;
-        }
-    }
-
-    add_action('admin_notices', function () use ($synced) {
-        echo "<div class='notice notice-success is-dismissible'><p><strong>✅ Synced {$synced} posts.</strong></p></div>";
-    });
-}
-add_action('admin_init', 'manually_sync_update_dates');
 
 function set_new_member_menu_order($post_id, $post, $update)
 {
@@ -498,69 +464,17 @@ add_action('pre_get_posts', 'filter_members_by_member_type');
 
 
 
-function manually_assign_event_tags()
-{
-    if (!is_admin() || !current_user_can('manage_options')) {
-        return;
-    }
+/**
+ * ==================================================
+ * LANGUAGE HANDLING
+ * ==================================================
+ *
+ * Language strategy:
+ * - Members: ACF field `language` + URL rewrite (/member/ vs /en/member/)
+ * - News / Events: separate JP/EN CPTs (news_jp, news_en, event_jp, event_en)
+ * - <html lang=""> is derived from page context
+ */
 
-    if (!isset($_GET['apply_event_tags']) || $_GET['apply_event_tags'] !== '1') {
-        return;
-    }
-
-    $query = new WP_Query([
-        'post_type' => 'event',
-        'posts_per_page' => -1,
-        'fields' => 'ids',
-    ]);
-
-    $tagged = 0;
-
-    foreach ($query->posts as $post_id) {
-        $category = get_field('event_category', $post_id);
-        if ($category) continue;
-
-        $title = get_the_title($post_id);
-        $matched = '';
-
-        if (str_contains($title, 'シンポジウム')) $matched = 'symposiums';
-        elseif (str_contains($title, 'ワークショップ')) $matched = 'workshops';
-        elseif (str_contains($title, '講演')) $matched = 'lectures';
-        elseif (str_contains($title, 'カンファレンス')) $matched = 'conferences';
-        elseif (str_contains($title, '出版')) $matched = 'publications';
-        elseif (str_contains($title, 'メディア')) $matched = 'media';
-        elseif (str_contains($title, '受賞')) $matched = 'awards';
-        elseif (str_contains($title, 'プロジェクト')) $matched = 'projects';
-        elseif (str_contains($title, 'コンテスト')) $matched = 'contests';
-        elseif (str_contains($title, 'ニュース')) $matched = 'news';
-
-        if ($matched) {
-            update_field('event_category', $matched, $post_id);
-            $tagged++;
-        }
-    }
-
-    add_action('admin_notices', function () use ($tagged) {
-        echo "<div class='notice notice-success is-dismissible'><p><strong>✅ {$tagged} events tagged.</strong></p></div>";
-    });
-}
-add_action('admin_init', 'manually_assign_event_tags');
-
-function enqueue_join_us_script()
-{
-    wp_enqueue_script(
-        'join-us-js',
-        get_template_directory_uri() . '/js/join-us.js',
-        array(),
-        false,
-        true
-    );
-
-    wp_localize_script('join-us-js', 'themeData', array(
-        'baseUrl' => get_template_directory_uri()
-    ));
-}
-add_action('wp_enqueue_scripts', 'enqueue_join_us_script');
 
 
 add_action('parse_query', function ($query) {
@@ -575,7 +489,6 @@ add_action('parse_query', function ($query) {
     }
 });
 
-
 add_filter('language_attributes', function ($output) {
     global $page_lang;
 
@@ -586,34 +499,6 @@ add_filter('language_attributes', function ($output) {
     }
     return $output;
 });
-
-// add_filter('wp_nav_menu_objects', function ($items, $args) {
-//     global $page_lang;
-
-//     foreach ($items as &$item) {
-//         // Get the page ID of the menu item
-//         $linked_page_id = url_to_postid($item->url);
-
-//         if ($linked_page_id) {
-//             if ($page_lang === 'en') {
-//                 // On an English page → try to find English translation
-//                 $translated_page = get_field('translation_en', $linked_page_id);
-//                 if ($translated_page) {
-//                     $item->url = get_permalink($translated_page);
-//                 }
-//             } elseif ($page_lang === 'ja') {
-//                 // On a Japanese page → try to find Japanese translation
-//                 $translated_page = get_field('translation_jp', $linked_page_id);
-//                 if ($translated_page) {
-//                     $item->url = get_permalink($translated_page);
-//                 }
-//             }
-//         }
-//     }
-
-//     return $items;
-// }, 10, 2); // 👈 add ", 2" so WP passes both $items and $args
-
 
 // ✅ Add "Language" to ACF location rules for Post (CPTs like Member)
 add_filter('acf/location/rule_types', function ($choices) {
@@ -641,40 +526,6 @@ add_filter('acf/location/rule_match/language', function ($match, $rule, $options
     return $match;
 }, 10, 3);
 
-// 🛠 One-time fixer: assign language to existing Member posts
-function assign_language_to_existing_members() {
-    // Query all Member posts
-    $members = get_posts([
-        'post_type'      => 'member',
-        'posts_per_page' => -1,
-        'post_status'    => 'any'
-    ]);
-
-    foreach ($members as $member) {
-        // Only assign if language is not set
-        if (!get_field('language', $member->ID)) {
-            // 📝 Guess language: set to 'ja' (Japanese) by default
-            update_field('language', 'ja', $member->ID);
-        }
-    }
-
-    echo "✅ Language field assigned to " . count($members) . " members.";
-}
-// assign_language_to_existing_members();
-
-
-/**
- * Adjust member post type slugs based on language
- */
-/**
- * Add extra rewrite rule so /en/member/... works alongside /member/...
- */
-/**
- * Allow /en/member/... URLs and redirect English members there if needed.
- */
-/**
- * Allow /en/member/... URLs for members.
- */
 function member_add_en_rewrite_rule() {
     add_rewrite_rule(
         '^en/member/([^/]+)/?',
@@ -706,95 +557,60 @@ function redirect_english_members_to_en_url() {
 }
 add_action('template_redirect', 'redirect_english_members_to_en_url');
 
-
-
-
-function register_custom_post_type_event()
-{
-    register_post_type('event', [
-        'labels' => [
-            'name' => 'Events',
-            'singular_name' => 'Event',
-        ],
-        'public' => true,
-        'show_in_menu' => true,
-        'supports' => ['title', 'editor', 'thumbnail'],
-        'show_in_rest' => true,
-    ]);
-}
-add_action('init', 'register_custom_post_type_event');
-
-add_filter('language_attributes', function($output) {
-    // Get current URL
-    $current_url = $_SERVER['REQUEST_URI'];
-
-    // Check if we are on the English Events archive
-    if (strpos($current_url, '/en/events') === 0) {
-        // Replace lang="ja" with lang="en"
-        $output = str_replace('lang="ja"', 'lang="en"', $output);
+// Helper: map post type → choice value
+function let_news_lang_choice_for_post_type($pt) {
+    if ($pt === 'news_jp') return 'ja';
+    if ($pt === 'news_en') return 'en-US';
+    return null;
+  }
+  
+  /** 1) Pre-fill on editor load (new posts) */
+  add_filter('acf/load_value/name=news_language', function ($value, $post_id, $field) {
+    if (!empty($value)) return $value; // keep existing value
+    $pt = get_post_type($post_id);
+    $choice = let_news_lang_choice_for_post_type($pt);
+    return $choice ?: $value;
+  }, 10, 3);
+  
+  /** 2) Enforce on save if empty/cleared (safety net) */
+  add_action('acf/save_post', function ($post_id) {
+    $pt = get_post_type($post_id);
+    if (!$pt) return;
+  
+    $choice = let_news_lang_choice_for_post_type($pt);
+    if ($choice) {
+      $current = get_field('news_language', $post_id);
+      if (!$current) {
+        // Use field NAME is fine here; if you prefer, swap to update_field('field_XXXX', ...)
+        update_field('news_language', $choice, $post_id);
+      }
     }
-
-    return $output;
-});
-
-
-/**
- * Temporarily register the old News CPT
- */
-// function register_custom_post_type_news()
-// {
-//     register_post_type('news', [
-//         'labels' => [
-//             'name' => 'News (OLD)',
-//             'singular_name' => 'News (OLD)',
-//             'add_new_item' => 'Add New News (OLD)',
-//             'edit_item' => 'Edit News (OLD)',
-//             'new_item' => 'New News (OLD)',
-//             'view_item' => 'View News (OLD)',
-//             'search_items' => 'Search News (OLD)',
-//             'not_found' => 'No News (OLD) found',
-//             'not_found_in_trash' => 'No News (OLD) found in Trash',
-//         ],
-//         'public' => true,
-//         'show_in_menu' => true, // ✅ Show it in admin menu
-//         'supports' => ['title', 'editor', 'thumbnail', 'custom-fields'],
-//         'show_in_rest' => true, // ✅ Enable block editor
-//     ]);
-// }
-// add_action('init', 'register_custom_post_type_news');
-
-
-
-
-// Temporary snippet (run once; then remove)
-add_action('admin_init', function () {
-    if (!current_user_can('manage_options')) return;
-
-    $map = [
-        'birthplace'            => 'birthplace_jp',
-        'degree'                => 'degree_jp',
-        'university_department' => 'university_department_jp',
-        'programming_languages' => 'programming_languages_jp',
-        'research_theme'        => 'research_theme_jp',
-        'hobby'                 => 'hobby_jp',
-        'recommendation'        => 'recommendation_jp',
-        'profile'               => 'profile_jp',
-        'link'                  => 'link_jp',
-    ];
-
-    $members = get_posts([
-        'post_type' => 'member',
-        'posts_per_page' => -1,
-        'post_status' => 'any',
-        'fields' => 'ids',
-    ]);
-
-    foreach ($members as $post_id) {
-        foreach ($map as $old => $new) {
-            if (get_field($new, $post_id)) continue; // don't overwrite if already set
-            $val = get_post_meta($post_id, $old, true);
-            if ($val === '' || $val === null) continue;
-            update_field($new, $val, $post_id); // sets ACF’s reference meta too
-        }
+  }, 20);
+  
+  /** 3) Make the field read-only for News so editors can see but not change it */
+  add_filter('acf/prepare_field/name=news_language', function ($field) {
+    $pt = get_post_type();
+    if (in_array($pt, ['news_jp','news_en'], true)) {
+      $field['readonly'] = 1;   // visible & submitted, but not editable
+      // Don't use $field['disabled'] = 1; (disabled fields don't submit)
     }
-});
+    return $field;
+  });
+
+
+
+add_action('acf/save_post', function ($post_id) {
+    if (get_post_type($post_id) !== 'member') return;
+
+    $lang = get_field('language', $post_id);
+
+    if ($lang === 'ja') {
+        update_field('member_type_en', '', $post_id);
+    }
+}, 30);
+
+
+
+
+
+  

@@ -40,8 +40,8 @@ $container = get_theme_mod( 'understrap_container_type' );
         LEAF（Learning and Evidence Analytics Framework）は、BookRollやLogPaletteなどのツールを通じて、教育データを活用した授業支援を行う統合システムです。
       </p>
       <div class="leaf-intro__links">
-        <a href="https://eds.let.media.kyoto-u.ac.jp/leaf/" target="_blank" class="btn btn-primary">LEAF公式サイトを見る</a>
-        <a href="https://live.let.media.kyoto-u.ac.jp/evidence-portal/" target="_blank" class="btn btn-secondary">エビデンスポータルを見る</a>
+        <a href="https://eds.let.media.kyoto-u.ac.jp/leaf/" target="_blank" class="btn btn--cta"><span>LEAF公式サイトを見る</span></a>
+        <a href="https://live.let.media.kyoto-u.ac.jp/evidence-portal/" target="_blank" class="btn btn--subtle"><span>エビデンスポータルを見る</span></a>
       </div>
     </div>
   </div>

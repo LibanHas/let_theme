@@ -31,7 +31,7 @@ $lang = (strpos($_SERVER['REQUEST_URI'], '/en/') !== false) ? 'en' : 'ja';
 
           <div class="container">
             <!-- FILTER BUTTONS -->
-            <div class="wp-block-buttons alignwide is-content-justification-center is-layout-flex wp-block-buttons-is-layout-flex" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)">
+            <div class="d-flex justify-content-center gap-3 my-5 flex-wrap members-filter-buttons" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)">
               <?php
               $buttons = $lang === 'ja' ? [
                 'faculty' => '教員・スタッフ',

@@ -42,7 +42,7 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'tag-contest',
             'news'         => 'tag-news'
           ];
-          
+
           $category_labels = [
             'symposiums'   => 'Symposium',
             'workshops'    => 'Workshop',
@@ -59,7 +59,6 @@ $container = get_theme_mod('understrap_container_type');
             'contests'     => 'Contest',
             'news'         => 'News'
           ];
-          
           ?>
 
           <section class="section-spacing news-section">
@@ -71,18 +70,14 @@ $container = get_theme_mod('understrap_container_type');
 
               <?php if ($news_query->have_posts()) : ?>
                 <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
-
                   <?php
-                  $date_raw = get_field('news_date');
-                  $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
-                  $description = get_field('news_description');
+                  $date_raw       = get_field('news_date');
+                  $date           = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
                   $category_value = get_field('news_category');
                   $category_label = $category_labels[$category_value] ?? 'News';
-                  $tag_class = $category_classes[$category_value] ?? 'tag-news';
+                  $tag_class      = $category_classes[$category_value] ?? 'tag-news';
                   ?>
-
                   <hr class="news-divider" />
-
                   <div class="news-item">
                     <div class="news-meta">
                       <div class="news-date"><?php echo esc_html($date); ?></div>
@@ -93,12 +88,11 @@ $container = get_theme_mod('understrap_container_type');
                     <div class="news-summary">
                       <p>
                         <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
-                          <?php echo esc_html($description); ?>
+                          <?php the_title(); ?>
                         </a>
                       </p>
                     </div>
                   </div>
-
                 <?php endwhile; ?>
 
                 <hr class="news-divider" />

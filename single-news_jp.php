@@ -1,18 +1,12 @@
 <?php
-// Exit if accessed directly.
 defined('ABSPATH') || exit;
-
 get_header();
 
 $container = get_theme_mod('understrap_container_type');
 
-// Inside The Loop
 while ( have_posts() ) : the_post();
 
-  // Set language manually for JP
-  $lang = 'ja';
-
-  // Define labels and classes
+  // Labels & tag classes
   $category_labels = [
     'symposiums'   => 'シンポジウム',
     'workshops'    => 'ワークショップ',
@@ -29,7 +23,6 @@ while ( have_posts() ) : the_post();
     'contests'     => 'コンテスト',
     'news'         => 'ニュース'
   ];
-  
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
@@ -46,24 +39,32 @@ while ( have_posts() ) : the_post();
     'contests'     => 'tag-contest',
     'news'         => 'tag-news'
   ];
-  
 
-  // ACF fields
-  $date_raw = get_field('news_date');
-  $date = $date_raw ? date('Y/m/d', strtotime($date_raw)) : '';
-  $category = get_field('news_category');
-  $category_label = $category_labels[$category] ?? 'ニュース';
-  $category_class = $category_classes[$category] ?? 'tag-news';
-  $body = get_field('news_body');
-  $title = get_the_title();
+  // ACF meta
+  $date_raw   = get_field('news_date');                // usually Ymd
+  $date_obj   = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw) : null;
+  $date       = $date_obj ? $date_obj->format('Y/m/d') : '';
+  $category   = get_field('news_category');
+  $cat_label  = $category_labels[$category] ?? 'ニュース';
+  $cat_class  = $category_classes[$category] ?? 'tag-news';
+
+  // Body: prefer native editor, fallback to old ACF field
+  $content = get_post_field('post_content', get_the_ID());
+  if (empty($content)) {
+    $legacy = get_field('news_body');                  // legacy ACF WYSIWYG
+    if (!empty($legacy)) {
+      // Run through content filters so shortcodes/embeds behave nicely
+      $content = apply_filters('the_content', $legacy);
+    }
+  } else {
+    $content = apply_filters('the_content', $content);
+  }
 ?>
-
 <div class="wrapper news-single">
   <div class="<?php echo esc_attr($container); ?>" id="content">
     <div class="row">
       <div class="col-md-12 content-area" id="primary">
         <main class="site-main" id="main" role="main">
-
           <section class="section-spacing">
             <div class="container">
               <div class="news-header">
@@ -72,17 +73,18 @@ while ( have_posts() ) : the_post();
               </div>
 
               <div class="news-inner">
-
                 <div class="news-meta">
-                  <span class="news-date"><?php echo esc_html($date); ?></span>
+                  <?php if ($date): ?>
+                    <span class="news-date"><?php echo esc_html($date); ?></span>
+                  <?php endif; ?>
                   <?php if ($category): ?>
-                    <span class="news-tag <?php echo esc_attr($category_class); ?>">
-                      <?php echo esc_html($category_label); ?>
+                    <span class="news-tag <?php echo esc_attr($cat_class); ?>">
+                      <?php echo esc_html($cat_label); ?>
                     </span>
                   <?php endif; ?>
                 </div>
 
-                <h2 class="news-title"><?php echo esc_html($title); ?></h2>
+                <h2 class="news-title"><?php the_title(); ?></h2>
 
                 <?php if (has_post_thumbnail()): ?>
                   <div class="news-image">
@@ -91,18 +93,15 @@ while ( have_posts() ) : the_post();
                 <?php endif; ?>
 
                 <div class="news-content content-block">
-                  <?php echo $body; ?>
+                  <?php echo $content; ?>
                 </div>
-
               </div>
             </div>
           </section>
-
         </main>
       </div>
     </div>
   </div>
 </div>
-
 <?php endwhile; ?>
 <?php get_footer(); ?>

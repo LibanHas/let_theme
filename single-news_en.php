@@ -9,10 +9,10 @@ $container = get_theme_mod('understrap_container_type');
 // Inside The Loop
 while ( have_posts() ) : the_post();
 
-  // Set language manually for EN
+  // Language: EN
   $lang = 'en';
 
-  // Define labels and classes
+  // Labels & classes
   $category_labels = [
     'symposiums'   => 'Symposium',
     'workshops'    => 'Workshop',
@@ -29,7 +29,7 @@ while ( have_posts() ) : the_post();
     'contests'     => 'Contest',
     'news'         => 'News'
   ];
-  
+
   $category_classes = [
     'symposiums'   => 'tag-symposium',
     'workshops'    => 'tag-workshop',
@@ -46,19 +46,30 @@ while ( have_posts() ) : the_post();
     'contests'     => 'tag-contest',
     'news'         => 'tag-news'
   ];
-  
-   
 
-  // ACF fields
-  $date_raw = get_field('news_date');
-  $date = $date_raw ? date('Y/m/d', strtotime($date_raw)) : '';
-  $category = get_field('news_category');
-  if (!$category || !array_key_exists($category, $category_labels)) {
+  // ACF meta
+  $date_raw  = get_field('news_date');                       // usually Ymd
+  $date_obj  = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw) : null;
+  $date      = $date_obj ? $date_obj->format('Y/m/d') : '';
+
+  $category  = get_field('news_category');
+  if ( !$category || !array_key_exists($category, $category_labels) ) {
     $category = 'news';
   }
   $category_label = $category_labels[$category];
-  $category_class = $category_classes[$category];  
-  $body = get_field('news_body');
+  $category_class = $category_classes[$category];
+
+  // BODY: prefer native editor; fallback to legacy ACF field
+  $content = get_post_field('post_content', get_the_ID());
+  if ( empty($content) ) {
+    $legacy = get_field('news_body');                        // legacy ACF WYSIWYG
+    if ( !empty($legacy) ) {
+      $content = apply_filters('the_content', $legacy);
+    }
+  } else {
+    $content = apply_filters('the_content', $content);
+  }
+
   $title = get_the_title();
 ?>
 
@@ -76,9 +87,10 @@ while ( have_posts() ) : the_post();
               </div>
 
               <div class="news-inner">
-
                 <div class="news-meta">
-                  <span class="news-date"><?php echo esc_html($date); ?></span>
+                  <?php if ($date): ?>
+                    <span class="news-date"><?php echo esc_html($date); ?></span>
+                  <?php endif; ?>
                   <?php if ($category): ?>
                     <span class="news-tag <?php echo esc_attr($category_class); ?>">
                       <?php echo esc_html($category_label); ?>
@@ -88,16 +100,15 @@ while ( have_posts() ) : the_post();
 
                 <h2 class="news-title"><?php echo esc_html($title); ?></h2>
 
-                <?php if (has_post_thumbnail()): ?>
+                <?php if ( has_post_thumbnail() ): ?>
                   <div class="news-image">
                     <?php the_post_thumbnail('large'); ?>
                   </div>
                 <?php endif; ?>
 
                 <div class="news-content content-block">
-                  <?php echo $body; ?>
+                  <?php echo $content; ?>
                 </div>
-
               </div>
             </div>
           </section>

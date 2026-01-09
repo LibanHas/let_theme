@@ -8,22 +8,24 @@
   padding: 0;
   box-sizing: border-box;
 }
-// 🎨 LET Lab Color System
 
-$color-text-body:   #4A2F1B;   // Main body text on light backgrounds (like #FCF7EA)
+
+
+//Global styles
+
+$color-text-body:   #4A2F1B;   // Main body text on light backgrounds
 $color-heading:     #7C4A21;   // Section titles and headings
 $color-accent:      #E47C1C;   // Buttons, interactive elements
 $color-bg-soft:     #FCF7EA;   // Main section background (beige)
+$color-bg-brown:    #7C4A21;
 $color-overlay:     rgba(0, 0, 0, 0.3); // Image overlay
 
-$color-text-light:  #FCF7E6;   // Text on dark backgrounds or buttons
+// Text / UI variants
+$color-text-light:  #FCF7E6;   // Text on dark backgrounds
 $color-tag-orange:  #F4A261;
 $color-tag-green:   #90BE6D;
 $color-tag-blue:    #2A9D8F;
 $color-tag-purple:  #9B5DE5;
-
-
-//Global styles
 
 .page-title {
   font-size: 48px;
@@ -157,72 +159,134 @@ $color-tag-purple:  #9B5DE5;
 
 
   .btn {
-    width: 260px;
-    text-align: center;
-    position: relative;
-    display: inline-block;
-    padding: 0.9em 2em;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    min-width: 180px;
+    padding: 0.75em 1.5em;
+  
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.03em;
-    color: #fcf7e6;
-    border: 1px solid #fcf7e6;
-    border-radius: 45px;
-    background: transparent;
-    overflow: hidden;
-    text-align: center;
-    cursor: pointer;
-    z-index: 0;
-    text-decoration: none;
+    line-height: 1;
   
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -1%;
-      width: 102%;
-      height: 100%;
-      background-color: #fcf7e6;
-      border-radius: 45px;
-      opacity: 0; /* Start invisible */
-      transition: opacity 0.3s ease-in-out;
-      z-index: 1;
-      pointer-events: none;
-    }
-    
-    &:hover:after,
-    &:focus:after {
-      opacity: 1; /* Fade in on hover/focus */
-    }
-    
+    border-radius: 999px;
+    border: 1px solid transparent;
+  
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+  
+    position: relative;
+    overflow: hidden;
   
     span {
       position: relative;
       z-index: 2;
-      color: #fcf7e6;
-      mix-blend-mode: difference;
     }
-    @media (max-width: 480px) {
-      .btn {
-        width: 80vw;
-      }
-    }    
   }
   
-  .btn.btn--cta {
-    color: $color-accent !important;
+  .btn--overlay {
+    position: relative;
+    overflow: hidden;
+  
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+  
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+    }
+  }
+  
+  
+  .btn--accent {
+    color: $color-accent;
+    border-color: $color-accent;
+  }
+  
+  .btn--accent.btn--overlay::after {
+    background-color: $color-accent;
+  }
+  
+  .btn--accent.btn--overlay:hover {
+    color: $color-text-light;
+  }
+  
+//   .btn--cta,
+// .btn--subtle {
+//   &::after {
+//     display: none !important;
+//   }
+// }
+
+  
+  .btn--full {
+    width: 100%;
+  }
+  
+  @media (min-width: 481px) {
+    .btn--full {
+      width: auto;
+    }
+  }
+  
+  .btn--cta {
+    background-color: $color-accent !important;
+    color: $color-text-light !important;
     border-color: $color-accent !important;
+  }
   
-    &:after {
-      background-color: $color-accent;
-    }
-  
-    span {
-      color: $color-accent;
-      mix-blend-mode: difference;
+  .btn--cta::after {
+    display: none !important;
+    content: none !important;
+  }
+
+    
+  .btn--cta {
+    &:hover,
+    &:focus {
+      color: $color-text-light !important;
     }
   }
   
+
+  .btn--subtle {
+    background-color: $color-bg-orange;
+    color: $color-text-body;
+    border-color: $color-bg-brown;
+  
+    &:hover,
+    &:focus {
+      background-color: darken($color-bg-soft, 6%);
+      border-color: darken($color-bg-soft, 6%);
+    }
+  }
+  
+  
+  // ==================================================
+// Legacy button compatibility layer
+// ==================================================
+
+.btn-primary {
+  @extend .btn;
+  @extend .btn--cta;
+}
+
+.btn-outline-orange {
+  @extend .btn;
+  @extend .btn--accent;
+  @extend .btn--overlay;
+}
+
 
   .accordion {
     .accordion-header {
@@ -613,7 +677,7 @@ padding-top: 7rem; ;
 .hero-title {
   font-size: 48px; /* adjusted for broader compatibility */
   font-weight: 800;
-  color: #4A2F1B;
+  color: $color-text-body;
   margin-bottom: 1.5rem;
   line-height: 1.4;
   text-align: center; /* center-align text */
@@ -629,7 +693,7 @@ padding-top: 7rem; ;
 .hero-title-en {
   font-size: 44px; /* adjusted for broader compatibility */
   font-weight: 800;
-  color: #4A2F1B;
+  color: $color-text-body;
   margin-bottom: 1.5rem;
   line-height: 1.4;
   text-align: center; /* center-align text */
@@ -745,7 +809,7 @@ padding-top: 7rem; ;
 }
 .swiper-slide a .update-card .update-date {
   font-size: 12px;
-  color: #4A2F1B;
+  color: $color-text-body;
 }
 .swiper-slide a .update-card .update-date .tag {
   color: #FFFFFF;
@@ -905,25 +969,6 @@ padding-top: 7rem; ;
   }
 }
 
-.btn-orange {
-  background-color: #E47C1C;
-  color: #fff;
-}
-
-.btn-orange:hover {
-  background-color: #cc6a16;
-}
-
-.btn-outline-orange {
-  border: 2px solid #E47C1C;
-  color: #E47C1C;
-  background-color: transparent;
-}
-
-.btn-outline-orange:hover {
-  background-color: #E47C1C;
-  color: #fff;
-}
 
 .LET_heading{
     font-size: 48px;
@@ -956,7 +1001,7 @@ padding-top: 7rem; ;
     width: 100%; // 👈 make it stretch full width
     max-width: 100%; // 👈 remove desktop max constraint
     padding: 2rem 1rem;
-    color: #4A2F1B; // if background is light
+    color: $color-text-body; // if background is light
   }
 }
 
@@ -1086,7 +1131,7 @@ padding-top: 7rem; ;
       margin: 0 auto 2rem;
       font-size: 1.1rem;
       line-height: 1.8;
-      color: #4A2F1B;
+      color: $color-text-body;
       text-align: center;
     
       @media (min-width: 768px) {
@@ -1803,7 +1848,7 @@ padding-top: 7rem; ;
   text-align: left;
   font-size: 0.95rem;
   line-height: 1.8;
-  color: #4A2F1B;
+  color: $color-text-body;
 }
 
 .research-text h3 {
@@ -2334,7 +2379,7 @@ padding-top: 7rem; ;
       font-size: 1.8rem;
       font-weight: bold;
       margin-bottom: 2rem;
-      color: #4A2F1B;
+      color: $color-text-body;
     }
   
     .event-image {
@@ -2453,7 +2498,7 @@ padding-top: 7rem; ;
     border-radius: 0 0 20px 20px;
 
     &.theme-card__content {
-      color: #4A2F1B;
+      color: $color-text-body;
 
       h4 {
         font-size: 1.25rem;
@@ -2826,7 +2871,7 @@ padding-top: 7rem; ;
       //margin: 0.25rem 0 0;
       font-size: 0.6rem !important;
       line-height: 1.5;
-      color: #4a2f1b;
+      color: $color-text-body;
       word-break: keep-all;
     }
   }
@@ -2846,7 +2891,7 @@ padding-top: 7rem; ;
   .theme-card__line {
     width: 144px;
     height: 1px;
-    background-color: #4a2f1b;
+    background-color: $color-text-body;
     margin-bottom: 0.5rem;
     opacity: 0.5;
   }
@@ -2878,12 +2923,12 @@ padding-top: 7rem; ;
 
     h2 {
       font-size: 2.5rem;
-      color: #4a2f1b;
+      color: $color-text-body;
     }
 
     p {
       font-size: 1rem;
-      color: #4a2f1b;
+      color: $color-text-body;
     }
   }
 
@@ -2932,7 +2977,7 @@ padding-top: 7rem; ;
     h3 {
       font-size: 1.2rem;
       font-weight: 600;
-      color: #4a2f1b;
+      color: $color-text-body;
     }
   }
 }
@@ -3175,10 +3220,11 @@ padding-top: 7rem; ;
   padding-top: 8rem;
 }
 /* Base style for filter buttons */
+/* Base button styling (what you already had) */
 .filter-button {
   background-color: #EED4BE;
   border: 2px solid #EED4BE;
-  color: #4A2F1B;
+  color: $color-text-body;
   padding: 0.5em 2.4em;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -3186,6 +3232,28 @@ padding-top: 7rem; ;
   font-weight: 500;
   margin-right: 20px;
 }
+
+/* Mobile: make all filter buttons same full width */
+@media (max-width: 768px) {
+  .members-filter-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;   /* children stretch to same width */
+    gap: 12px;
+  }
+
+  .members-filter-buttons .wp-block-button {
+    width: 100%;
+  }
+
+  .members-filter-buttons .wp-block-button__link.filter-button {
+    display: block;         /* not inline-flex/inline */
+    width: 100%;            /* full width = equal width */
+    text-align: center;
+    margin-right: 0;        /* kill old margin */
+  }
+}
+
 
 .page-hero-members {
   position: relative;
@@ -3281,7 +3349,7 @@ padding-top: 7rem; ;
 }
 
 .p-member-list__name {
-  color: #4A2F1B;
+  color: $color-text-body;
   text-decoration: none;
   margin-top: 2px;
   font-weight: 600;
@@ -3290,7 +3358,7 @@ padding-top: 7rem; ;
 .page-template-page-members {
   .accordion-header {
     background-color: #F8DA9E;
-    color: #4A2F1B;
+    color: $color-text-body;
     font-weight: 300;
     font-family: 'Ubuntu Sans', sans-serif;
     padding: 1rem 1.5rem;
@@ -3544,42 +3612,7 @@ padding-top: 7rem; ;
         transition: background-color 0.3s ease;
       }
   
-     /* Solid variants: no overlay, no blend tricks */
-.btn-primary,
-.btn-secondary {
-  &:after { display: none !important; }     /* or opacity:0 !important */
-  span { mix-blend-mode: normal !important; }
-}
-
-/* Primary */
-.btn-primary {
-  background-color: #b97842;
-  color: #fff;
-  border-color: #b97842;
-
-  &:hover,
-  &:focus {
-    background-color: #a36d3c !important;
-    border-color: #a36d3c !important;
-    color: #fff !important;
-  }
-}
-
-/* Secondary (light) */
-.btn-secondary {
-  background-color: #e3d5c2;
-  color: #4b3e33;
-  border-color: #e3d5c2;
-
-  &:hover,
-  &:focus {
-    background-color: #d1c0ad !important;
-    border-color: #d1c0ad !important;
-    color: #4b3e33 !important;
-  }
-}
-    }
-  }
+      
 
   .presentation-video {
     max-width: 80%;
@@ -3731,7 +3764,7 @@ padding-top: 7rem; ;
       li {
         display: flex;
         align-items: center;
-        color: #4A2F1B;
+        color: $color-text-body;
         padding: 1.25rem;
         border-radius: 4px;
         margin-bottom: 1rem;
@@ -4441,7 +4474,7 @@ padding-top: 7rem; ;
     {
       .accordion-header {
         background-color: #F8DA9E;
-        color: #4A2F1B;
+        color: $color-text-body;
         font-weight: 300;
         font-family: 'Ubuntu Sans', sans-serif;
         padding: 1rem 1.5rem;
@@ -4498,7 +4531,7 @@ padding-top: 7rem; ;
       
       .pub-accordion-header {
         background-color: #F8DA9E;
-        color: #4A2F1B;
+        color: $color-text-body;
         font-weight: 300;
         font-family: 'Ubuntu Sans', sans-serif;
         padding: 1rem 1.5rem;
