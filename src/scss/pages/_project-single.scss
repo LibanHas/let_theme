@@ -1,0 +1,38 @@
+
+.project-page 
+{ max-width: 960px; 
+    margin: 0 auto; 
+    padding: 2rem 1rem; 
+    h1.project-title 
+    { font-size: 2rem;
+         color: #5c2a1d;
+          margin-bottom: 1rem; } 
+          h2 { font-size: 1.5rem; 
+            color: #5c2a1d; 
+            border-left: 4px solid #d4a373;
+             padding-left: 0.75rem; 
+             margin: 3rem 0 1rem; }
+             .project-meta { font-size: 0.95rem; 
+                color: #8a6f4d; 
+                margin-bottom: 1.5rem; 
+
+            } p { 
+                line-height: 1.8; 
+                margin-bottom: 2rem;
+             } img 
+             { display: block; 
+                max-width: 80%; 
+                height: auto; 
+                margin: 2rem auto; 
+                border-radius: 0.5rem; 
+                box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08); 
+            } figure { 
+                margin: 2rem 0; 
+                figcaption { 
+                    font-size: 0.9rem;
+                     color: #777;
+                      text-align: center; 
+                      margin-top: 0.5rem;
+                     } 
+                    }
+                }

@@ -247,7 +247,7 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
       研究内容や受験準備についての相談も歓迎します。
     </p>
     <div class="scroll-hero__buttons">
-      <a href="/visit" class="btn btn--cta"><span>見学を予約する</span></a>
+      <a href="/visit" class="btn btn--accent btn--overlay"><span>見学を予約する</span></a>
       <a href="/contact" class="btn btn--secondary-outline"><span>お問い合わせフォーム</span></a>
     </div>
   </div>

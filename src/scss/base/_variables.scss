@@ -10,3 +10,28 @@
 //
 
 
+//Global styles
+
+$color-text-body:   #4A2F1B;   // Main body text on light backgrounds
+$color-heading:     #7C4A21;   // Section titles and headings
+$color-accent:      #E47C1C;   // Buttons, interactive elements
+$color-bg-soft:     #FCF7EA;   // Main section background (beige)
+$color-bg-brown:    #7C4A21;
+$color-overlay:     rgba(0, 0, 0, 0.3); // Image overlay
+
+// Text / UI variants
+$color-text-light:  #FCF7E6;   // Text on dark backgrounds
+$color-tag-orange:  #F4A261;
+$color-tag-green:   #90BE6D;
+$color-tag-blue:    #2A9D8F;
+$color-tag-purple:  #9B5DE5;
+
+// Additional SCSS styles for the theme
+
+/* Hide the default menu */
+/* ────────────────  NAVBAR  ──────────────── */
+/* EDITABLE TOKENS – adjust once, reuse everywhere */
+$brand-brown: #4A2F1B;
+$brand-cream: #FCF7EA;
+$shadow-line: #e0d3c0;
+$bp-mobile: 480px;

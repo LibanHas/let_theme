@@ -242,7 +242,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       We’re also happy to discuss research topics and application preparation.
     </p>
     <div class="scroll-hero__buttons">
-      <a href="/visit" class="btn btn--cta"><span>Book a Visit</span></a>
+      <a href="/visit" class="btn btn--accent btn--overlay"><span>Book a Visit</span></a>
       <a href="/contact" class="btn btn--secondary-outline"><span>Contact Form</span></a>
     </div>
   </div>

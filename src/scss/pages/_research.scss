@@ -1,0 +1,245 @@
+.page-template-page-research {
+
+    /* ===============================
+       Theme section (page wrapper)
+       =============================== */
+  
+    .theme-section {
+      background-color: #FCF7EA;
+      padding: 4rem 2rem;
+  
+      .section-heading {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $color-heading;
+        margin-bottom: 2.5rem;
+        font-family: 'Ubuntu Sans', sans-serif;
+      }
+  
+      .theme-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 45px;
+        padding-right: 45px;
+      }
+    }
+  
+    /* ===============================
+       Research accordion
+       =============================== */
+  
+    .research-accordion {
+  
+      & > *:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+  
+      h4 {
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+      }
+  
+      p {
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+      }
+  
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 1rem 0 2rem;
+  
+        li {
+          position: relative;
+          padding-left: 2rem;
+          margin-bottom: 1.25rem;
+          font-size: 1rem;
+          line-height: 1.8;
+  
+          .tick {
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: #8b4f1f;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 60%;
+            border-radius: 50%;
+          }
+        }
+      }
+  
+      .accordion-panel {
+        padding: 0 1.5rem;
+        height: 0;
+        overflow: hidden;
+        border-radius: 0 0 20px 20px;
+  
+        &.theme-card__content {
+          color: $color-text-body;
+  
+          h4 {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: $color-heading;
+          }
+  
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2.5rem;
+            text-align: center;
+  
+            th {
+              background-color: #EFDDBD;
+              padding: 0.75rem 1rem;
+              border: 1px solid rgba(74, 47, 27, 0.5);
+              color: $color-heading;
+            }
+  
+            td {
+              background-color: #FFFAF2;
+              padding: 0.75rem 1rem;
+              border: 1px solid rgba(74, 47, 27, 0.1);
+            }
+          }
+        }
+      }
+    }
+  
+    /* ===============================
+       Theme card
+       =============================== */
+  
+    .theme-card {
+      display: flex;
+      align-items: center;
+      background: #fff;
+      border-radius: 2rem;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+  
+      &:hover {
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+      }
+  
+      &__main {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
+      }
+  
+      &__icon img {
+        width: 48px;
+      }
+  
+      &__text {
+        margin-left: 5rem;
+  
+        .theme-card__title {
+          font-size: 1.25rem;
+          font-weight: bold;
+          color: $color-heading;
+        }
+  
+        .theme-card__description {
+          color: $color-text-body;
+        }
+      }
+  
+      &__expand .accordion-icon {
+        font-size: 1.5rem;
+      }
+    }
+  
+    /* ===============================
+       Theme examples & resources
+       =============================== */
+  
+    .theme-example {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+  
+      &__text {
+        flex: 1 1 60ch;
+        line-height: 1.8;
+      }
+  
+      &__quote {
+        flex: 1 1 25ch;
+        background: #fffaf2;
+        border: 1px solid rgba(74, 47, 27, 0.4);
+        padding: 1rem 1.5rem;
+        font-style: italic;
+        color: $color-heading;
+  
+        cite {
+          display: block;
+          text-align: right;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  
+    .theme-resources {
+      font-size: 1rem;
+  
+      a {
+        color: $color-heading;
+        text-decoration: underline;
+      }
+    }
+  
+    /* ===============================
+       Work section
+       =============================== */
+  
+    .work-section {
+      padding: 5rem 1rem;
+      background: #fff7e6;
+      text-align: center;
+  
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    }
+  
+    /* ===============================
+       Mobile
+       =============================== */
+  
+    @media (max-width: 768px) {
+  
+      .theme-section {
+        padding: 0;
+  
+        .theme-inner {
+          padding: 5px;
+        }
+      }
+  
+      .theme-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 1.25rem;
+        max-width: 360px;
+        margin: 0 auto 1.5rem;
+      }
+  
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  }
+  

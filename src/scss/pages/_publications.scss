@@ -1,0 +1,166 @@
+
+
+
+.page-template-page-publications {
+
+// Publications page
+
+.pub-section {
+    height: 100vw;
+  }
+  body.page-publications-scrollfix {
+    overflow-y: scroll;
+  }
+  
+  .page-hero-publications {
+    position: relative;
+    padding: 100px 0 80px;
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+  
+  .page-hero-publications::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(rgba(253, 246, 236, 0.88), rgba(253, 246, 236, 0.88)),
+      url('../images/members-hero-banner.jpeg') center/cover no-repeat;
+  
+    -webkit-mask-image: linear-gradient(to right, transparent, black 40%);
+    mask-image: linear-gradient(to right, transparent, black 40%);
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+  
+    z-index: 0;
+  }
+  
+  .page-hero-publications .hero-content {
+    position: relative;
+    z-index: 1; /* Pulls text above the masked background */
+  }
+  
+  .pub-hero-title {
+    font-size: 52px;
+    font-weight: 700;
+    color: #1f1f1f; /* Clean dark text */
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+  }
+
+
+  .accordion-header {
+    background-color: #F8DA9E;
+    color: $color-text-body;
+    font-weight: 300;
+    font-family: 'Ubuntu Sans', sans-serif;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    border: 2px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+   .accordion-panel {
+    padding: 0 1.5rem;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease, padding 0.4s ease;
+    border-top: 2px solid #F8DA9E;
+    border-radius: 0 0 20px 20px;
+  }
+  .accordion-panel.open {
+    padding: 0rem 1.5rem;
+  }
+  
+  
+  .accordion-panel ol {
+    margin-left: 1rem; 
+    padding-left: 1.2rem;
+    line-height: 1.6;
+    max-width: 65ch;
+    li {
+        margin-bottom: 1rem;
+    }
+  }
+}
+  
+  .accordion-section {
+    max-width: 1000px; // or 1100px, adjust to taste
+    width: 100%;
+    margin: 0 auto;
+    padding: 2rem 1rem; // optional: adds breathing room
+  }
+  
+  
+  .accordion-item {
+    background-color: transparent; /* parent is transparent */
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  
+  
+  .pub-accordion-header {
+    background-color: #F8DA9E;
+    color: $color-text-body;
+    font-weight: 300;
+    font-family: 'Ubuntu Sans', sans-serif;
+    padding: 1rem 1.5rem;
+    font-size: 1.5rem;
+    border: 2px;
+    border-radius: 20px 20px 0 0;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  
+  .accordion-header:focus {
+    outline: none;
+  }
+  
+  .accordion-icon {
+    font-size: 1.5rem;
+  }
+  
+ 
+  .accordion-panel { position: relative; overflow: visible; }
+  .accordion-panel.loading > .spinner { display: flex !important; }
+  
+  .spinner {
+    position: absolute; inset: 0;
+    display: none;
+    align-items: center; justify-content: center;
+    background: rgba(255,255,255,0.6);
+    z-index: 2147483647;  /* above any iframe */
+    pointer-events: none;
+  }
+  .spinner .ring {
+    width: 32px; height: 32px;
+    border: 3px solid #e5e5e5;
+    border-top-color: #666;
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  
+.spinner .sr-only {
+position: absolute;
+width: 1px; height: 1px;
+padding: 0; margin: -1px;
+overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+  
+

@@ -1,0 +1,114 @@
+.single-event_jp {
+
+    background-color: #fdf8ed;
+    font-family: 'Ubuntu Sans', sans-serif;
+    color: #4a3e2a;
+  
+    .event-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #fff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  
+    .section-title--sub {
+      font-size: 1.1rem;
+      color: #9b8d7a;
+      margin-bottom: 2.5rem;
+    }
+  
+    .event-icon {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1.5rem;
+  
+      img {
+        width: 1.5rem;
+        height: auto;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  
+    .event-meta {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+  
+      div {
+        margin-bottom: 0.5rem;
+        color: #7b715f;
+      }
+    }
+  
+    .event-meta-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+  
+      .event-meta-text {
+        font-weight: 600;
+      }
+    }
+  
+    .event-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      color: $color-text-body;
+    }
+  
+    .event-image {
+      text-align: center;
+      margin: 2rem 0;
+  
+      img {
+        max-width: 100%;
+        border-radius: 8px;
+      }
+    }
+  
+    .event-body {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #333;
+    }
+  
+    .event-description {
+      max-width: 800px;
+      margin: 2rem 0;
+      font-size: 1rem;
+      line-height: 1.9;
+      color: #333;
+  
+      p {
+        margin-bottom: 1.25rem;
+      }
+  
+      strong {
+        font-weight: bold;
+        color: #4a3e2a;
+      }
+  
+      br {
+        display: block;
+        margin-bottom: 0.75rem;
+        content: '';
+      }
+  
+      span.label {
+        font-weight: bold;
+        display: inline-block;
+        min-width: 5rem;
+        margin-right: 0.5rem;
+        color: #7b715f;
+      }
+    }
+  }
+  

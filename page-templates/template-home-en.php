@@ -77,10 +77,10 @@ function let_teaser_en( $len = 80 ) {
       </p>
 
       <div class="hero-buttons">
-        <a data-anim-trigger-self data-anim="fade-in" href="/en/about" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="/en/about" class="btn btn--accent btn--overlay">
           <span>Learn more about LET</span>
         </a>
-        <a data-anim-trigger-self data-anim="fade-in" href="/en/research" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="/en/research" class="btn btn--accent btn--overlay">
           <span>Explore our research</span>
         </a>
       </div>
@@ -192,7 +192,7 @@ function let_teaser_en( $len = 80 ) {
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/bookroll/" class="btn btn--cta">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/bookroll/" class="btn btn--accent btn--overlay">
           <span>Learn more about BookRoll</span>
         </a>
       </div>
@@ -210,7 +210,7 @@ function let_teaser_en( $len = 80 ) {
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/logpalette/" class="btn btn--cta">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/en/logpalette/" class="btn btn--accent btn--overlay">
           <span>Learn more about LogPalette</span>
         </a>
       </div>
@@ -226,7 +226,7 @@ function let_teaser_en( $len = 80 ) {
     </div>
 
     <div class="news-button-top">
-      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(home_url('/en/news/')); ?>" class="btn btn--cta">
+      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(home_url('/en/news/')); ?>" class="btn btn--accent btn--overlay">
         <span>Browse News</span>
       </a>
     </div>
@@ -276,7 +276,7 @@ function let_teaser_en( $len = 80 ) {
   </div>
 
   <div class="news-button-bottom">
-    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_en')); ?>" class="btn btn--cta">
+    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_en')); ?>" class="btn btn--accent btn--overlay">
       <span>Browse News</span>
     </a>
   </div>
@@ -292,7 +292,7 @@ function let_teaser_en( $len = 80 ) {
           Here, we introduce some of the tools and practical use cases we’ve developed in collaboration with schools and educators.
         </p>
         <div class="research-button-top mt-4">
-          <a href="/en/research" class="btn btn--cta">
+          <a href="/en/research" class="btn btn--accent btn--overlay">
             <span>Explore our research</span>
           </a>
         </div>
@@ -317,7 +317,7 @@ function let_teaser_en( $len = 80 ) {
     </div>
 
     <div class="research-button-bottom mt-4">
-      <a href="/en/research" class="btn btn--cta">
+      <a href="/en/research" class="btn btn--accent btn--overlay">
         <span>Explore our research</span>
       </a>
     </div>
@@ -333,7 +333,7 @@ function let_teaser_en( $len = 80 ) {
         We work together to expand the possibilities of educational technology and create meaningful learning experiences.
       </p>
       <div class="members-button-top mt-4">
-        <a href="/en/members" class="btn btn--cta">
+        <a href="/en/members" class="btn btn--accent btn--overlay">
           <span>See Member Profiles</span>
         </a>
       </div>
@@ -346,7 +346,7 @@ function let_teaser_en( $len = 80 ) {
     </div>
 
     <div class="members-button-bottom">
-      <a href="/en/members" class="btn btn--cta">
+      <a href="/en/members" class="btn btn--accent btn--overlay">
         <span>See Member Profiles</span>
       </a>
     </div>
@@ -367,10 +367,10 @@ function let_teaser_en( $len = 80 ) {
       </p>
 
       <div class="cta-buttons">
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--cta">
+        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
           <span>Send us an email</span>
         </a>
-        <a href="/en/join-us" class="btn btn--cta">
+        <a href="/en/join-us" class="btn btn--accent btn--overlay">
           <span>Learn more</span>
         </a>
       </div>

@@ -159,7 +159,7 @@ get_header();
       </section>
 
       <div class="approach-buttons">
-        <a href="/en/research/" class="btn btn--cta">
+        <a href="/en/research/" class="btn btn--accent btn--overlay">
           <span>Explore Our Research</span>
         </a>
       </div>
@@ -273,10 +273,10 @@ get_header();
       </p>
 
       <div class="cta-buttons">
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--cta">
+        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
           <span>Contact Us by Email</span>
         </a>
-        <a href="/en/join-us/" class="btn btn--cta">
+        <a href="/en/join-us/" class="btn btn--accent btn--overlay">
           <span>Learn More</span>
         </a>
       </div>

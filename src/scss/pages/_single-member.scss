@@ -1,0 +1,107 @@
+
+
+.single-member {
+
+    /* ===============================
+       Top profile block
+       =============================== */
+  
+    .member-info {
+      margin-bottom: 40px;
+    }
+  
+    .member-name {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #4a3e2a;
+    }
+  
+    .member-position {
+      font-size: 1.5rem;
+      color: #5e4a2e;
+      margin-bottom: 20px;
+    }
+  
+    /* ===============================
+       Content sections
+       =============================== */
+  
+    .member-section {
+      margin-bottom: 60px;
+    }
+  
+    .member-section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: $color-heading;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #e4d5bb;
+      padding-bottom: 6px;
+    }
+  
+    /* ===============================
+       Profile list
+       =============================== */
+  
+    .member-profile-list {
+      list-style: none;
+      padding: 0;
+      font-size: 1rem;
+      color: #3d372e;
+      line-height: 1.8;
+  
+      li {
+        margin-bottom: 10px;
+      }
+  
+      strong {
+        color: #6c4f28;
+      }
+    }
+  
+    /* ===============================
+       Alumni list
+       =============================== */
+  
+    .alumni-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+  
+      li {
+        display: flex;
+        align-items: center;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #eee;
+        font-size: 1rem;
+        line-height: 1.6;
+  
+        a {
+          text-decoration: none;
+          color: inherit;
+          transition: color 0.2s ease;
+  
+          &:hover {
+            color: #2c3e50;
+          }
+        }
+  
+        .alumni-icon {
+          width: 1.2rem;
+          height: auto;
+          flex-shrink: 0;
+          margin-right: 0.5rem;
+          display: inline-block;
+        }
+      }
+  
+      &.with-icon {
+        li {
+          // intentionally empty – semantic modifier
+        }
+      }
+    }
+  }
+  

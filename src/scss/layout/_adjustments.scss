@@ -1,0 +1,16 @@
+  // Prevent sticky header overlap on all pages except homepage
+  body:not(.home) .page-hero-members,
+  body:not(.home) .page-hero,
+  body:not(.home) .site-main {
+    padding-top: 100px;
+  }
+  
+
+  .breadcrumb {
+    background-color: #FCF7EA;
+  
+    a {
+      margin: 0rem 0.5rem;
+    }
+  }
+  

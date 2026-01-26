@@ -215,7 +215,7 @@ get_header();
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--accent btn--overlay">
           <span>Bookrollの詳細へ</span>
         </a>
       </div>
@@ -234,7 +234,7 @@ get_header();
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--accent btn--overlay">
           <span>LogPaletteの詳細へ</span>
         </a>
       </div>

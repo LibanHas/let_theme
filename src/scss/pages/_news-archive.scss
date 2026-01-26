@@ -1,0 +1,179 @@
+
+
+.post-type-archive-news_jp {
+
+
+  .news-summary {
+    flex: 1;
+    min-width: 200px;
+  
+    p {
+      margin: 0;
+    }
+  
+    a {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: $color-text-body;
+      text-decoration: none;
+      display: inline-block;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+    /* =========================
+       SECTION
+       ========================= */
+  
+    .news-section {
+      background-color: $color-bg-soft;
+      color: #4a3e2a;
+    }
+  
+    .news-section .subheading {
+      font-size: 1.1rem;
+      color: #9b8d7a;
+      margin-bottom: 2em;
+    }
+  
+    /* =========================
+       LIST
+       ========================= */
+  
+    .news-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .news-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem 0;
+    
+      @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+    
+  
+    .news-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  
+    .news-date {
+      width: 100px;
+      font-weight: bold;
+      color: #7b715f;
+    }
+  
+    .news-title {
+      flex: 1;
+      min-width: 200px;
+      color: #4a3e2a;
+    }
+
+    .news-divider {
+      border: none;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin: 0;
+    }
+    
+  
+    /* =========================
+       TAGS
+       ========================= */
+  
+    .news-tag {
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: white;
+      min-width: 70px;
+      text-align: center;
+    }
+  
+    /* =========================
+       PAGINATION
+       ========================= */
+  
+    .custom-pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 3rem;
+  
+      ul {
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        list-style: none;
+      }
+  
+      .page-numbers {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: white;
+        background-color: #dea97b;
+        text-decoration: none;
+        border-radius: 0;
+        transition: background 0.3s;
+  
+        &:hover {
+          background-color: #c88f61;
+        }
+      }
+  
+      .page-numbers.current {
+        background-color: #7d4b20;
+        font-weight: bold;
+      }
+    }
+    @media (max-width: 480px) {
+      .news-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+    
+      .news-date-tag-combo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+      }
+    
+      .news-tag {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        line-height: 1.2;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    
+      .news-date {
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+    
+      .news-summary {
+        margin-top: 0.25rem;
+      }
+    }
+    
+  }
+  

@@ -1,0 +1,121 @@
+    // Footer
+
+    .custom-footer {
+        background-color: #2c1512; // deep brown
+        color: #fff;
+        padding: 3rem 1.5rem;
+      
+        .custom-footer__top {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          flex-wrap: wrap;
+          gap: 2rem;
+          text-align: left;
+          @media (max-width: 768px) {
+              flex-direction: column;
+              text-align: center;
+          }
+          .footer-left {
+            flex: 1 1 50%;
+            max-width: 600px;
+            @media (max-width: 768px) {
+              flex-direction: column;
+              align-items: center;          
+            }
+
+            .footer-right {
+              @media (max-width: 768px) {
+                text-align: center;
+                align-items: center;    
+              }
+            }
+        
+            .custom-footer__heading {
+              font-family: 'Playfair Display', serif;
+              font-size: 1.8rem;
+              margin-bottom: 1rem;
+              font-weight: 600;
+            }
+        
+            p {
+              margin-bottom: 1.5rem;
+            }
+          }
+        
+          .footer-right {
+            flex: 1 1 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left;
+        
+            .footer-logo {
+              max-width: 140px;
+              margin-bottom: 1rem;
+              @media (max-width: 768px) {
+              margin: 1rem auto;
+              }
+            }
+        
+            .footer-address {
+              font-size: 0.95rem;
+              line-height: 1.6;
+        
+              a {
+                color: #ddd;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+        
+        // Stack on small screens
+        @media (max-width: 768px) {
+          .custom-footer__top {
+            flex-direction: column;
+            text-align: center;
+        
+            .footer-left,
+            .footer-right {
+              text-align: center;
+              align-items: center;
+        
+              .footer-logo {
+                margin: 1rem auto;
+              }
+            }
+          }
+        }
+        
+      
+        .custom-footer__divider {
+          border-top: 1px solid rgba(255,255,255,0.2);
+          margin: 2rem 0;
+        }
+      
+        .custom-footer__links {
+          text-align: center;
+      
+          .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+      
+            li {
+              a {
+                color: #fff;
+                font-size: 0.95rem;
+                text-decoration: none;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }

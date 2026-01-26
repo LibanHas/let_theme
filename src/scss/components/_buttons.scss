@@ -1,0 +1,154 @@
+
+
+  
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  
+    min-width: 180px;
+    padding: 0.75em 1.5em;
+  
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  
+    border-radius: 999px;
+    border: 1px solid transparent;
+  
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+  
+    position: relative;
+    overflow: hidden;
+  
+    span {
+      position: relative;
+      z-index: 2;
+    }
+  }
+  
+  .btn--overlay {
+    position: relative;
+    overflow: hidden;
+  
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+  
+    &:hover::after,
+    &:focus::after {
+      opacity: 1;
+    }
+  }
+  
+  
+  .btn--accent {
+    color: $color-accent;
+    border-color: $color-accent;
+  }
+  
+  .btn--accent.btn--overlay::after {
+    background-color: $color-accent;
+  }
+  
+  .btn--accent.btn--overlay:hover {
+    color: $color-text-light;
+  }
+  
+//   .btn--cta,
+// .btn--subtle {
+//   &::after {
+//     display: none !important;
+//   }
+// }
+
+  
+  .btn--full {
+    width: 100%;
+  }
+  
+  @media (min-width: 481px) {
+    .btn--full {
+      width: auto;
+    }
+  }
+  
+  .btn--cta {
+    background-color: $color-accent !important;
+    color: $color-text-light !important;
+    border-color: $color-accent !important;
+  }
+  
+  .btn--cta::after {
+    display: none !important;
+    content: none !important;
+  }
+
+    
+  .btn--cta {
+    &:hover,
+    &:focus {
+      color: $color-text-light !important;
+    }
+  }
+  
+
+  .btn--subtle {
+    background-color: $color-bg-soft;
+    color: $color-text-body;
+    border-color: $color-bg-brown;
+  
+    &:hover,
+    &:focus {
+      background-color: darken($color-bg-soft, 6%);
+      border-color: darken($color-bg-soft, 6%);
+    }
+  }
+  
+  
+  // ==================================================
+// Legacy button compatibility layer
+// ==================================================
+
+.btn-primary {
+  @extend .btn;
+  @extend .btn--cta;
+}
+
+.btn-outline-orange {
+  @extend .btn;
+  @extend .btn--accent;
+  @extend .btn--overlay;
+}
+
+
+/* Buttons */
+.hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-buttons a.btn {
+    width: 240px;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px 5px;
+  }
+  @media (max-width: 480px) {
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+  }

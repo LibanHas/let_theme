@@ -1,0 +1,30 @@
+
+
+.page-template-page-collaborators {
+
+    .collaborators-list {
+      margin: 2rem 0;
+  
+      .collaborator-item {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        border-bottom: 1px solid #e6e6e6;
+  
+        .collaborator-name {
+          font-weight: 700;
+          font-size: 1.2rem;
+          margin-bottom: 0.3rem;
+          color: $color-heading;
+        }
+  
+        .collaborator-institution,
+        .collaborator-position {
+          font-size: 1rem;
+          color: #555;
+          margin: 0;
+        }
+      }
+    }
+  
+  }
+  

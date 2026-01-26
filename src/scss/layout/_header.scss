@@ -1,0 +1,27 @@
+
+/* 1. Fixed wrapper (sticks to top) */
+#wrapper-navbar {
+    position: fixed;
+    inset: 0 0 auto 0;          // top:0; left/right:0
+    z-index: 1000;
+    background: $brand-cream;
+    border-bottom: 1px solid $shadow-line;
+  }
+  
+  /* 5.  Animated underline for desktop header */
+  .menubar {
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 100vw; height: 1px;
+      background: #000;
+      transform-origin: center;
+      transform: translateX(-50%) scaleX(.4);
+      transition: transform .6s;
+    }
+    &:hover::after,
+    &.scrolled::after { transform: translateX(-50%) scaleX(2); }
+  }
+  

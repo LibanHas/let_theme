@@ -105,10 +105,10 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
       </p>
 
       <div class="hero-buttons">
-        <a data-anim-trigger-self data-anim="fade-in" href="/about" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="/about" class="btn btn--accent btn--overlay">
           <span>LETについてもっと知る</span>
         </a>
-        <a data-anim-trigger-self data-anim="fade-in" href="/research" class="btn btn--cta">
+        <a data-anim-trigger-self data-anim="fade-in" href="/research" class="btn btn--accent btn--overlay">
           <span>研究を見る</span>
         </a>
       </div>
@@ -238,7 +238,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--cta">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/bookroll/" class="btn btn--accent btn--overlay">
           <span>Bookrollの詳細へ</span>
         </a>
       </div>
@@ -257,7 +257,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
         </p>
       </div>
       <div class="tool-button">
-        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--cta">
+        <a data-anim-trigger-self="" data-anim="fade-in" href="https://eds.let.media.kyoto-u.ac.jp/leaf/logpalette/" class="btn btn--accent btn--overlay">
           <span>LogPaletteの詳細へ</span>
         </a>
       </div>
@@ -274,7 +274,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
     </div>
 
     <div class="news-button-top">
-      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_jp')); ?>" class="btn btn--cta">
+      <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_jp')); ?>" class="btn btn--accent btn--overlay">
         <span>ニュース一覧</span>
       </a>
     </div>
@@ -330,7 +330,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
   </div>
 
   <div class="news-button-bottom">
-    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_jp')); ?>" class="btn btn--cta">
+    <a data-anim-trigger-self data-anim="fade-in" href="<?php echo esc_url(get_post_type_archive_link('news_jp')); ?>" class="btn btn--accent btn--overlay">
       <span>ニュース一覧</span>
     </a>
   </div>
@@ -349,7 +349,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
           現場との連携を通して開発したツールや実践事例の一部をご紹介します。
         </p>
         <div class="research-button-top mt-4">
-          <a href="research/" class="btn btn--cta">
+          <a href="research/" class="btn btn--accent btn--overlay">
             <span>研究ページを見る</span>
           </a>
         </div>
@@ -376,7 +376,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 
     <!-- Mobile-only Button -->
     <div class="research-button-bottom mt-4">
-      <a href="research/" class="btn btn--cta">
+      <a href="research/" class="btn btn--accent btn--overlay">
         <span>研究ページを見る</span>
       </a>
     </div>
@@ -393,7 +393,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
         教育技術の可能性を広げ、意義ある学習体験を生み出すために協働しています。
       </p>
       <div class="members-button-top mt-4">
-        <a href="members/" class="btn btn--cta">
+        <a href="members/" class="btn btn--accent btn--overlay">
           <span>メンバー紹介を見る</span>
         </a>
       </div>
@@ -407,7 +407,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 
     <!-- Mobile-only Button -->
     <div class="members-button-bottom">
-      <a href="members/" class="btn btn--cta">
+      <a href="members/" class="btn btn--accent btn--overlay">
         <span>メンバー紹介を見る</span>
       </a>
     </div>
@@ -428,10 +428,10 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
       </p>
 
       <div class="cta-buttons">
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--cta">
+        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
           <span>メールで連絡する</span>
         </a>
-        <a href="/join-us/" class="btn btn--cta">
+        <a href="/join-us/" class="btn btn--accent btn--overlay">
           <span>詳しく見る</span>
         </a>
       </div>
