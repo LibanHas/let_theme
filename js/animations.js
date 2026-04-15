@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const menubar = document.querySelector('.menubar');
 
   function handleMenubarScroll() {
+    if (!menubar) return;
     if (window.scrollY > 50) {
       menubar.classList.add('scrolled');
     } else {

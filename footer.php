@@ -41,8 +41,8 @@ $footer_text = [
     'en' => 'If you’re interested in our research or tools,<br>would like to visit,<br class="hide-on-mobile">or are considering enrollment or collaboration,<br>please don’t hesitate to reach out.'
   ],
   'contact_button' => [
-    'ja' => 'お問い合わせ',
-    'en' => 'Contact Us'
+    'ja' => 'お問い合わせフォーム',
+    'en' => 'Inquiry Form'
   ],
   'about' => [
     'ja' => '私たちについて',
@@ -69,6 +69,8 @@ $footer_text = [
     'en' => 'Academic Center for Computing and Media Studies, Kyoto University<br>Yoshida Nihonmatsu-cho, Sakyo-ku, Kyoto 606-8501 JAPAN<br>'
   ]
 ];
+
+$contact_form_url = 'https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform';
 ?>
 
 <?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
@@ -84,7 +86,7 @@ $footer_text = [
           <?php echo $footer_text['heading'][$lang]; ?>
         </h2>
         <p><?php echo $footer_text['contact_body'][$lang]; ?></p>
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--secondary-outline btn--secondary-outline-dark">
+        <a href="<?php echo esc_url($contact_form_url); ?>" class="btn btn--secondary-outline btn--secondary-outline-dark" target="_blank" rel="noopener">
           <span><?php echo $footer_text['contact_button'][$lang]; ?></span>
         </a>
       </div>
@@ -107,7 +109,7 @@ $footer_text = [
         <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>leaf">LEAF</a></li>
         <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>publications"><?php echo $footer_text['publications'][$lang]; ?></a></li>
         <li><a href="/<?php echo ($lang === 'en') ? 'en/' : ''; ?>join-us"><?php echo $footer_text['join'][$lang]; ?></a></li>
-        <li><a href="mailto:info@let.media.kyoto-u.ac.jp"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
+        <li><a href="<?php echo esc_url($contact_form_url); ?>" target="_blank" rel="noopener"><?php echo $footer_text['contact_button'][$lang]; ?></a></li>
       </ul>
     </div>
   </div>

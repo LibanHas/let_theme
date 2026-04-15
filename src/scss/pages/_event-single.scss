@@ -1,4 +1,5 @@
-.single-event_jp {
+.single-event_jp,
+.single-event_en {
 
     background-color: #fdf8ed;
     font-family: 'Ubuntu Sans', sans-serif;
@@ -57,18 +58,134 @@
     .event-title {
       font-size: 1.8rem;
       font-weight: bold;
+      max-width: 800px;
       margin-bottom: 2rem;
       color: $color-text-body;
     }
-  
+
+    .event-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+
+    .event-nav-prev,
+    .event-nav-next {
+      a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #6b5a3d;
+        text-decoration: none;
+        font-size: 0.9rem;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+          background-color: #f0e6d3;
+          color: #4a3e2a;
+          text-decoration: none;
+        }
+      }
+
+      .nav-arrow {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .nav-label {
+        display: inline-block;
+        max-width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .event-navigation {
+        margin-bottom: 1.5rem;
+        padding: 0.75rem 0;
+      }
+
+      .event-nav-prev,
+      .event-nav-next {
+        a {
+          font-size: 0.85rem;
+          padding: 0.4rem 0.5rem;
+        }
+
+        .nav-label {
+          max-width: 120px;
+        }
+      }
+    }
+
+    @media (max-width: 480px) {
+      .event-navigation {
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: stretch;
+      }
+
+      .event-nav-prev,
+      .event-nav-next {
+        max-width: 100%;
+        text-align: center;
+
+        a {
+          justify-content: center;
+          width: 100%;
+          font-size: 0.8rem;
+        }
+
+        .nav-label {
+          max-width: 180px;
+        }
+      }
+
+      .event-nav-next a {
+        justify-content: center;
+      }
+    }
+
     .event-image {
-      text-align: center;
+      text-align: left;
       margin: 2rem 0;
   
+      .event-image-lightbox-trigger {
+        display: inline-block;
+        cursor: zoom-in;
+      }
+
       img {
         max-width: 100%;
         border-radius: 8px;
       }
+    }
+
+    .event-image-lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      cursor: zoom-out;
+      padding: 2rem;
+    }
+
+    .event-image-lightbox__image {
+      max-width: min(90vw, 1200px);
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+      cursor: default;
     }
   
     .event-body {
@@ -85,10 +202,15 @@
       margin: 2rem 0;
       font-size: 1rem;
       line-height: 1.9;
-      color: #333;
+      color: #4a3e2a;
   
+
       p {
         margin-bottom: 1.25rem;
+        a {
+          color: #4a3e2a;
+          text-decoration: underline;
+        }
       }
   
       strong {
@@ -110,5 +232,922 @@
         color: #7b715f;
       }
     }
+
+    .event-info-label {
+      font-weight: 700;
+      color: #4a3e2a;
+      margin-top: 1.25rem;
+    }
+
+    .event-cohosts {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .event-cohosts li {
+      margin: 0 0 0.35rem 0;
+    }
+
+    .registration_details {
+      line-height: 1.85;
+      margin-bottom: 1rem;
+      color: #5b4f42;
+    }
+
+    .event-info-sub {
+      margin-top: 0.3rem;
+      line-height: 1.75;
+    }
+
+    .registration_official_page {
+      margin-top: 0.7rem;
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .registration_official_page a {
+      color: #6d5a3c;
+      text-decoration: underline;
+    }
+
+    .registration_official_page a:hover {
+      color: #4a3e2a;
+    }
+
+    .event-info-row.event-participation .event-registration-link {
+      display: inline-block;
+      margin: 0.4rem 0 0.9rem;
+    }
+
+    .event-info-row.event-participation .event-info-label {
+      margin-bottom: 0.6rem;
+    }
+
+    /* =========================
+   Program section heading row (on timeline)
+   ========================= */
+
+.program-section-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  list-style: none;
+
+  // Standard spacing for non-last section rows
+  &:not(:last-child) {
+    margin: 3rem 0 1.5rem;
   }
-  
+
+  // Last section row removes bottom margin
+  &:last-child {
+    margin: 3rem 0 0;
+  }
+}
+
+/* horizontal line */
+.program-section-row::before {
+  content: '';
+  position: absolute;
+  left: 88px;          // exactly the timeline x-position
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: #e0d3b8;
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Empty time column keeps vertical line continuous */
+.program-section-row .program-time {
+  width: 88px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.program-section-heading {
+  position: relative;
+  padding: 0.6rem 1.75rem 0.6rem 1.25rem;
+  margin-left: 1.5rem;
+
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #6b5a3d;
+  letter-spacing: 0.04em;
+
+  background-color: #fdf8ed; // same as page
+  border-radius: 10px;
+
+  z-index: 1;
+}
+
+
+/* Text sits above the line */
+.program-section-heading span,
+.program-section-heading {
+  background-color: #fdf8ed;
+  z-index: 1;
+  display: inline-block;
+  padding-right: 1rem;
+}
+
+    /* =========================
+   Program (Timeline)
+   ========================= */
+
+.event-program {
+  margin-top: 3rem;
+}
+
+.event-section-title {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  letter-spacing: 0.05em;
+  max-width: 800px;
+}
+
+
+
+/* List reset */
+.event-program-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  max-width: 800px;
+
+  // Single vertical timeline line - pinned between first and last dot centers
+  // Uses CSS custom properties set by JavaScript for exact positioning
+  &::before {
+    content: '';
+    position: absolute;
+    left: 88px;
+    top: var(--timeline-top, 1.5rem);
+    bottom: var(--timeline-bottom, 1.5rem);
+    width: 2px;
+    background-color: #d6c6a8;
+    z-index: 0;
+  }
+}
+
+/* One row in the timeline */
+.program-row {
+  display: flex;
+  //gap: 2rem;
+  position: relative;
+  align-items: center;
+
+  // Last row removes bottom margin to prevent line extension
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  // Non-last rows have standard spacing
+  &:not(:last-child) {
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* For event and panel types: align time badge to top instead of center */
+.program-row.is-event,
+.program-row.is-panel {
+  align-items: flex-start;
+
+  .program-time {
+    padding-top: 0.5rem;  // fine-tune vertical position
+  }
+}
+
+/* Time column */
+.program-time {
+  width: 88px;
+  display: flex;
+  align-items: center;      // ← centers badge + dot vertically
+  justify-content: flex-end;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Time badge */
+.time-badge {
+  display: inline-block;
+  background-color: #b89b5e;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  margin-right: 2rem;
+}
+
+/* Timeline dot */
+.timeline-dot {
+  position: absolute;
+  left: 100%;                  // exactly at the edge of time column
+  top: 50%;                    // vertical center of the row
+  transform: translateY(-50%); // precise centering
+  width: 10px;
+  height: 10px;
+  background-color: #b89b5e;
+  border-radius: 50%;
+  margin-left: -4px;
+}
+
+/* Card */
+.program-card {
+  background-color: #fffaf0;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  width: 720px;
+  margin-left: 2rem;
+}
+
+/* Inner content wrapper - constrains text width and reserves right space */
+.program-card__content {
+  max-width: 60ch;  // optimal typographic line length
+}
+
+/* Panel header - title with optional YouTube link */
+.program-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+
+  .program-title {
+    flex: 1;
+    margin-bottom: 0;  // header controls spacing
+  }
+
+  .program-link--header {
+    flex-shrink: 0;
+    margin-top: 0.25rem;  // align with title baseline
+  }
+}
+
+/* Title inside card - default for all program types */
+.program-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+
+  // Proper text alignment for Japanese multi-line titles
+  text-align: left;              // no justification or centering
+  word-break: normal;            // don't break words aggressively
+  overflow-wrap: break-word;     // wrap long words if needed
+  line-break: strict;            // proper Japanese line breaking
+
+  // Hanging punctuation for opening quotation mark 「
+  padding-left: 1em;             // indent all lines
+  text-indent: -1em;             // pull first line back (hangs the 「)
+}
+
+/* Enhanced title styling - only for panel type */
+.program-card--panel .program-title {
+  font-size: 1.35rem;        // slightly larger
+  font-weight: 600;          // stronger but not heavy
+  color: #3e352c;            // deep brown (adjust if needed)
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+
+  // Inherit proper text alignment from base .program-title
+  text-align: left;
+  word-break: normal;
+  overflow-wrap: break-word;
+  line-break: strict;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(62, 53, 44, 0.15); // faint warm underline
+  }
+}
+
+.panel-role {
+  margin-top: 1rem;
+}
+
+.panel-role .program-role-pill {
+  margin-bottom: 0.5rem;
+}
+
+/* Speaker name */
+.program-speaker {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  margin-left: 0.75em;
+}
+
+/* Affiliation */
+.program-affiliation {
+  font-size: 0.85rem;
+  color: #6f644f;
+  margin-top: 0.25rem;
+  line-height: 1.5;
+  margin-left: 0.1em;
+
+  // Hanging punctuation for opening bracket （
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+/* Notes (panelists, etc.) */
+.program-notes {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #6f644f;
+  line-height: 1.6;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e6dcc7;
+}
+
+/* Action links (YouTube + PDF) */
+.program-card__actions {
+  margin-top: 1.75rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.program-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 1.4rem;
+  border-radius: 18px;
+  background: #f6efe2;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #4a3f33;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+  }
+}
+
+/* YouTube icon */
+.program-link--video .icon-youtube {
+  display: inline-block;
+  width: 28px;
+  height: 20px;
+  background: #e53935;  // softened red
+  border-radius: 6px;
+  position: relative;
+  flex-shrink: 0;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    border-left: 8px solid white;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+  }
+}
+
+/* PDF icon */
+.program-link--pdf .icon-pdf {
+  display: inline-block;
+  width: 22px;
+  height: 26px;
+  background: #cbb38a;
+  border-radius: 4px;
+  position: relative;
+  flex-shrink: 0;
+
+  &::after {
+    content: "PDF";
+    position: absolute;
+    bottom: 2px;
+    left: 3px;
+    font-size: 9px;
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+}
+
+.program-role-pill {
+  display: inline-block;
+  font-size: 1rem;          /* ↑ from 0.75 */
+  font-weight: 600;
+  padding: 0.35rem 1.25rem;   /* ↑ vertical padding */
+  border-radius: 15px;
+  background-color: #efe4cc;
+  color: #6b5a3d;
+  margin: 0.25rem 0.5rem;
+}
+
+
+
+/* Breaks / simple items (no speaker info) */
+.program-card:has(.program-speaker) {
+  /* no-op for now, hook for later */
+}
+
+/* =========================
+   Responsive - Tablet (768px)
+   ========================= */
+@media (max-width: 768px) {
+  // Events header
+  .events-header {
+    .page-title {
+      font-size: 2rem;
+    }
+    .page-subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  // Event title
+  .event-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  // Event meta grid - maintain horizontal but tighter
+  .event-meta-item {
+    margin-bottom: 12px;
+
+    .event-icon {
+      margin-right: 1rem;
+
+      img {
+        width: 1.25rem;
+      }
+    }
+
+    .event-meta-text {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Event description
+  .event-description {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  // Section title
+  .event-section-title {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  // Program timeline adjustments
+  .program-row {
+    gap: 1.25rem;
+  }
+
+  .program-time {
+    width: 64px;
+  }
+
+  // Adjust timeline line position for narrower time column
+  .event-program-list::before {
+    left: 64px;
+  }
+
+  // Section heading line adjustment
+  .program-section-row::before {
+    left: 64px;
+  }
+
+  .program-section-row .program-time {
+    width: 64px;
+  }
+
+  .program-section-heading {
+    font-size: 1.05rem;
+    padding: 0.5rem 1.25rem 0.5rem 1rem;
+    margin-left: 1rem;
+  }
+
+  // Time badge
+  .time-badge {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    margin-right: 1.5rem;
+  }
+
+  // Program card
+  .program-card {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    margin-left: 1.5rem;
+  }
+
+  .program-title {
+    font-size: 1rem;
+  }
+
+  .program-card--panel .program-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .program-role-pill {
+    font-size: 0.9rem;
+    padding: 0.3rem 1rem;
+  }
+
+  .program-speaker {
+    font-size: 0.9rem;
+  }
+
+  .program-affiliation {
+    font-size: 0.8rem;
+  }
+
+  // Stack panel header vertically on mobile
+  .program-card__header {
+    flex-direction: column;
+    gap: 1rem;
+
+    .program-link--header {
+      align-self: flex-start;
+    }
+  }
+
+  // Stack action links vertically on mobile
+  .program-card__actions {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .program-link {
+    width: 100%;
+    justify-content: center;
+  }
+
+  // Event participation block
+  .event-participation {
+    padding: 2rem 1.6rem;
+
+    h3 {
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
+  }
+
+  .event-registration-link a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* =========================
+   Responsive - Mobile (480px)
+   ========================= */
+@media (max-width: 480px) {
+  // Events header
+  .events-header {
+    .page-title {
+      font-size: 1.6rem;
+    }
+    .page-subtitle {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Event title - stack-friendly
+  .event-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+
+  // Event meta - stack vertically on very small screens
+  .event-meta-grid {
+    gap: 0.5rem;
+  }
+
+  .event-meta-item {
+    margin-bottom: 10px;
+
+    .event-icon {
+      margin-right: 0.75rem;
+
+      img {
+        width: 1.1rem;
+      }
+    }
+
+    .event-meta-text {
+      font-size: 0.85rem;
+    }
+  }
+
+  .event-tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  // Event description
+  .event-description {
+    font-size: 0.9rem;
+    line-height: 1.75;
+    margin: 1.5rem 0;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  // Section title
+  .event-section-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.75rem;
+  }
+
+  // Timeline - simplified layout for mobile
+  .event-program-list {
+    padding-left: 0;
+
+    // Move timeline to left edge
+    &::before {
+      left: 10px;
+    }
+  }
+
+  // Program rows - vertical stack on mobile
+  .program-row {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 24px; // space for timeline dot
+    margin-bottom: 2rem;
+
+    &:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .program-row.is-event,
+  .program-row.is-panel {
+    .program-time {
+      padding-top: 0;
+    }
+  }
+
+  // Time column - inline with dot
+  .program-time {
+    width: auto;
+    justify-content: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  // Timeline dot repositioned for stacked layout
+  .timeline-dot {
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 0;
+  }
+
+  // Time badge adjustments
+  .time-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0;
+  }
+
+  // Program card - full width
+  .program-card {
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .program-card__content {
+    max-width: 100%;
+  }
+
+  .program-title {
+    font-size: 0.95rem;
+    padding-left: 0.5em;
+    text-indent: -0.5em;
+  }
+
+  .program-card--panel .program-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+  }
+
+  // Section heading row
+  .program-section-row {
+    padding-left: 24px;
+    margin: 2rem 0 1rem;
+
+    &::before {
+      left: 10px;
+    }
+
+    .program-time {
+      display: none; // hide empty time column on mobile
+    }
+  }
+
+  .program-section-heading {
+    font-size: 0.95rem;
+    padding: 0.4rem 1rem;
+    margin-left: 0;
+  }
+
+  // Role pills
+  .program-role-pill {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.85rem;
+    margin: 0.2rem 0.3rem;
+  }
+
+  .panel-role {
+    margin-top: 0.75rem;
+  }
+
+  // Speaker info
+  .program-speaker {
+    font-size: 0.85rem;
+    margin-left: 0.5em;
+  }
+
+  .program-affiliation {
+    font-size: 0.78rem;
+    padding-left: 0.5em;
+    text-indent: -0.5em;
+  }
+
+  .program-notes {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  // Action links
+  .program-card__actions {
+    margin-top: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .program-link {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 14px;
+    gap: 0.6rem;
+  }
+
+  .program-link--video .icon-youtube {
+    width: 24px;
+    height: 17px;
+
+    &::after {
+      left: 8px;
+      top: 4px;
+      border-left-width: 7px;
+      border-top-width: 4px;
+      border-bottom-width: 4px;
+    }
+  }
+
+  .program-link--pdf .icon-pdf {
+    width: 19px;
+    height: 22px;
+
+    &::after {
+      font-size: 8px;
+      left: 2px;
+    }
+  }
+
+  // Event participation block
+  .event-participation {
+    padding: 1.5rem 1.25rem;
+    border-radius: 16px;
+    margin-top: 2.5rem;
+
+    h3 {
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+  }
+
+  .event-registration-link a {
+    display: block;
+    padding: 0.8rem 1.4rem;
+    font-size: 0.9rem;
+    border-radius: 14px;
+    margin-top: 1.2rem;
+  }
+
+  .event-deadline {
+    margin-top: 1.2rem;
+    font-size: 0.88rem;
+  }
+
+  // Event image
+  .event-image {
+    margin: 1.5rem 0;
+
+    img {
+      border-radius: 6px;
+    }
+  }
+}
+
+/* ========================================
+   Event Participation Block
+   ======================================== */
+
+.event-participation {
+  margin-top: 3.5rem;
+  padding: 2.5rem 2.5rem 2.25rem;
+  background: #f6efe2;
+  border-radius: 22px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
+
+  h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.4rem;
+    color: #4a3f33;
+  }
+
+  p {
+    margin-bottom: 0.7rem;
+    line-height: 1.75;
+    color: #5b4f42;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+
+  // Subtle link styling (for non-button links)
+  a:not(.event-registration-link a) {
+    color: #8c744d;
+    text-decoration: underline;
+
+    &:hover {
+      color: #6d5a3c;
+    }
+  }
+}
+
+.event-registration-link a {
+  display: inline-block;
+  margin-top: 1.4rem;
+  padding: 0.9rem 1.8rem;
+  border-radius: 18px;
+  background: #cbb38a;
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: #ffffff;
+  }
+}
+
+.event-deadline {
+  margin-top: 1.4rem;
+  font-weight: 600;
+  color: #6a5a47;
+
+  strong {
+    color: #4a3f33;
+  }
+}
+
+} // end .single-event_jp, .single-event_en

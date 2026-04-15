@@ -2,18 +2,30 @@
 // Base tokens & tools FIRST
 // ==============================
 @import "base/variables";
-@import "base/base";
 @import "base/mixins";
-@import "base/reset";
-@import "base/typography";
+
 
 // ==============================
 // Bootstrap (after overrides)
 // ==============================
-
-
 @import "bootstrap/scss/bootstrap";
-@mixin flex($ai:center,$jc:center,$gap:0){display:flex;align-items:$ai;justify-content:$jc;gap:$gap;}
+
+// ==============================
+// Base styles (override Bootstrap)
+// ==============================
+
+@import "base/reset";
+@import "base/base";
+@import "base/typography";
+
+// ==============================
+// Layout
+// ==============================
+@import "layout/footer";
+@import "layout/adjustments";
+@import "layout/header";
+@import "layout/navbar";
+@import "layout/sections";
 
 // ==============================
 // Components
@@ -24,13 +36,7 @@
 @import "components/accordion";
 @import "components/pagination";
 
-// ==============================
-// Layout
-// ==============================
-@import "layout/footer";
-@import "layout/adjustments";
-@import "layout/header";
-@import "layout/navbar";
+
 
 // ==============================
 // Pages
@@ -46,11 +52,11 @@
 @import "pages/grants";
 @import "pages/publications";
 @import "pages/join";
+@import "pages/leaf";
 @import "pages/access";
 @import "pages/home";
 @import "pages/about";
 @import "pages/project-single";
-@import "pages/publications";
 
 
 

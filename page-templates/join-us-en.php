@@ -211,7 +211,6 @@ $container = get_theme_mod( 'understrap_container_type' );
     <select id="applicantType">
       <option value="master">Master’s</option>
       <option value="phd">Doctoral</option>
-      <option value="research">Research Student</option>
     </select>
 
     <select id="entryTerm">
@@ -242,8 +241,7 @@ $container = get_theme_mod( 'understrap_container_type' );
       We’re also happy to discuss research topics and application preparation.
     </p>
     <div class="scroll-hero__buttons">
-      <a href="/visit" class="btn btn--accent btn--overlay"><span>Book a Visit</span></a>
-      <a href="/contact" class="btn btn--secondary-outline"><span>Contact Form</span></a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--secondary-outline"><span>Contact Form</span></a>
     </div>
   </div>
 </section>

@@ -216,7 +216,6 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
     <select id="applicantType">
       <option value="master">修士</option>
       <option value="phd">博士</option>
-      <option value="research">研究生</option>
     </select>
 
     <select id="entryTerm">
@@ -247,8 +246,7 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
       研究内容や受験準備についての相談も歓迎します。
     </p>
     <div class="scroll-hero__buttons">
-      <a href="/visit" class="btn btn--accent btn--overlay"><span>見学を予約する</span></a>
-      <a href="/contact" class="btn btn--secondary-outline"><span>お問い合わせフォーム</span></a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--secondary-outline"><span>お問い合わせフォーム</span></a>
     </div>
   </div>
 </section>

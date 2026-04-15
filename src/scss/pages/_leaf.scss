@@ -64,6 +64,40 @@
           padding: 0.75rem 1.5rem;
           border-radius: 999px;
           font-size: 1rem;
+          transition: background-color 0.3s ease;
+        }
+      
+        /* Solid variants: LEAF-only overrides */
+        .btn-primary,
+        .btn-secondary {
+          &::after { display: none !important; }
+          span { mix-blend-mode: normal !important; }
+        }
+      
+        .btn-primary {
+          background-color: #b97842;
+          color: #fff;
+          border-color: #b97842;
+      
+          &:hover,
+          &:focus {
+            background-color: #a36d3c;
+            border-color: #a36d3c;
+            color: #fff;
+          }
+        }
+      
+        .btn-secondary {
+          background-color: #e3d5c2;
+          color: #4b3e33;
+          border-color: #e3d5c2;
+      
+          &:hover,
+          &:focus {
+            background-color: #d1c0ad;
+            border-color: #d1c0ad;
+            color: #4b3e33;
+          }
         }
       }
     }

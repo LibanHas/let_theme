@@ -177,7 +177,7 @@ get_header();
           </div>
           <div class="student-title">
               <h3 class="student-name">一伊達　初音</h3>
-              <p class="student-role">修士2年生</p>
+              <p class="student-role">博士1年生</p>
           </div>
 
         </div>
@@ -225,7 +225,7 @@ get_header();
         </div>
         <div class="student-title">
             <h3 class="student-name">スティーブ・ウラストン</h3>
-            <p class="student-role">博士課程2年</p>
+            <p class="student-role">博士課程3年</p>
         </div>
       </div>
 
@@ -275,8 +275,8 @@ get_header();
                 </p>
 
                 <div class="cta-buttons">
-                  <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
-                    <span>メールで連絡する</span>
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--cta" target="_blank" rel="noopener">
+                    <span>お問い合わせフォームへ</span>
                   </a>
                   <a href="/join-us/" class="btn btn--accent btn--overlay">
                     <span>詳しく見る</span>

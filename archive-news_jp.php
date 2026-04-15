@@ -74,7 +74,8 @@ $container = get_theme_mod('understrap_container_type');
 
                   <?php
                   $date_raw = get_field('news_date');
-                  $date = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw)->format('Y/m/d') : '';
+                  $date_obj = $date_raw ? DateTime::createFromFormat('Ymd', $date_raw) : null;
+                  $date     = $date_obj ? $date_obj->format('Y/m/d') : '';
                   $category_value = get_field('news_category');
                   $category_label = $category_labels[$category_value] ?? 'ニュース';
                   $tag_class = $category_classes[$category_value] ?? 'tag-news';
@@ -125,7 +126,7 @@ $container = get_theme_mod('understrap_container_type');
 
               <?php else : ?>
                 <p>ニュースがまだありません。</p>
-              <?php endif; ?>
+              <?php endif; wp_reset_postdata(); ?>
             </div>
           </section>
 

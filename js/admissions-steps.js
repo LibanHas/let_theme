@@ -15,16 +15,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: '出願（AO方式）',
+            title: '出願',
             period: '出願時期：6月下旬',
-            description: '必要書類を準備し、出願期間内にAO方式で出願を行います。',
+            description: '必要書類を準備し、出願期間内に出願を行います。',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO入試（面接）',
-            period: '実施時期：8月上旬',
-            description: '研究計画に基づいた面接試験が行われます（対面またはオンライン）。',
+            title: '入試（面接）',
+            period: '実施時期：8月（※4月入学は2月に受験できる場合があります）',
+            description: '研究計画に基づいた面接試験が対面で行われます。4月入学を希望する場合は、2月に受験できる場合もあります。',
             icon: 'icon-interview.svg'
           },
           {
@@ -45,16 +45,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: '出願（AO方式）',
+            title: '出願',
             period: '出願時期：1月（※国際志願者は4月も可）',
             description: '一般出願は1月ですが、国際志願者には4月締切の追加期間が設けられる場合があります。',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO入試（面接）',
-            period: '実施時期：2月（※国際志願者は4〜5月も可）',
-            description: '提出した研究計画に基づき、面接試験が行われます。国際志願者は後期日程の選択も可能です。',
+            title: '入試（面接）',
+            period: '実施時期：8月（2月受験も可）',
+            description: '提出した研究計画に基づき、面接試験が対面で行われます。10月入学の場合、2月入試は募集枠が非常に限られており競争が激しいため、より募集枠の多い8月入試を推奨します。',
             icon: 'icon-interview.svg'
           },
           {
@@ -77,16 +77,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: '出願（AO方式）',
+            title: '出願',
             period: '出願時期：6月下旬',
-            description: '必要書類を準備し、出願期間内にAO方式で出願を行います。',
+            description: '必要書類を準備し、出願期間内に出願を行います。',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO入試（面接）',
-            period: '実施時期：8月上旬',
-            description: '研究計画に基づいた面接試験が行われます（対面またはオンライン）。',
+            title: '入試（面接）',
+            period: '実施時期：8月（※4月入学は2月に受験できる場合があります）',
+            description: '研究計画に基づいた面接試験が対面で行われます。4月入学を希望する場合は、2月に受験できる場合もあります。',
             icon: 'icon-interview.svg'
           },
           {
@@ -107,16 +107,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: '出願（AO方式）',
+            title: '出願',
             period: '出願時期：1月（※国際志願者は4月も可）',
             description: '一般出願は1月ですが、国際志願者には4月締切の追加期間が設けられる場合があります。',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO入試（面接）',
-            period: '実施時期：2月（※国際志願者は4〜5月も可）',
-            description: '提出した研究計画に基づき、面接試験が行われます。国際志願者は後期日程の選択も可能です。',
+            title: '入試（面接）',
+            period: '実施時期：8月（2月受験も可）',
+            description: '提出した研究計画に基づき、面接試験が対面で行われます。10月入学の場合、2月入試は募集枠が非常に限られており競争が激しいため、より募集枠の多い8月入試を推奨します。',
             icon: 'icon-interview.svg'
           },
           {
@@ -124,40 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
             title: '入学',
             period: '入学時期：10月',
             description: '入試に合格し、手続きが完了したら、10月よりLET Labでの研究が開始されます。',
-            icon: 'icon-enrollment.svg'
-          }
-        ]
-      },
-      research: {
-        april: [
-          {
-            number: '01',
-            title: '国費留学生面接・手続き',
-            period: '実施時期：7月下旬〜8月上旬',
-            description: 'MEXT（国費）による支援を希望する場合は、別途面接および関連手続きが必要です。',
-            icon: 'icon-interview.svg'
-          },
-          {
-            number: '02',
-            title: '入学',
-            period: '入学時期：4月',
-            description: '手続き完了後、LET Labでの研究活動が開始されます。',
-            icon: 'icon-enrollment.svg'
-          }
-        ],
-        october: [
-          {
-            number: '01',
-            title: '国費留学生面接・手続き',
-            period: '実施時期：7月下旬〜8月上旬',
-            description: 'MEXT（国費）による支援を希望する場合、面接および必要な手続きがこの時期に行われます。',
-            icon: 'icon-interview.svg'
-          },
-          {
-            number: '02',
-            title: '入学',
-            period: '入学時期：10月',
-            description: '手続き完了後、10月からLET Labでの研究活動を開始します。',
             icon: 'icon-enrollment.svg'
           }
         ]
@@ -175,16 +141,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: 'Application (AO Method)',
+            title: 'Application',
             period: 'Application: Late June',
-            description: 'Prepare the required documents and submit your application during the AO application period.',
+            description: 'Prepare the required documents and submit your application during the application period.',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO Entrance Exam (Interview)',
-            period: 'Exam: Early August',
-            description: 'An interview based on your research plan will be conducted (in-person or online).',
+            title: 'Entrance Exam (Interview)',
+            period: 'Exam: August (February may also be possible for April entry)',
+            description: 'An in-person interview based on your research plan will be conducted. For April entry, taking the exam in February may also be possible.',
             icon: 'icon-interview.svg'
           },
           {
@@ -205,16 +171,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: 'Application (AO Method)',
+            title: 'Application',
             period: 'Application: January (*April for international applicants)',
             description: 'The standard application period is January, but international applicants may have an additional deadline in April.',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO Entrance Exam (Interview)',
-            period: 'Exam: February (*April–May for international applicants)',
-            description: 'An interview based on your research plan will be held. International applicants can also select a later schedule.',
+            title: 'Entrance Exam (Interview)',
+            period: 'Exam: August (also possible in February)',
+            description: 'An in-person interview based on your research plan will be held. For October entry, the August exam is recommended because the February exam has very limited places and is therefore more competitive.',
             icon: 'icon-interview.svg'
           },
           {
@@ -237,16 +203,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: 'Application (AO Method)',
+            title: 'Application',
             period: 'Application Period: Late June',
-            description: 'Prepare the necessary documents and apply during the application window via the AO method.',
+            description: 'Prepare the necessary documents and apply during the application window.',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO Entrance Exam (Interview)',
-            period: 'Held: Early August',
-            description: 'An interview based on your research plan will be conducted (either in-person or online).',
+            title: 'Entrance Exam (Interview)',
+            period: 'Held: August (February may also be possible for April entry)',
+            description: 'An in-person interview based on your research plan will be conducted. For April entry, taking the exam in February may also be possible.',
             icon: 'icon-interview.svg'
           },
           {
@@ -267,16 +233,16 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           {
             number: '02',
-            title: 'Application (AO Method)',
+            title: 'Application',
             period: 'Application Period: January (International applicants may also apply in April)',
             description: 'The general application period is January, but international applicants may have an additional deadline in April.',
             icon: 'icon-application.svg'
           },
           {
             number: '03',
-            title: 'AO Entrance Exam (Interview)',
-            period: 'Held: February (International applicants may also choose April–May)',
-            description: 'An interview based on your submitted research plan will be conducted. International applicants may select a later schedule if needed.',
+            title: 'Entrance Exam (Interview)',
+            period: 'Held: August (also possible in February)',
+            description: 'An in-person interview based on your submitted research plan will be conducted. For October entry, the August exam is recommended because the February exam has very limited places and is therefore more competitive.',
             icon: 'icon-interview.svg'
           },
           {
@@ -287,43 +253,7 @@ document.addEventListener('DOMContentLoaded', function () {
             icon: 'icon-enrollment.svg'
           }
         ]
-      },
-      
-      research: {
-        april: [
-          {
-            number: '01',
-            title: 'MEXT Scholarship Interview & Procedures',
-            period: 'Held: Late July–Early August',
-            description: 'If applying for MEXT (Japanese government scholarship) support, additional interviews and procedures are required.',
-            icon: 'icon-interview.svg'
-          },
-          {
-            number: '02',
-            title: 'Enrollment',
-            period: 'Enrollment: April',
-            description: 'Once all procedures are complete, you may begin research activities at LET Lab.',
-            icon: 'icon-enrollment.svg'
-          }
-        ],
-        october: [
-          {
-            number: '01',
-            title: 'MEXT Scholarship Interview & Procedures',
-            period: 'Held: Late July–Early August',
-            description: 'For those seeking MEXT (Japanese government scholarship) support, interviews and necessary procedures are conducted during this period.',
-            icon: 'icon-interview.svg'
-          },
-          {
-            number: '02',
-            title: 'Enrollment',
-            period: 'Enrollment: October',
-            description: 'Once all procedures are complete, you will begin research at LET Lab from October.',
-            icon: 'icon-enrollment.svg'
-          }
-        ]
-      },
-      
+      }
     }
   };
 

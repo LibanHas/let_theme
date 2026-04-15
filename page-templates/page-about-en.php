@@ -182,7 +182,7 @@ get_header();
         </div>
         <div class="student-title">
           <h3 class="student-name">Hatsune Ichidate</h3>
-          <p class="student-role">2nd-year Master's Student</p>
+          <p class="student-role">1st-year Doctoral Student</p>
         </div>
       </div>
 
@@ -223,7 +223,7 @@ get_header();
         </div>
         <div class="student-title">
           <h3 class="student-name">Steve Woollaston</h3>
-          <p class="student-role">2nd-year Doctoral Student</p>
+          <p class="student-role">3rd-year Doctoral Student</p>
         </div>
       </div>
 
@@ -273,8 +273,8 @@ get_header();
       </p>
 
       <div class="cta-buttons">
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
-          <span>Contact Us by Email</span>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--cta" target="_blank" rel="noopener">
+          <span>Inquiry Form</span>
         </a>
         <a href="/en/join-us/" class="btn btn--accent btn--overlay">
           <span>Learn More</span>

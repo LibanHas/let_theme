@@ -375,6 +375,8 @@
             background-color: #fdf8ec;
             color: #3b2f1c;
             appearance: none; // removes default arrow in some browsers
+            -webkit-appearance: none;
+            cursor: pointer;
             background-image: url('data:image/svg+xml;utf8,<svg fill="%233b2f1c" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
             background-repeat: no-repeat;
             background-position: right 1rem center;
@@ -422,20 +424,21 @@
     
       .step-box {
         display: flex;
-        height: 150px;
+        align-items: stretch;
+        min-height: 170px;
+        height: auto;
         margin-bottom: 2rem;
         background: #f6f2eb;
         border-radius: 6px;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
       @media(max-width: 480px){
-        height: 125px;
+        min-height: 125px;
       }
     
         .step-left {
           --step-color: #51a7dc; // default fallback
           width: 150px;
-          height: 100%;
-          padding-bottom: 1.5rem;
+          align-self: stretch;
           flex-shrink: 0;
           display: flex;
           flex-direction: column;
@@ -490,28 +493,32 @@
     
         .step-right {
           flex: 1;
-          padding: 1rem 1.25rem;
+          padding: 1.3rem 1.75rem 1.4rem;
     
           .step-meta {
-            font-size: 0.85rem;
+            font-size: 0.92rem;
             color: #5c4633;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
             @media(max-width: 480px){
               font-size: 0.75rem;
-              margin-top: -0.5rem;
+              margin-top: 0;
+              margin-bottom: 0.5rem;
             }
           }
     
           .step-title-icon {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.85rem;
+            margin-bottom: 0.8rem;
     
             h4 {
-              font-size: 1.1rem;
+              font-size: 1.2rem;
+              line-height: 1.4;
               margin: 0;
               @media(max-width: 480px){
-                font-size: 0.75rem;
+                font-size: 0.9rem;
               }
             }
     
@@ -526,13 +533,13 @@
           }
     
           p {
-            font-size: 0.95rem;
-            margin-top: 0.5rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            margin-top: 0;
+            line-height: 1.75;
             color: #333;
             @media(max-width: 480px){
-              font-size: 0.5rem;
-              margin-top: 0.3rem;
+              font-size: 0.72rem;
+              line-height: 1.55;
             }
           }
         }
@@ -584,6 +591,7 @@
     
         .btn {
           font-size: 1rem;
+          border: white 2px solid;
           padding: 0.75rem 1.5rem;
           border-radius: 999px;
         }
@@ -655,10 +663,18 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.5rem; // or adjust as needed (e.g., 2rem)
+      
+      border: 2px solid #FCF7EA;
+      border-radius: 30px;
     
       a.btn {
         min-width: 180px;
         text-align: center;
+        color: #FCF7EA; 
+        &:hover,focus {
+          color: #3b2a1a;
+          background-color: #FCF7EA;
+        }
       }
     }
     
@@ -712,7 +728,11 @@ transition: transform 0.3s ease;
       font-weight: 700;
     }
        
-
+    .btn--secondary-outline:hover,
+    .btn--secondary-outline:focus {
+      color: #3b2a1a;
+      background-color: #FCF7EA;
+    }
+    
     
 }
-

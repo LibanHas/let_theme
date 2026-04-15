@@ -26,40 +26,6 @@ if (is_post_type_archive('news_jp') || strpos($_SERVER['REQUEST_URI'], '/news/')
 } elseif (is_post_type_archive('news_en') || strpos($_SERVER['REQUEST_URI'], '/en/news/') === 0 ||
         is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
     $page_lang = 'en';
-} elseif (is_post_type_archive('event_jp') || strpos($_SERVER['REQUEST_URI'], '/events/') === 0) {
-    $page_lang = 'ja';
-} elseif (is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
-    $page_lang = 'en';
-}
-
-// Prepare translation link and label
-$current_id = is_singular() ? get_the_ID() : null;
-$translation_url = '';
-$link_text = ($page_lang === 'ja') ? 'English' : '日本語';
-
-if ($current_id) {
-    // Get translation from ACF field
-    $translation_field = ($page_lang === 'ja') ? 'translation_en' : 'translation_jp';
-    $translation = get_field($translation_field, $current_id);
-
-    if ($translation) {
-        $translation_url = (filter_var($translation, FILTER_VALIDATE_URL))
-            ? $translation
-            : get_permalink($translation);
-    }
-}
-
-// Fallbacks for archives or front page
-if (!$translation_url) {
-    if (is_post_type_archive('news_jp') || strpos($_SERVER['REQUEST_URI'], '/news/') === 0) {
-        $translation_url = site_url('/en/news/');
-    } elseif (is_post_type_archive('news_en') || strpos($_SERVER['REQUEST_URI'], '/en/news/') === 0) {
-        $translation_url = site_url('/news/');
-    } elseif (is_post_type_archive('event_jp') || strpos($_SERVER['REQUEST_URI'], '/events/') === 0) {
-        $translation_url = site_url('/en/events/');
-    } elseif (is_post_type_archive('event_en') || strpos($_SERVER['REQUEST_URI'], '/en/events/') === 0) {
-        $translation_url = site_url('/events/');
-    }    
 }
 ?>
 <!DOCTYPE html>
@@ -135,7 +101,7 @@ if (!$translation_url) {
     $link_text = ($page_lang === 'ja') ? 'English' : '日本語';
     $translation_url = ($page_lang === 'ja') ? home_url('/en/') : home_url('/');
 
-    echo '<a href="' . esc_url($translation_url) . '">' . esc_html($link_text) . '</a>';
+    echo '<a href="' . esc_url($translation_url) . '" class="lang-link">' . esc_html($link_text) . '</a>';
     ?>
 </div>
 

@@ -267,7 +267,7 @@ $container = get_theme_mod( 'understrap_container_type' );
             <!-- Symposiums -->
             <div class="accordion-item">
               <button class="accordion-header" data-target="panel11">
-                <span>Symposiums</span>
+                <span>Hosting conferences/workshops/meetings</span>
                 <span class="accordion-icon plus-icon">
                   <span class="line horizontal"></span>
                   <span class="line vertical"></span>

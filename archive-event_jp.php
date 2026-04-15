@@ -9,7 +9,8 @@ $lang = 'ja'; // Fixed for Japanese
  * Parse various date formats into a UNIX timestamp.
  * Accepts: Ymd (ACF return), d/m/Y (editor display), Y-m-d, or anything strtotime understands.
  */
-function archive_parse_to_ts($date_string) {
+if (!function_exists('archive_parse_to_ts')) {
+  function archive_parse_to_ts($date_string) {
     if (empty($date_string)) return false;
 
     // Ymd (e.g., 20251028)
@@ -29,12 +30,15 @@ function archive_parse_to_ts($date_string) {
     // Fallback
     $ts = strtotime($date_string);
     return $ts ? $ts : false;
+  }
 }
 
 // Short date: "n/j"
-function archive_format_short($ts) {
+if (!function_exists('archive_format_short')) {
+  function archive_format_short($ts) {
     if ($ts === false) return '';
     return date_i18n('Y/n/j', $ts);
+  }
 }
 ?>
 

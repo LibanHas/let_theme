@@ -9,3 +9,35 @@ body {
     line-height: 1.8;
     background-color: $color-bg-soft;
   }
+
+// Apply pointer cursor to interactive elements AND all their children,
+// because Chrome resolves cursor to the exact hit element (e.g. <span>
+// inside <a>, or <li> padding area around <a> text), not the ancestor link.
+a[href],
+a[href] *,
+button:not(:disabled),
+button:not(:disabled) *,
+[role="button"],
+[role="button"] *,
+label[for],
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer !important;
+  -webkit-user-select: auto !important;
+  user-select: auto !important;
+}
+
+// Also cover list items that wrap nav links
+.top-nav-list li,
+.top-nav-list ul {
+  cursor: pointer !important;
+}
+
+// Promote rAF-animated elements to compositor layer and remove from
+// hit-testing so they never block cursor events on elements below
+.scroll-float,
+[data-anim="scroll-background"] {
+  will-change: transform;
+  pointer-events: none;
+}

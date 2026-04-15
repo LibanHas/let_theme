@@ -11,6 +11,10 @@ $category_classes = [
   'workshops'    => 'tag-workshop',
   'lectures'     => 'tag-lecture',
   'conferences'  => 'tag-conference',
+  'expo'         => 'tag-expo',
+  'camp'         => 'tag-camp',
+  'visit'        => 'tag-visit',
+  'social_event' => 'tag-social',
   'publications' => 'tag-publication',
   'media'        => 'tag-media',
   'awards'       => 'tag-award',
@@ -24,6 +28,10 @@ $category_labels = [
   'workshops'    => 'ワークショップ',
   'lectures'     => '講演',
   'conferences'  => 'カンファレンス',
+  'expo'         => '展示会',
+  'camp'         => '合宿',
+  'visit'        => '訪問',
+  'social_event' => '交流会',
   'publications' => '出版物',
   'media'        => 'メディア掲載',
   'awards'       => '受賞',
@@ -124,28 +132,81 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
       <div class="swiper updates-carousel">
         <div class="swiper-wrapper">
         <?php
-          $args = [
-            'post_type'      => ['news_jp', 'event_jp'],
-            'posts_per_page' => 10,
-            'meta_key'       => 'update_date',
-            'orderby'        => 'meta_value',
-            'order'          => 'DESC',
-          ];
+          // Try to get cached carousel data
+          $cache_key = 'home_carousel_posts';
+          $sorted_posts = get_transient($cache_key);
 
-          $updates_query = new WP_Query($args);
+          if (false === $sorted_posts) {
+            // Cache miss - fetch and process posts
+            $args = [
+              'post_type'      => ['news_jp', 'event_jp'],
+              'posts_per_page' => 100, // Fetch enough posts to ensure proper sorting after filtering
+              'orderby'        => 'date',
+              'order'          => 'DESC',
+              'no_found_rows'  => true, // Skip pagination count for performance
+              'update_post_meta_cache' => false, // Skip meta cache for initial load
+            ];
 
-          if ($updates_query->have_posts()) :
-            while ($updates_query->have_posts()) : $updates_query->the_post();
-              $post_type = get_post_type();
+            $updates_query = new WP_Query($args);
 
-              $update_date = get_field('update_date');
-              $formatted_date = '日付未定';
-              if ($update_date) {
-                $date_obj = DateTime::createFromFormat('Ymd', $update_date);
-                if ($date_obj) {
-                  $formatted_date = $date_obj->format('Y/m/d');
+            // Collect posts with their sort dates
+            $sorted_posts = [];
+            if ($updates_query->have_posts()) :
+              // Get all post IDs for bulk ACF loading
+              $post_ids = wp_list_pluck($updates_query->posts, 'ID');
+
+              while ($updates_query->have_posts()) : $updates_query->the_post();
+                $post_type = get_post_type();
+                $sort_date = null;
+
+                // Get the appropriate date field based on post type
+                if ($post_type === 'news_jp') {
+                  $sort_date = get_field('update_date') ?: get_field('news_date');
+                } elseif ($post_type === 'event_jp') {
+                  $sort_date = get_field('update_date') ?: get_field('event_date_start');
                 }
+
+                // Fallback to WordPress post date if no ACF date found
+                if (!$sort_date) {
+                  $sort_date = get_the_date('Ymd');
+                }
+
+                // Include all posts (now all should have dates)
+                $sorted_posts[] = [
+                  'post' => get_post(),
+                  'sort_date' => $sort_date,
+                  'post_type' => $post_type
+                ];
+              endwhile;
+              wp_reset_postdata();
+            endif;
+
+            // Sort by date (newest first)
+            usort($sorted_posts, function($a, $b) {
+              return strcmp($b['sort_date'], $a['sort_date']);
+            });
+
+            // Limit to 10 posts
+            $sorted_posts = array_slice($sorted_posts, 0, 10);
+
+            // Cache for 15 minutes (900 seconds)
+            set_transient($cache_key, $sorted_posts, 900);
+          }
+
+          // Now loop through sorted posts
+          foreach ($sorted_posts as $item) :
+            $post = $item['post'];
+            setup_postdata($post);
+            $post_type = $item['post_type'];
+            $raw_date = $item['sort_date'];
+
+            $formatted_date = '日付未定';
+            if ($raw_date) {
+              $date_obj = DateTime::createFromFormat('Ymd', $raw_date);
+              if ($date_obj) {
+                $formatted_date = $date_obj->format('Y/m/d');
               }
+            }
 
               $tag_value = '';
               $tag_label = '';
@@ -170,9 +231,10 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
               
 
               } elseif ($post_type === 'event_jp') {
-                // Use generic イベント label; class falls back to 'news' styling
-                $tag_value = 'news';
-                $tag_label = 'イベント';
+                // Get the actual event category
+                $cat_val   = get_field('event_category');
+                $tag_value = $cat_val ?: 'news';
+                $tag_label = $category_labels[$tag_value] ?? 'イベント';
                 $teaser    = let_teaser_from_fields(
                   get_field('event_title'),
                   get_field('event_body'),
@@ -201,9 +263,8 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
             </a>
           </div>
         <?php
-            endwhile;
-            wp_reset_postdata();
-          endif;
+          endforeach;
+          wp_reset_postdata();
         ?>
         </div>
       </div>
@@ -428,8 +489,8 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
       </p>
 
       <div class="cta-buttons">
-        <a href="mailto:info@let.media.kyoto-u.ac.jp" class="btn btn--accent btn--overlay">
-          <span>メールで連絡する</span>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--cta" target="_blank" rel="noopener">
+          <span>お問い合わせフォームへ</span>
         </a>
         <a href="/join-us/" class="btn btn--accent btn--overlay">
           <span>詳しく見る</span>
@@ -450,21 +511,47 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 </script>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    new Swiper('.updates-carousel', {
-      slidesPerView: 3,
-      spaceBetween: 12,
-      loop: true,
-      centeredSlides: true,
-      watchOverflow: true,
-      autoplay: { delay: 4000, disableOnInteraction: false },
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-      breakpoints: {
-        0:    { slidesPerView: 1, centeredSlides: true },
-        768:  { slidesPerView: 2, centeredSlides: false },
-        1280: { slidesPerView: 3, centeredSlides: false }
-      }
-    });
+    // Use IntersectionObserver to only initialize Swiper when carousel is in viewport
+    const carouselElement = document.querySelector('.updates-carousel');
+    if (!carouselElement) return;
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          // Initialize Swiper only when visible
+          new Swiper('.updates-carousel', {
+            slidesPerView: 3,
+            spaceBetween: 12,
+            loop: true,
+            centeredSlides: true,
+            watchOverflow: true,
+            lazy: true, // Enable lazy loading
+            autoplay: {
+              delay: 4000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true // Pause on hover for better UX
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev'
+            },
+            breakpoints: {
+              0:    { slidesPerView: 1, centeredSlides: true },
+              768:  { slidesPerView: 2, centeredSlides: false },
+              1280: { slidesPerView: 3, centeredSlides: false }
+            }
+          });
+          // Stop observing after initialization
+          observer.unobserve(carouselElement);
+        }
+      });
+    }, { rootMargin: '50px' }); // Start loading 50px before entering viewport
+
+    observer.observe(carouselElement);
   });
 </script>
 

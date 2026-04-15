@@ -33,6 +33,14 @@ $grants = [
         'pi'     => 'Hiroaki Ogata',
         'summary'=> 'Empirical study, infrastructure development, and policy consideration toward the realization of data-driven education'
     ],
+    [
+        'year'   => '2023',
+        'period' => '2023.10-2028.3',
+        'type'   => 'Cabinet Office, Cross-ministerial Strategic Innovation Promotion Program (SIP), Phase 3',
+        'title'  => 'Realizing personalized learning and work styles using digital twins',
+        'pi'     => 'Hiroaki Ogata',
+        'summary'=> 'Building a platform to realize learning and working styles in the post-COVID era (Project No.: 23814782)'
+    ],
 
     // ---------- 2022 ----------
     [

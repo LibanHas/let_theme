@@ -63,11 +63,13 @@ foreach ($understrap_includes as $file) {
 
 function enqueue_custom_theme_scripts()
 {
-    // Custom main theme style
-    wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), null, 'all');
+    // Custom main theme style — version tied to file mtime for automatic cache-busting
+    $css_path = get_template_directory() . '/css/theme-bootstrap4.min.css';
+    wp_enqueue_style('theme-style', get_template_directory_uri() . '/css/theme-bootstrap4.min.css', array(), filemtime($css_path), 'all');
 
     // Hamburger menu script
-    wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), null, true);
+    $hamburger_path = get_template_directory() . '/js/hamburger-menu.js';
+    wp_enqueue_script('hamburger-menu-js', get_template_directory_uri() . '/js/hamburger-menu.js', array('jquery'), filemtime($hamburger_path), true);
 
     // Scroll animation script
     wp_enqueue_script('animations', get_template_directory_uri() . '/js/animations.js', array(), null, true);
@@ -536,6 +538,30 @@ function member_add_en_rewrite_rule() {
 add_action('init', 'member_add_en_rewrite_rule');
 
 /**
+ * Generate language-aware member permalinks.
+ * - Japanese members: /member/{slug}
+ * - English members:  /en/member/{slug}
+ */
+function member_language_aware_permalink($post_link, $post) {
+    if (!($post instanceof WP_Post) || $post->post_type !== 'member') {
+        return $post_link;
+    }
+
+    $slug = $post->post_name;
+    if ($slug === '') {
+        return $post_link;
+    }
+
+    $lang = get_field('language', $post->ID);
+    if ($lang === 'en') {
+        return home_url('/en/member/' . $slug . '/');
+    }
+
+    return home_url('/member/' . $slug . '/');
+}
+add_filter('post_type_link', 'member_language_aware_permalink', 10, 2);
+
+/**
  * Redirect English members to /en/member/... if not already there.
  */
 function redirect_english_members_to_en_url() {
@@ -609,8 +635,421 @@ add_action('acf/save_post', function ($post_id) {
     }
 }, 30);
 
+/**
+ * Clear homepage carousel cache when news or events are saved/updated
+ */
+function let_clear_carousel_cache($post_id) {
+    // Get post type
+    $post_type = get_post_type($post_id);
+
+    // Clear Japanese carousel cache for JP posts
+    if (in_array($post_type, ['news_jp', 'event_jp'], true)) {
+        delete_transient('home_carousel_posts');
+    }
+
+    // Clear English carousel cache for EN posts
+    if (in_array($post_type, ['news_en', 'event_en'], true)) {
+        delete_transient('home_carousel_posts_en');
+    }
+}
+add_action('save_post', 'let_clear_carousel_cache');
+add_action('acf/save_post', 'let_clear_carousel_cache', 20);
 
 
 
+add_action('init', function () {
 
-  
+    register_post_type('program_item', [
+        'labels' => [
+            'name'               => 'プログラム項目',
+            'singular_name'      => 'プログラム項目',
+            'add_new'            => '新規追加',
+            'add_new_item'       => 'プログラム項目を追加',
+            'edit_item'          => 'プログラム項目を編集',
+            'new_item'           => '新しいプログラム項目',
+            'view_item'          => 'プログラム項目を表示',
+            'search_items'       => 'プログラム項目を検索',
+            'not_found'          => 'プログラム項目が見つかりません',
+            'menu_name'          => 'プログラム項目',
+        ],
+        'public'           => false,
+        'show_ui'          => true,
+        'show_in_menu'     => false, // Only created via Event
+        'hierarchical'     => true,  // 🔥 REQUIRED
+        'supports'         => ['title', 'page-attributes'], // 🔥 REQUIRED
+        'has_archive'      => false,
+        'rewrite'          => false,
+        'show_in_rest'     => true,
+    ]);
+
+});
+
+
+
+/**
+ * Store event ID in transient when admin is editing an event
+ * This allows program_item to automatically know its parent event
+ */
+add_action('admin_init', function() {
+    global $pagenow;
+
+    // When editing an event, store its ID
+    if ($pagenow === 'post.php' && isset($_GET['post'])) {
+        $post_type = get_post_type($_GET['post']);
+        if (in_array($post_type, ['event_jp', 'event_en'])) {
+            set_transient(
+                'last_edited_event_' . get_current_user_id(),
+                intval($_GET['post']),
+                HOUR_IN_SECONDS
+            );
+        }
+    }
+});
+
+/**
+ * Auto-populate related_event ACF field from transient
+ */
+add_filter('acf/load_value/name=related_event', function($value, $post_id, $field) {
+    // Only auto-fill if empty (new post)
+    if (!empty($value)) return $value;
+
+    // Only for program_item post type
+    if (get_post_type($post_id) !== 'program_item') return $value;
+
+    $transient_key = 'last_edited_event_' . get_current_user_id();
+    $event_id = get_transient($transient_key);
+
+    if ($event_id) {
+        return $event_id;
+    }
+
+    return $value;
+}, 10, 3);
+
+/**
+ * Prevent ACF admin fatal when a textarea field stores array data.
+ * This can happen after field type changes/migrations.
+ */
+add_filter('acf/load_value/type=textarea', function($value, $post_id, $field) {
+    if (!is_array($value)) {
+        return $value;
+    }
+
+    $flatten = function($input) use (&$flatten) {
+        $out = [];
+
+        if (is_array($input)) {
+            foreach ($input as $item) {
+                $out = array_merge($out, $flatten($item));
+            }
+            return $out;
+        }
+
+        if (is_object($input)) {
+            if (method_exists($input, '__toString')) {
+                $text = trim((string) $input);
+                return $text !== '' ? [$text] : [];
+            }
+            return [];
+        }
+
+        if (is_scalar($input)) {
+            $text = trim((string) $input);
+            return $text !== '' ? [$text] : [];
+        }
+
+        return [];
+    };
+
+    $parts = array_values(array_unique($flatten($value)));
+    return implode("\n", $parts);
+}, 20, 3);
+
+/**
+ * Auto-set post_parent when saving a new program_item
+ */
+add_action('save_post_program_item', function($post_id, $post, $update) {
+    // Skip if autosave or revision
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (wp_is_post_revision($post_id)) return;
+
+    // Only set parent if it's not already set
+    if ($post->post_parent == 0) {
+        $transient_key = 'last_edited_event_' . get_current_user_id();
+        $parent_id = get_transient($transient_key);
+
+        if ($parent_id) {
+            // Remove the action to prevent infinite loop
+            remove_action('save_post_program_item', __FUNCTION__, 10);
+
+            wp_update_post([
+                'ID' => $post_id,
+                'post_parent' => intval($parent_id)
+            ]);
+
+            // Re-add the action
+            add_action('save_post_program_item', __FUNCTION__, 10, 3);
+        }
+    }
+}, 10, 3);
+
+/**
+ * Get adjacent event by event_date_start ACF field
+ *
+ * @param string $direction 'next' (newer) or 'previous' (older)
+ * @return WP_Post|null
+ */
+function get_adjacent_event_by_date($direction = 'next') {
+    $current_post = get_post();
+    if (!$current_post) return null;
+
+    $current_date = get_field('event_date_start', $current_post->ID);
+    if (!$current_date) return null;
+
+    // Determine comparison and order based on direction
+    if ($direction === 'next') {
+        // Next = newer event (date greater than current)
+        $compare = '>';
+        $order = 'ASC';
+    } else {
+        // Previous = older event (date less than current)
+        $compare = '<';
+        $order = 'DESC';
+    }
+
+    $args = [
+        'post_type'      => $current_post->post_type,
+        'posts_per_page' => 1,
+        'post_status'    => 'publish',
+        'post__not_in'   => [$current_post->ID],
+        'meta_key'       => 'event_date_start',
+        'orderby'        => 'meta_value',
+        'order'          => $order,
+        'meta_query'     => [
+            [
+                'key'     => 'event_date_start',
+                'value'   => $current_date,
+                'compare' => $compare,
+                'type'    => 'DATE',
+            ],
+        ],
+    ];
+
+    $posts = get_posts($args);
+    return !empty($posts) ? $posts[0] : null;
+}
+
+/**
+ * Get adjacent news by news_date ACF field
+ *
+ * @param string $direction 'next' (newer) or 'previous' (older)
+ * @return WP_Post|null
+ */
+function get_adjacent_news_by_date($direction = 'next') {
+    $current_post = get_post();
+    if (!$current_post) return null;
+
+    $current_date = get_field('news_date', $current_post->ID);
+    if (!$current_date) return null;
+
+    // Determine comparison and order based on direction
+    if ($direction === 'next') {
+        // Next = newer news (date greater than current)
+        $compare = '>';
+        $order = 'ASC';
+    } else {
+        // Previous = older news (date less than current)
+        $compare = '<';
+        $order = 'DESC';
+    }
+
+    $args = [
+        'post_type'      => $current_post->post_type,
+        'posts_per_page' => 1,
+        'post_status'    => 'publish',
+        'post__not_in'   => [$current_post->ID],
+        'meta_key'       => 'news_date',
+        'orderby'        => 'meta_value',
+        'order'          => $order,
+        'meta_query'     => [
+            [
+                'key'     => 'news_date',
+                'value'   => $current_date,
+                'compare' => $compare,
+                'type'    => 'DATE',
+            ],
+        ],
+    ];
+
+    $posts = get_posts($args);
+    return !empty($posts) ? $posts[0] : null;
+}
+
+add_action('add_meta_boxes', function () {
+    add_meta_box(
+        'event_program_items',
+        'プログラム',
+        'render_event_program_items_box',
+        'event_jp',
+        'normal',
+        'default'
+    );
+});
+
+function render_event_program_items_box($post) {
+
+    $items = get_posts([
+        'post_type'      => 'program_item',
+        'posts_per_page' => -1,
+        'post_parent'    => $post->ID,
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
+    ]);
+
+    echo '<p>このイベントのプログラム項目です。</p>';
+
+    if ($items) {
+        echo '<ul>';
+        foreach ($items as $item) {
+            echo '<li>';
+            echo esc_html($item->post_title);
+            echo ' <a href="' . get_edit_post_link($item->ID) . '">編集</a>';
+            echo '</li>';
+        }
+        echo '</ul>';
+    } else {
+        echo '<p><em>まだプログラム項目がありません。</em></p>';
+    }
+
+    // Simple URL without post_parent - the transient handles it
+    $add_url = admin_url('post-new.php?post_type=program_item');
+
+    echo '<p><a class="button" href="' . esc_url($add_url) . '">プログラム項目を追加</a></p>';
+}
+
+/**
+ * Resolve related event ID from a news post ACF field (supports multiple return formats).
+ */
+function let_get_related_event_id_from_news($post_id) {
+    $candidates = ['news_related_event', 'related_event', 'event_reference', 'news_event'];
+    $raw = null;
+
+    foreach ($candidates as $field_name) {
+        $value = get_field($field_name, $post_id);
+        if (!empty($value)) {
+            $raw = $value;
+            break;
+        }
+    }
+
+    if ($raw instanceof WP_Post) {
+        return (int) $raw->ID;
+    }
+
+    if (is_numeric($raw)) {
+        return (int) $raw;
+    }
+
+    if (is_array($raw)) {
+        if (isset($raw['ID']) && is_numeric($raw['ID'])) {
+            return (int) $raw['ID'];
+        }
+        if (isset($raw[0])) {
+            $first = $raw[0];
+            if ($first instanceof WP_Post) {
+                return (int) $first->ID;
+            }
+            if (is_numeric($first)) {
+                return (int) $first;
+            }
+            if (is_array($first) && isset($first['ID']) && is_numeric($first['ID'])) {
+                return (int) $first['ID'];
+            }
+        }
+    }
+
+    return 0;
+}
+
+add_action('add_meta_boxes', function () {
+    add_meta_box(
+        'news_event_report_preview',
+        'イベント開催報告（プレビュー）',
+        'render_news_event_report_preview_box',
+        'news_jp',
+        'side',
+        'default'
+    );
+});
+
+function render_news_event_report_preview_box($post) {
+    $toggle_raw = get_field('news_show_event_report', $post->ID);
+    if ($toggle_raw === null || $toggle_raw === '') {
+        $toggle_raw = get_field('show_event_report', $post->ID);
+    }
+    $show_event_report = ($toggle_raw === null) ? true : (bool) $toggle_raw;
+
+    $event_id = let_get_related_event_id_from_news($post->ID);
+    $event_post = $event_id ? get_post($event_id) : null;
+    $event_type = $event_post ? (string) $event_post->post_type : '';
+    $is_event_type = $event_type !== '' && strpos($event_type, 'event') === 0;
+
+    echo '<p><strong>表示設定:</strong> ' . ($show_event_report ? 'ON' : 'OFF') . '</p>';
+
+    if (!$show_event_report) {
+        echo '<p>このニュースでは「イベント開催報告」は表示されません。</p>';
+        return;
+    }
+
+    if (!$event_post) {
+        echo '<p>関連イベントが未設定です。</p>';
+        return;
+    }
+
+    if (!$is_event_type) {
+        echo '<p>関連投稿のタイプがイベントではありません。</p>';
+        echo '<p><code>' . esc_html($event_type) . '</code></p>';
+        return;
+    }
+
+    $date = (string) get_field('event_date_start', $event_id);
+    $start_time = (string) get_field('event_start_time', $event_id);
+    $end_time = (string) get_field('event_end_time', $event_id);
+    $venue = (string) get_field('event_venue', $event_id);
+    $organizer = (string) get_field('event_organizer', $event_id);
+
+    $program_items = get_posts([
+        'post_type'      => 'program_item',
+        'posts_per_page' => -1,
+        'meta_query'     => [
+            [
+                'key'   => 'related_event',
+                'value' => $event_id,
+            ],
+        ],
+    ]);
+
+    $video_count = 0;
+    $pdf_count = 0;
+    foreach ($program_items as $program_item) {
+        if (get_field('youtube_url', $program_item->ID)) {
+            $video_count++;
+        }
+        if (get_field('presentation_pdf', $program_item->ID)) {
+            $pdf_count++;
+        }
+    }
+
+    echo '<p><strong>関連イベント:</strong><br><a href="' . esc_url(get_edit_post_link($event_id)) . '">' . esc_html(get_the_title($event_id)) . '</a></p>';
+    echo '<p><strong>日時:</strong><br>' . esc_html(trim($date . ' ' . $start_time . ($end_time ? '〜' . $end_time : ''))) . '</p>';
+
+    if ($venue !== '') {
+        echo '<p><strong>会場:</strong><br>' . esc_html($venue) . '</p>';
+    }
+    if ($organizer !== '') {
+        echo '<p><strong>主催:</strong><br>' . esc_html($organizer) . '</p>';
+    }
+
+    echo '<p><strong>動画:</strong> ' . esc_html((string) $video_count) . '件<br><strong>資料:</strong> ' . esc_html((string) $pdf_count) . '件</p>';
+    echo '<p><a href="' . esc_url(get_permalink($event_id)) . '" target="_blank" rel="noopener">イベントページを表示</a></p>';
+}

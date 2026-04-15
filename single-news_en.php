@@ -86,6 +86,37 @@ while ( have_posts() ) : the_post();
                 <h2 class="page-subtitle">Latest updates</h2>
               </div>
 
+              <?php
+              // Get adjacent news posts ordered by news_date
+              $prev_post = get_adjacent_news_by_date('previous');
+              $next_post = get_adjacent_news_by_date('next');
+
+              if ($prev_post || $next_post):
+              ?>
+              <nav class="news-navigation">
+                <div class="news-nav-next">
+                  <?php if ($next_post):
+                    $next_title = mb_strimwidth($next_post->post_title, 0, 40, '…');
+                  ?>
+                    <a href="<?php echo get_permalink($next_post); ?>">
+                      <span class="nav-arrow">←</span>
+                      <span class="nav-label"><?php echo esc_html($next_title); ?></span>
+                    </a>
+                  <?php endif; ?>
+                </div>
+                <div class="news-nav-prev">
+                  <?php if ($prev_post):
+                    $prev_title = mb_strimwidth($prev_post->post_title, 0, 40, '…');
+                  ?>
+                    <a href="<?php echo get_permalink($prev_post); ?>">
+                      <span class="nav-label"><?php echo esc_html($prev_title); ?></span>
+                      <span class="nav-arrow">→</span>
+                    </a>
+                  <?php endif; ?>
+                </div>
+              </nav>
+              <?php endif; ?>
+
               <div class="news-inner">
                 <div class="news-meta">
                   <?php if ($date): ?>
@@ -100,15 +131,15 @@ while ( have_posts() ) : the_post();
 
                 <h2 class="news-title"><?php echo esc_html($title); ?></h2>
 
+                <div class="news-content content-block">
+                  <?php echo $content; ?>
+                </div>
+
                 <?php if ( has_post_thumbnail() ): ?>
                   <div class="news-image">
                     <?php the_post_thumbnail('large'); ?>
                   </div>
                 <?php endif; ?>
-
-                <div class="news-content content-block">
-                  <?php echo $content; ?>
-                </div>
               </div>
             </div>
           </section>

@@ -113,6 +113,33 @@
       border-color: darken($color-bg-soft, 6%);
     }
   }
+
+  .btn--secondary-outline {
+    background-color: transparent;
+    color: $color-text-body;
+    border-color: rgba(74, 62, 42, 0.45);
+
+    &:hover,
+    &:focus {
+      background-color: rgba(74, 62, 42, 0.08);
+      color: $color-text-body;
+      text-decoration: none;
+    }
+  }
+
+  .btn--secondary-outline-dark {
+    background-color: transparent;
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.72);
+
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border-color: rgba(255, 255, 255, 0.92);
+      text-decoration: none;
+    }
+  }
   
   
   // ==================================================

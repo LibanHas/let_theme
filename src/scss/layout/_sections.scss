@@ -1,0 +1,10 @@
+
+.section-spacing {
+    padding-top: var(--section-spacing-top, 8rem);
+    padding-bottom: var(--section-spacing-bottom, 4rem);
+  
+    @media (max-width: 768px) {
+      padding-top: var(--section-spacing-top-sm, 4rem);
+      padding-bottom: var(--section-spacing-bottom-sm, 4rem);
+    }
+  }

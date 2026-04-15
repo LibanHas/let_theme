@@ -1,13 +1,49 @@
-.post-type-archive-event_jp {
+.post-type-archive-event_jp,
+.post-type-archive-event_en {
     background-color: #fdf8ed;
     font-family: 'Ubuntu Sans', sans-serif;
     color: #4a3e2a;
   
-    .pagination {
-      display: flex;
-      justify-content: center;
-      margin: 3rem auto;
-    }
+    /* =========================
+       PAGINATION
+       ========================= */
+  
+       .custom-pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    
+        ul {
+          display: flex;
+          gap: 1rem;
+          padding: 0;
+          list-style: none;
+        }
+    
+        .page-numbers {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 60px;
+          height: 60px;
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: white;
+          background-color: #dea97b;
+          text-decoration: none;
+          border-radius: 0;
+          transition: background 0.3s;
+    
+          &:hover {
+            background-color: #c88f61;
+          }
+        }
+    
+        .page-numbers.current {
+          background-color: #7d4b20;
+          font-weight: bold;
+        }
+      }
   
     .section-title--sub {
       font-size: 1.1rem;
