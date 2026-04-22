@@ -50,7 +50,7 @@ get_header();
           </section>
 
           <!-- Research Themes Accordion -->
-          <section class="theme-section section-spacing research-accordion">
+          <section class="theme-section section-spacing accordion research-accordion">
             <div class="theme-inner">
               <div class="container">
                 <h2 class="section-heading">Themes</h2>
@@ -62,11 +62,11 @@ get_header();
                     </div>
                     <div class="theme-card__text">
                       <h3 class="theme-card__title">Visualization of Learning Logs</h3>
-                      <p class="theme-card__description">Analyze learning logs to improve the quality of teaching and learning.</p>
                     </div>
-                    <div class="theme-card__expand">
-                      <span class="accordion-icon">＋</span>
-                    </div>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
                   </div>
                   <div class="theme-card__bottom">
                     <div class="theme-card__line"></div>
@@ -167,13 +167,11 @@ get_header();
                     </div>
                     <div class="theme-card__text">
                       <h3 class="theme-card__title">Development of Educational Support Tools</h3>
-                      <p class="theme-card__description">
-                        Designing, developing, and evaluating educational tools based on learning sciences and real-world needs.
-                      </p>
                     </div>
-                    <div class="theme-card__expand">
-                      <span class="accordion-icon">＋</span>
-                    </div>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
                   </div>
                   <div class="theme-card__bottom">
                     <div class="theme-card__line"></div>
@@ -238,11 +236,11 @@ get_header();
                     </div>
                     <div class="theme-card__text">
                       <h3 class="theme-card__title">Learner Modeling</h3>
-                      <p class="theme-card__description">Analyzing learning behaviors to provide personalized support.</p>
                     </div>
-                    <div class="theme-card__expand">
-                      <span class="accordion-icon">＋</span>
-                    </div>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
                   </div>
                   <div class="theme-card__bottom">
                     <div class="theme-card__line"></div>
@@ -280,13 +278,11 @@ get_header();
                     </div>
                     <div class="theme-card__text">
                       <h3 class="theme-card__title">xAPI and Learning Infrastructure</h3>
-                      <p class="theme-card__description">
-                        Using xAPI, the international standard for learning activities, to centralize and utilize learning logs.
-                      </p>
                     </div>
-                    <div class="theme-card__expand">
-                      <span class="accordion-icon">＋</span>
-                    </div>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
                   </div>
                   <div class="theme-card__bottom">
                     <div class="theme-card__line"></div>
@@ -316,13 +312,11 @@ get_header();
                     </div>
                     <div class="theme-card__text">
                       <h3 class="theme-card__title">Field Research</h3>
-                      <p class="theme-card__description">
-                        Collaborating with schools and educational sites to implement and evaluate tools in real classrooms.
-                      </p>
                     </div>
-                    <div class="theme-card__expand">
-                      <span class="accordion-icon">＋</span>
-                    </div>
+                    <span class="accordion-icon plus-icon">
+                      <span class="line horizontal"></span>
+                      <span class="line vertical"></span>
+                    </span>
                   </div>
                   <div class="theme-card__bottom">
                     <div class="theme-card__line"></div>

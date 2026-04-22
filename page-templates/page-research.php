@@ -68,7 +68,6 @@ get_header();
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">学習ログの可視化</h3>
-          <p class="theme-card__description">学習ログに基づく分析で、授業や学習の質を向上。</p>
         </div>
         <span class="accordion-icon plus-icon">
         <span class="line horizontal"></span>
@@ -176,9 +175,6 @@ get_header();
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">教育支援ツールの開発</h3>
-          <p class="theme-card__description">
-            学習科学の知見と現場のニーズをもとに、<br />教育支援ツールの設計・開発と実証研究を<br />行なっています。
-          </p>
         </div>
         <span class="accordion-icon plus-icon">
   <span class="line horizontal"></span>
@@ -251,7 +247,6 @@ get_header();
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">学習者モデリング</h3>
-          <p class="theme-card__description">学習ログの分析により、個別最適な支援を実現。</p>
         </div>
         <span class="accordion-icon plus-icon">
   <span class="line horizontal"></span>
@@ -300,8 +295,6 @@ get_header();
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">xAPIと学習基盤の構築</h3>
-          <p class="theme-card__description">
-          学習活動の国際標準xAPIにより、<br />学習ログの一元的な蓄積・活用を実現しています。</p>
         </div>
         <span class="accordion-icon plus-icon">
   <span class="line horizontal"></span>
@@ -344,7 +337,6 @@ get_header();
         </div>
         <div class="theme-card__text">
           <h3 class="theme-card__title">実証研究</h3>
-          <p class="theme-card__description">学校や教育現場と連携し、<br />実際の授業でツールを活用・検証。</p>
         </div>
         <span class="accordion-icon plus-icon">
   <span class="line horizontal"></span>
@@ -371,9 +363,9 @@ get_header();
 <div class="research-block">
   <h4>どのような場面で行われているか？</h4>
   <ul>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>授業中の学習ログをもとに理解度や関心を分析</li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>学習後のメモやコメントを使ったリフレクション支援</li>
-    <li><span class="tick" style="background-image: url('http://localhost/let_theme/www/wp-content/themes/let_theme/images/icon-tick.svg');"></span>学期末の成績や発言データとの関連を検証</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>授業中の学習ログをもとに理解度や関心を分析</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>学習後のメモやコメントを使ったリフレクション支援</li>
+    <li><span class="tick" style="background-image: url('<?php echo get_template_directory_uri(); ?>/images/icon-tick.svg');"></span>学期末の成績や発言データとの関連を検証</li>
   </ul>
 </div>
 <div class="research-block">
