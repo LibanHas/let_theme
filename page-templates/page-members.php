@@ -70,8 +70,14 @@ function render_member_card($post, $lang) {
     $student_level    = get_field('student_level'    . $suffix, $post_id);
     $student_year     = get_field('student_year'     . $suffix, $post_id);
     $employment_title = get_field('employment_title' . $suffix, $post_id);
+    $fellowship       = get_field('fellowship' . $suffix, $post_id);
+    $member_classes   = ['col-md-3', 'member', 'p-member-list__item', 'group-' . $member_type];
+
+    if ($post->post_name === 'koki-okumura' || $post->post_name === '奥村-光貴' || get_the_title($post_id) === '奥村 光貴') {
+        $member_classes[] = 'member--koki-okumura';
+    }
 ?>
-    <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
+    <div class="<?php echo esc_attr(implode(' ', $member_classes)); ?>">
         <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
             <?php if (has_post_thumbnail()) {
                 the_post_thumbnail('medium');
@@ -81,6 +87,9 @@ function render_member_card($post, $lang) {
         </a>
         <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
         <?php
+        if ($fellowship) {
+            echo '<p class="p-member-list__fellowship">' . esc_html($fellowship) . '</p>';
+        }
         if ($student_level && $student_year) {
             if ($lang === 'ja') {
                 $label = ($student_level === 'doctoral') ? '博士' : '修士';
@@ -90,7 +99,7 @@ function render_member_card($post, $lang) {
                 echo '<p class="p-member-list__position">' . esc_html($label . $student_year) . '</p>';
             }
         } elseif ($member_type === 'faculty' && $employment_title) {
-            echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
+            echo '<p class="p-member-list__position">' . esc_html(preg_replace('/\s+/', ' ', trim($employment_title))) . '</p>';
         }
         ?>
     </div>

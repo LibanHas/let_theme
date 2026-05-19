@@ -109,7 +109,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
         エビデンスに基づく<br>確かな教育を求めて
       </h1>
       <p class="hero-description">
-        <strong>LET（Learning and Educational Technologies Research Unit／緒方研究室）</strong>では、デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。<br>
+        <strong>LET（Learning and Educational Technologies Research Unit／緒方研究室）</strong>では、デジタル教科書やラーニングダッシュボード、学校向けのプラットフォームなどのツールを開発しています。
       </p>
 
       <div class="hero-buttons">
@@ -344,10 +344,9 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 
     <?php
       $news_query = new WP_Query([
-        'post_type'      => ['news_jp', 'news_en'],
+        'post_type'      => ['news_jp'],
         'posts_per_page' => 5,
-        'meta_key'       => 'news_date',
-        'orderby'        => 'meta_value',
+        'orderby'        => 'date',
         'order'          => 'DESC',
       ]);
 
@@ -355,7 +354,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 
       if ($news_query->have_posts()) :
         while ($news_query->have_posts()) : $news_query->the_post();
-          $news_date_raw = get_field('news_date');
+          $news_date_raw = get_field('update_date') ?: get_field('news_date') ?: get_the_date('Ymd');
           $news_date     = DateTime::createFromFormat('Ymd', $news_date_raw);
 
           $category_value = get_field('news_category');
@@ -489,7 +488,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
       </p>
 
       <div class="cta-buttons">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--cta" target="_blank" rel="noopener">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--accent btn--overlay" target="_blank" rel="noopener">
           <span>お問い合わせフォームへ</span>
         </a>
         <a href="/join-us/" class="btn btn--accent btn--overlay">
@@ -502,7 +501,7 @@ function let_teaser_from_fields( $desc_field, $body_field, $fallback_len = 40 ) 
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const logo = document.querySelector('.fade-in-logo');
+    const logo = document.querySelector('.hero-logo');
     if (!logo) return;
     let animationStarted = false;
     logo.addEventListener('animationstart', () => { animationStarted = true; });

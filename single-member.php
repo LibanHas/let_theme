@@ -60,7 +60,11 @@ if (current_user_can('manage_options')) {
           $employment_title = get_field("employment_title$suffix");
           $student_level    = get_field("student_level$suffix");
           $student_year     = get_field("student_year$suffix");
+          $fellowship       = get_field("fellowship$suffix");
 
+          if ($fellowship) {
+              echo '<p class="member-fellowship">' . esc_html($fellowship) . '</p>';
+          }
           if ($employment_title) {
               echo '<p class="member-position">' . esc_html($employment_title) . '</p>';
           } elseif ($student_level) {
@@ -73,7 +77,7 @@ if (current_user_can('manage_options')) {
                   ],
                   'en' => [
                       'doctoral'         => 'Doctoral Student',
-                      'masters'          => 'Master’s Student',
+                      'masters'          => "Master's Student",
                       'postdoc'          => 'Postdoctoral Fellow',
                       'research_student' => 'Research Student',
                   ]

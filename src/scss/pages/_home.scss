@@ -41,13 +41,25 @@ body.home {
       }
     }
     
+    @keyframes hero-logo-fade-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .hero-logo {
       display: flex;
       justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-      max-width: 200px; /* Adjust for smaller screens */
-      padding: 2rem 0;
+      align-items: flex-start;
+      flex-shrink: 0;
+      margin: 0;
+      max-width: 200px;
+      padding: 0;
+      animation: hero-logo-fade-in 0.8s ease forwards;
+
+      &.no-anim {
+        animation: none;
+        opacity: 1;
+      }
     }
     @media (max-width: 480px) {
       .hero-logo {
@@ -118,19 +130,19 @@ body.home {
     }
     
     .hero-description {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 2;
-      color: #253F79;
-    
+      color: $color-text-body;
+
     @media (max-width: 480px) {
         margin: 35px 25px;
     }
     }
-    
+
     .hero-description-en {
       font-size: 14px;
       line-height: 2;
-      color: #253F79;
+      color: $color-text-body;
     
     @media (max-width: 480px) {
         margin: 35px 25px;
@@ -840,6 +852,18 @@ body.home {
           gap: 2rem;
           justify-content: center;
           flex-wrap: wrap;
+
+          .btn {
+            position: relative;
+            z-index: 1;
+            pointer-events: auto;
+            cursor: pointer !important;
+
+            span {
+              pointer-events: auto;
+              cursor: pointer !important;
+            }
+          }
         }
       }
     

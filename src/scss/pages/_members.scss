@@ -1,6 +1,7 @@
 
 
-.page-template-page-members {
+.page-template-page-members,
+.page-template-page-members-en {
 
     /* ===============================
        Spacing / hero
@@ -109,9 +110,21 @@
       color: $color-text-body;
       text-decoration: none;
       margin-top: 2px;
+      margin-bottom: 0.25rem;
       font-weight: 600;
     }
-  
+
+    .p-member-list__fellowship {
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+    }
+
+    .p-member-list__position {
+      margin-top: 0;
+      margin-bottom: 0.25rem;
+    }
+
     .p-member-list__position {
       margin-bottom: 3rem;
     }
@@ -119,6 +132,11 @@
     // Fine-tune only the first faculty card thumbnail crop position.
     .members-list > .member.p-member-list__item.group-faculty:first-child .p-member-list__thumbnail img {
       object-position: center 18%;
+    }
+
+    .member--koki-okumura .p-member-list__thumbnail img,
+    a[href*="koki-okumura"] img {
+      object-position: center 20%;
     }
 
     .collab-label-jp {

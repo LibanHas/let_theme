@@ -20,7 +20,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
           <nav class="breadcrumb">
             <a href="/en">Home</a> &gt;
-            <a href="/en/projects-2">Projects</a> &gt;
+            <a href="/en/projects/">Projects</a> &gt;
             <span>[Cabinet Office] Research and Development of Tailor-Made Education</span>
           </nav>
 

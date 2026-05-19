@@ -4,13 +4,39 @@
   body:not(.home) .site-main {
     padding-top: 100px;
   }
+
+  // Sticky footer: push footer to bottom on short-content pages
+  #page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  #wrapper-footer {
+    margin-top: auto;
+  }
   
 
   .breadcrumb {
     background-color: #FCF7EA;
-  
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+
     a {
-      margin: 0rem 0.5rem;
+      color: #7a5c3a;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      color: #a08060;
     }
   }
   

@@ -372,7 +372,7 @@ get_header();
                 <h3>Publications</h3>
                 <div class="description">Research results published in domestic and international journals</div>
               </a>
-              <a href="/en/projects-2/" class="work-item">
+              <a href="/en/projects/" class="work-item">
                 <img src="<?php echo get_template_directory_uri(); ?>/images/projects_image.png" alt="Projects">
                 <h3>Projects</h3>
                 <div class="description">Ongoing and past educational support projects</div>

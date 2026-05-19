@@ -60,8 +60,14 @@ $container = get_theme_mod('understrap_container_type');
                   $student_level = get_field('student_level_en', $post_id);
                   $student_year = get_field('student_year_en', $post_id);
                   $employment_title = get_field('employment_title_en', $post_id);
+                  $fellowship = get_field('fellowship_en', $post_id);
+                  $member_classes = ['col-md-3', 'member', 'p-member-list__item', 'group-' . $member_type];
+
+                  if ($post->post_name === 'koki-okumura' || get_the_title($post_id) === 'Koki Okumura') {
+                      $member_classes[] = 'member--koki-okumura';
+                  }
               ?>
-              <div class="col-md-3 member p-member-list__item group-<?php echo esc_attr($member_type); ?>">
+              <div class="<?php echo esc_attr(implode(' ', $member_classes)); ?>">
                 <a href="<?php the_permalink(); ?>" class="p-member-list__thumbnail">
                   <?php if (has_post_thumbnail()) {
                       the_post_thumbnail('medium');
@@ -71,11 +77,14 @@ $container = get_theme_mod('understrap_container_type');
                 </a>
                 <a href="<?php the_permalink(); ?>" class="p-member-list__name"><?php the_title(); ?></a>
                 <?php
+                if ($fellowship) {
+                    echo '<p class="p-member-list__fellowship">' . esc_html($fellowship) . '</p>';
+                }
                 if ($student_level && $student_year) {
                     $label = $student_level === 'doctoral' ? 'D' : 'M';
                     echo '<p class="p-member-list__position">' . esc_html($label . $student_year) . '</p>';
                 } elseif ($member_type === 'faculty' && $employment_title) {
-                    echo '<p class="p-member-list__position">' . esc_html($employment_title) . '</p>';
+                    echo '<p class="p-member-list__position">' . esc_html(preg_replace('/\s+/', ' ', trim($employment_title))) . '</p>';
                 }
                 ?>
               </div>

@@ -39,6 +39,39 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </section>
 
+        <section class="postdoc-opportunities-section content-block">
+            <div class="container">
+                <div class="postdoc-callout">
+                    <p class="postdoc-eyebrow">Researchers / Postdoctoral Opportunities</p>
+                    <h2 class="section-title">For Researchers Interested in Joining Ogata Lab as a Postdoctoral Fellow or Similar Position</h2>
+                    <p class="intro">
+                    Outstanding researchers who wish to work in our lab as a postdoctoral fellow or in a similar role after obtaining a doctoral degree are encouraged to consider the following application opportunities.
+                    </p>
+
+                    <div class="faq-item">
+                        <p>
+                        If our lab has a large externally funded research project, we may also consider direct employment such as a project researcher position. Please contact the lab directly.
+                        As this is intended for highly qualified researchers, please send your CV and publication list.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <ol class="recruitment-links">
+                            <li>
+                                <strong>JSPS Fellow Researcher</strong>
+                                <a href="https://www.jsps.go.jp/english/e-inv_researchers/" target="_blank" rel="noopener">https://www.jsps.go.jp/english/e-inv_researchers/</a>
+                                <a href="https://www.jsps.go.jp/j-inv_researchers/index.html" target="_blank" rel="noopener">https://www.jsps.go.jp/j-inv_researchers/index.html</a>
+                            </li>
+                            <li>
+                                <strong>Hakubi researcher</strong>
+                                <a href="https://www.hakubi.kyoto-u.ac.jp/recruitment/" target="_blank" rel="noopener">https://www.hakubi.kyoto-u.ac.jp/recruitment/</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section class="join-profile content-block">
             <div class="container">

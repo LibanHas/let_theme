@@ -275,7 +275,7 @@ get_header();
                 </p>
 
                 <div class="cta-buttons">
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--cta" target="_blank" rel="noopener">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSc3G_xoAp_1Q9LKaHFNzgeJojFMnLEYlFzbMSXiJOrLuN_njA/viewform" class="btn btn--accent btn--overlay" target="_blank" rel="noopener">
                     <span>お問い合わせフォームへ</span>
                   </a>
                   <a href="/join-us/" class="btn btn--accent btn--overlay">

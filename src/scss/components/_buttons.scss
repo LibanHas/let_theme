@@ -86,6 +86,11 @@
     background-color: $color-accent !important;
     color: $color-text-light !important;
     border-color: $color-accent !important;
+    cursor: pointer;
+
+    span {
+      cursor: pointer;
+    }
   }
   
   .btn--cta::after {

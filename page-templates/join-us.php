@@ -39,6 +39,39 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
 </section>
 
+        <section class="postdoc-opportunities-section content-block">
+            <div class="container">
+                <div class="postdoc-callout">
+                    <p class="postdoc-eyebrow">Researchers / Postdoctoral Opportunities</p>
+                    <h2 class="section-title">ポストドクター等で緒方研究室に参加したい方へ</h2>
+                    <p class="intro">
+                    博士号を取得後に当研究室でポストドクター等で働きたいという優秀な研究者は、以下の申請について検討してください。
+                    </p>
+
+                    <div class="faq-item">
+                        <p>
+                        当研究室に研究プロジェクトの大型予算がある場合は、特定研究員等で雇用を検討する可能性もありますので、当研究室に直接連絡をしてください。
+                        優秀な研究者に限りますので、履歴書(CV)と研究業績(publication list)を送付してください。
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <ol class="recruitment-links">
+                            <li>
+                                <strong>JSPS Fellow Researcher</strong>
+                                <a href="https://www.jsps.go.jp/english/e-inv_researchers/" target="_blank" rel="noopener">https://www.jsps.go.jp/english/e-inv_researchers/</a>
+                                <a href="https://www.jsps.go.jp/j-inv_researchers/index.html" target="_blank" rel="noopener">https://www.jsps.go.jp/j-inv_researchers/index.html</a>
+                            </li>
+                            <li>
+                                <strong>Hakubi researcher</strong>
+                                <a href="https://www.hakubi.kyoto-u.ac.jp/recruitment/" target="_blank" rel="noopener">https://www.hakubi.kyoto-u.ac.jp/recruitment/</a>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
 
         <section class="join-profile content-block">
             <div class="container">
@@ -102,11 +135,6 @@ $container = get_theme_mod( 'understrap_container_type' );
   </div>
   <hr>
 </div>
-<pre>
-<?php
-echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
-?>
-</pre>
   <ul>
     <li><span class="tick" style="background-image: url('<?php echo esc_url($tick_url); ?>');"></span>
  実践的な教育システムの設計方法</li>
@@ -178,7 +206,7 @@ echo bin2hex(trim(get_template_directory_uri() . '/images/icon-tick.svg'));
 
         </div>
 </section>
-<section class="application-prep-section content-block">
+        <section class="application-prep-section content-block">
             <div class="container">
                 <h2 class="section-title">応募準備の方法</h2>
                 <p class="intro">

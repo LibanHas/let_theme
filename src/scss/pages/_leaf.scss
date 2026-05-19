@@ -148,10 +148,10 @@
     /* =========================
        PRESENTATION LIST
        ========================= */
-  
+
     .presentation-section {
       margin-bottom: 3rem;
-  
+
       .section-title {
         font-size: 1.25rem;
         font-weight: 600;
@@ -160,37 +160,66 @@
         padding-bottom: 0.25rem;
         margin-bottom: 2rem;
       }
-  
+
       .presentation-list {
         list-style: none;
         padding-left: 0;
-  
+
         .presentation-entry {
-          margin-bottom: 2rem;
-  
-          .presentation-date {
-            font-size: 0.85rem;
-            color: #777;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
+          padding: 1.1rem 0;
+          border-bottom: 1px solid #ede3d3;
+
+          &:last-child {
+            border-bottom: none;
           }
-  
+
+          &:has(.presentation-date) {
+            display: grid;
+            grid-template-columns: 90px 1fr;
+            grid-template-areas:
+              "date desc"
+              "date links";
+            column-gap: 1.5rem;
+
+            @media (max-width: 576px) {
+              grid-template-columns: 1fr;
+              grid-template-areas:
+                "date"
+                "desc"
+                "links";
+            }
+          }
+
+          .presentation-date {
+            grid-area: date;
+            font-size: 0.8rem;
+            color: #9a7d5a;
+            font-weight: 600;
+            padding-top: 0.2rem;
+            white-space: nowrap;
+          }
+
           .presentation-description {
-            font-size: 1rem;
+            grid-area: desc;
+            font-size: 0.95rem;
             color: #333;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.4rem;
             line-height: 1.6;
           }
-  
-          .presentation-links a {
-            display: inline-block;
+
+          .presentation-links {
+            grid-area: links;
             font-size: 0.85rem;
-            margin-right: 0.75rem;
-            color: #5c2a1d;
-            text-decoration: underline;
-  
-            &:hover {
-              color: #9a6d45;
+
+            a {
+              display: inline-block;
+              margin-right: 0.5rem;
+              color: #5c2a1d;
+              text-decoration: underline;
+
+              &:hover {
+                color: #9a6d45;
+              }
             }
           }
         }

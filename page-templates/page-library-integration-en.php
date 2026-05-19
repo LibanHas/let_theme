@@ -20,7 +20,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
           <nav class="breadcrumb" aria-label="Breadcrumb">
             <a href="/en">Home</a> &gt;
-            <a href="/en/projects-2">Projects</a> &gt;
+            <a href="/en/projects/">Projects</a> &gt;
             <span>[Kyoto University] Development of a Library Recommendation System</span>
           </nav>
 

@@ -47,7 +47,7 @@ Japan</p>
                       <p><strong>Email</strong><br>
                       info [at] let.media.kyoto-u.ac.jp</p>
 
-                      <p>The Ogata Lab is located in <strong>Building No. 93 on the Yoshida South Campus</strong> (<a href="https://www.kyoto-u.ac.jp/en/access/campus/yoshida" target="_blank" rel="noopener noreferrer">see map here</a>).</p>
+                      <p>The Ogata Lab is located in <strong>Building No. 93 on the Yoshida South Campus</strong> (<a href="https://www.kyoto-u.ac.jp/en/access/yoshida-south-campus-map" target="_blank" rel="noopener noreferrer">see map here</a>).</p>
 
                       <p>From Kyoto Station, we recommend taking the <strong>Hoop Bus from Hachijo Exit to “Kyodai Hospital-mae”</strong> for convenient access.</p>
 
